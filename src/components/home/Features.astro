@@ -27,22 +27,20 @@ const features = [
 ];
 ---
 
-<section class="mb-16">
-  <div class="mx-auto max-w-6xl px-6">
-    <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
-      <span class="section-heading">What I Do</span>
-    </h2>
-    <p class="text-base text-[var(--color-stone-500)] font-sans mb-10 animate-on-scroll">
-      The threads that connect my work.
-    </p>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-      {features.map((f, i) => (
-        <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-5 border-l-4 ${f.accent}`} style="border-left-style: solid;">
-          <svg class="w-5 h-5 text-[var(--color-stone-400)] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={f.icon} />
-          <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2">{f.title}</h3>
-          <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed">{f.description}</p>
-        </div>
-      ))}
-    </div>
+<section>
+  <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
+    <span class="section-heading">What I Do</span>
+  </h2>
+  <p class="text-lg text-[var(--color-stone-500)] font-sans mb-10 animate-on-scroll">
+    The threads that connect my work.
+  </p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    {features.map((f, i) => (
+      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6 border-l-4 ${f.accent}`} style="border-left-style: solid;">
+        <svg class="w-5 h-5 text-[var(--color-stone-400)] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={f.icon} />
+        <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2">{f.title}</h3>
+        <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed">{f.description}</p>
+      </div>
+    ))}
   </div>
 </section>

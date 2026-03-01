@@ -8,7 +8,7 @@ import Education from "../components/about/Education.astro";
 <BaseLayout title="About — Nancy Chauhan" description="Software engineer and developer advocate passionate about cloud native, AI, and open source.">
   <section class="py-20">
     <div class="mx-auto max-w-6xl px-6">
-      <h1 class="text-4xl md:text-5xl font-extrabold font-sans tracking-tight mb-4">
+      <h1 class="text-4xl sm:text-5xl font-extrabold font-sans tracking-tight mb-6">
         About me<span class="text-[var(--color-purple)]">.</span>
       </h1>
     </div>
@@ -22,7 +22,7 @@ import Education from "../components/about/Education.astro";
           intersection of AI, cloud native infrastructure, and developer experience.
         </p>
         <p>
-          Currently building at <code class="font-sans text-sm bg-[var(--color-purple-light)] text-[var(--color-purple)] px-1.5 py-0.5 rounded-lg border border-[var(--color-purple)]/20">Agno</code>, where I focus on
+          Currently building at <code class="font-sans text-sm bg-[var(--color-purple-light)] text-[var(--color-purple)] px-1.5 py-0.5 border border-[var(--color-purple)]/20">Agno</code>, where I focus on
           AI agent infrastructure — the systems that orchestrate tool calls, manage context, and coordinate
           multi-agent workflows.
         </p>
@@ -40,12 +40,14 @@ import Education from "../components/about/Education.astro";
           conferences, mentoring open source contributors, or exploring San Francisco's food scene.
         </p>
       </div>
-      {/* Photo placeholder */}
       <div class="flex items-start justify-center lg:justify-end">
         <div class="card-dashed p-0 overflow-hidden" style="max-width: 320px;">
-          <div class="aspect-square bg-gradient-to-br from-[#ede9fe] via-[#f3e8ff] to-[#fce7f3] flex items-center justify-center">
-            <span class="text-8xl font-extrabold font-sans text-[var(--color-purple)] opacity-20">NC</span>
-          </div>
+          <img
+            src="https://media.tenor.com/xtjwnNUUUo8AAAAM/it%27s-fine-im-fine.gif"
+            alt="It's fine, I'm fine"
+            class="w-full aspect-square object-cover"
+            loading="lazy"
+          />
           <div class="border-t-2 border-dashed border-[var(--color-stone-200)] p-4">
             <p class="font-sans text-sm text-[var(--color-stone-400)]">nancychauhan // San Francisco</p>
           </div>
@@ -53,14 +55,11 @@ import Education from "../components/about/Education.astro";
       </div>
     </div>
 
-    <div class="border-t-2 border-dashed border-[var(--color-stone-200)] pt-16">
-      <CareerTimeline />
-    </div>
-    <div class="border-t-2 border-dashed border-[var(--color-stone-200)] pt-16 mt-16">
-      <SkillsGrid />
-    </div>
-    <div class="border-t-2 border-dashed border-[var(--color-stone-200)] pt-16 mt-16">
-      <Education />
-    </div>
+    <hr class="section-divider my-16" />
+    <CareerTimeline />
+    <hr class="section-divider my-16" />
+    <SkillsGrid />
+    <hr class="section-divider my-16" />
+    <Education />
   </div>
 </BaseLayout>

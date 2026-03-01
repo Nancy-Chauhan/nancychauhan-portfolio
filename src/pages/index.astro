@@ -7,11 +7,14 @@ import RecentPosts from "../components/home/RecentPosts.astro";
 import Talks from "../components/home/Talks.astro";
 import Community from "../components/home/Community.astro";
 import Testimonials from "../components/home/Testimonials.astro";
+import LogoMarquee from "../components/home/LogoMarquee.astro";
 ---
 
 <BaseLayout title="Nancy Chauhan — Engineer & Developer Advocate">
   <Hero />
-  <div class="max-w-6xl mx-auto px-6 py-24">
+  <LogoMarquee />
+  <div class="max-w-6xl mx-auto px-6 pb-24">
+    <hr class="section-divider mb-16" />
     <Features />
     <hr class="section-divider my-16" />
     <FeaturedProjects />

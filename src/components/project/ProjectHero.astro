@@ -11,10 +11,10 @@ const { title, tagline, github, demo, slug } = Astro.props;
 ---
 
 <section class="py-4" transition:name={`project-${slug}`}>
-  <h1 class="text-4xl md:text-5xl font-extrabold font-sans tracking-tight mb-4 text-[var(--color-stone-900)]">
+  <h1 class="text-4xl sm:text-5xl font-extrabold font-sans tracking-tight mb-4 text-[var(--color-stone-900)]">
     {title}<span class="text-[var(--color-purple)]">.</span>
   </h1>
-  <p class="text-xl text-[var(--color-stone-600)] font-sans mb-8 max-w-2xl leading-relaxed">
+  <p class="text-lg md:text-xl text-[var(--color-stone-600)] font-sans mb-8 max-w-2xl leading-relaxed">
     {tagline}
   </p>
   <div class="flex flex-wrap gap-4">

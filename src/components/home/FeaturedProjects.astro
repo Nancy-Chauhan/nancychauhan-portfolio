@@ -7,27 +7,25 @@ const projects = (await getCollection("projects"))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 
-<section class="mb-16" id="projects">
-  <div class="mx-auto max-w-6xl px-6">
-    <div class="mb-10 animate-on-scroll">
-      <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
-        <span class="section-heading">Projects</span>
-      </h2>
-      <p class="text-base text-[var(--color-stone-500)] font-sans">
-        Tools and systems I've built.
-      </p>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      {projects.map((project, i) => (
-        <div class={`animate-on-scroll stagger-${i + 1}`}>
-          <ProjectCard
-            title={project.data.title}
-            tagline={project.data.tagline}
-            techStack={project.data.techStack}
-            slug={project.id}
-          />
-        </div>
-      ))}
-    </div>
+<section id="projects">
+  <div class="mb-10 animate-on-scroll">
+    <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
+      <span class="section-heading">Projects</span>
+    </h2>
+    <p class="text-lg text-[var(--color-stone-500)] font-sans">
+      Tools and systems I've built.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {projects.map((project, i) => (
+      <div class={`animate-on-scroll stagger-${i + 1}`}>
+        <ProjectCard
+          title={project.data.title}
+          tagline={project.data.tagline}
+          techStack={project.data.techStack}
+          slug={project.id}
+        />
+      </div>
+    ))}
   </div>
 </section>

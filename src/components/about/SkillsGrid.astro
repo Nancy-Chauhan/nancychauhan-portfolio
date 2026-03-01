@@ -7,14 +7,14 @@ const skillGroups = [
 ];
 ---
 
-<section class="mb-16">
-  <h2 class="text-3xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
+<section>
+  <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
     <span class="section-heading">Tech Stack</span>
   </h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
     {skillGroups.map((group, i) => (
-      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-5`}>
-        <h3 class="font-sans text-xs font-bold uppercase tracking-widest text-[var(--color-stone-400)] mb-3">
+      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6`}>
+        <h3 class="font-sans text-sm font-bold uppercase tracking-widest text-[var(--color-stone-400)] mb-3">
           {group.category}
         </h3>
         <div class="flex flex-wrap gap-2">

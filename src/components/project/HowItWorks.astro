@@ -8,20 +8,20 @@ const { steps } = Astro.props;
 
 {steps.length > 0 && (
   <section class="py-12">
-    <h2 class="text-3xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
+    <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
       <span class="section-heading">How It Works</span>
     </h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {steps.map((step, i) => (
         <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6`}>
           <div class="flex items-start gap-4">
-            <span class="shrink-0 w-9 h-9 rounded-xl bg-[var(--color-purple)] text-white border-2 border-[var(--color-stone-800)] flex items-center justify-center text-sm font-extrabold font-sans"
+            <span class="shrink-0 w-9 h-9 bg-[var(--color-purple)] text-white border-2 border-[var(--color-stone-800)] flex items-center justify-center text-sm font-extrabold font-sans"
               style="box-shadow: 3px 3px 0px 0px var(--color-stone-800);">
               {i + 1}
             </span>
             <div>
-              <h3 class="font-bold font-sans text-[var(--color-stone-900)] mb-2">{step.title}</h3>
-              <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed">{step.description}</p>
+              <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2">{step.title}</h3>
+              <p class="text-base font-sans text-[var(--color-stone-600)] leading-relaxed">{step.description}</p>
             </div>
           </div>
         </div>

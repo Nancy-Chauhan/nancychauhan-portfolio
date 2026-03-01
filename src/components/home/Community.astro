@@ -9,22 +9,20 @@ const roles = [
 ];
 ---
 
-<section class="mb-16">
-  <div class="mx-auto max-w-6xl px-6">
-    <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
-      <span class="section-heading">Featured</span>
-    </h2>
-    <p class="text-base text-[var(--color-stone-500)] font-sans mb-10 animate-on-scroll">
-      Highlights from community, open source, and beyond.
-    </p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-      {roles.map((role, i) => (
-        <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-5`}>
-          <svg class="w-5 h-5 text-[var(--color-purple)] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={role.icon} />
-          <h3 class="font-bold font-sans text-[var(--color-stone-900)] mb-1">{role.title}</h3>
-          <p class="text-sm font-sans text-[var(--color-stone-500)] leading-relaxed">{role.description}</p>
-        </div>
-      ))}
-    </div>
+<section>
+  <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
+    <span class="section-heading">Featured</span>
+  </h2>
+  <p class="text-lg text-[var(--color-stone-500)] font-sans mb-10 animate-on-scroll">
+    Highlights from community, open source, and beyond.
+  </p>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    {roles.map((role, i) => (
+      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6`}>
+        <svg class="w-5 h-5 text-[var(--color-purple)] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={role.icon} />
+        <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-1">{role.title}</h3>
+        <p class="text-base font-sans text-[var(--color-stone-500)] leading-relaxed">{role.description}</p>
+      </div>
+    ))}
   </div>
 </section>
