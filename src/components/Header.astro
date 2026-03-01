@@ -1,0 +1,92 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/blog", label: "Blog" },
+  { href: "/about", label: "About" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="w-full border-b border-[var(--color-stone-200)] bg-white relative z-20">
+  <nav class="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between">
+    <a
+      href="/"
+      class="text-xl font-bold font-sans text-[var(--color-stone-900)] hover:text-[var(--color-purple)] transition-colors"
+    >
+      Nancy Chauhan
+    </a>
+
+    {/* Desktop nav */}
+    <div class="hidden md:flex items-center gap-6">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class:list={[
+            "font-sans text-sm font-semibold transition-colors",
+            currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+              ? "text-[var(--color-purple)]"
+              : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)]",
+          ]}
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="mailto:nancychn1@gmail.com"
+        class="px-5 py-2 rounded-full bg-[var(--color-stone-900)] text-white font-sans text-sm font-semibold hover:bg-[var(--color-stone-700)] transition-colors duration-200"
+      >
+        Let's Chat
+      </a>
+    </div>
+
+    {/* Mobile menu button */}
+    <button
+      id="mobile-menu-btn"
+      class="md:hidden p-2 rounded-lg border border-[var(--color-stone-300)] bg-white"
+      aria-label="Toggle menu"
+    >
+      <svg class="w-5 h-5 text-[var(--color-stone-800)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  {/* Mobile menu */}
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-[var(--color-stone-200)] bg-white px-6 py-4"
+  >
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class:list={[
+          "block py-2.5 font-sans text-sm font-semibold transition-colors",
+          currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
+            ? "text-[var(--color-purple)]"
+            : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)]",
+        ]}
+      >
+        {link.label}
+      </a>
+    ))}
+  </div>
+</header>
+
+<script>
+  function initMobileMenu() {
+    const btn = document.getElementById("mobile-menu-btn");
+    const menu = document.getElementById("mobile-menu");
+    const icon = document.getElementById("menu-icon");
+    btn?.addEventListener("click", () => {
+      const isOpen = !menu?.classList.contains("hidden");
+      menu?.classList.toggle("hidden");
+      if (icon) {
+        icon.setAttribute("d", isOpen ? "M4 6h16M4 12h16M4 18h16" : "M6 18L18 6M6 6l12 12");
+      }
+    });
+  }
+  initMobileMenu();
+  document.addEventListener("astro:page-load", initMobileMenu);
+</script>

@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/home/Hero.astro";
+import Features from "../components/home/Features.astro";
+import FeaturedProjects from "../components/home/FeaturedProjects.astro";
+import RecentPosts from "../components/home/RecentPosts.astro";
+import Talks from "../components/home/Talks.astro";
+import Community from "../components/home/Community.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+---
+
+<BaseLayout title="Nancy Chauhan — Engineer & Developer Advocate">
+  <Hero />
+  <div class="max-w-6xl mx-auto px-6 py-24">
+    <Features />
+    <hr class="section-divider my-16" />
+    <FeaturedProjects />
+    <hr class="section-divider my-16" />
+    <RecentPosts />
+    <hr class="section-divider my-16" />
+    <Talks />
+    <hr class="section-divider my-16" />
+    <Community />
+    <hr class="section-divider my-16" />
+    <Testimonials />
+  </div>
+</BaseLayout>

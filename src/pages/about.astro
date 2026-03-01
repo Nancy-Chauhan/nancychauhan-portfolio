@@ -1,0 +1,66 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CareerTimeline from "../components/about/CareerTimeline.astro";
+import SkillsGrid from "../components/about/SkillsGrid.astro";
+import Education from "../components/about/Education.astro";
+---
+
+<BaseLayout title="About — Nancy Chauhan" description="Software engineer and developer advocate passionate about cloud native, AI, and open source.">
+  <section class="py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold font-sans tracking-tight mb-4">
+        About me<span class="text-[var(--color-purple)]">.</span>
+      </h1>
+    </div>
+  </section>
+
+  <div class="mx-auto max-w-6xl px-6 pb-20">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-32 animate-on-scroll">
+      <div class="space-y-5 text-base font-sans text-[var(--color-stone-600)] leading-relaxed">
+        <p>
+          I'm a <strong class="text-[var(--color-stone-900)]">software engineer and developer advocate</strong> based in San Francisco, working at the
+          intersection of AI, cloud native infrastructure, and developer experience.
+        </p>
+        <p>
+          Currently building at <code class="font-sans text-sm bg-[var(--color-purple-light)] text-[var(--color-purple)] px-1.5 py-0.5 rounded-lg border border-[var(--color-purple)]/20">Agno</code>, where I focus on
+          AI agent infrastructure — the systems that orchestrate tool calls, manage context, and coordinate
+          multi-agent workflows.
+        </p>
+        <p>
+          Before this, I worked at companies like
+          <span class="text-[var(--color-stone-900)]">Exostellar</span>,
+          <span class="text-[var(--color-stone-900)]">LocalStack</span>, and
+          <span class="text-[var(--color-stone-900)]">Gitpod</span> — always
+          gravitating toward tools that make developers' lives better.
+        </p>
+        <p>
+          I'm a <span class="text-[var(--color-purple)]">CNCF Ambassador</span>, founder of
+          <span class="text-[var(--color-purple)]">Women in Cloud Native</span>, and an active
+          contributor to the Kubernetes ecosystem. When I'm not coding, you'll find me speaking at
+          conferences, mentoring open source contributors, or exploring San Francisco's food scene.
+        </p>
+      </div>
+      {/* Photo placeholder */}
+      <div class="flex items-start justify-center lg:justify-end">
+        <div class="card-dashed p-0 overflow-hidden" style="max-width: 320px;">
+          <div class="aspect-square bg-gradient-to-br from-[#ede9fe] via-[#f3e8ff] to-[#fce7f3] flex items-center justify-center">
+            <span class="text-8xl font-extrabold font-sans text-[var(--color-purple)] opacity-20">NC</span>
+          </div>
+          <div class="border-t-2 border-dashed border-[var(--color-stone-200)] p-4">
+            <p class="font-sans text-sm text-[var(--color-stone-400)]">nancychauhan // San Francisco</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t-2 border-dashed border-[var(--color-stone-200)] pt-16">
+      <CareerTimeline />
+    </div>
+    <div class="border-t-2 border-dashed border-[var(--color-stone-200)] pt-16 mt-16">
+      <SkillsGrid />
+    </div>
+    <div class="border-t-2 border-dashed border-[var(--color-stone-200)] pt-16 mt-16">
+      <Education />
+    </div>
+  </div>
+</BaseLayout>

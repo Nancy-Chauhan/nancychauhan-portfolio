@@ -1,0 +1,49 @@
+[
+  {
+    "title": "Building Production-Ready AI Agents with MCP",
+    "event": "KubeCon EU 2025",
+    "year": 2025,
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+  },
+  {
+    "title": "Securing the AI Supply Chain",
+    "event": "KubeCon EU 2025",
+    "year": 2025,
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+  },
+  {
+    "title": "From Monolith to Cloud Native: A Security Perspective",
+    "event": "KubeCon EU 2025",
+    "year": 2025,
+    "type": "Lightning Talk",
+    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+  },
+  {
+    "title": "Serverless Security Patterns",
+    "event": "Moar Serverless 2024",
+    "year": 2024,
+    "type": "Conference Talk"
+  },
+  {
+    "title": "Cloud Native Observability with OpenTelemetry",
+    "event": "DevOpsDays India 2022",
+    "year": 2022,
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+  },
+  {
+    "title": "Building Developer Communities",
+    "event": "Women Tech Network Global Conference 2022",
+    "year": 2022,
+    "type": "Panel",
+    "coSpeaker": "Panel Discussion"
+  },
+  {
+    "title": "Getting Started with Kubernetes",
+    "event": "Women Tech Network Global Conference 2020",
+    "year": 2020,
+    "type": "Workshop"
+  }
+]

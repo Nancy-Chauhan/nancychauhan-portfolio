@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectCard from "../../components/cards/ProjectCard.astro";
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects")).sort(
+  (a, b) => a.data.order - b.data.order
+);
+---
+
+<BaseLayout title="Projects — Nancy Chauhan">
+  <section class="py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <h1 class="text-4xl md:text-5xl font-extrabold font-sans tracking-tight mb-4">
+        <span class="section-heading">Projects</span>
+      </h1>
+      <p class="text-base text-[var(--color-stone-500)] font-sans max-w-2xl">
+        A collection of tools and systems at the intersection of AI, security, and developer experience.
+      </p>
+    </div>
+  </section>
+  <div class="mx-auto max-w-6xl px-6 pb-20">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.map((project, i) => (
+        <div class={`animate-on-scroll stagger-${(i % 4) + 1}`}>
+          <ProjectCard
+            title={project.data.title}
+            tagline={project.data.tagline}
+            techStack={project.data.techStack}
+            slug={project.id}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</BaseLayout>

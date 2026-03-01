@@ -1,0 +1,41 @@
+---
+const testimonials = [
+  {
+    quote: "Nancy's contributions to the cloud native ecosystem are outstanding. Her ability to build developer tools while fostering community is truly remarkable.",
+    name: "Community Leader",
+    title: "CNCF",
+  },
+  {
+    quote: "Working with Nancy on the Kubernetes release team was a great experience. She brings technical depth and a collaborative spirit to everything she does.",
+    name: "Engineering Colleague",
+    title: "Cloud Native Community",
+  },
+  {
+    quote: "Nancy's talks at KubeCon are always insightful and well-received. She has a gift for making complex topics accessible to diverse audiences.",
+    name: "Conference Organizer",
+    title: "KubeCon",
+  },
+];
+---
+
+<section class="mb-20">
+  <div class="mx-auto max-w-6xl px-6">
+    <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-10 animate-on-scroll">
+      <span class="section-heading">Kind Words</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {testimonials.map((t, i) => (
+        <div class={`animate-on-scroll stagger-${i + 1} card-brutal p-6`}>
+          <p class="text-base font-sans text-[var(--color-stone-600)] leading-relaxed mb-5 italic">
+            <span class="font-sans text-[var(--color-purple)] not-italic mr-1">&gt;</span>
+            {t.quote}
+          </p>
+          <div class="pt-4 border-t-2 border-dashed border-[var(--color-stone-200)]">
+            <p class="font-sans text-sm text-[var(--color-stone-900)]">{t.name}</p>
+            <p class="font-sans text-sm text-[var(--color-stone-400)]">{t.title}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

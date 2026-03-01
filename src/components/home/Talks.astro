@@ -1,0 +1,51 @@
+---
+import TalkCard from "../cards/TalkCard.astro";
+
+const talksData = await import("../../data/talks/talks.json");
+const talks = talksData.default as {
+  title: string; event: string; year: number; type: string; video?: string; coSpeaker?: string;
+}[];
+
+const grouped = talks.reduce((acc, talk) => {
+  if (!acc[talk.year]) acc[talk.year] = [];
+  acc[talk.year].push(talk);
+  return acc;
+}, {} as Record<number, typeof talks>);
+
+const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
+---
+
+<section class="mb-16">
+  <div class="mx-auto max-w-6xl px-6">
+    <div class="flex items-end justify-between mb-10 animate-on-scroll">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
+          <span class="section-heading">Talks</span>
+        </h2>
+        <p class="text-base text-[var(--color-stone-500)] font-sans">
+          Conference talks and community sessions.
+        </p>
+      </div>
+      <a
+        href="https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+        target="_blank" rel="noopener noreferrer"
+        class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm"
+      >
+        YouTube
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        </svg>
+      </a>
+    </div>
+    {years.map((year) => (
+      <div class="mb-8 animate-on-scroll">
+        <h3 class="text-lg font-extrabold font-sans text-[var(--color-stone-400)] mb-4">{year}</h3>
+        <div class="grid gap-3">
+          {grouped[year].map((talk) => (
+            <TalkCard title={talk.title} event={talk.event} type={talk.type} video={talk.video} coSpeaker={talk.coSpeaker} />
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

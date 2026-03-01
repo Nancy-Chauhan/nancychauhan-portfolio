@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import ProjectHero from "../../components/project/ProjectHero.astro";
+import HowItWorks from "../../components/project/HowItWorks.astro";
+import TechStack from "../../components/project/TechStack.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout title={`${project.data.title} — Nancy Chauhan`} description={project.data.description}>
+  <section class="py-16">
+    <div class="mx-auto max-w-5xl px-6">
+      <Breadcrumbs
+        items={[
+          { label: "Projects", href: "/projects" },
+          { label: project.data.title },
+        ]}
+      />
+      <ProjectHero
+        title={project.data.title}
+        tagline={project.data.tagline}
+        github={project.data.github}
+        demo={project.data.demo}
+        slug={project.id}
+      />
+    </div>
+  </section>
+  <div class="mx-auto max-w-5xl px-6 pb-20">
+    <div class="prose prose-lg max-w-none">
+      <Content />
+    </div>
+    <HowItWorks steps={project.data.steps} />
+    <TechStack techStack={project.data.techStack} />
+  </div>
+</BaseLayout>

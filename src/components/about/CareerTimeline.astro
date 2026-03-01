@@ -1,0 +1,35 @@
+---
+const timeline = [
+  { company: "Agno", role: "Software Engineer", period: "2025 — Present", description: "Building AI agent infrastructure and developer tools." },
+  { company: "Exostellar", role: "Software Engineering Intern", period: "2024", description: "Cloud infrastructure optimization and cost management tooling." },
+  { company: "LocalStack", role: "Software Engineer", period: "2022 — 2023", description: "Developer experience for local cloud development. Core platform and integrations." },
+  { company: "Gitpod", role: "Software Engineer", period: "2021 — 2022", description: "Cloud development environments. Workspace orchestration and developer experience." },
+  { company: "Blinkit (Grofers)", role: "Software Engineer", period: "2020 — 2021", description: "Backend infrastructure and observability for India's quick commerce platform." },
+  { company: "Google Summer of Code", role: "Open Source Contributor", period: "2019", description: "Contributed to CNCF projects, building monitoring and observability tooling." },
+];
+---
+
+<section class="mb-16">
+  <h2 class="text-3xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
+    <span class="section-heading">Career Timeline</span>
+  </h2>
+  <div class="relative space-y-4">
+    {/* Dashed vertical connector line */}
+    <div class="absolute left-[1.625rem] top-4 bottom-4 w-0 border-l-2 border-dashed border-[var(--color-stone-300)]"></div>
+    {timeline.map((item, i) => (
+      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-5`}>
+        <div class="flex items-start gap-4">
+          <div class="relative shrink-0 w-3 h-3 mt-2 rounded-full bg-[var(--color-purple)] opacity-40 border-2 border-white"></div>
+          <div class="flex-1">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+              <h3 class="font-bold font-sans text-[var(--color-stone-900)]">{item.company}</h3>
+              <span class="font-sans text-sm text-[var(--color-stone-400)]">{item.period}</span>
+            </div>
+            <p class="font-sans text-sm text-[var(--color-purple)] mb-1">{item.role}</p>
+            <p class="text-sm font-sans text-[var(--color-stone-500)] leading-relaxed">{item.description}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

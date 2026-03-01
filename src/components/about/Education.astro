@@ -1,0 +1,34 @@
+---
+const education = [
+  {
+    school: "Cornell Johnson",
+    degree: "Master's in Management",
+    period: "2023 — 2025",
+    location: "Ithaca, NY",
+  },
+  {
+    school: "IIIT Una",
+    degree: "BTech, Electronics & Communication Engineering",
+    period: "2016 — 2020",
+    location: "Himachal Pradesh, India",
+  },
+];
+---
+
+<section class="mb-16">
+  <h2 class="text-3xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
+    <span class="section-heading">Education</span>
+  </h2>
+  <div class="grid gap-6">
+    {education.map((edu, i) => (
+      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6`}>
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+          <h3 class="font-bold font-sans text-[var(--color-stone-900)]">{edu.school}</h3>
+          <span class="font-sans text-sm text-[var(--color-stone-400)]">{edu.period}</span>
+        </div>
+        <p class="font-sans text-sm text-[var(--color-purple)]">{edu.degree}</p>
+        <p class="text-sm font-sans text-[var(--color-stone-500)] mt-1">{edu.location}</p>
+      </div>
+    ))}
+  </div>
+</section>

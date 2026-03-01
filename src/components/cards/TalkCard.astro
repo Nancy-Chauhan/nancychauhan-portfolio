@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  event: string;
+  type: string;
+  video?: string;
+  coSpeaker?: string;
+}
+
+const { title, event, type, video, coSpeaker } = Astro.props;
+---
+
+<div class="flex items-start gap-4 card-dashed p-4">
+  <div class="flex-1">
+    <span class="tag-brutal bg-[#ede9fe] text-[#6d28d9] border-[#c4b5fd] mb-2 inline-block">{type}</span>
+    <h4 class="font-bold font-sans text-[var(--color-stone-900)] mb-1">{title}</h4>
+    <p class="text-sm font-sans text-[var(--color-stone-500)]">
+      {event}
+      {coSpeaker && <span> &middot; {coSpeaker}</span>}
+    </p>
+  </div>
+  {video && (
+    <a
+      href={video}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="shrink-0 btn-brutal btn-brutal-icon btn-brutal-secondary"
+      aria-label="Watch video"
+    >
+      <svg class="w-4 h-4 text-[var(--color-purple)]" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M8 5v14l11-7z" />
+      </svg>
+    </a>
+  )}
+</div>
