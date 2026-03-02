@@ -1,39 +1,186 @@
 ---
 const testimonials = [
   {
-    quote: "Nancy's contributions to the cloud native ecosystem are outstanding. Her ability to build developer tools while fostering community is truly remarkable.",
-    name: "Community Leader",
-    title: "CNCF",
+    quote: "She is very skilled technically and a good communicator too, these strengths do not always come together :) The technical articles she worked on were really well written and always valuable content. I really appreciated her approach and execution.",
+    name: "Julia Leyton",
+    title: "CSM Automation Architect",
+    img: "/logos/julia.jpeg",
   },
   {
-    quote: "Working with Nancy on the Kubernetes release team was a great experience. She brings technical depth and a collaborative spirit to everything she does.",
-    name: "Engineering Colleague",
-    title: "Cloud Native Community",
+    quote: "She delivered incredible projects including the launch of gitpod-samples, wrote high-quality blog posts, and built meaningful partner relationships. She's reliable with high attention to detail, a real team player and a joy to collaborate with.",
+    name: "Pauline P. Narvas",
+    title: "Head of Community at Vercel",
+    img: "/logos/pauline.jpeg",
   },
   {
-    quote: "Nancy's talks at KubeCon are always insightful and well-received. She has a gift for making complex topics accessible to diverse audiences.",
-    name: "Conference Organizer",
-    title: "KubeCon",
+    quote: "She worked on complex projects from building Jenkins shared libraries to setting up Tekton as a CI/CD platform. She took all difficulties as learning opportunities and came out stronger every time. I'd recommend Nancy for any team that promotes learning and open culture.",
+    name: "Ashish Dubey",
+    title: "Engineering Lead",
+    img: "/logos/ashish.jpeg",
+  },
+  {
+    quote: "Nancy is an enthusiastic person. She conducted and participated in lot of meetups and online conferences. She has a great knowledge blog which covers some hard technology problems she solved at grofers.",
+    name: "Devika Razdan",
+    title: "Chief Technology Officer, Partnr",
+    img: "/logos/devika.jpeg",
+  },
+  {
+    quote: "What I really liked about her is her all-around skill. She never backs down from any challenge and has experience in DevOps and Backend - a Jack of all trades. She impressed everyone with her sheer dedication to work.",
+    name: "Avinash Jain",
+    title: "Security @ Quince | Ex-Microsoft",
+    img: "/logos/avinash.jpeg",
+  },
+  {
+    quote: "Nancy has great enthusiasm in everything she does. She supercharged the content initiatives at Gitpod and empowered others. She is highly creative, technical, collaborative, humble and knows her craft. She's also into open-source, so that's a plus :)",
+    name: "Aminur Rahman",
+    title: "Community Engineer, Gitpod",
+    img: "/logos/aminur.jpeg",
+  },
+  {
+    quote: "Nancy proved she had the technical skills to pull off a project requiring skills from digital design to software development to DevOps. She was also excellent in communicating and documenting her progress. A combination of skills hard to find even among people with much longer experience.",
+    name: "Olof Kindgren",
+    title: "Engineer and Actor at Qamcom",
+    img: "/logos/olof.jpeg",
+  },
+  {
+    quote: "Nancy was working on CI pipelines for the OpenRISC project during her GSoC. The project was a success - all major goals achieved within the timeframe, and code quality was compliant with standards. It was adopted by several open hardware projects including OpenRISC.",
+    name: "Oleg Nenashev",
+    title: "FOSS Maintainer, CNCF/CDF Ambassador, PhD",
+    img: "/logos/oleg.png",
+  },
+  {
+    quote: "Nancy makes an immediate impact through her positive attitude, strong work ethic, and ability to quickly grasp complex domains. She excels at turning challenging topics into clear, actionable insights. Any team would be fortunate to have her.",
+    name: "Dan Mattox",
+    title: "Senior Director of Engineering, Exostellar",
+    img: "/logos/dan.jpeg",
+  },
+  {
+    quote: "Nancy's standout quality is her remarkable ability to rapidly grasp complex new domains - particularly evident in her quick mastery of our GPU platform products. She brings significant influence from the CNCF community. Any organization would be incredibly fortunate to have her.",
+    name: "Zain",
+    title: "Principal Engineer, Exostellar",
+    img: "/logos/zain.jpeg",
+  },
+  {
+    quote: "She was a standout from day one. Sharp, full of proactive energy, and brought a ton of momentum to every project. Nancy is incredibly well connected in the Kubernetes space and brings both technical insight and strong communication skills to the table.",
+    name: "Nick Cox",
+    title: "VP of Products, Exostellar",
+    img: "/logos/nick.jpeg",
+  },
+  {
+    quote: "Her contributions, especially through engaging videos and well-organized meetups, significantly elevated our outreach and community engagement. Nancy's collaborative spirit, openness to feedback, and friendly demeanor make her a joy to work with.",
+    name: "Anca Ghenade",
+    title: "Customer Education Engineer @ Postman",
+    img: "/logos/anca.jpeg",
+  },
+  {
+    quote: "She was instrumental in launching LocalStack Academy, taking it from a rough idea to production. Her attention to detail is remarkable and she brings great creativity and passion. Nancy has been authentic, empathetic, open to feedback, and has an infectious personality.",
+    name: "Harsh Mishra",
+    title: "Engineer @ LocalStack",
+    img: "/logos/harsh.jpeg",
+  },
+  {
+    quote: "Nancy is really diligent and sincere. Her willingness to take initiatives and make sure all her teammates work harmoniously is commendable. She will be an asset to every company or organization she works for.",
+    name: "Manaswini Das",
+    title: "Software Engineer at Red Hat",
+    img: "/logos/manaswini.jpeg",
+  },
+  {
+    quote: "She consistently gave 100 percent effort and played a significant role in ensuring we completed many projects with perfection & keen details. She had a knack for keeping everyone calm and productive during intense crunch periods. Any team would be lucky to have Nancy.",
+    name: "Siddhant Khare",
+    title: "Software & Growth Engineer at Ona",
+    img: "/logos/siddhant.jpeg",
+  },
+  {
+    quote: "Her passion was evident in the conduct of her coding workshop for young girls in our Udayan Shalini Fellowship Programme. Clear headed, confident and articulate, she was able to inspire them to pursue a career in Coding.",
+    name: "Kiran Modi",
+    title: "Founder, Udayan Care, an NGO",
+    img: "/logos/kiran.jpeg",
   },
 ];
 ---
 
 <section>
-  <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-10 animate-on-scroll">
-    <span class="section-heading">Kind Words</span>
-  </h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    {testimonials.map((t, i) => (
-      <div class={`animate-on-scroll stagger-${i + 1} card-brutal p-6`}>
-        <p class="text-base font-sans text-[var(--color-stone-600)] leading-relaxed mb-5">
-          <span class="font-sans text-[var(--color-purple)] mr-1">&gt;</span>
-          {t.quote}
-        </p>
-        <div class="pt-4 border-t-2 border-dashed border-[var(--color-stone-200)]">
-          <p class="font-sans text-sm text-[var(--color-stone-900)]">{t.name}</p>
-          <p class="font-sans text-sm text-[var(--color-stone-400)]">{t.title}</p>
+  <div class="flex items-end justify-between mb-10">
+    <div>
+      <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
+        <span class="section-heading">From "Who?" to "Whoa!" My Journey in Testimonials 🫰</span>
+      </h2>
+      <p class="text-lg text-[var(--color-stone-500)] font-sans animate-on-scroll">
+        Continually learning and inspired by the amazing colleagues I've been fortunate to work with ✨
+      </p>
+    </div>
+    <div class="hidden sm:flex items-center gap-2">
+      <button
+        id="testimonial-prev"
+        class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+        aria-label="Previous"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button
+        id="testimonial-next"
+        class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+        aria-label="Next"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="relative">
+    <div id="testimonial-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
+      {testimonials.map((t, i) => (
+        <div class={`shrink-0 w-[280px] md:w-[320px] card-brutal p-5 flex flex-col`}>
+          <div class="flex items-center gap-3 mb-4">
+            {t.img ? (
+              <img src={t.img} alt={t.name} class="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
+            ) : (
+              <div class="w-10 h-10 rounded-full bg-[var(--color-purple)] flex items-center justify-center text-white font-bold font-sans text-sm border-2 border-[var(--color-stone-300)]">
+                {t.name.split(' ').map(n => n[0]).join('')}
+              </div>
+            )}
+            <div>
+              <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{t.name}</p>
+              <p class="font-sans text-xs text-[var(--color-stone-400)]">{t.title}</p>
+            </div>
+          </div>
+          <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed">
+            {t.quote}
+          </p>
         </div>
-      </div>
-    ))}
+      ))}
+    </div>
   </div>
 </section>
+
+<style>
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  function initTestimonialCarousel() {
+    const carousel = document.getElementById('testimonial-carousel');
+    const prev = document.getElementById('testimonial-prev');
+    const next = document.getElementById('testimonial-next');
+    const scrollAmount = 340;
+
+    prev?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    next?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+  }
+  initTestimonialCarousel();
+  document.addEventListener('astro:page-load', initTestimonialCarousel);
+</script>

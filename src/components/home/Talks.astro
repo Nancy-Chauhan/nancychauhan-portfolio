@@ -1,18 +1,20 @@
 ---
-import TalkCard from "../cards/TalkCard.astro";
-
 const talksData = await import("../../data/talks/talks.json");
 const talks = talksData.default as {
   title: string; event: string; year: number; type: string; video?: string; coSpeaker?: string;
 }[];
 
-const grouped = talks.reduce((acc, talk) => {
-  if (!acc[talk.year]) acc[talk.year] = [];
-  acc[talk.year].push(talk);
-  return acc;
-}, {} as Record<number, typeof talks>);
+// Only show talks with videos, sorted by year descending
+const videoTalks = talks
+  .filter((t) => t.video)
+  .sort((a, b) => b.year - a.year);
 
-const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
+// Extract YouTube video ID from URL
+function getYouTubeId(url: string) {
+  const match = url.match(/(?:v=|\/)([\w-]{11})/);
+  return match ? match[1] : null;
+}
+
 ---
 
 <section id="talks">
@@ -30,20 +32,50 @@ const years = Object.keys(grouped).map(Number).sort((a, b) => b - a);
       target="_blank" rel="noopener noreferrer"
       class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm"
     >
-      YouTube
+      All talks
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
       </svg>
     </a>
   </div>
-  {years.map((year) => (
-    <div class="mb-8 animate-on-scroll">
-      <h3 class="text-lg font-extrabold font-sans text-[var(--color-stone-400)] mb-4">{year}</h3>
-      <div class="grid gap-3">
-        {grouped[year].map((talk) => (
-          <TalkCard title={talk.title} event={talk.event} type={talk.type} video={talk.video} coSpeaker={talk.coSpeaker} />
-        ))}
-      </div>
-    </div>
-  ))}
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 animate-on-scroll">
+    {videoTalks.slice(0, 6).map((talk) => talk.video && (
+      <a
+        href={talk.video}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group card-brutal overflow-hidden flex flex-col"
+      >
+        <div class="relative overflow-hidden">
+          <img
+            src={`https://img.youtube.com/vi/${getYouTubeId(talk.video)}/maxresdefault.jpg`}
+            alt={talk.title}
+            class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-3 flex items-start gap-2">
+          <div class="shrink-0 mt-0.5">
+            <svg class="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="12" opacity="0.15" />
+              <path d="M9.5 7.5v9l7-4.5z" />
+            </svg>
+          </div>
+          <p class="font-sans font-bold text-[var(--color-stone-900)] text-xs leading-snug">{talk.title}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <div class="mt-8 text-center sm:hidden">
+    <a
+      href="https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+      target="_blank" rel="noopener noreferrer"
+      class="btn-brutal btn-brutal-secondary text-sm"
+    >
+      All talks
+    </a>
+  </div>
 </section>
+

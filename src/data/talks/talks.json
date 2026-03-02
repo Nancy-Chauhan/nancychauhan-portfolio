@@ -1,49 +1,142 @@
 [
   {
-    "title": "Building Production-Ready AI Agents with MCP",
-    "event": "KubeCon EU 2025",
+    "title": "Scaling Pain Points in the World of Observability!",
+    "event": "KubeCon + CloudNativeCon",
     "year": 2025,
     "type": "Conference Talk",
-    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+    "coSpeaker": "Colin Lacy",
+    "video": "https://www.youtube.com/watch?v=xNAnNKlR8HY"
   },
   {
-    "title": "Securing the AI Supply Chain",
-    "event": "KubeCon EU 2025",
+    "title": "Savoir Faire: Cloud Native Technical Leadership",
+    "event": "KubeCon + CloudNativeCon EU",
     "year": 2025,
-    "type": "Conference Talk",
-    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
-  },
-  {
-    "title": "From Monolith to Cloud Native: A Security Perspective",
-    "event": "KubeCon EU 2025",
-    "year": 2025,
-    "type": "Lightning Talk",
-    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
-  },
-  {
-    "title": "Serverless Security Patterns",
-    "event": "Moar Serverless 2024",
-    "year": 2024,
-    "type": "Conference Talk"
-  },
-  {
-    "title": "Cloud Native Observability with OpenTelemetry",
-    "event": "DevOpsDays India 2022",
-    "year": 2022,
-    "type": "Conference Talk",
-    "video": "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
-  },
-  {
-    "title": "Building Developer Communities",
-    "event": "Women Tech Network Global Conference 2022",
-    "year": 2022,
     "type": "Panel",
-    "coSpeaker": "Panel Discussion"
+    "video": "https://www.youtube.com/watch?v=VC2EMzBGKrI"
   },
   {
-    "title": "Getting Started with Kubernetes",
-    "event": "Women Tech Network Global Conference 2020",
+    "title": "Cloud Native Sustainability - How You Can Help Right Now!",
+    "event": "KubeCon + CloudNativeCon",
+    "year": 2024,
+    "type": "Keynote",
+    "coSpeaker": "Saiyam Pathak",
+    "video": "https://www.youtube.com/watch?v=6gl8Y9DO6fw"
+  },
+  {
+    "title": "How Green Is My OpenTelemetry Collector?",
+    "event": "KubeCon + CloudNativeCon NA",
+    "year": 2024,
+    "type": "Conference Talk",
+    "coSpeaker": "Adriana Villela",
+    "video": "https://www.youtube.com/watch?v=ea2CKLX5vEs"
+  },
+  {
+    "title": "Platform Engineering Is the Key Lever for Sustainable Cloud Infrastructure",
+    "event": "KubeCon + CloudNativeCon",
+    "year": 2024,
+    "type": "Conference Talk",
+    "coSpeaker": "Ramiro Berrelleza",
+    "video": "https://www.youtube.com/watch?v=mndwket9HBI"
+  },
+  {
+    "title": "Making Students Industry Ready with CNCF Ecosystem as a Catalyst",
+    "event": "KubeCon + CloudNativeCon",
+    "year": 2024,
+    "type": "Conference Talk",
+    "coSpeaker": "Rohit Ghumare",
+    "video": "https://www.youtube.com/watch?v=Bku3d30bL2s"
+  },
+  {
+    "title": "State of Open Source in 2024",
+    "event": "KubeCon + CloudNativeCon",
+    "year": 2024,
+    "type": "Panel",
+    "video": "https://www.youtube.com/watch?v=5P5k2ghlLW4"
+  },
+  {
+    "title": "No Code Needed: From Emojis To Glory on the Contribution Ladder",
+    "event": "KubeCon + CloudNativeCon",
+    "year": 2024,
+    "type": "Conference Talk",
+    "coSpeaker": "Carol Valencia",
+    "video": "https://www.youtube.com/watch?v=pPKuJg_6A3k"
+  },
+  {
+    "title": "Expanding the Contributor Pipeline Through Inclusion",
+    "event": "KubeCon + CloudNativeCon",
+    "year": 2024,
+    "type": "Panel",
+    "video": "https://www.youtube.com/watch?v=RgzyEc8pPa8"
+  },
+  {
+    "title": "Catch Me If You Can: How LocalStack's Policy Stream Identifies Least Privilege IAM Policies",
+    "event": "LocalStack",
+    "year": 2024,
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/watch?v=P9EaHSxIXe8"
+  },
+  {
+    "title": "How Green is My OpenTelemetry Collector?",
+    "event": "CNCF Cloud Sustainability Week",
+    "year": 2023,
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/watch?v=vWHeeV-a_YQ"
+  },
+  {
+    "title": "Welcome Note - CNCF Cloud Sustainability Week",
+    "event": "CNCF Cloud Sustainability Week",
+    "year": 2023,
+    "type": "Keynote",
+    "video": "https://www.youtube.com/watch?v=2N0Ngcav6LU"
+  },
+  {
+    "title": "Enforcing Security Best Practices using CI",
+    "event": "DevSecOps Conference",
+    "year": 2022,
+    "type": "Conference Talk",
+    "coSpeaker": "Aseem Shrey",
+    "video": "https://www.youtube.com/watch?v=IE0hzdFkJYc"
+  },
+  {
+    "title": "Monitoring Applications with Prometheus and Grafana",
+    "event": "Community Meetup",
+    "year": 2021,
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/watch?v=ygk7yBnljsg"
+  },
+  {
+    "title": "Service Mesh and Why You Should Use It",
+    "event": "Community Meetup",
+    "year": 2021,
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/watch?v=RRlF55AM-9w"
+  },
+  {
+    "title": "Prom-migrator & Tekton",
+    "event": "CNCF Meetup",
+    "year": 2021,
+    "type": "Meetup Talk",
+    "video": "https://www.youtube.com/watch?v=uqOdd0LYLo8"
+  },
+  {
+    "title": "The One Where We Geek Out on Sustainability in Tech",
+    "event": "Podcast",
+    "year": 2023,
+    "type": "Podcast",
+    "video": "https://www.youtube.com/watch?v=uLYysfSzHG4"
+  },
+  {
+    "title": "Jenkins for CI/CD",
+    "event": "Community Talk",
     "year": 2020,
-    "type": "Workshop"
+    "type": "Conference Talk",
+    "video": "https://www.youtube.com/watch?v=B-HR_2PrLKg"
+  },
+  {
+    "title": "Jenkins 2019 Summer Project Demos",
+    "event": "Jenkins Community",
+    "year": 2019,
+    "type": "Demo",
+    "video": "https://www.youtube.com/watch?v=cMSbdGwGWp0"
   }
 ]

@@ -1,32 +1,30 @@
 ---
+// Each logo gets a tailored width to ensure equal visual weight
+// Square icons get narrow widths, horizontal wordmarks get wider
 const logos = [
-  { name: "ONA", src: "/logos/ona.svg" },
-  { name: "LocalStack", src: "/logos/localstack.svg" },
-  { name: "Rootly", html: `<span style="color:#FF6B35">rootly</span>` },
-  { name: "Quinence", html: `<span style="color:#8B5CF6">Q</span><span style="color:#57534e">uinence</span><span style="color:#EC4899">.</span>` },
-  { name: "Blinkit", src: "/logos/blinkit.png" },
-  { name: "Exostellar", src: "/logos/exostellar.svg" },
-  { name: "Zeotap", html: `<svg class="inline-block w-5 h-5 mr-1.5 -mt-0.5" viewBox="0 0 24 24" fill="none"><path d="M12 2L22 19H2L12 2z" stroke="#1e3a8a" stroke-width="2.5" fill="none"/><circle cx="12" cy="13" r="3" fill="#1e3a8a"/></svg><span style="color:#1e3a8a;letter-spacing:0.25em">ZEOTAP</span>` },
-  { name: "Gitpod", html: `<svg class="inline-block w-5 h-5 mr-1 -mt-0.5" viewBox="0 0 24 24"><path d="M14.5 2L7 13h5l-2.5 9L17 11h-5L14.5 2z" fill="#FFB45B"/></svg><span style="color:#1a1a2e">Gitpod</span>` },
+  { name: "ONA", src: "/logos/ona.svg", style: "height:24px;width:auto;" },
+  { name: "LocalStack", src: "/logos/localstack.svg", style: "height:26px;width:auto;" },
+  { name: "Blinkit", src: "/logos/blinkit.svg", style: "height:24px;width:auto;" },
+  { name: "Rootly", src: "/logos/rootly.png", style: "height:22px;width:auto;" },
+  { name: "Exostellar", src: "/logos/exostellar.svg", style: "height:20px;width:auto;" },
+  { name: "Processing Foundation", src: "/logos/processing-foundation.png", style: "height:36px;width:36px;" },
+  { name: "FOSSi", src: "/logos/fossi.svg", style: "height:26px;width:auto;" },
+  { name: "Zeotap", src: "/logos/zeotap.svg", style: "height:22px;width:auto;" },
 ];
 ---
 
 <section class="py-12 overflow-hidden mx-auto max-w-6xl px-6">
   <p class="text-center text-sm text-[var(--color-stone-400)] font-sans mb-8">
-    Companies I've worked or collaborated with
+    Organisations I've worked or collaborated with
   </p>
   <div class="relative">
     <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-[var(--color-cream)] to-transparent z-10"></div>
     <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-[var(--color-cream)] to-transparent z-10"></div>
 
-    <div class="marquee-track flex items-center gap-20 w-max">
+    <div class="marquee-track flex items-center gap-14 w-max">
       {[...logos, ...logos].map((logo) => (
-        <div class="shrink-0 flex items-center justify-center logo-item">
-          {logo.src ? (
-            <img src={logo.src} alt={logo.name} class="h-8 w-auto object-contain" />
-          ) : (
-            <span class="text-2xl font-bold font-sans whitespace-nowrap select-none inline-flex items-center" set:html={logo.html} />
-          )}
+        <div class="logo-item shrink-0 flex items-center justify-center">
+          <img src={logo.src} alt={logo.name} style={logo.style} class="object-contain" />
         </div>
       ))}
     </div>
@@ -35,21 +33,13 @@ const logos = [
 
 <style>
   .marquee-track {
-    animation: marquee 35s linear infinite;
+    animation: marquee 12s linear infinite;
   }
 
   .marquee-track:hover {
     animation-play-state: paused;
   }
 
-  .logo-item {
-    opacity: 0.7;
-    transition: opacity 0.3s;
-  }
-
-  .logo-item:hover {
-    opacity: 1;
-  }
 
   @keyframes marquee {
     0% {

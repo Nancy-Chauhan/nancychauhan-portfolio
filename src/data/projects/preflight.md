@@ -1,27 +1,35 @@
 ---
 title: "Preflight"
-tagline: "Claude Code plugin for security-first codebase scanning"
-description: "A Claude Code extension that scans codebases for security issues, misconfigurations, and compliance gaps before code ships to production."
+tagline: "Know exactly where your system breaks before you ship."
+description: "A Claude Code plugin that reads your codebase, traces every service call, and simulates what happens when real users hit your system. Finds bottlenecks, cost cliffs, and rate limits."
 featured: true
 order: 3
+github: "https://github.com/Nancy-Chauhan/preflight"
+image: "/projects/preflight-overview.png"
 techStack:
+  - Claude Code Plugin
   - TypeScript
-  - Claude API
-  - AST Parsing
-  - Node.js
+  - 40+ Service Integrations
 steps:
-  - title: "Codebase Scan"
-    description: "Preflight performs a deep scan of the codebase using AST parsing to build a structural understanding of the code. It identifies security-sensitive patterns including authentication flows, data handling, API endpoints, and infrastructure-as-code configurations."
-  - title: "Analysis"
-    description: "Scanned code structures are analyzed by Claude to detect security vulnerabilities, misconfigurations, and compliance gaps. The analysis goes beyond pattern matching by understanding code semantics, data flow, and the broader context of how components interact."
-  - title: "Reporting"
-    description: "Findings are presented directly within the Claude Code interface with clear severity ratings, affected code locations, and actionable fix suggestions. Reports can be exported for compliance documentation and integrated into CI/CD gates to prevent insecure code from reaching production."
+  - title: "Read & Trace"
+    description: "Preflight reads your code with Claude's built-in tools. It traces every API route, cron job, and webhook to the services it calls. Completely read-only - nothing installed, no code executed."
+  - title: "Detect & Simulate"
+    description: "Detects multipliers ('for each user, call LLM once and send one email'), finds hard caps, concurrency limits, and timeout values. Simulates daily volume at your target user count."
+  - title: "Report"
+    description: "Generates detailed reports with severity-rated findings. Export as Markdown, HTML, or PDF. Finds rate limits, tier thresholds, data growth projections, and cascading failure points."
 ---
 
 ## Overview
 
-Security scanning tools often produce noisy results that developers learn to ignore. Preflight takes a different approach by combining static analysis through AST parsing with the contextual understanding of Claude, Anthropic's AI model. This combination allows the tool to identify real security issues with high precision while filtering out false positives that plague traditional scanners.
+Preflight is a Claude Code plugin that reads your codebase, traces every service call, and simulates what happens when real users hit your system. It finds the bottlenecks, cost cliffs, rate limits, and breaking points you'd otherwise discover in production.
 
-As a Claude Code plugin, Preflight integrates directly into the developer workflow. Engineers can run security scans as part of their normal coding session, getting immediate feedback on potential issues before code leaves their machine. The tool understands the difference between a test fixture and production code, between an intentional security decision and an oversight, resulting in findings that developers actually want to act on.
+### What It Finds
 
-Preflight covers a broad range of security concerns including injection vulnerabilities, authentication and authorization flaws, secrets exposure, insecure cryptographic usage, and infrastructure misconfigurations. Each finding includes not just the problem description but a concrete remediation suggestion that Claude generates based on the specific codebase context. This makes fixing issues as straightforward as reviewing and applying the suggested change.
+- "Your Stripe webhook handler isn't idempotent - a retry will charge the customer twice"
+- "Your image upload accepts files up to 50MB but Cloudflare Workers has a 25MB request body limit"
+- "At 500 orders/day you'll make 1,500 Stripe API calls - that hits the 100/sec rate limit during flash sales"
+- "Your Vercel Hobby plan has a 10s function timeout but your PDF generation takes 40 seconds"
+
+### Coverage
+
+Covers 40+ services across AI/LLM, databases, email, hosting, auth, payments, storage, analytics, and messaging. Optimized for Next.js, Express, Django, FastAPI, Rails, Go, and Rust frameworks.

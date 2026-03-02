@@ -1,30 +1,46 @@
 ---
 title: "SecLoop"
-tagline: "Autonomous dependency vulnerability patcher"
-description: "An AI-driven tool that continuously monitors dependencies for vulnerabilities, automatically generates patches, and creates pull requests — closing the loop on supply chain security."
+tagline: "Autonomous security scanner & auto-fixer powered by LLM loops"
+description: "Scan, fix, verify - in a loop until clean. SecLoop automates dependency scanning, secret detection, and SAST analysis with LLM-powered auto-patching."
 featured: true
-order: 2
+order: 4
+github: "https://github.com/Nancy-Chauhan/secloop"
+image: "/projects/secloop-architecture.svg"
 techStack:
   - Python
-  - LangChain
-  - GitHub API
-  - Docker
-  - PostgreSQL
+  - pip-audit
+  - semgrep
+  - gitleaks
+  - Claude API
 steps:
-  - title: "Vulnerability Scan"
-    description: "SecLoop continuously monitors project dependencies against multiple vulnerability databases including NVD, GitHub Advisory, and OSV. It identifies vulnerable packages, assesses severity using CVSS scoring, and prioritizes findings based on exploitability and reachability analysis."
-  - title: "Patch Generation"
-    description: "For each identified vulnerability, the AI agent analyzes the upstream fix, evaluates compatible version upgrades, and generates the minimal patch required. When a simple version bump is insufficient, it uses LLM-powered code analysis to produce targeted compatibility shims."
-  - title: "Testing"
-    description: "Generated patches are validated in isolated Docker containers that mirror the project's CI environment. The tool runs the project's existing test suite against the patched dependencies and performs additional compatibility checks to ensure nothing breaks."
-  - title: "PR Creation"
-    description: "Once a patch passes all validation checks, SecLoop automatically creates a pull request with a detailed description of the vulnerability, the fix applied, and test results. PRs include risk assessments and rollback instructions for reviewer confidence."
+  - title: "Scan"
+    description: "Run security tools - pip-audit for dependency CVEs, semgrep/bandit for SAST (SQL injection, XSS, command injection), and gitleaks for hardcoded secrets."
+  - title: "Fix"
+    description: "LLM generates patches for each vulnerability found. Supports Python, Node.js, Go, Rust, and Ruby ecosystems."
+  - title: "Test"
+    description: "Verify nothing broke after patching."
+  - title: "Repeat"
+    description: "Loop until all vulnerabilities are fixed. Uses the Ralph Loop pattern - an iterative LLM loop for autonomous remediation."
 ---
 
 ## Overview
 
-Supply chain security has become one of the most pressing challenges in modern software development. Dependencies accumulate quickly, and keeping them patched against known vulnerabilities is a constant drain on engineering time. SecLoop addresses this by creating a fully autonomous loop — from vulnerability detection through patch generation, testing, and pull request creation — that keeps projects secure without requiring manual intervention.
+Security vulnerabilities pile up. Dependency updates break things. Manual fixes take hours. SecLoop automates it all - scan, fix, verify, in a loop until clean.
 
-The tool leverages LangChain to orchestrate a multi-step AI agent that understands both the vulnerability landscape and the codebase context. When a new CVE is published or a dependency advisory is issued, SecLoop evaluates the impact on monitored projects, determines the best remediation strategy, and generates a patch. This goes beyond simple version bumping; the agent can analyze breaking changes and produce compatibility layers when straightforward upgrades are not possible.
+### Scanners
 
-Each generated patch is rigorously tested in containerized environments before a pull request is opened. The PR includes comprehensive context — vulnerability details, CVSS scores, changelog summaries, and test results — so that reviewers can approve with confidence. By automating the entire vulnerability response lifecycle, SecLoop reduces mean time to remediation from days to minutes and frees security teams to focus on higher-order threats.
+| Scanner | What it Detects | Tool |
+|---------|-----------------|------|
+| Dependencies | CVEs in packages | pip-audit, npm audit, cargo-audit |
+| Secrets | API keys, passwords, tokens | gitleaks |
+| SAST | SQL injection, XSS, command injection | semgrep, bandit |
+
+### Usage
+
+```bash
+secloop audit ./my-project    # Run all scanners
+secloop run ./my-project      # Auto-fix using LLM loops
+secloop secrets . --history   # Scan git history for leaked secrets
+```
+
+Supports CI/CD with GitHub Actions and SARIF output for integration with GitHub Code Scanning.

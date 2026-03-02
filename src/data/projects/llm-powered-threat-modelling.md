@@ -1,31 +1,39 @@
 ---
 title: "LLM-Powered Threat Modelling"
 tagline: "Self-serve threat modeling powered by large language models"
-description: "An automated threat modeling tool that leverages LLMs to analyze system architectures and generate comprehensive threat models, enabling engineering teams to self-serve security assessments."
+description: "A threat modeling platform that uses LLMs to analyze system designs and generate comprehensive STRIDE-based security assessments, with JIRA integration and shareable reports."
 featured: true
-order: 1
+order: 2
+github: "https://github.com/Nancy-Chauhan/llm-powered-threat-modelling"
 techStack:
+  - React 18
   - TypeScript
-  - Node.js
-  - OpenAI API
-  - React
+  - Hono
+  - Bun
   - PostgreSQL
-github: "https://github.com/nancychauhan"
+  - Drizzle ORM
+  - OpenAI / Claude API
+  - Tailwind CSS
 steps:
   - title: "Architecture Input"
-    description: "Engineers provide system architecture details through an intuitive interface, including data flow diagrams, component descriptions, and trust boundaries. The tool accepts multiple input formats such as structured YAML, diagram imports, and free-text descriptions."
+    description: "Engineers provide system details through an intuitive interface - upload PRDs, architecture diagrams, screenshots, or import JIRA tickets with comments and attachments as context."
   - title: "LLM Analysis"
-    description: "The architecture input is processed through a pipeline of LLM prompts that decompose the system into analyzable components. The model identifies assets, entry points, and trust boundaries, building an internal representation of the threat surface."
+    description: "The architecture is processed through OpenAI or Anthropic models that decompose the system into components, identify assets, entry points, and trust boundaries."
   - title: "Threat Generation"
-    description: "Using the analyzed architecture, the LLM generates a comprehensive list of threats mapped to industry frameworks like STRIDE and OWASP Top 10. Each threat is scored by likelihood and impact, with contextual reasoning provided for every finding."
-  - title: "Report & Remediation"
-    description: "A detailed threat model report is generated with actionable remediation guidance for each identified threat. Reports can be exported in multiple formats and integrated directly into issue trackers for engineering follow-up."
+    description: "Threats are generated and categorized using the STRIDE methodology with Likelihood x Impact risk scoring. Each threat includes actionable mitigations with priority and effort estimates."
+  - title: "Share & Export"
+    description: "Generate public share links for stakeholders or export reports in Markdown and JSON formats. Integrate directly into issue trackers for engineering follow-up."
 ---
 
 ## Overview
 
-Traditional threat modeling is a manual, time-intensive process that requires dedicated security expertise and often becomes a bottleneck in fast-moving engineering organizations. LLM-Powered Threat Modelling changes this by putting the power of automated security analysis directly in the hands of engineering teams. By combining structured architecture inputs with the reasoning capabilities of large language models, the tool produces threat models that are both comprehensive and actionable.
+A self-serve threat modeling platform that puts automated security analysis directly in the hands of engineering teams. By combining structured architecture inputs with LLM reasoning, the tool produces threat models that are both comprehensive and actionable.
 
-The system works by first ingesting architecture descriptions in flexible formats, then running them through a carefully engineered chain of LLM prompts. Each prompt stage focuses on a different aspect of the analysis — from identifying assets and trust boundaries to generating specific attack scenarios and mapping them to established threat frameworks. This multi-stage approach ensures depth and consistency in the output while keeping the analysis grounded in recognized security standards.
+### Key Features
 
-The result is a self-serve platform where any engineering team can generate a threat model in minutes rather than weeks. The generated reports include prioritized threats, detailed attack narratives, and concrete remediation steps that teams can immediately act on. By lowering the barrier to threat modeling, the tool helps organizations shift security left and embed threat analysis into their standard development workflow.
+- **JIRA Integration** - Import JIRA tickets with comments, links, and attachments as context
+- **Upload Context** - Support for PRDs, architecture diagrams, screenshots, and text files
+- **LLM-Powered Analysis** - Automatic threat generation using OpenAI or Anthropic
+- **STRIDE Methodology** - Threats categorized by Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege
+- **Risk Scoring** - Likelihood x Impact scoring with severity classification
+- **Shareable Reports** - Generate public share links for stakeholders

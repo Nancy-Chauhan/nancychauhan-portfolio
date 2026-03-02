@@ -37,6 +37,15 @@ const { Content } = await render(project);
     </div>
   </section>
   <div class="mx-auto max-w-5xl px-6 pb-20">
+    {project.data.image && (
+      <div class="mb-12">
+        <img
+          src={project.data.image}
+          alt={`${project.data.title} architecture`}
+          class="w-full border-2 border-[var(--color-stone-800)] shadow-brutal"
+        />
+      </div>
+    )}
     <div class="prose prose-lg max-w-none">
       <Content />
     </div>

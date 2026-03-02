@@ -19,7 +19,9 @@ const roles = [
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
     {roles.map((role, i) => (
       <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6`}>
-        <svg class="w-5 h-5 text-[var(--color-purple)] mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={role.icon} />
+        <div class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm mb-4">
+          <svg class="w-5 h-5 text-[var(--color-purple)]" fill="none" stroke="currentColor" viewBox="0 0 24 24" set:html={role.icon} />
+        </div>
         <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-1">{role.title}</h3>
         <p class="text-base font-sans text-[var(--color-stone-500)] leading-relaxed">{role.description}</p>
       </div>
