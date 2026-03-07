@@ -5,20 +5,25 @@ interface Props {
   pubDate: Date;
   tags: string[];
   slug: string;
+  externalUrl?: string;
 }
 
-const { title, description, pubDate, tags, slug } = Astro.props;
+const { title, description, pubDate, tags, slug, externalUrl } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString("en-US", {
   year: "numeric",
   month: "short",
   day: "numeric",
 });
+
+const href = externalUrl || `/blog/${slug}`;
+const isExternal = !!externalUrl;
 ---
 
 <a
-  href={`/blog/${slug}`}
-  class="group block card-dashed overflow-hidden"
+  href={href}
+  class="group block card-brutal overflow-hidden h-full flex flex-col"
+  {...isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}}
 >
   {/* Window chrome bar */}
   <div class="window-chrome">
@@ -26,12 +31,17 @@ const formattedDate = pubDate.toLocaleDateString("en-US", {
     <div class="window-dot" style="background:#febc2e;"></div>
     <div class="window-dot" style="background:#28c840;"></div>
     <span class="window-chrome-title">{formattedDate}</span>
+    {isExternal && (
+      <svg class="w-3 h-3 ml-auto text-[var(--color-stone-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+      </svg>
+    )}
   </div>
-  <div class="p-5">
+  <div class="p-5 flex flex-col flex-1">
     <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors">
       {title}
     </h3>
-    <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 line-clamp-2">
+    <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 line-clamp-2 flex-1">
       {description}
     </p>
     <div class="flex flex-wrap gap-2">

@@ -12,6 +12,10 @@ const currentPath = Astro.url.pathname;
 
 <header class="w-full border-b border-[var(--color-stone-300)]">
   <nav class="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
+    <a href="/" class="font-sans text-sm font-bold text-[var(--color-stone-900)] hover:text-[var(--color-purple)] transition-colors">
+      Nancy Chauhan
+    </a>
+
     {/* Desktop nav */}
     <div class="hidden md:flex items-center gap-6">
       {navLinks.map((link) => (

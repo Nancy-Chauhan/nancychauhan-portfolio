@@ -22,7 +22,7 @@ const projects = (await getCollection("projects")).sort(
   <div class="mx-auto max-w-6xl px-6 pb-20">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project, i) => (
-        <div class={`animate-on-scroll stagger-${(i % 4) + 1}`}>
+        <div class={`animate-on-scroll stagger-${(i % 4) + 1} h-full`}>
           <ProjectCard
             title={project.data.title}
             tagline={project.data.tagline}

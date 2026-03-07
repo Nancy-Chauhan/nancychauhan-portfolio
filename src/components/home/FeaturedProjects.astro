@@ -8,21 +8,23 @@ const projects = (await getCollection("projects"))
 ---
 
 <section id="projects">
-  <div class="flex items-end justify-between mb-10 animate-on-scroll">
-    <div>
-      <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
-        <span class="section-heading">Projects <img src="/this-is-fine.gif" alt="this is fine" class="inline-block w-8 h-8 align-middle" /></span>
-      </h2>
-      <p class="text-lg text-[var(--color-stone-500)] font-sans">
-        Tools and systems I've built.
-      </p>
+  <div class="mb-10 animate-on-scroll">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
+          <span class="section-heading">Projects</span>
+        </h2>
+        <p class="text-lg text-[var(--color-stone-500)] font-sans">
+          Tools and systems I've built.
+        </p>
+      </div>
+      <a href="/projects" class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm shrink-0">
+        Explore more
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
     </div>
-    <a href="/projects" class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm">
-      Explore more
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {projects.map((project, i) => (

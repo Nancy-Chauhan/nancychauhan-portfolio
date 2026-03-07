@@ -18,25 +18,27 @@ function getYouTubeId(url: string) {
 ---
 
 <section id="talks">
-  <div class="flex items-end justify-between mb-10 animate-on-scroll">
-    <div>
-      <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
-        <span class="section-heading">Collection of my past talks 🎤</span>
-      </h2>
-      <p class="text-lg text-[var(--color-stone-500)] font-sans">
-        Conference talks and community sessions.
-      </p>
+  <div class="mb-10 animate-on-scroll">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
+          <span class="section-heading">Collection of my past talks</span>
+        </h2>
+        <p class="text-lg text-[var(--color-stone-500)] font-sans">
+          Conference talks and community sessions.
+        </p>
+      </div>
+      <a
+        href="https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+        target="_blank" rel="noopener noreferrer"
+        class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm shrink-0"
+      >
+        All talks
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
     </div>
-    <a
-      href="https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
-      target="_blank" rel="noopener noreferrer"
-      class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm"
-    >
-      All talks
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5 animate-on-scroll">

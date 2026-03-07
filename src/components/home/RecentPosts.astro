@@ -1,43 +1,81 @@
 ---
 import { getCollection } from "astro:content";
-import BlogCard from "../cards/BlogCard.astro";
 
 const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.tags?.includes("year-in-review") && !p.data.tags?.includes("personal"))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 4);
+  .slice(0, 8);
 ---
 
 <section>
-  <div class="flex items-end justify-between mb-10 animate-on-scroll">
-    <div>
-      <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
-        <span class="section-heading">I break complicated concepts into easier tech content 🚀</span>
-      </h2>
-      <p class="text-lg text-[var(--color-stone-500)] font-sans">
-        I write them down when I happen to come across some cool things.
-      </p>
-    </div>
-    <a href="/blog" class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm">
-      All posts
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </a>
-  </div>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {posts.map((post, i) => (
-      <div class={`animate-on-scroll stagger-${i + 1}`}>
-        <BlogCard
-          title={post.data.title}
-          description={post.data.description}
-          pubDate={post.data.pubDate}
-          tags={post.data.tags}
-          slug={post.id}
-        />
+  <div class="mb-10 animate-on-scroll">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
+          <span class="section-heading">I break complicated concepts into easier tech content</span>
+        </h2>
+        <p class="text-lg text-[var(--color-stone-500)] font-sans">
+          I write them down when I happen to come across some cool things.
+        </p>
       </div>
-    ))}
+      <a href="/blog" class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm shrink-0">
+        All posts
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
   </div>
+
+  <div class="blog-scroll overflow-hidden animate-on-scroll">
+    <div class="blog-track flex gap-6">
+      {[...posts, ...posts].map((post) => (
+        <a
+          href={post.data.externalUrl || `/blog/${post.id}`}
+          class="group shrink-0 w-[300px] md:w-[340px] card-brutal overflow-hidden flex flex-col"
+          {...post.data.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+        >
+          {/* Image placeholder — replace with graphics later */}
+          <div class="h-40 bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)] flex items-center justify-center">
+            <span class="text-4xl font-extrabold font-sans text-[var(--color-stone-200)] group-hover:text-[var(--color-purple)] transition-colors select-none">
+              {post.data.title.charAt(0)}
+            </span>
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <h3 class="text-base font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors line-clamp-2">
+              {post.data.title}
+            </h3>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {post.data.tags.slice(0, 2).map((tag) => (
+                <span class="tag-brutal">{tag}</span>
+              ))}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+
   <div class="mt-8 text-center sm:hidden">
     <a href="/blog" class="btn-brutal btn-brutal-secondary text-sm">All posts</a>
   </div>
 </section>
+
+<style>
+  .blog-track {
+    animation: scroll-blog 30s linear infinite;
+  }
+
+  .blog-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll-blog {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>

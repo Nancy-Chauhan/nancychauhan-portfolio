@@ -100,41 +100,43 @@ const testimonials = [
 ---
 
 <section>
-  <div class="flex items-end justify-between mb-10">
-    <div>
-      <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
-        <span class="section-heading">From "Who?" to "Whoa!" My Journey in Testimonials 🫰</span>
-      </h2>
-      <p class="text-lg text-[var(--color-stone-500)] font-sans animate-on-scroll">
-        Continually learning and inspired by the amazing colleagues I've been fortunate to work with ✨
-      </p>
-    </div>
-    <div class="hidden sm:flex items-center gap-2">
-      <button
-        id="testimonial-prev"
-        class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
-        aria-label="Previous"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        id="testimonial-next"
-        class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
-        aria-label="Next"
-      >
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+  <div class="mb-10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
+          <span class="section-heading">From "Who?" to "Whoa!" My Journey in Testimonials</span>
+        </h2>
+        <p class="text-lg text-[var(--color-stone-500)] font-sans animate-on-scroll">
+          Continually learning and inspired by the amazing colleagues I've been fortunate to work with.
+        </p>
+      </div>
+      <div class="hidden sm:flex items-center gap-2 shrink-0">
+        <button
+          id="testimonial-prev"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          aria-label="Previous"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          id="testimonial-next"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          aria-label="Next"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 
   <div class="relative">
     <div id="testimonial-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
       {testimonials.map((t, i) => (
-        <div class={`shrink-0 w-[280px] md:w-[320px] card-brutal p-5 flex flex-col`}>
+        <div class={`shrink-0 w-[280px] md:w-[320px] h-[260px] card-brutal p-5 flex flex-col overflow-hidden`}>
           <div class="flex items-center gap-3 mb-4">
             {t.img ? (
               <img src={t.img} alt={t.name} class="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
@@ -148,7 +150,7 @@ const testimonials = [
               <p class="font-sans text-xs text-[var(--color-stone-400)]">{t.title}</p>
             </div>
           </div>
-          <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed">
+          <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed line-clamp-6">
             {t.quote}
           </p>
         </div>
