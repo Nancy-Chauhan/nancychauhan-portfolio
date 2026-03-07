@@ -3,6 +3,7 @@ title: "Faster Builds with Docker Layer Caching"
 description: "Optimize your Docker builds by understanding the layer caching system, writing cache-friendly Dockerfiles, using multi-stage builds, and configuring CI pipelines for maximum cache reuse."
 pubDate: 2020-11-10
 tags: ["docker", "ci-cd", "devops"]
+externalUrl: "https://nancy-chauhan.medium.com/"
 ---
 
 Slow Docker builds are one of the most common developer experience complaints. A build that takes five minutes locally and ten minutes in CI adds up to hours of wasted time across a team every week. The good news is that Docker has a built-in caching mechanism that, when used correctly, can dramatically reduce build times. The bad news is that many Dockerfiles are written in ways that defeat this caching entirely.

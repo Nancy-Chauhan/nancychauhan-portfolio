@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
-  .filter((p) => !p.data.tags?.includes("year-in-review") && !p.data.tags?.includes("personal"))
+  .filter((p) => !p.data.tags?.includes("year-in-review") && !p.data.tags?.includes("personal") && !p.data.title.includes("Docker Layer Caching"))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 8);
+  .slice(0, 4);
 ---
 
 <section>
@@ -18,7 +18,7 @@ const posts = (await getCollection("blog"))
           Breaking down complex topics into clear, actionable content.
         </p>
       </div>
-      <a href="/blog" class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm shrink-0">
+      <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm shrink-0">
         All posts
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -31,15 +31,19 @@ const posts = (await getCollection("blog"))
     <div class="blog-track flex gap-6">
       {[...posts, ...posts].map((post) => (
         <a
-          href={post.data.externalUrl || `/blog/${post.id}`}
+          href={post.data.externalUrl || "https://nancy-chauhan.medium.com/"}
           class="group shrink-0 w-[300px] md:w-[340px] card-brutal overflow-hidden flex flex-col"
-          {...post.data.externalUrl ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+          target="_blank"
+          rel="noopener noreferrer"
         >
-          {/* Image placeholder — replace with graphics later */}
-          <div class="h-40 bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)] flex items-center justify-center">
-            <span class="text-4xl font-extrabold font-sans text-[var(--color-stone-200)] group-hover:text-[var(--color-purple)] transition-colors select-none">
-              {post.data.title.charAt(0)}
-            </span>
+          <div class="h-40 bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)] flex items-center justify-center overflow-hidden">
+            {post.data.image ? (
+              <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover" loading="lazy" />
+            ) : (
+              <span class="text-4xl font-extrabold font-sans text-[var(--color-stone-200)] group-hover:text-[var(--color-purple)] transition-colors select-none">
+                {post.data.title.charAt(0)}
+              </span>
+            )}
           </div>
           <div class="p-5 flex flex-col flex-1">
             <h3 class="text-base font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors line-clamp-2">
@@ -57,7 +61,7 @@ const posts = (await getCollection("blog"))
   </div>
 
   <div class="mt-8 text-center sm:hidden">
-    <a href="/blog" class="btn-brutal btn-brutal-secondary text-sm">All posts</a>
+    <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal-secondary text-sm">All posts</a>
   </div>
 </section>
 

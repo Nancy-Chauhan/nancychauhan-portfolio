@@ -3,6 +3,8 @@ title: "Understanding Load Balancing: Concepts and Algorithms"
 description: "A deep dive into load balancing algorithms including round-robin, least connections, IP hash, and weighted strategies, with guidance on when to use each approach."
 pubDate: 2021-03-15
 tags: ["distributed-systems", "infrastructure"]
+image: "/blog/load-balancing.webp"
+externalUrl: "https://levelup.gitconnected.com/loadbalancing-a0e805baea37"
 ---
 
 Load balancing is one of those foundational concepts in distributed systems that every engineer encounters sooner or later. Whether you are running a handful of microservices or operating infrastructure at scale, understanding how traffic gets distributed across your servers is essential. In this post, I want to walk through the core load balancing algorithms, explain the trade-offs of each, and share some practical advice on choosing the right one for your workload.

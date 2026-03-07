@@ -3,6 +3,7 @@ title: "Building a Custom Prometheus Exporter in Go"
 description: "A step-by-step guide to building a custom Prometheus exporter in Go, covering metric types, the collector interface, exposing metrics via HTTP, and creating Grafana dashboards."
 pubDate: 2020-08-15
 tags: ["observability", "prometheus", "go"]
+externalUrl: "https://nancy-chauhan.medium.com/"
 ---
 
 Prometheus is the de facto standard for metrics collection in cloud native environments. While there are exporters for most common systems — node_exporter for host metrics, mysqld_exporter for MySQL, and so on — there are times when you need to expose custom metrics from your own applications or infrastructure. Building a custom Prometheus exporter in Go is surprisingly straightforward, and in this post I will walk through the entire process from understanding metric types to visualizing the results in Grafana.

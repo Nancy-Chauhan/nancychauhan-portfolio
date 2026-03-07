@@ -3,6 +3,7 @@ title: "Working with Git Submodules"
 description: "A practical guide to Git submodules covering how to add, update, and clone repositories with submodules, along with common pitfalls and best practices."
 pubDate: 2019-11-15
 tags: ["git", "developer-tools"]
+externalUrl: "https://nancy-chauhan.medium.com/"
 ---
 
 Git submodules allow you to include one Git repository as a subdirectory of another. They are useful for managing dependencies, sharing libraries across projects, or including third-party code that you want to pin to a specific version. However, submodules have a reputation for being confusing and error-prone. In this post, I will demystify submodules by explaining how they work, walking through common operations, and highlighting the pitfalls that trip up most developers.

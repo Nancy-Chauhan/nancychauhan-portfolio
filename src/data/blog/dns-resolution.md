@@ -3,6 +3,7 @@ title: "How DNS Resolution Works"
 description: "A comprehensive walkthrough of the DNS resolution process, from recursive resolvers to root servers, TLD servers, authoritative servers, caching, and TTL behavior."
 pubDate: 2020-03-15
 tags: ["networking", "infrastructure"]
+externalUrl: "https://nancy-chauhan.medium.com/"
 ---
 
 Every time you type a URL in your browser or your application makes an API call, a DNS resolution happens behind the scenes. DNS (Domain Name System) translates human-readable domain names like `example.com` into IP addresses like `93.184.216.34` that computers use to route traffic. Despite being one of the most fundamental pieces of internet infrastructure, DNS is often treated as a black box. In this post, I want to open that box and explain exactly what happens during a DNS resolution.

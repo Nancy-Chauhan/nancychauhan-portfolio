@@ -1,11 +1,9 @@
 ---
 const roles = [
-  { title: "TAGGIE Award", image: "/featured/taggie.png" },
-  { title: "CNCF Ambassador", image: "/featured/cncf-ambassador.png" },
-  { title: "Women in Cloud Native", image: "/featured/wicn.png" },
-  { title: "CNCF TAG Co-Chair", image: "/featured/cncf-tag.png" },
-  { title: "AWS Community Builder", image: "/featured/aws.png" },
-  { title: "K8s Release Team", image: "/featured/k8s.png" },
+  { title: "TAGGIE Award", image: "/featured/taggie.jpeg", link: "https://www.cncf.io/announcements/2024/11/14/cloud-native-computing-foundation-announces-the-2024-community-awards-winners/" },
+  { title: "CNCF Ambassador", image: "/featured/cncf-ambassador.svg", link: "https://www.cncf.io/people/ambassadors/" },
+  { title: "Women In Cloud Native Founder", image: "/featured/wicn.webp", link: "https://www.cncf.io/humans-of-cloud-native/nancy-chauhan-championing-women-in-cloud-native/" },
+  { title: "CNCF TAG Co-Chair", image: "/featured/cncf-tag.jpeg", link: "https://x.com/_nancychauhan/status/1797839132711940496?s=20" },
 ];
 ---
 
@@ -14,7 +12,7 @@ const roles = [
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
       <div>
         <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
-          <span class="section-heading">Grateful for the opportunity to be featured in these spaces</span>
+          <span class="section-heading">Featured & Recognized</span>
         </h2>
       </div>
       <div class="hidden sm:flex items-center gap-2 shrink-0">
@@ -43,14 +41,28 @@ const roles = [
   <div class="relative">
     <div id="featured-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
       {roles.map((role) => (
-        <div class="shrink-0 w-[220px] md:w-[260px] card-brutal overflow-hidden flex flex-col">
-          <div class="h-[200px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
-            <img src={role.image} alt={role.title} class="w-full h-full object-cover" loading="lazy" />
+        role.link ? (
+          <a href={role.link} target="_blank" rel="noopener noreferrer" class="shrink-0 w-[220px] md:w-[260px] card-brutal overflow-hidden flex flex-col hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer">
+            <div class="h-[200px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
+              <img src={role.image} alt={role.title} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-4 flex items-center justify-between gap-2">
+              <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{role.title}</p>
+              <svg class="w-4 h-4 shrink-0 text-[var(--color-stone-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
+          </a>
+        ) : (
+          <div class="shrink-0 w-[220px] md:w-[260px] card-brutal overflow-hidden flex flex-col">
+            <div class="h-[200px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
+              <img src={role.image} alt={role.title} class="w-full h-full object-cover" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{role.title}</p>
+            </div>
           </div>
-          <div class="p-4">
-            <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{role.title}</p>
-          </div>
-        </div>
+        )
       ))}
     </div>
   </div>

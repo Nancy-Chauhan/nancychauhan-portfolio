@@ -3,6 +3,8 @@ title: "Designing Idempotent APIs"
 description: "How to design APIs that are safe to retry, covering idempotency keys, HTTP method semantics, database strategies, and real-world patterns for building reliable distributed systems."
 pubDate: 2021-06-20
 tags: ["api-design", "distributed-systems"]
+image: "/blog/idempotent-apis.webp"
+externalUrl: "https://levelup.gitconnected.com/idempotency-in-api-design-bc4ea812a881"
 ---
 
 In distributed systems, failures are not exceptional — they are expected. Networks drop packets, servers restart, and clients time out. When a client sends a request and does not receive a response, it faces a fundamental question: did the server process my request or not? The answer to this question determines whether retrying is safe or dangerous. This is where idempotency becomes critical.

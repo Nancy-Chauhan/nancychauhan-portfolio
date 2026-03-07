@@ -3,6 +3,7 @@ title: "Monitoring Java Web Applications with Prometheus"
 description: "A practical guide to monitoring Java web applications using Prometheus, covering JMX metrics, Micrometer integration, custom metrics, alerting rules, and dashboard best practices."
 pubDate: 2020-02-10
 tags: ["observability", "java", "monitoring"]
+externalUrl: "https://nancy-chauhan.medium.com/"
 ---
 
 Java web applications have a rich ecosystem of monitoring tools, but integrating them with modern observability platforms like Prometheus requires some thought. The JVM provides a wealth of metrics through JMX, frameworks like Spring Boot have built-in actuator endpoints, and Micrometer provides a vendor-neutral metrics facade. In this post, I will walk through how to tie these pieces together to build comprehensive monitoring for your Java applications.

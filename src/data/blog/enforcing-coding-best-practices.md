@@ -3,6 +3,8 @@ title: "Enforcing Coding Best Practices with Automation"
 description: "A practical guide to automating code quality enforcement using linters, pre-commit hooks, CI checks, and code review automation tools."
 pubDate: 2021-09-10
 tags: ["developer-experience", "tooling"]
+image: "/blog/ci-best-practices.webp"
+externalUrl: "https://faun.pub/enforcing-coding-best-practices-using-ci-b3287e362202"
 ---
 
 Every engineering team has coding standards — naming conventions, formatting rules, architectural patterns, security practices. The challenge is not defining these standards but enforcing them consistently. Relying on manual code reviews to catch style violations and common mistakes is expensive, error-prone, and frustrating for both reviewers and authors. The solution is automation.

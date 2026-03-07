@@ -3,6 +3,7 @@ title: "How to Kick Off Your Open Source Journey"
 description: "A practical guide for developers looking to start contributing to open source, covering how to find projects, make your first contribution, build community relationships, and tips for programs like GSoC."
 pubDate: 2019-06-10
 tags: ["open-source", "community"]
+externalUrl: "https://nancy-chauhan.medium.com/"
 ---
 
 Open source changed the trajectory of my career. My contributions to projects in the CNCF ecosystem opened doors to mentorship, conference speaking opportunities, and a global network of fellow engineers. But I remember how intimidating it felt to get started — staring at a massive codebase, not knowing where to begin, wondering if my contribution would be good enough.

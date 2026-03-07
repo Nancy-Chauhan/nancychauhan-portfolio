@@ -3,6 +3,7 @@ title: "Docker on Mac vs Linux: Key Differences"
 description: "Understanding the architectural differences between Docker on macOS and Linux, including the hypervisor layer, filesystem performance, networking behavior, and practical implications for developers."
 pubDate: 2019-08-20
 tags: ["docker", "devops"]
+externalUrl: "https://nancy-chauhan.medium.com/"
 ---
 
 If you have ever noticed that Docker feels snappier on a Linux workstation than on your MacBook, you are not imagining things. Docker's architecture is fundamentally different on macOS compared to Linux, and these differences have real implications for performance, networking, and day-to-day developer experience. In this post, I want to explain why these differences exist and how to work with them effectively.
