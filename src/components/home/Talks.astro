@@ -41,7 +41,38 @@ function getYouTubeId(url: string) {
     </div>
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+  {/* Mobile: horizontal scroll */}
+  <div class="sm:hidden flex gap-4 overflow-x-auto scroll-smooth no-scrollbar">
+    {videoTalks.slice(0, 6).map((talk) => talk.video && (
+      <a
+        href={talk.video}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group shrink-0 w-[260px] card-brutal overflow-hidden flex flex-col"
+      >
+        <div class="relative overflow-hidden">
+          <img
+            src={`https://img.youtube.com/vi/${getYouTubeId(talk.video)}/maxresdefault.jpg`}
+            alt={talk.title}
+            class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
+            loading="lazy"
+          />
+        </div>
+        <div class="p-3 flex items-start gap-2">
+          <div class="shrink-0 mt-0.5">
+            <svg class="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="currentColor">
+              <circle cx="12" cy="12" r="12" opacity="0.15" />
+              <path d="M9.5 7.5v9l7-4.5z" />
+            </svg>
+          </div>
+          <p class="font-sans font-bold text-[var(--color-stone-900)] text-xs leading-snug">{talk.title}</p>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  {/* Desktop: grid */}
+  <div class="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
     {videoTalks.slice(0, 6).map((talk, i) => talk.video && (
       <a
         href={talk.video}
@@ -80,4 +111,14 @@ function getYouTubeId(url: string) {
     </a>
   </div>
 </section>
+
+<style>
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+</style>
 
