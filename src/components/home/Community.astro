@@ -45,8 +45,8 @@ const roles = [
     <div id="featured-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
       {roles.map((role) => (
         role.link ? (
-          <a href={role.link} target="_blank" rel="noopener noreferrer" class="shrink-0 w-[220px] md:w-[260px] card-brutal overflow-hidden flex flex-col hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer">
-            <div class="h-[200px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
+          <a href={role.link} target="_blank" rel="noopener noreferrer" class="shrink-0 w-[180px] md:w-[260px] card-brutal overflow-hidden flex flex-col hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer">
+            <div class="h-[160px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
               <img src={role.image} alt={role.title} class="w-full h-full object-cover" loading="lazy" />
             </div>
             <div class="p-4 flex items-center justify-between gap-2">
@@ -57,8 +57,8 @@ const roles = [
             </div>
           </a>
         ) : (
-          <div class="shrink-0 w-[220px] md:w-[260px] card-brutal overflow-hidden flex flex-col">
-            <div class="h-[200px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
+          <div class="shrink-0 w-[180px] md:w-[260px] card-brutal overflow-hidden flex flex-col">
+            <div class="h-[160px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
               <img src={role.image} alt={role.title} class="w-full h-full object-cover" loading="lazy" />
             </div>
             <div class="p-4">

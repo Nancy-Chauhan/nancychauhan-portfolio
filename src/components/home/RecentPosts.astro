@@ -32,11 +32,11 @@ const posts = (await getCollection("blog"))
       {[...posts, ...posts].map((post) => (
         <a
           href={post.data.externalUrl || "https://nancy-chauhan.medium.com/"}
-          class="group shrink-0 w-[300px] md:w-[340px] card-brutal overflow-hidden flex flex-col"
+          class="group shrink-0 w-[240px] md:w-[340px] card-brutal overflow-hidden flex flex-col"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div class="h-40 bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)] flex items-center justify-center overflow-hidden">
+          <div class="h-32 md:h-40 bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)] flex items-center justify-center overflow-hidden">
             {post.data.image ? (
               <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover" loading="lazy" />
             ) : (
