@@ -1,43 +1,54 @@
 ---
 const roles = [
-  { title: "CNCF Ambassador", image: "/featured/cncf-ambassador.png", color: "#8b5cf6" },
-  { title: "Women in Cloud Native", image: "/featured/wicn.png", color: "#06b6d4" },
-  { title: "CNCF TAG Co-Chair", image: "/featured/cncf-tag.png", color: "#f97316" },
-  { title: "AWS Community Builder", image: "/featured/aws.png", color: "#3b82f6" },
-  { title: "K8s Release Team", image: "/featured/k8s.png", color: "#10b981" },
-  { title: "TAGGIE Award", image: "/featured/taggie.png", color: "#ec4899" },
+  { title: "TAGGIE Award", image: "/featured/taggie.png" },
+  { title: "CNCF Ambassador", image: "/featured/cncf-ambassador.png" },
+  { title: "Women in Cloud Native", image: "/featured/wicn.png" },
+  { title: "CNCF TAG Co-Chair", image: "/featured/cncf-tag.png" },
+  { title: "AWS Community Builder", image: "/featured/aws.png" },
+  { title: "K8s Release Team", image: "/featured/k8s.png" },
 ];
-
-// Each card gets a slight rotation when stacked
-const stackRotations = [-6, 4, -3, 5, -2, 0];
 ---
 
-<section id="featured-section">
-  <div class="card-pile-area" id="card-pile-area">
-    <div class="card-pile" id="card-pile">
-      {/* Background heading behind cards */}
-      <div class="pile-bg-text">
-        <span>Grateful for the opportunity to be featured in these spaces</span>
+<section>
+  <div class="mb-10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
+          <span class="section-heading">Grateful for the opportunity to be featured in these spaces</span>
+        </h2>
       </div>
-      {roles.map((role, i) => (
-        <div
-          class="pile-card"
-          data-index={i}
-          data-rotation={stackRotations[i]}
-          style={`--card-color: ${role.color}; z-index: ${roles.length - i};`}
+      <div class="hidden sm:flex items-center gap-2 shrink-0">
+        <button
+          id="featured-prev"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          aria-label="Previous"
         >
-          <div class="pile-card-inner">
-            <div class="pile-card-image">
-              <img
-                src={role.image}
-                alt={role.title}
-                class="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-            <div class="pile-card-title">
-              <p>{role.title}</p>
-            </div>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button
+          id="featured-next"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          aria-label="Next"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="relative">
+    <div id="featured-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
+      {roles.map((role) => (
+        <div class="shrink-0 w-[220px] md:w-[260px] card-brutal overflow-hidden flex flex-col">
+          <div class="h-[200px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
+            <img src={role.image} alt={role.title} class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-4">
+            <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{role.title}</p>
           </div>
         </div>
       ))}
@@ -46,147 +57,29 @@ const stackRotations = [-6, 4, -3, 5, -2, 0];
 </section>
 
 <style>
-  .card-pile-area {
-    height: 350vh;
-    position: relative;
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
-
-  .card-pile {
-    position: sticky;
-    top: 80px;
-    height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .pile-bg-text {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .pile-bg-text span {
-    font-family: var(--font-sans);
-    font-weight: 800;
-    font-size: clamp(1.875rem, 4vw, 2.25rem);
-    color: var(--color-stone-800);
-    letter-spacing: -0.025em;
-    line-height: 1.2;
-    text-align: center;
-    user-select: none;
-    max-width: 600px;
-  }
-
-  .pile-card {
-    position: absolute;
-    width: 260px;
-    height: 360px;
-    border-radius: 20px;
-    background: var(--card-color);
-    padding: 8px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
-    transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                opacity 0.5s ease;
-    will-change: transform, opacity;
-    opacity: 0;
-    transform: translateY(120vh) rotate(15deg);
-  }
-
-  .pile-card.stacked {
-    opacity: 1;
-  }
-
-  .pile-card-inner {
-    width: 100%;
-    height: 100%;
-    background: white;
-    border-radius: 14px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .pile-card-image {
-    flex: 1;
-    overflow: hidden;
-    background: var(--color-stone-100);
-  }
-
-  .pile-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .pile-card-title {
-    padding: 14px 16px;
-    background: white;
-  }
-
-  .pile-card-title p {
-    font-family: var(--font-sans);
-    font-weight: 700;
-    font-size: 0.95rem;
-    color: var(--color-stone-900);
-    line-height: 1.3;
-  }
-
-  @media (max-width: 640px) {
-    .pile-card {
-      width: 220px;
-      height: 300px;
-    }
-
-    .card-pile {
-      height: 380px;
-    }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
   }
 </style>
 
 <script>
-  function initCardPile() {
-    const area = document.getElementById('card-pile-area');
-    if (!area) return;
+  function initFeaturedCarousel() {
+    const carousel = document.getElementById('featured-carousel');
+    const prev = document.getElementById('featured-prev');
+    const next = document.getElementById('featured-next');
+    const scrollAmount = 280;
 
-    const cards = Array.from(area.querySelectorAll<HTMLElement>('.pile-card'));
-    const totalCards = cards.length;
-
-    function updateCards() {
-      const rect = area.getBoundingClientRect();
-      const areaHeight = area.offsetHeight;
-      const scrolled = -rect.top;
-      const scrollRange = areaHeight - window.innerHeight;
-      const progress = Math.max(0, Math.min(1, scrolled / scrollRange));
-
-      cards.forEach((card, i) => {
-        const cardProgress = progress * totalCards;
-        const cardThreshold = i;
-        const rotation = Number(card.dataset.rotation) || 0;
-
-        if (cardProgress > cardThreshold) {
-          // Card should be stacked
-          const t = Math.min(1, cardProgress - cardThreshold);
-          const currentRotation = rotation * t;
-          card.style.transform = `translateY(${(1 - t) * 300}px) rotate(${15 + (currentRotation - 15) * t}deg)`;
-          card.classList.add('stacked');
-          card.style.zIndex = String(i + 10);
-        } else {
-          // Card is still hidden below
-          card.style.transform = `translateY(200px) rotate(15deg)`;
-          card.classList.remove('stacked');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', updateCards, { passive: true });
-    updateCards();
+    prev?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+    next?.addEventListener('click', () => {
+      carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
   }
-
-  initCardPile();
-  document.addEventListener('astro:page-load', initCardPile);
+  initFeaturedCarousel();
+  document.addEventListener('astro:page-load', initFeaturedCarousel);
 </script>

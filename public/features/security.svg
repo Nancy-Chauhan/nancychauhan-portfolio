@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Castle/fortress scene -->
+  <!-- Ground -->
+  <path d="M0 250 Q75 235 150 245 Q225 255 300 240 L300 300 L0 300Z" fill="#fce7f3"/>
+  <!-- Castle tower left -->
+  <rect x="55" y="110" width="50" height="140" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5"/>
+  <rect x="50" y="95" width="60" height="20" fill="#f9a8d4" stroke="#db2777" stroke-width="1.5"/>
+  <!-- Battlements left -->
+  <rect x="50" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <rect x="68" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <rect x="86" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <!-- Window left -->
+  <path d="M72 145 Q80 135 88 145 L88 165 L72 165Z" fill="white" stroke="#db2777" stroke-width="1.2"/>
+  <!-- Castle tower right -->
+  <rect x="195" y="110" width="50" height="140" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5"/>
+  <rect x="190" y="95" width="60" height="20" fill="#f9a8d4" stroke="#db2777" stroke-width="1.5"/>
+  <!-- Battlements right -->
+  <rect x="190" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <rect x="208" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <rect x="226" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
+  <!-- Window right -->
+  <path d="M212 145 Q220 135 228 145 L228 165 L212 165Z" fill="white" stroke="#db2777" stroke-width="1.2"/>
+  <!-- Wall between -->
+  <rect x="105" y="140" width="90" height="110" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
+  <!-- Gate -->
+  <path d="M130 250 L130 195 Q150 175 170 195 L170 250" fill="white" stroke="#db2777" stroke-width="1.8"/>
+  <circle cx="163" cy="220" r="3" fill="#db2777"/>
+  <!-- Flag -->
+  <line x1="150" y1="140" x2="150" y2="65" stroke="#db2777" stroke-width="2"/>
+  <path d="M150 65 L180 78 L150 91Z" fill="#f472b6" stroke="#db2777" stroke-width="1.2"/>
+  <!-- Shield on flag -->
+  <path d="M160 74 L167 78 L167 84 Q163.5 88 160 84 L160 78Z" fill="#fce7f3"/>
+  <!-- Sparkles -->
+  <path d="M30 60 L33 68 L41 71 L33 74 L30 82 L27 74 L19 71 L27 68Z" fill="#f9a8d4"/>
+  <path d="M270 55 L272 60 L277 62 L272 64 L270 69 L268 64 L263 62 L268 60Z" fill="#fbcfe8"/>
+  <path d="M25 180 L27 185 L32 187 L27 189 L25 194 L23 189 L18 187 L23 185Z" fill="#fce7f3"/>
+  <path d="M275 170 L277 175 L282 177 L277 179 L275 184 L273 179 L268 177 L273 175Z" fill="#f9a8d4"/>
+</svg>

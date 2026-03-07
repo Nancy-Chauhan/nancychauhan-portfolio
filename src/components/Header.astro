@@ -1,6 +1,5 @@
 ---
 const navLinks = [
-  { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
   { href: "/blog", label: "Blog" },
   { href: "/#talks", label: "Talks" },
@@ -12,9 +11,7 @@ const currentPath = Astro.url.pathname;
 
 <header class="w-full border-b border-[var(--color-stone-300)]">
   <nav class="mx-auto max-w-6xl px-6 md:px-24 py-5 flex items-center justify-between">
-    <a href="/" class="hover:opacity-80 transition-opacity">
-      <img src="/nancy-handwritten.svg" alt="Nancy Chauhan" class="h-10" />
-    </a>
+    <a href="/" class="font-sans text-sm font-medium text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)] transition-colors">Home</a>
 
     {/* Desktop nav */}
     <div class="hidden md:flex items-center gap-6">

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
+  <!-- Magic crystal ball on stand -->
+  <!-- Stand -->
+  <path d="M120 240 L180 240 L170 220 L130 220Z" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1.5"/>
+  <ellipse cx="150" cy="242" rx="35" ry="6" fill="#a78bfa"/>
+  <rect x="143" y="200" width="14" height="22" rx="3" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <!-- Crystal ball -->
+  <circle cx="150" cy="145" r="58" fill="#ede9fe"/>
+  <circle cx="150" cy="145" r="58" fill="url(#ballGrad)" stroke="#7c3aed" stroke-width="2"/>
+  <!-- Swirls inside ball -->
+  <path d="M120 130 Q135 110 150 125 Q165 140 180 120" stroke="#c4b5fd" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M115 155 Q130 170 155 155 Q175 140 185 160" stroke="#ddd6fe" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Stars floating above -->
+  <path d="M150 60 L154 72 L166 76 L154 80 L150 92 L146 80 L134 76 L146 72Z" fill="#a78bfa"/>
+  <path d="M100 75 L103 83 L111 86 L103 89 L100 97 L97 89 L89 86 L97 83Z" fill="#c4b5fd"/>
+  <path d="M205 80 L207 86 L213 88 L207 90 L205 96 L203 90 L197 88 L203 86Z" fill="#ddd6fe"/>
+  <!-- Tiny orbiting dots -->
+  <circle cx="95" cy="130" r="4" fill="#a78bfa" opacity="0.7"/>
+  <circle cx="210" cy="150" r="3" fill="#c4b5fd" opacity="0.7"/>
+  <circle cx="105" cy="175" r="3" fill="#ddd6fe"/>
+  <circle cx="200" cy="115" r="3.5" fill="#c4b5fd" opacity="0.6"/>
+  <!-- Sparkles -->
+  <path d="M55 110 L57 116 L63 118 L57 120 L55 126 L53 120 L47 118 L53 116Z" fill="#c4b5fd"/>
+  <path d="M245 130 L247 136 L253 138 L247 140 L245 146 L243 140 L237 138 L243 136Z" fill="#ddd6fe"/>
+  <path d="M70 200 L72 205 L77 207 L72 209 L70 214 L68 209 L63 207 L68 205Z" fill="#ede9fe"/>
+  <path d="M230 195 L232 200 L237 202 L232 204 L230 209 L228 204 L223 202 L228 200Z" fill="#c4b5fd"/>
+  <defs>
+    <radialGradient id="ballGrad" cx="0.4" cy="0.35" r="0.6">
+      <stop offset="0%" stop-color="white" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0.2"/>
+    </radialGradient>
+  </defs>
+</svg>
