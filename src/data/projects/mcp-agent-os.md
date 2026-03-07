@@ -2,7 +2,7 @@
 title: "MCP Agent OS"
 tagline: "Production-ready MCP architecture reference implementation"
 description: "Demonstrates the MCP chaining pattern: an Agent OS that consumes multiple external MCP servers and exposes itself as an MCP server for downstream clients."
-featured: true
+featured: false
 order: 5
 github: "https://github.com/Nancy-Chauhan/mcp-agent-os"
 image: "/projects/mcp-agent-os-architecture.png"

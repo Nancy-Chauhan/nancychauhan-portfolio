@@ -11,7 +11,7 @@ const { title, tagline, techStack, slug } = Astro.props;
 
 <a
   href={`/projects/${slug}`}
-  class="group block card-dashed overflow-hidden"
+  class="group block card-dashed overflow-hidden h-full flex flex-col"
   transition:name={`project-${slug}`}
 >
   {/* Window chrome bar */}
@@ -22,11 +22,11 @@ const { title, tagline, techStack, slug } = Astro.props;
     <span class="window-chrome-title">~/projects/{slug}</span>
   </div>
 
-  <div class="px-5 pt-4 pb-5">
+  <div class="px-5 pt-4 pb-5 flex flex-col flex-1">
     <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors">
       {title}
     </h3>
-    <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed mb-4">
+    <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 flex-1">
       {tagline}
     </p>
     <div class="flex flex-wrap gap-2 mb-4">

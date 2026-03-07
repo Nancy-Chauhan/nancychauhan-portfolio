@@ -11,7 +11,7 @@ const projects = (await getCollection("projects"))
   <div class="flex items-end justify-between mb-10 animate-on-scroll">
     <div>
       <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
-        <span class="section-heading">Projects</span>
+        <span class="section-heading">Projects <img src="/this-is-fine.gif" alt="this is fine" class="inline-block w-8 h-8 align-middle" /></span>
       </h2>
       <p class="text-lg text-[var(--color-stone-500)] font-sans">
         Tools and systems I've built.
@@ -26,7 +26,7 @@ const projects = (await getCollection("projects"))
   </div>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {projects.map((project, i) => (
-      <div class={`animate-on-scroll stagger-${i + 1}`}>
+      <div class={`animate-on-scroll stagger-${i + 1} h-full`}>
         <ProjectCard
           title={project.data.title}
           tagline={project.data.tagline}
