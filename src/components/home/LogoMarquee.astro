@@ -2,6 +2,7 @@
 // Each logo gets a tailored width to ensure equal visual weight
 // Square icons get narrow widths, horizontal wordmarks get wider
 const logos = [
+  { name: "Arize AI", src: "/logos/arize.svg", style: "height:24px;width:auto;" },
   { name: "ONA", src: "/logos/ona.svg", style: "height:24px;width:auto;" },
   { name: "LocalStack", src: "/logos/localstack.svg", style: "height:26px;width:auto;" },
   { name: "Blinkit", src: "/logos/blinkit.svg", style: "height:24px;width:auto;" },
@@ -13,14 +14,11 @@ const logos = [
 ];
 ---
 
-<section class="py-12 overflow-hidden mx-auto max-w-6xl px-6">
+<section class="py-12 mx-auto max-w-6xl px-6 md:px-24">
   <p class="text-center text-sm text-[var(--color-stone-400)] font-sans mb-8">
-    Organisations I've worked or collaborated with
+    Organisations I've worked and collaborated with
   </p>
-  <div class="relative">
-    <div class="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10" style="background: linear-gradient(to right, var(--color-cream), transparent);"></div>
-    <div class="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10" style="background: linear-gradient(to left, var(--color-cream), transparent);"></div>
-
+  <div class="relative overflow-hidden">
     <div class="marquee-track flex items-center gap-14 w-max">
       {[...logos, ...logos].map((logo) => (
         <div class="logo-item shrink-0 flex items-center justify-center">
@@ -33,7 +31,7 @@ const logos = [
 
 <style>
   .marquee-track {
-    animation: marquee 12s linear infinite;
+    animation: marquee 15s linear infinite;
   }
 
   .marquee-track:hover {

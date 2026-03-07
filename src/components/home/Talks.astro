@@ -22,10 +22,10 @@ function getYouTubeId(url: string) {
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
       <div>
         <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
-          <span class="section-heading">Collection of my past talks</span>
+          <span class="section-heading">I Talk Tech at Conferences</span>
         </h2>
         <p class="text-lg text-[var(--color-stone-500)] font-sans">
-          Conference talks and community sessions.
+          Sharing ideas on stage, from meetups to global events.
         </p>
       </div>
       <a
@@ -41,13 +41,13 @@ function getYouTubeId(url: string) {
     </div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-5 animate-on-scroll">
-    {videoTalks.slice(0, 6).map((talk) => talk.video && (
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    {videoTalks.slice(0, 6).map((talk, i) => talk.video && (
       <a
         href={talk.video}
         target="_blank"
         rel="noopener noreferrer"
-        class="group card-brutal overflow-hidden flex flex-col"
+        class={`animate-on-scroll stagger-${i + 1} group card-brutal overflow-hidden flex flex-col`}
       >
         <div class="relative overflow-hidden">
           <img
