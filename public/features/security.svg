@@ -1,38 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
-  <!-- Castle/fortress scene -->
-  <!-- Ground -->
-  <path d="M0 250 Q75 235 150 245 Q225 255 300 240 L300 300 L0 300Z" fill="#fce7f3"/>
-  <!-- Castle tower left -->
-  <rect x="55" y="110" width="50" height="140" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5"/>
-  <rect x="50" y="95" width="60" height="20" fill="#f9a8d4" stroke="#db2777" stroke-width="1.5"/>
-  <!-- Battlements left -->
-  <rect x="50" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
-  <rect x="68" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
-  <rect x="86" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
-  <!-- Window left -->
-  <path d="M72 145 Q80 135 88 145 L88 165 L72 165Z" fill="white" stroke="#db2777" stroke-width="1.2"/>
-  <!-- Castle tower right -->
-  <rect x="195" y="110" width="50" height="140" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5"/>
-  <rect x="190" y="95" width="60" height="20" fill="#f9a8d4" stroke="#db2777" stroke-width="1.5"/>
-  <!-- Battlements right -->
-  <rect x="190" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
-  <rect x="208" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
-  <rect x="226" y="85" width="12" height="14" fill="#f9a8d4" stroke="#db2777" stroke-width="1"/>
-  <!-- Window right -->
-  <path d="M212 145 Q220 135 228 145 L228 165 L212 165Z" fill="white" stroke="#db2777" stroke-width="1.2"/>
-  <!-- Wall between -->
-  <rect x="105" y="140" width="90" height="110" fill="#fce7f3" stroke="#db2777" stroke-width="1.5"/>
-  <!-- Gate -->
-  <path d="M130 250 L130 195 Q150 175 170 195 L170 250" fill="white" stroke="#db2777" stroke-width="1.8"/>
-  <circle cx="163" cy="220" r="3" fill="#db2777"/>
-  <!-- Flag -->
-  <line x1="150" y1="140" x2="150" y2="65" stroke="#db2777" stroke-width="2"/>
-  <path d="M150 65 L180 78 L150 91Z" fill="#f472b6" stroke="#db2777" stroke-width="1.2"/>
-  <!-- Shield on flag -->
-  <path d="M160 74 L167 78 L167 84 Q163.5 88 160 84 L160 78Z" fill="#fce7f3"/>
+  <!-- Shield with lock - cybersecurity theme -->
+  <!-- Background glow -->
+  <ellipse cx="150" cy="150" rx="90" ry="100" fill="#fce7f3" opacity="0.4"/>
+  <!-- Shield shape -->
+  <path d="M150 55 L230 90 L225 180 Q210 235 150 260 Q90 235 75 180 L70 90Z"
+        fill="#fce7f3" stroke="#db2777" stroke-width="2.5"/>
+  <!-- Shield inner border -->
+  <path d="M150 72 L218 102 L214 178 Q200 222 150 245 Q100 222 86 178 L82 102Z"
+        fill="#fbcfe8" stroke="#db2777" stroke-width="1" opacity="0.5"/>
+  <!-- Lock body -->
+  <rect x="122" y="145" width="56" height="45" rx="6" fill="#f9a8d4" stroke="#db2777" stroke-width="2"/>
+  <!-- Lock shackle -->
+  <path d="M130 145 L130 125 Q130 105 150 105 Q170 105 170 125 L170 145"
+        stroke="#db2777" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- Keyhole -->
+  <circle cx="150" cy="163" r="8" fill="#db2777"/>
+  <rect x="147" y="167" width="6" height="12" rx="2" fill="#db2777"/>
+  <!-- Binary/data streams -->
+  <text x="42" y="100" font-family="monospace" font-size="9" fill="#f9a8d4" opacity="0.7">01</text>
+  <text x="38" y="118" font-family="monospace" font-size="9" fill="#f9a8d4" opacity="0.5">10</text>
+  <text x="44" y="136" font-family="monospace" font-size="9" fill="#f9a8d4" opacity="0.6">01</text>
+  <text x="248" y="105" font-family="monospace" font-size="9" fill="#f9a8d4" opacity="0.7">11</text>
+  <text x="252" y="123" font-family="monospace" font-size="9" fill="#f9a8d4" opacity="0.5">00</text>
+  <text x="246" y="141" font-family="monospace" font-size="9" fill="#f9a8d4" opacity="0.6">10</text>
+  <!-- Check mark badge -->
+  <circle cx="215" cy="80" r="14" fill="#34d399" stroke="white" stroke-width="2.5"/>
+  <path d="M208 80 L213 85 L222 75" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
   <!-- Sparkles -->
-  <path d="M30 60 L33 68 L41 71 L33 74 L30 82 L27 74 L19 71 L27 68Z" fill="#f9a8d4"/>
-  <path d="M270 55 L272 60 L277 62 L272 64 L270 69 L268 64 L263 62 L268 60Z" fill="#fbcfe8"/>
-  <path d="M25 180 L27 185 L32 187 L27 189 L25 194 L23 189 L18 187 L23 185Z" fill="#fce7f3"/>
-  <path d="M275 170 L277 175 L282 177 L277 179 L275 184 L273 179 L268 177 L273 175Z" fill="#f9a8d4"/>
+  <path d="M55 60 L57 66 L63 68 L57 70 L55 76 L53 70 L47 68 L53 66Z" fill="#f9a8d4"/>
+  <path d="M245 55 L247 60 L252 62 L247 64 L245 69 L243 64 L238 62 L243 60Z" fill="#fbcfe8"/>
+  <path d="M35 200 L37 205 L42 207 L37 209 L35 214 L33 209 L28 207 L33 205Z" fill="#fce7f3"/>
+  <path d="M265 195 L267 200 L272 202 L267 204 L265 209 L263 204 L258 202 L263 200Z" fill="#f9a8d4"/>
 </svg>

@@ -7,6 +7,33 @@ interface Props {
 }
 
 const { title, tagline, techStack, slug } = Astro.props;
+
+const techLogos: Record<string, string> = {
+  "Next.js 16": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  "Supabase": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/supabase/supabase-original.svg",
+  "React 18": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Python": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  "FastAPI": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
+  "PostgreSQL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  "SQLite": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sqlite/sqlite-original.svg",
+  "Bun": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bun/bun-original.svg",
+  "Claude API": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/anthropic.svg",
+  "Anthropic API": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/anthropic.svg",
+  "Claude Code Plugin": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/anthropic.svg",
+  "OpenAI / Claude API": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/openai.svg",
+  "Hono": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/hono.svg",
+  "Groq API": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/groq/groq-original.svg",
+  "Resend": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/resend.svg",
+  "Llama 3.1 70B": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/meta.svg",
+  "HTML Reports": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  "40+ Service Integrations": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/zapier.svg",
+  "Agno Framework": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+  "Tailwind CSS v4": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  "Tailwind CSS": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg",
+  "Drizzle ORM": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/drizzle.svg",
+  "Arize OpenTelemetry": "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/opentelemetry.svg",
+};
 ---
 
 <a
@@ -29,9 +56,11 @@ const { title, tagline, techStack, slug } = Astro.props;
     <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 flex-1">
       {tagline}
     </p>
-    <div class="flex flex-wrap gap-2 mb-4">
-      {techStack.slice(0, 4).map((tech) => (
-        <span class="tag-brutal">{tech}</span>
+    <div class="flex flex-wrap items-center gap-3 mb-4">
+      {techStack.slice(0, 5).map((tech) => (
+        techLogos[tech] ? (
+          <img src={techLogos[tech]} alt={tech} title={tech} class="w-6 h-6" loading="lazy" />
+        ) : null
       ))}
     </div>
     <span class="terminal-link group-hover:gap-3 transition-all">

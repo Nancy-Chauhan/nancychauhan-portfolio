@@ -28,21 +28,24 @@ function getYouTubeId(url: string) {
           Sharing ideas on stage, from meetups to global events.
         </p>
       </div>
-      <a
-        href="https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
-        target="_blank" rel="noopener noreferrer"
-        class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm shrink-0"
-      >
-        All talks
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
+      <div class="hidden sm:block shrink-0">
+        <a
+          href="https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
+          target="_blank" rel="noopener noreferrer"
+          class="btn-brutal btn-brutal-secondary text-sm"
+        >
+          All talks
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 
   {/* Mobile: horizontal scroll */}
-  <div class="sm:hidden flex gap-4 overflow-x-auto scroll-smooth no-scrollbar">
+  <div class="sm:hidden">
+  <div id="talks-carousel-mobile" class="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar">
     {videoTalks.slice(0, 6).map((talk) => talk.video && (
       <a
         href={talk.video}
@@ -69,6 +72,11 @@ function getYouTubeId(url: string) {
         </div>
       </a>
     ))}
+  </div>
+  <p class="flex items-center justify-end gap-1 mt-3 font-mono text-xs text-[var(--color-stone-400)]">
+    swipe
+    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+  </p>
   </div>
 
   {/* Desktop: grid */}
@@ -116,9 +124,11 @@ function getYouTubeId(url: string) {
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
 </style>
+
 

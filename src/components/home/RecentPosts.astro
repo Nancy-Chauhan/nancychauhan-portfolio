@@ -18,12 +18,14 @@ const posts = (await getCollection("blog"))
           Breaking down complex topics into clear, actionable content.
         </p>
       </div>
-      <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex btn-brutal btn-brutal-secondary text-sm shrink-0">
-        All posts
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
-      </a>
+      <div class="hidden sm:block shrink-0">
+        <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal-secondary text-sm">
+          All posts
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
     </div>
   </div>
 
@@ -67,7 +69,7 @@ const posts = (await getCollection("blog"))
 
 <style>
   .blog-track {
-    animation: scroll-blog 15s linear infinite;
+    animation: scroll-blog 5s linear infinite;
   }
 
   .blog-track:hover {

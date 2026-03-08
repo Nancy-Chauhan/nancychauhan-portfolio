@@ -3,7 +3,7 @@ const features = [
   { title: "All Things AI", description: "LLMs, agents, MCP, RAG, and evals.", image: "/features/ai.svg", bg: "#ede9fe" },
   { title: "Security", description: "Breaking systems to build them better.", image: "/features/security.svg", bg: "#fce7f3" },
   { title: "Developer Experience", description: "CLIs, cloud tools, and dev workflows.", image: "/features/devex.svg", bg: "#dbeafe" },
-  { title: "Open Source & Community", description: "WiCN founder, GSoC, K8s Release Team.", image: "/features/opensource.svg", bg: "#d1fae5" },
+  { title: "Open Source", description: "WiCN founder, GSoC, K8s Release Team.", image: "/features/opensource.svg", bg: "#d1fae5" },
 ];
 ---
 
@@ -21,7 +21,7 @@ const features = [
     {features.map((f, i) => (
       <div class={`animate-on-scroll stagger-${i + 1} card-brutal overflow-hidden flex flex-col h-full`}>
         <div
-          class="aspect-square flex items-center justify-center p-8 overflow-hidden border-b-2 border-[var(--color-stone-800)]"
+          class="aspect-[4/3] flex items-center justify-center p-4 md:p-6 overflow-hidden border-b-2 border-[var(--color-stone-800)]"
           style={`background: ${f.bg};`}
         >
           <img

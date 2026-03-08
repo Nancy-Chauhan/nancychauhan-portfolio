@@ -1,46 +1,46 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
-  <!-- Desk scene with tools -->
-  <!-- Desk surface -->
-  <rect x="20" y="195" width="260" height="15" rx="4" fill="#93c5fd" stroke="#2563eb" stroke-width="1.5"/>
-  <!-- Desk legs -->
-  <rect x="40" y="210" width="8" height="60" fill="#bfdbfe" stroke="#2563eb" stroke-width="1"/>
-  <rect x="252" y="210" width="8" height="60" fill="#bfdbfe" stroke="#2563eb" stroke-width="1"/>
-  <!-- Monitor -->
-  <rect x="85" y="80" width="130" height="95" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
-  <rect x="95" y="90" width="110" height="72" rx="3" fill="white"/>
-  <!-- Code on screen -->
-  <rect x="105" y="100" width="35" height="5" rx="2.5" fill="#2563eb"/>
-  <rect x="145" y="100" width="25" height="5" rx="2.5" fill="#93c5fd"/>
-  <rect x="105" y="112" width="15" height="5" rx="2.5" fill="#60a5fa"/>
-  <rect x="125" y="112" width="45" height="5" rx="2.5" fill="#2563eb"/>
-  <rect x="105" y="124" width="55" height="5" rx="2.5" fill="#93c5fd"/>
-  <rect x="105" y="136" width="30" height="5" rx="2.5" fill="#2563eb"/>
-  <rect x="140" y="136" width="20" height="5" rx="2.5" fill="#60a5fa"/>
-  <rect x="105" y="148" width="40" height="5" rx="2.5" fill="#bfdbfe"/>
-  <!-- Monitor stand -->
-  <rect x="140" y="175" width="20" height="20" fill="#bfdbfe" stroke="#2563eb" stroke-width="1.5"/>
-  <rect x="125" y="192" width="50" height="5" rx="2" fill="#93c5fd" stroke="#2563eb" stroke-width="1"/>
-  <!-- Coffee mug -->
-  <rect x="240" y="165" width="28" height="32" rx="5" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
-  <path d="M268 173 Q280 173 280 181 Q280 189 268 189" stroke="#2563eb" stroke-width="1.5" fill="none"/>
-  <!-- Steam -->
-  <path d="M248 158 Q246 148 251 143" stroke="#93c5fd" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <path d="M257 160 Q255 150 260 145" stroke="#bfdbfe" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-  <!-- Plant -->
-  <rect x="30" y="155" width="22" height="40" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="1.5"/>
-  <circle cx="41" cy="140" r="18" fill="#86efac" stroke="#059669" stroke-width="1.5"/>
-  <circle cx="33" cy="130" r="10" fill="#6ee7b7" stroke="#059669" stroke-width="1"/>
-  <circle cx="50" cy="128" r="12" fill="#a7f3d0" stroke="#059669" stroke-width="1"/>
-  <line x1="41" y1="155" x2="41" y2="140" stroke="#059669" stroke-width="1.5"/>
-  <!-- Keyboard -->
-  <rect x="110" y="200" width="80" height="25" rx="4" fill="white" stroke="#93c5fd" stroke-width="1"/>
-  <!-- Key dots -->
-  <circle cx="122" cy="207" r="2" fill="#bfdbfe"/><circle cx="132" cy="207" r="2" fill="#bfdbfe"/>
-  <circle cx="142" cy="207" r="2" fill="#bfdbfe"/><circle cx="152" cy="207" r="2" fill="#bfdbfe"/>
-  <circle cx="162" cy="207" r="2" fill="#bfdbfe"/><circle cx="172" cy="207" r="2" fill="#bfdbfe"/>
-  <rect x="122" y="215" width="55" height="4" rx="2" fill="#dbeafe"/>
+  <!-- Terminal window with CLI commands -->
+  <!-- Terminal window -->
+  <rect x="35" y="55" width="230" height="190" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <!-- Title bar -->
+  <rect x="35" y="55" width="230" height="30" rx="10" fill="#93c5fd" stroke="#2563eb" stroke-width="2"/>
+  <rect x="35" y="75" width="230" height="10" fill="#93c5fd"/>
+  <!-- Traffic lights -->
+  <circle cx="55" cy="70" r="5" fill="#ff5f57" stroke="#e0443e" stroke-width="1"/>
+  <circle cx="73" cy="70" r="5" fill="#febc2e" stroke="#dea123" stroke-width="1"/>
+  <circle cx="91" cy="70" r="5" fill="#28c840" stroke="#1aab29" stroke-width="1"/>
+  <!-- Terminal title -->
+  <text x="150" y="74" font-family="monospace" font-size="10" fill="#2563eb" text-anchor="middle" opacity="0.7">~/terminal</text>
+  <!-- Terminal background -->
+  <rect x="37" y="85" width="226" height="158" fill="#1e293b"/>
+  <!-- Command lines -->
+  <text x="50" y="108" font-family="monospace" font-size="11" fill="#60a5fa">$</text>
+  <text x="62" y="108" font-family="monospace" font-size="11" fill="#e2e8f0"> npm create astro@latest</text>
+  <text x="50" y="126" font-family="monospace" font-size="11" fill="#34d399">  Project created!</text>
+  <text x="50" y="150" font-family="monospace" font-size="11" fill="#60a5fa">$</text>
+  <text x="62" y="150" font-family="monospace" font-size="11" fill="#e2e8f0"> git push origin main</text>
+  <text x="50" y="168" font-family="monospace" font-size="11" fill="#34d399">  deployed to production</text>
+  <text x="50" y="192" font-family="monospace" font-size="11" fill="#60a5fa">$</text>
+  <text x="62" y="192" font-family="monospace" font-size="11" fill="#e2e8f0"> docker compose up</text>
+  <text x="50" y="210" font-family="monospace" font-size="11" fill="#fbbf24">  services running...</text>
+  <!-- Blinking cursor -->
+  <rect x="50" y="222" width="7" height="12" fill="#60a5fa" opacity="0.8"/>
+  <!-- Floating elements around -->
+  <!-- Git branch icon -->
+  <circle cx="28" cy="130" r="4" fill="#60a5fa"/>
+  <circle cx="18" cy="150" r="4" fill="#60a5fa"/>
+  <circle cx="28" cy="170" r="4" fill="#60a5fa"/>
+  <line x1="28" y1="134" x2="28" y2="166" stroke="#60a5fa" stroke-width="1.5"/>
+  <path d="M28 150 Q23 150 18 150" stroke="#60a5fa" stroke-width="1.5" fill="none"/>
+  <!-- Gear icon right -->
+  <circle cx="278" cy="150" r="12" fill="none" stroke="#93c5fd" stroke-width="2"/>
+  <circle cx="278" cy="150" r="5" fill="#93c5fd"/>
+  <line x1="278" y1="136" x2="278" y2="140" stroke="#93c5fd" stroke-width="2"/>
+  <line x1="278" y1="160" x2="278" y2="164" stroke="#93c5fd" stroke-width="2"/>
+  <line x1="264" y1="150" x2="268" y2="150" stroke="#93c5fd" stroke-width="2"/>
+  <line x1="288" y1="150" x2="292" y2="150" stroke="#93c5fd" stroke-width="2"/>
   <!-- Sparkles -->
-  <path d="M60 50 L63 58 L71 61 L63 64 L60 72 L57 64 L49 61 L57 58Z" fill="#93c5fd"/>
-  <path d="M245 45 L247 50 L252 52 L247 54 L245 59 L243 54 L238 52 L243 50Z" fill="#bfdbfe"/>
-  <path d="M170 40 L172 46 L178 48 L172 50 L170 56 L168 50 L162 48 L168 46Z" fill="#dbeafe"/>
+  <path d="M80 35 L82 41 L88 43 L82 45 L80 51 L78 45 L72 43 L78 41Z" fill="#93c5fd"/>
+  <path d="M220 35 L222 40 L227 42 L222 44 L220 49 L218 44 L213 42 L218 40Z" fill="#bfdbfe"/>
+  <path d="M280 95 L282 100 L287 102 L282 104 L280 109 L278 104 L273 102 L278 100Z" fill="#dbeafe"/>
 </svg>

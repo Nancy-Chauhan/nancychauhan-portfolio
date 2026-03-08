@@ -68,6 +68,10 @@ const roles = [
         )
       ))}
     </div>
+    <p class="sm:hidden flex items-center justify-end gap-1 mt-3 font-mono text-xs text-[var(--color-stone-400)]">
+      swipe
+      <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
+    </p>
   </div>
 </section>
 
@@ -75,6 +79,7 @@ const roles = [
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
   }
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -84,14 +89,12 @@ const roles = [
 <script>
   function initFeaturedCarousel() {
     const carousel = document.getElementById('featured-carousel');
-    const prev = document.getElementById('featured-prev');
-    const next = document.getElementById('featured-next');
-    const scrollAmount = 280;
+    const scrollAmount = 200;
 
-    prev?.addEventListener('click', () => {
+    document.getElementById('featured-prev')?.addEventListener('click', () => {
       carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
     });
-    next?.addEventListener('click', () => {
+    document.getElementById('featured-next')?.addEventListener('click', () => {
       carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     });
   }

@@ -1,55 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
-  <!-- Garden scene with flowers growing -->
-  <!-- Sky dots (like reference) -->
-  <circle cx="50" cy="30" r="1.5" fill="#a7f3d0" opacity="0.5"/>
-  <circle cx="120" cy="25" r="1.5" fill="#a7f3d0" opacity="0.5"/>
-  <circle cx="200" cy="35" r="1.5" fill="#a7f3d0" opacity="0.5"/>
-  <circle cx="260" cy="20" r="1.5" fill="#a7f3d0" opacity="0.5"/>
-  <circle cx="80" cy="55" r="1.5" fill="#a7f3d0" opacity="0.4"/>
-  <circle cx="250" cy="60" r="1.5" fill="#a7f3d0" opacity="0.4"/>
-  <!-- Clouds -->
-  <ellipse cx="220" cy="55" rx="22" ry="10" fill="white" opacity="0.8"/>
-  <ellipse cx="235" cy="52" rx="14" ry="8" fill="white" opacity="0.7"/>
-  <ellipse cx="70" cy="45" rx="16" ry="8" fill="white" opacity="0.6"/>
-  <!-- Hills -->
-  <path d="M0 220 Q50 160 120 200 Q180 230 220 190 Q260 160 300 195 L300 300 L0 300Z" fill="#6ee7b7"/>
-  <path d="M0 250 Q80 210 150 240 Q220 270 300 230 L300 300 L0 300Z" fill="#34d399"/>
-  <path d="M0 270 Q100 250 200 265 Q250 275 300 260 L300 300 L0 300Z" fill="#059669"/>
-  <!-- Flower 1 - big -->
-  <line x1="170" y1="210" x2="170" y2="120" stroke="#059669" stroke-width="3"/>
-  <path d="M170 170 Q145 160 140 180" stroke="#059669" stroke-width="2" fill="none"/>
-  <ellipse cx="140" cy="183" rx="12" ry="6" fill="#34d399"/>
-  <path d="M170 150 Q195 140 200 160" stroke="#059669" stroke-width="2" fill="none"/>
-  <ellipse cx="200" cy="163" rx="12" ry="6" fill="#34d399"/>
-  <!-- Petals -->
-  <circle cx="155" cy="110" r="16" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="185" cy="110" r="16" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="160" cy="90" r="16" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="180" cy="90" r="16" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="170" cy="105" r="12" fill="#fbbf24"/>
-  <!-- Flower 2 - small -->
-  <line x1="90" y1="230" x2="90" y2="155" stroke="#059669" stroke-width="2.5"/>
-  <path d="M90 190 Q70 182 68 195" stroke="#059669" stroke-width="1.8" fill="none"/>
-  <ellipse cx="66" cy="198" rx="10" ry="5" fill="#34d399"/>
-  <circle cx="80" cy="148" r="12" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="100" cy="148" r="12" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="85" cy="135" r="12" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="95" cy="135" r="12" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="90" cy="143" r="9" fill="#f59e0b"/>
-  <!-- Flower 3 - tiny bud -->
-  <line x1="240" y1="235" x2="240" y2="175" stroke="#059669" stroke-width="2"/>
-  <path d="M240 200 Q255 192 258 205" stroke="#059669" stroke-width="1.5" fill="none"/>
-  <ellipse cx="259" cy="208" rx="8" ry="4" fill="#34d399"/>
-  <circle cx="233" cy="170" r="10" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="247" cy="170" r="10" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="237" cy="160" r="10" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="243" cy="160" r="10" fill="#fef3c7" stroke="#fbbf24" stroke-width="1"/>
-  <circle cx="240" cy="167" r="7" fill="#fbbf24"/>
-  <!-- Butterfly -->
-  <ellipse cx="130" cy="90" rx="10" ry="7" fill="#c4b5fd" opacity="0.8" transform="rotate(-20 130 90)"/>
-  <ellipse cx="140" cy="85" rx="8" ry="5" fill="#ddd6fe" opacity="0.8" transform="rotate(15 140 85)"/>
-  <circle cx="135" cy="90" r="2" fill="#7c3aed"/>
+  <!-- Git fork/merge visualization - open source theme -->
+  <!-- Background glow -->
+  <circle cx="150" cy="150" r="95" fill="#d1fae5" opacity="0.3"/>
+  <!-- Main branch line -->
+  <line x1="150" y1="40" x2="150" y2="260" stroke="#059669" stroke-width="3"/>
+  <!-- Branch 1 - fork left -->
+  <path d="M150 80 Q110 95 90 130" stroke="#34d399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Branch 1 - merge back -->
+  <path d="M90 130 Q110 165 150 180" stroke="#34d399" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Branch 2 - fork right -->
+  <path d="M150 120 Q200 140 220 170" stroke="#6ee7b7" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Branch 2 - merge back -->
+  <path d="M220 170 Q200 200 150 220" stroke="#6ee7b7" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Branch 3 - small fork left -->
+  <path d="M150 170 Q120 180 105 200" stroke="#a7f3d0" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Commit nodes on main -->
+  <circle cx="150" cy="60" r="8" fill="#059669" stroke="white" stroke-width="2"/>
+  <circle cx="150" cy="120" r="8" fill="#059669" stroke="white" stroke-width="2"/>
+  <circle cx="150" cy="180" r="8" fill="#059669" stroke="white" stroke-width="2"/>
+  <circle cx="150" cy="240" r="8" fill="#059669" stroke="white" stroke-width="2"/>
+  <!-- Commit nodes on branches -->
+  <circle cx="90" cy="130" r="7" fill="#34d399" stroke="white" stroke-width="2"/>
+  <circle cx="220" cy="170" r="7" fill="#6ee7b7" stroke="white" stroke-width="2"/>
+  <circle cx="105" cy="200" r="6" fill="#a7f3d0" stroke="white" stroke-width="2"/>
+  <!-- PR merge icons -->
+  <circle cx="150" cy="80" r="5" fill="white" stroke="#059669" stroke-width="1.5"/>
+  <circle cx="150" cy="220" r="5" fill="white" stroke="#059669" stroke-width="1.5"/>
+  <!-- People/contributor avatars -->
+  <circle cx="45" cy="90" r="14" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <circle cx="45" cy="85" r="5" fill="#34d399"/>
+  <path d="M35 98 Q45 92 55 98" stroke="#34d399" stroke-width="1.5" fill="none"/>
+  <circle cx="255" cy="120" r="14" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <circle cx="255" cy="115" r="5" fill="#6ee7b7"/>
+  <path d="M245 128 Q255 122 265 128" stroke="#6ee7b7" stroke-width="1.5" fill="none"/>
+  <circle cx="60" cy="235" r="14" fill="#d1fae5" stroke="#059669" stroke-width="1.5"/>
+  <circle cx="60" cy="230" r="5" fill="#a7f3d0"/>
+  <path d="M50 243 Q60 237 70 243" stroke="#a7f3d0" stroke-width="1.5" fill="none"/>
+  <!-- Connection lines to contributors -->
+  <line x1="59" y1="90" x2="83" y2="120" stroke="#34d399" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="241" y1="130" x2="227" y2="160" stroke="#6ee7b7" stroke-width="1" stroke-dasharray="3 3"/>
+  <line x1="72" y1="225" x2="100" y2="205" stroke="#a7f3d0" stroke-width="1" stroke-dasharray="3 3"/>
   <!-- Sparkles -->
-  <path d="M40 100 L42 106 L48 108 L42 110 L40 116 L38 110 L32 108 L38 106Z" fill="#6ee7b7"/>
-  <path d="M260 90 L262 95 L267 97 L262 99 L260 104 L258 99 L253 97 L258 95Z" fill="#a7f3d0"/>
+  <path d="M200 50 L202 56 L208 58 L202 60 L200 66 L198 60 L192 58 L198 56Z" fill="#6ee7b7"/>
+  <path d="M80 40 L82 45 L87 47 L82 49 L80 54 L78 49 L73 47 L78 45Z" fill="#a7f3d0"/>
+  <path d="M250 230 L252 235 L257 237 L252 239 L250 244 L248 239 L243 237 L248 235Z" fill="#d1fae5"/>
+  <!-- Heart -->
+  <path d="M148 260 Q148 255 143 255 Q138 255 138 260 Q138 265 148 272 Q158 265 158 260 Q158 255 153 255 Q148 255 148 260Z" fill="#f472b6" opacity="0.7"/>
 </svg>

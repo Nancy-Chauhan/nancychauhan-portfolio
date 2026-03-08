@@ -1,33 +1,47 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
-  <!-- Magic crystal ball on stand -->
-  <!-- Stand -->
-  <path d="M120 240 L180 240 L170 220 L130 220Z" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1.5"/>
-  <ellipse cx="150" cy="242" rx="35" ry="6" fill="#a78bfa"/>
-  <rect x="143" y="200" width="14" height="22" rx="3" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.5"/>
-  <!-- Crystal ball -->
-  <circle cx="150" cy="145" r="58" fill="#ede9fe"/>
-  <circle cx="150" cy="145" r="58" fill="url(#ballGrad)" stroke="#7c3aed" stroke-width="2"/>
-  <!-- Swirls inside ball -->
-  <path d="M120 130 Q135 110 150 125 Q165 140 180 120" stroke="#c4b5fd" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <path d="M115 155 Q130 170 155 155 Q175 140 185 160" stroke="#ddd6fe" stroke-width="2" fill="none" stroke-linecap="round"/>
-  <!-- Stars floating above -->
-  <path d="M150 60 L154 72 L166 76 L154 80 L150 92 L146 80 L134 76 L146 72Z" fill="#a78bfa"/>
-  <path d="M100 75 L103 83 L111 86 L103 89 L100 97 L97 89 L89 86 L97 83Z" fill="#c4b5fd"/>
-  <path d="M205 80 L207 86 L213 88 L207 90 L205 96 L203 90 L197 88 L203 86Z" fill="#ddd6fe"/>
-  <!-- Tiny orbiting dots -->
-  <circle cx="95" cy="130" r="4" fill="#a78bfa" opacity="0.7"/>
-  <circle cx="210" cy="150" r="3" fill="#c4b5fd" opacity="0.7"/>
-  <circle cx="105" cy="175" r="3" fill="#ddd6fe"/>
-  <circle cx="200" cy="115" r="3.5" fill="#c4b5fd" opacity="0.6"/>
+  <!-- Brain with neural network connections -->
+  <!-- Background glow -->
+  <circle cx="150" cy="140" r="80" fill="#ede9fe" opacity="0.5"/>
+  <!-- Brain shape - left hemisphere -->
+  <path d="M150 75 Q110 75 95 100 Q80 125 85 155 Q88 175 105 190 Q120 205 150 205"
+        fill="#ddd6fe" stroke="#7c3aed" stroke-width="2"/>
+  <!-- Brain shape - right hemisphere -->
+  <path d="M150 75 Q190 75 205 100 Q220 125 215 155 Q212 175 195 190 Q180 205 150 205"
+        fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <!-- Brain folds -->
+  <path d="M150 85 Q130 105 135 125" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M120 100 Q140 115 125 140" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M150 85 Q170 105 165 125" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M180 100 Q160 115 175 140" stroke="#a78bfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M105 150 Q130 145 140 165" stroke="#a78bfa" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <path d="M195 150 Q170 145 160 165" stroke="#a78bfa" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Neural network nodes floating around -->
+  <!-- Left side nodes -->
+  <circle cx="45" cy="100" r="8" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="35" cy="160" r="6" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="55" cy="210" r="7" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1.5"/>
+  <!-- Right side nodes -->
+  <circle cx="255" cy="95" r="7" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="265" cy="155" r="6" fill="#c4b5fd" stroke="#7c3aed" stroke-width="1.5"/>
+  <circle cx="250" cy="215" r="8" fill="#ddd6fe" stroke="#7c3aed" stroke-width="1.5"/>
+  <!-- Connection lines from brain to nodes -->
+  <line x1="85" y1="115" x2="53" y2="100" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="88" y1="160" x2="41" y2="160" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="105" y1="192" x2="62" y2="210" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="215" y1="115" x2="248" y2="95" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="212" y1="160" x2="259" y2="155" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="195" y1="192" x2="242" y2="215" stroke="#c4b5fd" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- Tiny dots on connections -->
+  <circle cx="68" cy="108" r="2.5" fill="#7c3aed" opacity="0.6"/>
+  <circle cx="63" cy="160" r="2.5" fill="#7c3aed" opacity="0.6"/>
+  <circle cx="230" cy="105" r="2.5" fill="#7c3aed" opacity="0.6"/>
+  <circle cx="237" cy="157" r="2.5" fill="#7c3aed" opacity="0.6"/>
   <!-- Sparkles -->
-  <path d="M55 110 L57 116 L63 118 L57 120 L55 126 L53 120 L47 118 L53 116Z" fill="#c4b5fd"/>
-  <path d="M245 130 L247 136 L253 138 L247 140 L245 146 L243 140 L237 138 L243 136Z" fill="#ddd6fe"/>
-  <path d="M70 200 L72 205 L77 207 L72 209 L70 214 L68 209 L63 207 L68 205Z" fill="#ede9fe"/>
-  <path d="M230 195 L232 200 L237 202 L232 204 L230 209 L228 204 L223 202 L228 200Z" fill="#c4b5fd"/>
-  <defs>
-    <radialGradient id="ballGrad" cx="0.4" cy="0.35" r="0.6">
-      <stop offset="0%" stop-color="white" stop-opacity="0.4"/>
-      <stop offset="100%" stop-color="#c4b5fd" stop-opacity="0.2"/>
-    </radialGradient>
-  </defs>
+  <path d="M130 45 L133 53 L141 56 L133 59 L130 67 L127 59 L119 56 L127 53Z" fill="#a78bfa"/>
+  <path d="M190 50 L192 55 L197 57 L192 59 L190 64 L188 59 L183 57 L188 55Z" fill="#c4b5fd"/>
+  <path d="M75 55 L77 60 L82 62 L77 64 L75 69 L73 64 L68 62 L73 60Z" fill="#ddd6fe"/>
+  <path d="M230 60 L232 65 L237 67 L232 69 L230 74 L228 69 L223 67 L228 65Z" fill="#ddd6fe"/>
+  <!-- Pulse rings -->
+  <circle cx="150" cy="140" r="95" stroke="#c4b5fd" stroke-width="1" fill="none" opacity="0.3"/>
+  <circle cx="150" cy="140" r="110" stroke="#ddd6fe" stroke-width="0.8" fill="none" opacity="0.2"/>
 </svg>
