@@ -17,11 +17,11 @@ const features = [
     </p>
   </div>
 
-  <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
     {features.map((f, i) => (
       <div class={`animate-on-scroll stagger-${i + 1} card-brutal overflow-hidden flex flex-col h-full`}>
         <div
-          class="aspect-[4/3] flex items-center justify-center p-4 md:p-6 overflow-hidden border-b-2 border-[var(--color-stone-800)]"
+          class="aspect-[4/3] flex items-center justify-center p-3 md:p-6 overflow-hidden border-b-2 border-[var(--color-stone-800)]"
           style={`background: ${f.bg};`}
         >
           <img
@@ -31,9 +31,9 @@ const features = [
             loading="lazy"
           />
         </div>
-        <div class="p-5 flex-1">
-          <h3 class="text-base font-bold font-sans text-[var(--color-stone-900)] mb-1">{f.title}</h3>
-          <p class="text-sm text-[var(--color-stone-500)] font-sans leading-relaxed">{f.description}</p>
+        <div class="p-3 md:p-5 flex-1">
+          <h3 class="text-sm md:text-base font-bold font-sans text-[var(--color-stone-900)] mb-0.5 md:mb-1">{f.title}</h3>
+          <p class="text-xs md:text-sm text-[var(--color-stone-500)] font-sans leading-relaxed">{f.description}</p>
         </div>
       </div>
     ))}

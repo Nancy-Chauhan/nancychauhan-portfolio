@@ -77,11 +77,19 @@ const currentPath = Astro.url.pathname;
     const btn = document.getElementById("mobile-menu-btn");
     const menu = document.getElementById("mobile-menu");
     const icon = document.getElementById("menu-icon");
-    btn?.addEventListener("click", () => {
-      const isOpen = !menu?.classList.contains("hidden");
-      menu?.classList.toggle("hidden");
-      if (icon) {
-        icon.setAttribute("d", isOpen ? "M4 6h16M4 12h16M4 18h16" : "M6 18L18 6M6 6l12 12");
+
+    if (!btn || !menu) return;
+
+    // Remove old listener by cloning
+    const newBtn = btn.cloneNode(true);
+    btn.parentNode?.replaceChild(newBtn, btn);
+
+    newBtn.addEventListener("click", () => {
+      const isOpen = !menu.classList.contains("hidden");
+      menu.classList.toggle("hidden");
+      const currentIcon = newBtn.querySelector("#menu-icon");
+      if (currentIcon) {
+        currentIcon.setAttribute("d", isOpen ? "M4 6h16M4 12h16M4 18h16" : "M6 18L18 6M6 6l12 12");
       }
     });
   }

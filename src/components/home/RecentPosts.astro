@@ -69,7 +69,13 @@ const posts = (await getCollection("blog"))
 
 <style>
   .blog-track {
-    animation: scroll-blog 5s linear infinite;
+    animation: scroll-blog 3s linear infinite;
+  }
+
+  @media (min-width: 768px) {
+    .blog-track {
+      animation-duration: 5s;
+    }
   }
 
   .blog-track:hover {
