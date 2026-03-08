@@ -1,11 +1,68 @@
 ---
 const skillGroups = [
-  { category: "Languages", skills: ["Python", "TypeScript", "Go", "Java", "SQL"] },
-  { category: "AI & ML", skills: ["LLM Observability", "AI Agents", "RAG", "Prompt Engineering"] },
-  { category: "Infrastructure", skills: ["Kubernetes", "Docker", "Terraform", "AWS", "GCP"] },
-  { category: "Security", skills: ["CI/CD Security", "SAST", "Vulnerability Management", "DevSecOps"] },
-  { category: "Developer Relations", skills: ["Technical Writing", "Conference Speaking", "Community Building", "Developer Education"] },
-  { category: "Frameworks & Tools", skills: ["React", "Next.js", "FastAPI", "Node.js", "Git"] },
+  {
+    category: "Languages",
+    icon: "terminal",
+    skills: [
+      { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
+      { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
+      { name: "Go", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" },
+      { name: "Java", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" },
+      { name: "SQL", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" },
+    ],
+  },
+  {
+    category: "AI & ML",
+    icon: "sparkle",
+    skills: [
+      { name: "LLM Observability" },
+      { name: "AI Agents" },
+      { name: "RAG" },
+      { name: "Prompt Engineering" },
+    ],
+  },
+  {
+    category: "Infrastructure",
+    icon: "cloud",
+    skills: [
+      { name: "Kubernetes", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg" },
+      { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
+      { name: "Terraform", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/terraform/terraform-original.svg" },
+      { name: "AWS", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg" },
+      { name: "GCP", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" },
+    ],
+  },
+  {
+    category: "Security",
+    icon: "shield",
+    skills: [
+      { name: "CI/CD Security" },
+      { name: "SAST" },
+      { name: "Vulnerability Mgmt" },
+      { name: "DevSecOps" },
+    ],
+  },
+  {
+    category: "Developer Relations",
+    icon: "megaphone",
+    skills: [
+      { name: "Technical Writing" },
+      { name: "Conference Speaking" },
+      { name: "Community Building" },
+      { name: "Developer Education" },
+    ],
+  },
+  {
+    category: "Frameworks & Tools",
+    icon: "wrench",
+    skills: [
+      { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+      { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
+      { name: "FastAPI", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg" },
+      { name: "Node.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" },
+      { name: "Git", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" },
+    ],
+  },
 ];
 ---
 
@@ -13,18 +70,49 @@ const skillGroups = [
   <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
     <span class="section-heading">Tech Stack</span>
   </h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     {skillGroups.map((group, i) => (
-      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6`}>
-        <h3 class="font-sans text-sm font-bold uppercase tracking-widest text-[var(--color-stone-400)] mb-3">
+      <div class={`animate-on-scroll stagger-${i + 1} skill-card card-dashed p-5`}>
+        <h3 class="font-sans text-xs font-bold uppercase tracking-widest text-[var(--color-stone-400)] mb-4">
           {group.category}
         </h3>
         <div class="flex flex-wrap gap-2">
           {group.skills.map((skill) => (
-            <span class="tag-brutal">{skill}</span>
+            <span class="skill-tag">
+              {skill.logo && (
+                <img src={skill.logo} alt={skill.name} class="w-4 h-4 opacity-70" loading="lazy" />
+              )}
+              {skill.name}
+            </span>
           ))}
         </div>
       </div>
     ))}
   </div>
 </section>
+
+<style>
+  .skill-card {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .skill-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.3rem 0.7rem;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-stone-600);
+    background: var(--color-stone-50);
+    border: 1.5px solid var(--color-stone-200);
+    transition: all 0.2s ease;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--color-purple-light);
+    color: var(--color-purple);
+    background: white;
+  }
+</style>
