@@ -18,7 +18,7 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<BaseLayout title={`${project.data.title} — Nancy Chauhan`} description={project.data.description}>
+<BaseLayout title={`${project.data.title} | Nancy Chauhan`} description={project.data.description}>
   <section class="py-16">
     <div class="mx-auto max-w-5xl px-6">
       <Breadcrumbs
