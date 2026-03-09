@@ -1,0 +1,130 @@
+---
+const row1 = [
+  "IMG_20191015_231543_120.jpg",
+  "IMG_20191020_212458_301.jpg",
+  "IMG_20230705_230147_929.jpg",
+  "IMG_20240214_190414_631.jpg",
+  "IMG_20240704_140041_613.jpg",
+  "IMG_20250103_174227_963.jpg",
+  "IMG_20251005_180417_354.jpg",
+  "SCR-20260124-lbzv.jpeg",
+  "SCR-20260124-lcbl.jpeg",
+  "SCR-20260124-lcjc.jpeg",
+];
+
+const row2 = [
+  "SCR-20260124-lcok.jpeg",
+  "SCR-20260124-lcsm.jpeg",
+  "SCR-20260124-lcuj.jpeg",
+  "SCR-20260124-lczl.jpeg",
+  "SCR-20260124-ldbg.jpeg",
+  "SCR-20260124-ldhb.jpeg",
+  "SCR-20260124-ldpa.jpeg",
+  "SCR-20260124-lerf.jpeg",
+  "SCR-20260124-leux.png",
+  "SCR-20260124-lews.png",
+  "SCR-20260128-rdba.jpeg",
+];
+---
+
+<section>
+  <div class="mb-10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3 animate-on-scroll">
+          <span class="section-heading">Unveiling Beauty, Art & Culture, One place at a Time 💜</span>
+        </h2>
+        <p class="text-lg text-[var(--color-stone-500)] font-sans animate-on-scroll">
+          Its about the moments that's wrapped in it
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* Row 1 - scrolls left */}
+  <div class="gallery-marquee -mx-6 md:-mx-24">
+    <div class="gallery-track gallery-left">
+      {[...row1, ...row1].map((img) => (
+        <div class="gallery-item">
+          <img src={`/gallery/${img}`} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  {/* Row 2 - scrolls right */}
+  <div class="gallery-marquee -mx-6 md:-mx-24" style="margin-top: 1rem;">
+    <div class="gallery-track gallery-right">
+      {[...row2, ...row2].map((img) => (
+        <div class="gallery-item">
+          <img src={`/gallery/${img}`} alt="" loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .gallery-marquee {
+    overflow: hidden;
+    width: 100%;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+  }
+
+  .gallery-track {
+    display: flex;
+    gap: 1rem;
+    width: max-content;
+  }
+
+  .gallery-left {
+    animation: gallery-scroll-left 40s linear infinite;
+  }
+
+  .gallery-right {
+    animation: gallery-scroll-right 40s linear infinite;
+  }
+
+  .gallery-item {
+    flex-shrink: 0;
+    width: 120px !important;
+    height: 150px !important;
+    border-radius: 10px;
+    overflow: hidden !important;
+    display: block;
+  }
+
+  .gallery-item img {
+    display: block;
+    width: 120px !important;
+    height: 150px !important;
+    object-fit: cover !important;
+    border-radius: 10px;
+  }
+
+  @media (min-width: 640px) {
+    .gallery-item,
+    .gallery-item img {
+      width: 160px !important;
+      height: 200px !important;
+      border-radius: 12px;
+    }
+  }
+
+  @keyframes gallery-scroll-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes gallery-scroll-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-left, .gallery-right {
+      animation: none;
+    }
+  }
+</style>
