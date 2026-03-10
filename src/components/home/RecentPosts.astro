@@ -70,13 +70,7 @@ const posts = (await getCollection("blog"))
 <style>
   .blog-track {
     width: max-content;
-    animation: scroll-blog 8s linear infinite;
-  }
-
-  @media (min-width: 768px) {
-    .blog-track {
-      animation-duration: 12s;
-    }
+    animation: scroll-blog var(--marquee-duration, 12s) linear infinite;
   }
 
   .blog-track:hover {
@@ -92,3 +86,16 @@ const posts = (await getCollection("blog"))
     }
   }
 </style>
+
+<script>
+  function initBlogScrollSpeed() {
+    const PIXELS_PER_SECOND = 50;
+    document.querySelectorAll('.blog-track').forEach((track) => {
+      const halfWidth = track.scrollWidth / 2;
+      const duration = halfWidth / PIXELS_PER_SECOND;
+      (track as HTMLElement).style.setProperty('--marquee-duration', `${duration}s`);
+    });
+  }
+  initBlogScrollSpeed();
+  document.addEventListener('astro:page-load', initBlogScrollSpeed);
+</script>

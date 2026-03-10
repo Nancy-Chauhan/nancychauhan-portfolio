@@ -57,11 +57,11 @@ const row2 = [
   }
 
   .gallery-left {
-    animation: gallery-scroll-left 30s linear infinite;
+    animation: gallery-scroll-left var(--gallery-duration, 30s) linear infinite;
   }
 
   .gallery-right {
-    animation: gallery-scroll-right 30s linear infinite;
+    animation: gallery-scroll-right var(--gallery-duration, 30s) linear infinite;
   }
 
   .gallery-item {
@@ -119,3 +119,16 @@ const row2 = [
     }
   }
 </style>
+
+<script>
+  function initGallerySpeed() {
+    const PIXELS_PER_SECOND = 50;
+    document.querySelectorAll('.gallery-track').forEach((track) => {
+      const halfWidth = track.scrollWidth / 2;
+      const duration = halfWidth / PIXELS_PER_SECOND;
+      (track as HTMLElement).style.setProperty('--gallery-duration', `${duration}s`);
+    });
+  }
+  initGallerySpeed();
+  document.addEventListener('astro:page-load', initGallerySpeed);
+</script>

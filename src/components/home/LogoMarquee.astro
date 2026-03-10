@@ -31,7 +31,7 @@ const logos = [
 
 <style>
   .marquee-track {
-    animation: marquee 15s linear infinite;
+    animation: marquee var(--marquee-duration, 15s) linear infinite;
   }
 
   .marquee-track:hover {
@@ -48,3 +48,16 @@ const logos = [
     }
   }
 </style>
+
+<script>
+  function initMarqueeSpeed() {
+    const PIXELS_PER_SECOND = 50;
+    document.querySelectorAll('.marquee-track').forEach((track) => {
+      const halfWidth = track.scrollWidth / 2;
+      const duration = halfWidth / PIXELS_PER_SECOND;
+      (track as HTMLElement).style.setProperty('--marquee-duration', `${duration}s`);
+    });
+  }
+  initMarqueeSpeed();
+  document.addEventListener('astro:page-load', initMarqueeSpeed);
+</script>

@@ -22,11 +22,9 @@ const currentPath = Astro.url.pathname;
           {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
           class:list={[
             "font-sans text-sm font-medium transition-colors duration-200",
-            link.external
-              ? "text-[var(--color-purple)] hover:text-[var(--color-purple-dark)]"
-              : currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-                ? "text-[var(--color-purple)]"
-                : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)]",
+            currentPath === link.href || (!link.external && link.href !== "/" && currentPath.startsWith(link.href))
+              ? "text-[var(--color-purple)]"
+              : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)]",
           ]}
         >
           {link.label}
@@ -58,11 +56,9 @@ const currentPath = Astro.url.pathname;
           {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
           class:list={[
             "px-3 py-2 font-sans text-sm font-medium transition-colors duration-200",
-            link.external
+            currentPath === link.href || (!link.external && link.href !== "/" && currentPath.startsWith(link.href))
               ? "text-[var(--color-purple)]"
-              : currentPath === link.href || (link.href !== "/" && currentPath.startsWith(link.href))
-                ? "text-[var(--color-purple)]"
-                : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)] hover:bg-[var(--color-stone-100)]",
+              : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)] hover:bg-[var(--color-stone-100)]",
           ]}
         >
           {link.label}
