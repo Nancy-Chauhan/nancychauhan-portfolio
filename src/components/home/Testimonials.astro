@@ -7,13 +7,13 @@ const testimonials = [
     img: "/logos/julia.jpeg",
   },
   {
-    quote: "She delivered incredible projects including the launch of gitpod-samples, wrote high-quality blog posts, and built meaningful partner relationships. She's reliable with high attention to detail, a real team player and a joy to collaborate with.",
+    quote: "She worked in the relatively new DevRel team at Gitpod, where she delivered some incredible projects including the launch of our community-curated templates (gitpod-samples), wrote a number of high-quality technical blog posts, and built meaningful relationships with our partners. I've known Nancy to be reliable with high attention to detail in everything she creates, she's a real team player and is a joy to collaborate with. She has so much potential to be even better, and I'm excited to continue to watch her career grow! 🌱 Best of luck in the future, Nancy - I hope we can cross paths again.",
     name: "Pauline P. Narvas",
     title: "Developer Experience at OpenAI, prev Vercel",
     img: "/logos/pauline.jpeg",
   },
   {
-    quote: "She worked on complex projects from building Jenkins shared libraries to setting up Tekton as a CI/CD platform. She took all difficulties as learning opportunities and came out stronger every time. I'd recommend Nancy for any team that promotes learning and open culture.",
+    quote: "Nancy is highly proactive in learning whatever comes in her way, honest with herself and whom she works with, and has a really good work ethic. She worked with the continuous delivery team at Grofers, starting as an intern and then becoming a full-time member of the team obviously because the team loved her work. She worked on complex projects ranging from building Jenkins shared libraries to setting up Tekton as a common CI/CD platform. With a small team, to work on those projects, she took all the difficulties that came her way as learning opportunities, be it technical or of collaborative nature and she came out stronger every time. She was very open to feedback and also gave feedback which helped not just herself improve but also the people who worked with her. I'd recommend Nancy as a software engineer for any team that promotes learning and open culture.",
     name: "Ashish Dubey",
     title: "Engineering Lead",
     img: "/logos/ashish.jpeg",
@@ -73,7 +73,7 @@ const testimonials = [
     img: "/logos/anca.jpeg",
   },
   {
-    quote: "She was instrumental in launching LocalStack Academy, taking it from a rough idea to production. Her attention to detail is remarkable and she brings great creativity and passion. Nancy has been authentic, empathetic, open to feedback, and has an infectious personality.",
+    quote: "Nancy joined the Developer Relations & Design Team at LocalStack at an early stage and quickly ramped up efforts in developer education, developer experience, documentation, partnerships, and more. She was instrumental in launching LocalStack Academy, taking it from a rough idea to production while producing high-quality content that served our customers and users better. We also worked together to organize various in-person and virtual meetups, with over 1,000 RSVPs, built relationships with technical partners through case studies and videos, and supported the wider open-source community in collaboration with Engineering and GTM. From my perspective, Nancy has been someone I can always count on. Her attention to detail is remarkable, and she brings a great degree of creativity and passion to the table. Throughout this experience, Nancy has been authentic, empathetic, open to feedback, and has an infectious personality. It was a pleasure working with her, and I'm sure Nancy's work will make a strong impact wherever she goes next!",
     name: "Harsh Mishra",
     title: "Engineer @ LocalStack",
     img: "/logos/harsh.jpeg",
@@ -136,33 +136,46 @@ const testimonials = [
   <div class="relative">
     <div id="testimonial-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
       {testimonials.map((t, i) => (
-        <div
-          class={`shrink-0 w-[250px] md:w-[320px] h-[240px] md:h-[260px] card-brutal p-4 md:p-5 flex flex-col overflow-hidden cursor-pointer group`}
-          data-quote={t.quote}
-          data-name={t.name}
-          data-title={t.title}
-          data-img={t.img}
-          onclick="openTestimonialModal(this)"
-        >
-          <div class="flex items-center gap-3 mb-4">
-            {t.img ? (
-              <img src={t.img} alt={t.name} class="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
-            ) : (
-              <div class="w-10 h-10 rounded-full bg-[var(--color-purple)] flex items-center justify-center text-white font-bold font-sans text-sm border-2 border-[var(--color-stone-300)]">
-                {t.name.split(' ').map(n => n[0]).join('')}
+        <div class="shrink-0 w-[250px] md:w-[320px] h-[260px] md:h-[280px] flip-card" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            {/* Front */}
+            <div class="flip-card-front card-brutal p-4 md:p-5 flex flex-col">
+              <div class="flex items-center gap-3 mb-4">
+                {t.img ? (
+                  <img src={t.img} alt={t.name} class="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
+                ) : (
+                  <div class="w-10 h-10 rounded-full bg-[var(--color-purple)] flex items-center justify-center text-white font-bold font-sans text-sm border-2 border-[var(--color-stone-300)]">
+                    {t.name.split(' ').map((n: string) => n[0]).join('')}
+                  </div>
+                )}
+                <div>
+                  <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{t.name}</p>
+                  <p class="font-sans text-xs text-[var(--color-stone-400)]">{t.title}</p>
+                </div>
               </div>
-            )}
-            <div>
-              <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{t.name}</p>
-              <p class="font-sans text-xs text-[var(--color-stone-400)]">{t.title}</p>
+              <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed line-clamp-5 flex-1">
+                {t.quote}
+              </p>
+              <p class="mt-2 text-xs font-sans text-[var(--color-purple)] font-semibold">Tap to read full →</p>
+            </div>
+            {/* Back */}
+            <div class="flip-card-back card-brutal p-4 md:p-5 flex flex-col bg-white">
+              <div class="flex items-center gap-3 mb-3">
+                {t.img ? (
+                  <img src={t.img} alt={t.name} class="w-8 h-8 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
+                ) : (
+                  <div class="w-8 h-8 rounded-full bg-[var(--color-purple)] flex items-center justify-center text-white font-bold font-sans text-xs border-2 border-[var(--color-stone-300)]">
+                    {t.name.split(' ').map((n: string) => n[0]).join('')}
+                  </div>
+                )}
+                <p class="font-sans text-xs font-bold text-[var(--color-stone-900)]">{t.name}</p>
+              </div>
+              <p class="text-xs font-sans text-[var(--color-stone-600)] leading-relaxed overflow-y-auto flex-1 no-scrollbar">
+                {t.quote}
+              </p>
+              <p class="mt-2 text-xs font-sans text-[var(--color-purple)] font-semibold">← Tap to flip back</p>
             </div>
           </div>
-          <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed line-clamp-6">
-            {t.quote}
-          </p>
-          <p class="mt-auto pt-2 text-xs font-sans text-[var(--color-purple)] opacity-0 group-hover:opacity-100 transition-opacity">
-            Read full →
-          </p>
         </div>
       ))}
     </div>
@@ -182,64 +195,40 @@ const testimonials = [
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .flip-card {
+    perspective: 1000px;
+    cursor: pointer;
+  }
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+  }
+
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
 </style>
 
-{/* Modal */}
-<div id="testimonial-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
-  <div class="absolute inset-0 bg-black/50" onclick="closeTestimonialModal()"></div>
-  <div class="relative card-brutal bg-white max-w-lg w-full p-6 md:p-8 max-h-[80vh] overflow-y-auto">
-    <button
-      onclick="closeTestimonialModal()"
-      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center border-2 border-[var(--color-stone-800)] hover:bg-[var(--color-purple)] hover:text-white transition-colors text-[var(--color-stone-600)]"
-      aria-label="Close"
-    >
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
-      </svg>
-    </button>
-    <div class="flex items-center gap-3 mb-5">
-      <img id="modal-img" src="" alt="" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
-      <div>
-        <p id="modal-name" class="font-sans text-base font-bold text-[var(--color-stone-900)]"></p>
-        <p id="modal-title" class="font-sans text-xs text-[var(--color-stone-400)]"></p>
-      </div>
-    </div>
-    <p id="modal-quote" class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed"></p>
-  </div>
-</div>
-
 <script>
-  function openTestimonialModal(el: HTMLElement) {
-    const modal = document.getElementById('testimonial-modal');
-    const quote = el.dataset.quote || '';
-    const name = el.dataset.name || '';
-    const title = el.dataset.title || '';
-    const img = el.dataset.img || '';
-    (document.getElementById('modal-quote') as HTMLElement).textContent = quote;
-    (document.getElementById('modal-name') as HTMLElement).textContent = name;
-    (document.getElementById('modal-title') as HTMLElement).textContent = title;
-    (document.getElementById('modal-img') as HTMLImageElement).src = img;
-    (document.getElementById('modal-img') as HTMLImageElement).alt = name;
-    modal?.classList.remove('hidden');
-    modal?.classList.add('flex');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeTestimonialModal() {
-    const modal = document.getElementById('testimonial-modal');
-    modal?.classList.add('hidden');
-    modal?.classList.remove('flex');
-    document.body.style.overflow = '';
-  }
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeTestimonialModal();
-  });
-
-  // Make functions global
-  (window as any).openTestimonialModal = openTestimonialModal;
-  (window as any).closeTestimonialModal = closeTestimonialModal;
-
   function initTestimonialCarousel() {
     const carousel = document.getElementById('testimonial-carousel');
     const prev = document.getElementById('testimonial-prev');
