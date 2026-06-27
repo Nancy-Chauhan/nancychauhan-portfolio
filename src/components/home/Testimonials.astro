@@ -136,7 +136,14 @@ const testimonials = [
   <div class="relative">
     <div id="testimonial-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
       {testimonials.map((t, i) => (
-        <div class={`shrink-0 w-[250px] md:w-[320px] h-[240px] md:h-[260px] card-brutal p-4 md:p-5 flex flex-col overflow-hidden`}>
+        <div
+          class={`shrink-0 w-[250px] md:w-[320px] h-[240px] md:h-[260px] card-brutal p-4 md:p-5 flex flex-col overflow-hidden cursor-pointer group`}
+          data-quote={t.quote}
+          data-name={t.name}
+          data-title={t.title}
+          data-img={t.img}
+          onclick="openTestimonialModal(this)"
+        >
           <div class="flex items-center gap-3 mb-4">
             {t.img ? (
               <img src={t.img} alt={t.name} class="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
@@ -152,6 +159,9 @@ const testimonials = [
           </div>
           <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed line-clamp-6">
             {t.quote}
+          </p>
+          <p class="mt-auto pt-2 text-xs font-sans text-[var(--color-purple)] opacity-0 group-hover:opacity-100 transition-opacity">
+            Read full →
           </p>
         </div>
       ))}
@@ -174,7 +184,62 @@ const testimonials = [
   }
 </style>
 
+{/* Modal */}
+<div id="testimonial-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/50" onclick="closeTestimonialModal()"></div>
+  <div class="relative card-brutal bg-white max-w-lg w-full p-6 md:p-8 max-h-[80vh] overflow-y-auto">
+    <button
+      onclick="closeTestimonialModal()"
+      class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center border-2 border-[var(--color-stone-800)] hover:bg-[var(--color-purple)] hover:text-white transition-colors text-[var(--color-stone-600)]"
+      aria-label="Close"
+    >
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <div class="flex items-center gap-3 mb-5">
+      <img id="modal-img" src="" alt="" class="w-12 h-12 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
+      <div>
+        <p id="modal-name" class="font-sans text-base font-bold text-[var(--color-stone-900)]"></p>
+        <p id="modal-title" class="font-sans text-xs text-[var(--color-stone-400)]"></p>
+      </div>
+    </div>
+    <p id="modal-quote" class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed"></p>
+  </div>
+</div>
+
 <script>
+  function openTestimonialModal(el: HTMLElement) {
+    const modal = document.getElementById('testimonial-modal');
+    const quote = el.dataset.quote || '';
+    const name = el.dataset.name || '';
+    const title = el.dataset.title || '';
+    const img = el.dataset.img || '';
+    (document.getElementById('modal-quote') as HTMLElement).textContent = quote;
+    (document.getElementById('modal-name') as HTMLElement).textContent = name;
+    (document.getElementById('modal-title') as HTMLElement).textContent = title;
+    (document.getElementById('modal-img') as HTMLImageElement).src = img;
+    (document.getElementById('modal-img') as HTMLImageElement).alt = name;
+    modal?.classList.remove('hidden');
+    modal?.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeTestimonialModal() {
+    const modal = document.getElementById('testimonial-modal');
+    modal?.classList.add('hidden');
+    modal?.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeTestimonialModal();
+  });
+
+  // Make functions global
+  (window as any).openTestimonialModal = openTestimonialModal;
+  (window as any).closeTestimonialModal = closeTestimonialModal;
+
   function initTestimonialCarousel() {
     const carousel = document.getElementById('testimonial-carousel');
     const prev = document.getElementById('testimonial-prev');
