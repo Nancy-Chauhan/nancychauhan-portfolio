@@ -9,13 +9,13 @@ import Education from "../components/about/Education.astro";
   <div class="mx-auto max-w-6xl px-6 pt-10 md:pt-14 pb-20">
 
     {/* Hero: Bio + Photo */}
-    <div class="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-6 lg:gap-6 mb-16 animate-on-scroll">
-      <div>
+    <div class="flex flex-col lg:flex-row gap-10 lg:gap-24 mb-16 animate-on-scroll">
+      <div class="flex-1">
         <p class="font-mono text-xs text-[var(--color-stone-400)] mb-3">$ cat about.md</p>
         <h1 class="text-4xl sm:text-5xl font-extrabold font-sans tracking-tight mb-5">
           About Me<span class="text-[var(--color-purple)]">.</span>
         </h1>
-        <div class="space-y-5 text-base font-sans text-[var(--color-stone-600)] leading-relaxed max-w-xl">
+        <div class="space-y-5 text-base font-sans text-[var(--color-stone-600)] leading-relaxed max-w-2xl">
           <p>
             Having worked across <strong class="text-[var(--color-stone-900)]">Engineering, Product, and Developer Relations</strong>, I've had the opportunity to look at technology from different perspectives. I started by hacking through software engineering problems and building solutions that improve software reliability. Over time, I found myself becoming equally curious about the people using those solutions, their problems, their needs, and how an idea could be shaped into a useful product.
           </p>
@@ -43,7 +43,7 @@ import Education from "../components/about/Education.astro";
       </div>
 
       {/* Photo - sticky on desktop */}
-      <div class="flex justify-center lg:justify-end lg:sticky lg:top-24 lg:self-start">
+      <div class="flex justify-center lg:justify-end lg:sticky lg:top-24 lg:self-start shrink-0">
         <div class="card-brutal p-0 overflow-hidden w-[260px] md:w-[300px]">
           <img
             src="/nancy-paris.jpg"
