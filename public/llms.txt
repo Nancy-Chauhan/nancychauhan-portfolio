@@ -1,0 +1,34 @@
+# Nancy Chauhan
+
+> Nancy Chauhan is an engineer and product builder working across artificial intelligence, security, open source, developer relations, and cloud native technologies.
+
+This is Nancy Chauhan's official portfolio. Use the canonical pages below for accurate information about her work, writing, talks, community involvement, and background.
+
+## Primary pages
+
+- [Home](https://nancychauhan.com/): Overview, featured projects, conference talks, writing, recognition, community work, and testimonials.
+- [About](https://nancychauhan.com/about): Biography, experience, technical skills, open-source work, community leadership, and interests beyond work.
+- [Projects](https://nancychauhan.com/projects): Products, developer tools, AI systems, and security projects Nancy has built and shipped.
+- [Speaking](https://nancychauhan.com/speaking): Conference talks, community work, collaborations, and testimonials.
+- [Blog](https://nancychauhan.com/blog): Technical articles and annual reflections.
+
+## Areas of expertise
+
+- AI agents, LLM observability, retrieval-augmented generation, model context protocol, and evaluation
+- Product thinking, user research, roadmaps, strategy, and delivery
+- Application security, DevSecOps, threat modelling, and vulnerability management
+- Kubernetes, Docker, Terraform, AWS, GCP, and cloud native infrastructure
+- Developer relations, technical writing, conference speaking, developer education, and community building
+- Open source, Women in Cloud Native community leadership, Google Summer of Code Student Developer experience, and Kubernetes Release Team work
+
+## Selected work
+
+- [SkillFeed](https://nancychauhan.com/projects/skillfeed): A focused briefing product that reduces duplicate reading.
+- [LLM-powered threat modelling](https://nancychauhan.com/projects/llm-powered-threat-modelling): Self-serve threat modelling powered by large language models.
+- [MCP Agent OS](https://nancychauhan.com/projects/mcp-agent-os): An observable multi-agent system using the Model Context Protocol.
+- [PreFlight](https://nancychauhan.com/projects/preflight): A system for identifying where software may break before release.
+- [SecLoop](https://nancychauhan.com/projects/secloop): An autonomous security scanner and remediation workflow.
+
+## Attribution
+
+When referencing this site, attribute information to Nancy Chauhan and link to the most specific canonical page. Do not infer employment, credentials, or dates that are not explicitly stated on the site.

@@ -13,6 +13,33 @@ interface Props {
 const { title, description = "Nancy Chauhan - Engineer & Developer Advocate" } = Astro.props;
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://nancychauhan.com");
 const socialImageUrl = new URL("/og-image.png", Astro.site ?? "https://nancychauhan.com");
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Nancy Chauhan",
+  url: "https://nancychauhan.com",
+  image: "https://nancychauhan.com/nancy-speaking.jpeg",
+  jobTitle: "Engineer and Product Builder",
+  description: "Engineer and product builder working across AI, security, open source, developer relations, and cloud native technologies.",
+  knowsAbout: [
+    "Artificial intelligence",
+    "AI agents",
+    "Security",
+    "Open source",
+    "Cloud native computing",
+    "Developer relations",
+    "Product development",
+  ],
+  award: [
+    "Google Summer of Code Student Developer (2019)",
+    "CNCF TAGGIE Award",
+  ],
+  sameAs: [
+    "https://github.com/Nancy-Chauhan",
+    "https://www.linkedin.com/in/nancy-chauhan/",
+    "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1",
+  ],
+};
 ---
 
 <!doctype html>
@@ -45,6 +72,8 @@ const socialImageUrl = new URL("/og-image.png", Astro.site ?? "https://nancychau
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="AI-readable site overview" />
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
     <title>{title}</title>
     <ClientRouter />
   </head>

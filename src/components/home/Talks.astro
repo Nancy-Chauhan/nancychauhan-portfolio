@@ -47,30 +47,26 @@ function getYouTubeId(url: string) {
   <div class="sm:hidden">
   <div id="talks-carousel-mobile" class="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar">
     {videoTalks.slice(0, 6).map((talk) => talk.video && (
-      <a
-        href={talk.video}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group shrink-0 w-[260px] card-brutal overflow-hidden flex flex-col"
-      >
-        <div class="relative overflow-hidden">
+      <article class="shrink-0 w-[260px] card-brutal overflow-hidden flex flex-col">
+        <button
+          type="button"
+          data-talk-video={getYouTubeId(talk.video)}
+          data-talk-title={talk.title}
+          class="talk-video-trigger group relative w-full overflow-hidden"
+          aria-label={`Play ${talk.title}`}
+        >
           <img
             src={`https://img.youtube.com/vi/${getYouTubeId(talk.video)}/maxresdefault.jpg`}
             alt={talk.title}
             class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
           />
-        </div>
-        <div class="p-3 flex items-start gap-2">
-          <div class="shrink-0 mt-0.5">
-            <svg class="w-5 h-5 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="12" opacity="0.15" />
-              <path d="M9.5 7.5v9l7-4.5z" />
-            </svg>
-          </div>
+          <span class="talk-play-icon" aria-hidden="true"><span></span></span>
+        </button>
+        <div class="p-3">
           <p class="font-sans font-bold text-[var(--text-primary)] text-xs leading-snug">{talk.title}</p>
         </div>
-      </a>
+      </article>
     ))}
   </div>
   <p class="flex items-center justify-end gap-1 mt-3 font-mono text-xs text-[var(--text-muted)]">
@@ -82,30 +78,26 @@ function getYouTubeId(url: string) {
   {/* Desktop: grid */}
   <div class="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
     {videoTalks.slice(0, 6).map((talk, i) => talk.video && (
-      <a
-        href={talk.video}
-        target="_blank"
-        rel="noopener noreferrer"
-        class={`animate-on-scroll stagger-${i + 1} group card-brutal overflow-hidden flex flex-col`}
-      >
-        <div class="relative overflow-hidden">
+      <article class={`animate-on-scroll stagger-${i + 1} card-brutal w-full overflow-hidden flex flex-col`}>
+        <button
+          type="button"
+          data-talk-video={getYouTubeId(talk.video)}
+          data-talk-title={talk.title}
+          class="talk-video-trigger group relative w-full overflow-hidden"
+          aria-label={`Play ${talk.title}`}
+        >
           <img
             src={`https://img.youtube.com/vi/${getYouTubeId(talk.video)}/maxresdefault.jpg`}
             alt={talk.title}
             class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
           />
-        </div>
-        <div class="p-3 flex items-start gap-2">
-          <div class="shrink-0 mt-0.5">
-            <svg class="w-6 h-6 text-red-500" viewBox="0 0 24 24" fill="currentColor">
-              <circle cx="12" cy="12" r="12" opacity="0.15" />
-              <path d="M9.5 7.5v9l7-4.5z" />
-            </svg>
-          </div>
+          <span class="talk-play-icon" aria-hidden="true"><span></span></span>
+        </button>
+        <div class="p-3">
           <p class="font-sans font-bold text-[var(--text-primary)] text-xs leading-snug">{talk.title}</p>
         </div>
-      </a>
+      </article>
     ))}
   </div>
 
@@ -118,6 +110,7 @@ function getYouTubeId(url: string) {
       All talks
     </a>
   </div>
+
 </section>
 
 <style>
@@ -129,6 +122,57 @@ function getYouTubeId(url: string) {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .talk-video-trigger { display: block; background: #050816; }
+  .talk-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    width: 4rem;
+    height: 4rem;
+    place-items: center;
+    border: 3px solid white;
+    border-radius: 50%;
+    background: rgba(37, 34, 43, 0.78);
+    box-shadow: 4px 4px 0 rgba(37, 34, 43, 0.55);
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .talk-play-icon span {
+    width: 0;
+    height: 0;
+    margin-left: 0.25rem;
+    border-top: 0.7rem solid transparent;
+    border-bottom: 0.7rem solid transparent;
+    border-left: 1.05rem solid white;
+  }
+  .talk-video-trigger:hover .talk-play-icon { background: var(--pixel-purple); transform: translate(-50%, -50%) scale(1.08); }
+  :global(.talk-inline-player) { aspect-ratio: 16 / 9; background: #050816; }
+  :global(.talk-inline-player iframe) { display: block; width: 100%; height: 100%; border: 0; }
 </style>
 
+<script>
+  function bindTalkPlayer() {
+    document.querySelectorAll<HTMLButtonElement>("[data-talk-video]").forEach((button) => {
+      if (button.dataset.talkBound) return;
+      button.dataset.talkBound = "true";
+      button.addEventListener("click", () => {
+        const videoId = button.dataset.talkVideo;
+        if (!videoId) return;
+        const player = document.createElement("div");
+        player.className = "talk-inline-player";
+        const iframe = document.createElement("iframe");
+        iframe.title = button.dataset.talkTitle || "Conference talk video";
+        iframe.src = `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0`;
+        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+        iframe.allowFullscreen = true;
+        player.append(iframe);
+        button.replaceWith(player);
+      });
+    });
+  }
 
+  bindTalkPlayer();
+  document.addEventListener("astro:page-load", bindTalkPlayer);
+</script>

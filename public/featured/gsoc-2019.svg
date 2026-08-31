@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-labelledby="title description">
+  <title id="title">Google Summer of Code Student Developer 2019</title>
+  <desc id="description">Pixel-style recognition graphic for Nancy Chauhan's Google Summer of Code work.</desc>
+  <rect width="800" height="600" fill="#fff8e6"/>
+  <path fill="#fbbc04" d="M0 0h800v34H0zM0 566h800v34H0z"/>
+  <path fill="#4285f4" d="M0 34h34v532H0z"/>
+  <path fill="#34a853" d="M766 34h34v532h-34z"/>
+  <g transform="translate(118 98)">
+    <rect width="86" height="86" fill="#4285f4"/>
+    <rect x="98" width="86" height="86" fill="#ea4335"/>
+    <rect x="196" width="86" height="86" fill="#fbbc04"/>
+    <rect x="294" width="86" height="86" fill="#34a853"/>
+  </g>
+  <text x="400" y="292" fill="#25222b" font-family="monospace" font-size="104" font-weight="700" text-anchor="middle">GSoC</text>
+  <rect x="115" y="330" width="570" height="8" fill="#25222b"/>
+  <text x="400" y="404" fill="#25222b" font-family="monospace" font-size="39" font-weight="700" text-anchor="middle">STUDENT DEVELOPER</text>
+  <text x="400" y="474" fill="#7557d9" font-family="monospace" font-size="52" font-weight="700" text-anchor="middle">2019</text>
+  <text x="400" y="530" fill="#625c68" font-family="monospace" font-size="24" text-anchor="middle">OPEN SOURCE · LIBRECORES CI</text>
+</svg>
