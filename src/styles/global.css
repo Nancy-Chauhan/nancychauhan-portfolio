@@ -22,7 +22,12 @@
   --color-purple-light: #a78bfa;
 }
 
-html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+html {
+  color-scheme: only light;
+  background: #f4efe5;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
 
 body {
   font-family: var(--font-sans);
