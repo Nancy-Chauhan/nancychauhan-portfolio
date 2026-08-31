@@ -407,7 +407,8 @@ body::after { display: none; }
 .command-prompt { color: var(--pixel-yellow); }
 .pixel-command i { width: 7px; height: 1em; background: var(--pixel-mint); animation: blink 0.9s steps(1) infinite; }
 
-.pixel-profile-shell { max-width: 25rem; margin-inline: auto; border: 3px solid var(--pixel-ink); background: var(--pixel-card); box-shadow: 9px 9px 0 var(--pixel-shadow); transform: rotate(1deg); }
+.pixel-profile-shell { display: block; max-width: 25rem; margin-inline: auto; border: 3px solid var(--pixel-ink); background: var(--pixel-card); color: inherit; box-shadow: 9px 9px 0 var(--pixel-shadow); transform: rotate(1deg); transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.pixel-profile-shell:hover { box-shadow: 5px 5px 0 var(--pixel-shadow); transform: translate(3px, 3px) rotate(0deg); }
 .pixel-window-bar { display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 0.7rem; border-bottom: 3px solid var(--pixel-ink); background: var(--pixel-purple); color: white; font-family: var(--pixel-font); font-size: 0.78rem; font-weight: 700; }
 .pixel-window-bar div { display: flex; gap: 4px; }
 .pixel-window-bar i { width: 9px; height: 9px; border: 1px solid var(--pixel-ink); background: var(--pixel-yellow); }
