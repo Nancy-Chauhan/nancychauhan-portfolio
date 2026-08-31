@@ -3,10 +3,11 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import CareerTimeline from "../components/about/CareerTimeline.astro";
 import SkillsGrid from "../components/about/SkillsGrid.astro";
 import Education from "../components/about/Education.astro";
+import PhotoGallery from "../components/PhotoGallery.astro";
 ---
 
 <BaseLayout title="About | Nancy Chauhan" description="Developer Relations Engineer at Arize AI. CNCF Ambassador, Women in Cloud Native founder. Love to build, ship, and teach.">
-  <div class="mx-auto max-w-6xl px-6 pt-10 md:pt-14 pb-20">
+  <div class="pixel-page pixel-about mx-auto max-w-6xl px-6 pt-10 md:pt-14 pb-20">
 
     {/* Hero: Bio + Photo */}
     <div class="flex flex-col lg:flex-row gap-10 lg:gap-24 mb-16 animate-on-scroll">
@@ -69,9 +70,20 @@ import Education from "../components/about/Education.astro";
     </div>
 
     {/* Education */}
-    <div>
+    <div class="mb-20">
       <Education />
     </div>
+
+    {/* Life outside work */}
+    <section id="beyond-work">
+      <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3 animate-on-scroll">
+        <span class="section-heading">Beyond Work</span>
+      </h2>
+      <p class="text-base text-[var(--text-muted)] mb-8 animate-on-scroll">
+        Places, people, art, culture, and the moments I keep coming back to.
+      </p>
+      <PhotoGallery />
+    </section>
 
   </div>
 </BaseLayout>

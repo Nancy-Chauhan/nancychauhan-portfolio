@@ -6,8 +6,8 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<nav class="mb-8" aria-label="Breadcrumb">
-  <ol class="flex items-center gap-2 font-sans text-sm text-[var(--color-stone-400)]">
+<nav class="pixel-breadcrumb mb-8" aria-label="Breadcrumb">
+  <ol class="flex flex-wrap items-center gap-2">
     <li>
       <a href="/" class="hover:text-[var(--color-purple)] transition-colors">Home</a>
     </li>

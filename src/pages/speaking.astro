@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Talks from "../components/home/Talks.astro";
+import Community from "../components/home/Community.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+---
+
+<BaseLayout
+  title="Speaking & Community | Nancy Chauhan"
+  description="Conference talks, open-source community work, and collaborations by Nancy Chauhan."
+>
+  <section class="pixel-page-hero py-16 md:py-20">
+    <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-24">
+      <p class="pixel-date mb-4">SPEAKING_LOG.txt</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5">Speaking & Community</h1>
+      <p class="max-w-2xl text-lg leading-relaxed">
+        Ideas I’ve shared on stage, communities I’ve helped grow, and people I’ve been lucky to build alongside.
+      </p>
+    </div>
+  </section>
+
+  <div class="pixel-page homepage-pixel-zone mx-auto max-w-6xl px-6 py-16 md:px-24 md:py-20">
+    <Talks />
+    <hr class="section-divider my-16" />
+    <Community />
+    <hr class="section-divider my-16" />
+    <Testimonials />
+  </div>
+</BaseLayout>

@@ -2,100 +2,85 @@
 import { getCollection } from "astro:content";
 
 const posts = (await getCollection("blog"))
-  .filter((p) => !p.data.tags?.includes("year-in-review") && !p.data.tags?.includes("personal") && !p.data.title.includes("Docker Layer Caching"))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
-  .slice(0, 4);
+  .filter((post) => !post.data.tags?.includes("year-in-review") && !post.data.tags?.includes("personal") && !post.data.title.includes("Docker Layer Caching"))
+  .sort((first, second) => second.data.pubDate.getTime() - first.data.pubDate.getTime())
+  .slice(0, 3);
 ---
 
-<section>
-  <div class="mb-10 animate-on-scroll">
-    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+<section id="writing">
+  <div class="mb-8 animate-on-scroll">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
-          <span class="section-heading">I Write About Tech</span>
-        </h2>
-        <p class="text-lg text-[var(--color-stone-500)] font-sans">
-          Breaking down complex topics into clear, actionable content.
-        </p>
+        <p class="pixel-date mb-3">RECENT_NOTES.md</p>
+        <h2 class="text-3xl md:text-4xl mb-2">Ideas worth sharing</h2>
+        <p class="text-base text-[var(--text-muted)]">Three recent notes on building and technology.</p>
       </div>
-      <div class="hidden sm:block shrink-0">
-        <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="btn-brutal btn-brutal-secondary text-sm">
-          All posts
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
-        </a>
-      </div>
+      <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm">
+        Read all ↗
+      </a>
     </div>
   </div>
 
-  <div class="blog-scroll overflow-hidden animate-on-scroll">
-    <div class="blog-track flex gap-6">
-      {[...posts, ...posts].map((post) => (
-        <a
-          href={post.data.externalUrl || "https://nancy-chauhan.medium.com/"}
-          class="group shrink-0 w-[240px] md:w-[340px] card-brutal overflow-hidden flex flex-col"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class="h-32 md:h-40 bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)] flex items-center justify-center overflow-hidden">
-            {post.data.image ? (
-              <img src={post.data.image} alt={post.data.title} class="w-full h-full object-cover" loading="lazy" />
-            ) : (
-              <span class="text-4xl font-extrabold font-sans text-[var(--color-stone-200)] group-hover:text-[var(--color-purple)] transition-colors select-none">
-                {post.data.title.charAt(0)}
-              </span>
-            )}
-          </div>
-          <div class="p-5 flex flex-col flex-1">
-            <h3 class="text-base font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors line-clamp-2">
-              {post.data.title}
-            </h3>
-            <div class="flex flex-wrap gap-2 mt-auto">
-              {post.data.tags.slice(0, 2).map((tag) => (
-                <span class="tag-brutal">{tag}</span>
-              ))}
-            </div>
-          </div>
-        </a>
-      ))}
-    </div>
-  </div>
-
-  <div class="mt-8 text-center sm:hidden">
-    <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="inline-flex btn-brutal btn-brutal-secondary text-sm">All posts</a>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+    {posts.map((post, index) => (
+      <a
+        href={post.data.externalUrl || "https://nancy-chauhan.medium.com/"}
+        target="_blank"
+        rel="noopener noreferrer"
+        class={`note-card animate-on-scroll stagger-${index + 1}`}
+      >
+        <span class="note-number">0{index + 1}</span>
+        <h3>{post.data.title}</h3>
+        <div class="mt-auto flex flex-wrap gap-1.5 pt-5">
+          {post.data.tags.slice(0, 2).map((tag) => <span class="tag-brutal">{tag}</span>)}
+        </div>
+        <span class="note-arrow">↗</span>
+      </a>
+    ))}
   </div>
 </section>
 
 <style>
-  .blog-track {
-    width: max-content;
-    animation: scroll-blog var(--marquee-duration, 12s) linear infinite;
+  .note-card {
+    position: relative;
+    display: flex;
+    min-height: 190px;
+    flex-direction: column;
+    padding: 1.1rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 4px 4px 0 var(--pixel-ink);
+    color: var(--pixel-ink);
+    transition: transform 0.12s, box-shadow 0.12s;
   }
 
-  .blog-track:hover {
-    animation-play-state: paused;
+  .note-card:hover {
+    transform: translate(3px, 3px);
+    box-shadow: 1px 1px 0 var(--pixel-ink);
   }
 
-  @keyframes scroll-blog {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+  .note-number {
+    color: var(--pixel-purple);
+    font-family: var(--pixel-font);
+    font-size: 0.62rem;
+    font-weight: 700;
+  }
+
+  .note-card h3 {
+    max-width: 90%;
+    margin-top: 0.8rem;
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .note-arrow {
+    position: absolute;
+    right: 0.8rem;
+    top: 0.65rem;
+    color: var(--pixel-peach);
+    font-family: var(--pixel-font);
   }
 </style>
-
-<script>
-  function initBlogScrollSpeed() {
-    const PIXELS_PER_SECOND = 50;
-    document.querySelectorAll('.blog-track').forEach((track) => {
-      const halfWidth = track.scrollWidth / 2;
-      const duration = halfWidth / PIXELS_PER_SECOND;
-      (track as HTMLElement).style.setProperty('--marquee-duration', `${duration}s`);
-    });
-  }
-  initBlogScrollSpeed();
-  document.addEventListener('astro:page-load', initBlogScrollSpeed);
-</script>

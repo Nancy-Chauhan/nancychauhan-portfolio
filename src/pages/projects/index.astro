@@ -9,7 +9,7 @@ const projects = (await getCollection("projects")).sort(
 ---
 
 <BaseLayout title="Projects | Nancy Chauhan">
-  <section class="py-20">
+  <section class="pixel-page-hero py-20">
     <div class="mx-auto max-w-6xl px-6">
       <h1 class="text-4xl sm:text-5xl font-extrabold font-sans tracking-tight mb-6">
         <span class="section-heading">Projects</span>
@@ -19,7 +19,7 @@ const projects = (await getCollection("projects")).sort(
       </p>
     </div>
   </section>
-  <div class="mx-auto max-w-6xl px-6 pb-20">
+  <div class="pixel-page mx-auto max-w-6xl px-6 pb-20 pt-12 md:pt-16">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {projects.map((project, i) => (
         <div class={`animate-on-scroll stagger-${(i % 4) + 1} h-full`}>

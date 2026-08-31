@@ -1,74 +1,46 @@
 ---
 ---
 
-<section class="relative">
-  <div class="mx-auto max-w-6xl px-6 md:px-24 pt-12 md:pt-16 pb-6 md:pb-8">
-    <div class="flex flex-col md:flex-row items-center md:items-center gap-10">
-      {/* Text */}
-      <div class="text-center md:text-left order-2 md:order-1">
-        <h1 class="text-[clamp(2.5rem,8vw,4.5rem)] font-extrabold font-sans tracking-tight leading-tight mb-6">
-          <span class="text-gradient inline-block">Nancy</span> Chauhan
+<section class="pixel-hero">
+  <div class="pixel-sky" aria-hidden="true">
+    <span class="pixel-cloud cloud-one"></span>
+    <span class="pixel-cloud cloud-two"></span>
+    <span class="pixel-star star-one">✦</span>
+    <span class="pixel-star star-two">+</span>
+    <span class="pixel-star star-three">✦</span>
+  </div>
+
+  <div class="relative z-10 mx-auto max-w-6xl px-6 pb-12 pt-14 md:px-24 md:pb-16 md:pt-20">
+    <div class="grid items-center gap-10 md:grid-cols-[1.15fr_0.85fr] md:gap-14">
+      <div class="order-2 md:order-1">
+        <p class="pixel-overline"><span></span> ENGINEER · PRODUCT BUILDER</p>
+        <h1 class="pixel-title">
+          Hi, I’m <span>Nancy</span>.<br />
+          I love to build<br />
+          and <mark>ship.</mark>
         </h1>
-
-        <p class="text-base md:text-xl text-[var(--color-stone-600)] font-sans leading-relaxed max-w-xl mb-3">
-          I turn user problems into products, across AI, security, and open source.
+        <p class="pixel-lede">
+          I turn user problems into products across AI, security, and open source. Then I share what I learn along the way.
         </p>
 
-        <p class="font-sans text-sm md:text-lg text-[var(--color-stone-400)] mb-4">
-          I care about what gets built and who it's built for.
-        </p>
-
-        {/* CTA + social icons */}
-        <div class="flex flex-wrap items-center justify-center md:justify-start gap-3">
-          <a
-            href="/projects"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--color-purple)] text-white font-sans font-semibold text-sm border-2 border-[var(--color-stone-800)] shadow-brutal-sm hover:bg-[var(--color-purple-dark)] transition-colors"
-          >
-            See what I built
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a href="/projects" class="pixel-button pixel-button-primary">
+            <span aria-hidden="true">▶</span> Start exploring
           </a>
-          <a
-            href="https://github.com/Nancy-Chauhan"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-11 h-11 border-2 border-[var(--color-stone-800)] bg-white text-[var(--color-stone-700)] shadow-brutal-sm hover:border-[var(--color-purple)] hover:text-[var(--color-purple)] transition-colors"
-            aria-label="GitHub"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22" /></svg>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/nancy-chauhan/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-11 h-11 border-2 border-[var(--color-stone-800)] bg-white text-[var(--color-stone-700)] shadow-brutal-sm hover:border-[var(--color-purple)] hover:text-[var(--color-purple)] transition-colors"
-            aria-label="LinkedIn"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 6a2 2 0 100-4 2 2 0 000 4z" /></svg>
-          </a>
-          <a
-            href="https://x.com/_nancychauhan"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="inline-flex items-center justify-center w-11 h-11 border-2 border-[var(--color-stone-800)] bg-white text-[var(--color-stone-700)] shadow-brutal-sm hover:border-[var(--color-purple)] hover:text-[var(--color-purple)] transition-colors"
-            aria-label="X"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+          <a href="/about" class="pixel-button pixel-button-ghost">About player</a>
         </div>
+
       </div>
 
-      {/* Photo */}
-      <div class="shrink-0 order-1 md:order-2 md:mt-6">
-        <div class="card-brutal p-0 overflow-hidden w-[160px] sm:w-[220px] md:w-[300px]">
-          <img
-            src="/nancy-speaking.jpeg"
-            alt="Nancy Chauhan"
-            class="w-full aspect-square sm:aspect-[3/4] object-cover object-[25%_center] hover:scale-105 transition-transform duration-500"
-          />
-          <div class="hidden sm:block border-t-2 border-[var(--color-stone-800)] px-4 py-3">
-            <p class="font-mono text-xs text-[var(--color-stone-400)]">$ nancy --connect --location="SF"<span class="terminal-cursor"></span></p>
+      <div class="order-1 md:order-2">
+        <div class="pixel-profile-shell">
+          <div class="pixel-window-bar">
+            <span>PLAYER_PROFILE.exe</span>
+            <div><i></i><i></i><i></i></div>
+          </div>
+          <div class="pixel-profile-image">
+            <img src="/nancy-speaking.jpeg" alt="Nancy Chauhan speaking at a conference" />
+            <span class="pixel-photo-label">NANCY // LVL. 10</span>
           </div>
         </div>
       </div>

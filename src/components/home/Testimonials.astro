@@ -113,7 +113,7 @@ const testimonials = [
       <div class="hidden sm:flex items-center gap-2 shrink-0">
         <button
           id="testimonial-prev"
-          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
           aria-label="Previous"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -122,7 +122,7 @@ const testimonials = [
         </button>
         <button
           id="testimonial-next"
-          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
           aria-label="Next"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,17 +149,17 @@ const testimonials = [
                   </div>
                 )}
                 <div>
-                  <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{t.name}</p>
-                  <p class="font-sans text-xs text-[var(--color-stone-400)]">{t.title}</p>
+                  <p class="font-sans text-sm font-bold text-[var(--text-primary)]">{t.name}</p>
+                  <p class="font-sans text-xs text-[var(--text-muted)]">{t.title}</p>
                 </div>
               </div>
-              <p class="text-sm font-sans text-[var(--color-stone-600)] leading-relaxed line-clamp-5 flex-1">
+              <p class="text-sm font-sans text-[var(--text-secondary)] leading-relaxed line-clamp-5 flex-1">
                 {t.quote}
               </p>
               <p class="mt-2 text-xs font-sans text-[var(--color-purple)] font-semibold">Tap to read full →</p>
             </div>
             {/* Back */}
-            <div class="flip-card-back card-brutal p-4 md:p-5 flex flex-col bg-white">
+            <div class="flip-card-back card-brutal p-4 md:p-5 flex flex-col">
               <div class="flex items-center gap-3 mb-3">
                 {t.img ? (
                   <img src={t.img} alt={t.name} class="w-8 h-8 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
@@ -168,9 +168,9 @@ const testimonials = [
                     {t.name.split(' ').map((n: string) => n[0]).join('')}
                   </div>
                 )}
-                <p class="font-sans text-xs font-bold text-[var(--color-stone-900)]">{t.name}</p>
+                <p class="font-sans text-xs font-bold text-[var(--text-primary)]">{t.name}</p>
               </div>
-              <p class="text-xs font-sans text-[var(--color-stone-600)] leading-relaxed overflow-y-auto flex-1 no-scrollbar">
+              <p class="text-xs font-sans text-[var(--text-secondary)] leading-relaxed overflow-y-auto flex-1 no-scrollbar">
                 {t.quote}
               </p>
               <p class="mt-2 text-xs font-sans text-[var(--color-purple)] font-semibold">← Tap to flip back</p>

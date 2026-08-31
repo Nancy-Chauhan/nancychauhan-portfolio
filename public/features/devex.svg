@@ -1,46 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" fill="none">
-  <!-- Terminal window with CLI commands -->
-  <!-- Terminal window -->
-  <rect x="35" y="55" width="230" height="190" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
-  <!-- Title bar -->
-  <rect x="35" y="55" width="230" height="30" rx="10" fill="#93c5fd" stroke="#2563eb" stroke-width="2"/>
-  <rect x="35" y="75" width="230" height="10" fill="#93c5fd"/>
-  <!-- Traffic lights -->
-  <circle cx="55" cy="70" r="5" fill="#ff5f57" stroke="#e0443e" stroke-width="1"/>
-  <circle cx="73" cy="70" r="5" fill="#febc2e" stroke="#dea123" stroke-width="1"/>
-  <circle cx="91" cy="70" r="5" fill="#28c840" stroke="#1aab29" stroke-width="1"/>
-  <!-- Terminal title -->
-  <text x="150" y="74" font-family="monospace" font-size="10" fill="#2563eb" text-anchor="middle" opacity="0.7">~/terminal</text>
-  <!-- Terminal background -->
-  <rect x="37" y="85" width="226" height="158" fill="#1e293b"/>
-  <!-- Command lines -->
-  <text x="50" y="108" font-family="monospace" font-size="11" fill="#60a5fa">$</text>
-  <text x="62" y="108" font-family="monospace" font-size="11" fill="#e2e8f0"> npm create astro@latest</text>
-  <text x="50" y="126" font-family="monospace" font-size="11" fill="#34d399">  Project created!</text>
-  <text x="50" y="150" font-family="monospace" font-size="11" fill="#60a5fa">$</text>
-  <text x="62" y="150" font-family="monospace" font-size="11" fill="#e2e8f0"> git push origin main</text>
-  <text x="50" y="168" font-family="monospace" font-size="11" fill="#34d399">  deployed to production</text>
-  <text x="50" y="192" font-family="monospace" font-size="11" fill="#60a5fa">$</text>
-  <text x="62" y="192" font-family="monospace" font-size="11" fill="#e2e8f0"> docker compose up</text>
-  <text x="50" y="210" font-family="monospace" font-size="11" fill="#fbbf24">  services running...</text>
-  <!-- Blinking cursor -->
-  <rect x="50" y="222" width="7" height="12" fill="#60a5fa" opacity="0.8"/>
-  <!-- Floating elements around -->
-  <!-- Git branch icon -->
-  <circle cx="28" cy="130" r="4" fill="#60a5fa"/>
-  <circle cx="18" cy="150" r="4" fill="#60a5fa"/>
-  <circle cx="28" cy="170" r="4" fill="#60a5fa"/>
-  <line x1="28" y1="134" x2="28" y2="166" stroke="#60a5fa" stroke-width="1.5"/>
-  <path d="M28 150 Q23 150 18 150" stroke="#60a5fa" stroke-width="1.5" fill="none"/>
-  <!-- Gear icon right -->
-  <circle cx="278" cy="150" r="12" fill="none" stroke="#93c5fd" stroke-width="2"/>
-  <circle cx="278" cy="150" r="5" fill="#93c5fd"/>
-  <line x1="278" y1="136" x2="278" y2="140" stroke="#93c5fd" stroke-width="2"/>
-  <line x1="278" y1="160" x2="278" y2="164" stroke="#93c5fd" stroke-width="2"/>
-  <line x1="264" y1="150" x2="268" y2="150" stroke="#93c5fd" stroke-width="2"/>
-  <line x1="288" y1="150" x2="292" y2="150" stroke="#93c5fd" stroke-width="2"/>
-  <!-- Sparkles -->
-  <path d="M80 35 L82 41 L88 43 L82 45 L80 51 L78 45 L72 43 L78 41Z" fill="#93c5fd"/>
-  <path d="M220 35 L222 40 L227 42 L222 44 L220 49 L218 44 L213 42 L218 40Z" fill="#bfdbfe"/>
-  <path d="M280 95 L282 100 L287 102 L282 104 L280 109 L278 104 L273 102 L278 100Z" fill="#dbeafe"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" shape-rendering="crispEdges">
+  <rect width="300" height="300" fill="#dbeafe"/>
+  <rect x="34" y="50" width="232" height="190" fill="#25222b"/>
+  <rect x="42" y="58" width="216" height="174" fill="#18243a"/>
+  <rect x="42" y="58" width="216" height="30" fill="#81b8f2"/>
+  <rect x="54" y="68" width="8" height="8" fill="#ff6659"/>
+  <rect x="68" y="68" width="8" height="8" fill="#ffd04a"/>
+  <rect x="82" y="68" width="8" height="8" fill="#45cf78"/>
+  <rect x="62" y="108" width="12" height="6" fill="#81b8f2"/>
+  <rect x="80" y="108" width="74" height="6" fill="#f3ede4"/>
+  <rect x="62" y="128" width="112" height="6" fill="#67d6a5"/>
+  <rect x="62" y="152" width="12" height="6" fill="#81b8f2"/>
+  <rect x="80" y="152" width="96" height="6" fill="#f3ede4"/>
+  <rect x="62" y="172" width="138" height="6" fill="#ffcf55"/>
+  <rect x="62" y="196" width="12" height="12" fill="#81b8f2"/>
+  <rect x="204" y="110" width="28" height="28" fill="#c9dfff"/>
+  <rect x="210" y="116" width="16" height="16" fill="#25222b"/>
+  <rect x="213" y="120" width="4" height="4" fill="#67d6a5"/>
+  <rect x="221" y="120" width="4" height="4" fill="#67d6a5"/>
+  <rect x="216" y="128" width="6" height="2" fill="#81b8f2"/>
+  <rect x="214" y="102" width="8" height="8" fill="#25222b"/>
+  <rect x="20" y="142" width="8" height="8" fill="#81b8f2"/>
+  <rect x="272" y="116" width="8" height="8" fill="#81b8f2"/>
 </svg>

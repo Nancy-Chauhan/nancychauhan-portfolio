@@ -8,6 +8,18 @@ interface Props {
 
 const { title, tagline, techStack, slug } = Astro.props;
 
+const projectVisuals: Record<string, { symbol: string; label: string; background: string; accent: string }> = {
+  skillfeed: { symbol: "▤", label: "CURATE", background: "#d9ceff", accent: "#7557d9" },
+  "llm-powered-threat-modelling": { symbol: "[#]", label: "MODEL", background: "#ffd2e7", accent: "#e94b91" },
+  preflight: { symbol: "✓", label: "CHECK", background: "#c9dfff", accent: "#438bd1" },
+  secloop: { symbol: "↻", label: "SCAN", background: "#c5f2db", accent: "#2ea36e" },
+  "attacktree-app": { symbol: "◇", label: "MAP", background: "#ffd2bd", accent: "#e87955" },
+  "mcp-agent-os": { symbol: "◎", label: "AGENT", background: "#d9ceff", accent: "#7557d9" },
+  "info-disclosure-scanner": { symbol: "⌕", label: "FIND", background: "#fff0b8", accent: "#d39a17" },
+};
+
+const visual = projectVisuals[slug] ?? { symbol: ">_", label: "BUILD", background: "#d9ceff", accent: "#7557d9" };
+
 const techLogos: Record<string, string> = {
   "Next.js 16": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
   "TypeScript": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
@@ -36,12 +48,7 @@ const techLogos: Record<string, string> = {
 };
 ---
 
-<a
-  href={`/projects/${slug}`}
-  class="group block card-brutal overflow-hidden h-full flex flex-col"
-  transition:name={`project-${slug}`}
->
-  {/* Window chrome bar */}
+<a href={`/projects/${slug}`} class="group block card-brutal overflow-hidden h-full flex flex-col" transition:name={`project-${slug}`}>
   <div class="window-chrome">
     <div class="window-dot" style="background:#ff5f57;"></div>
     <div class="window-dot" style="background:#febc2e;"></div>
@@ -49,25 +56,153 @@ const techLogos: Record<string, string> = {
     <span class="window-chrome-title">~/projects/{slug}</span>
   </div>
 
-  <div class="px-5 pt-4 pb-5 flex flex-col flex-1">
-    <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors">
-      {title}
-    </h3>
-    <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 flex-1">
-      {tagline}
-    </p>
-    <div class="flex flex-wrap items-center gap-3 mb-4">
-      {techStack.slice(0, 5).map((tech) => (
-        techLogos[tech] ? (
-          <img src={techLogos[tech]} alt={tech} title={tech} class="w-6 h-6 opacity-60" loading="lazy" />
-        ) : null
-      ))}
+  <div class="project-preview" style={`--preview-bg:${visual.background};--preview-accent:${visual.accent};`}>
+    <div class="pixel-project-window" aria-hidden="true">
+      <div class="project-window-bar"><i></i><i></i><i></i></div>
+      <div class="project-window-screen">
+        <span>{visual.symbol}</span>
+        <div><i></i><i></i><i></i></div>
+      </div>
     </div>
-    <span class="terminal-link group-hover:gap-3 transition-all">
-      explore
-      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-      </svg>
-    </span>
+    <span class="preview-label">{visual.label}.px</span>
+  </div>
+
+  <div class="px-4 pt-3 pb-3 flex flex-col flex-1">
+    <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-1 group-hover:text-[var(--color-purple)] transition-colors">{title}</h3>
+    <p class="project-tagline text-sm text-[var(--color-stone-600)] font-sans leading-relaxed mb-2 flex-1">{tagline}</p>
+    <span class="project-cta">Check it out <b aria-hidden="true">→</b></span>
   </div>
 </a>
+
+<style>
+  .project-preview {
+    position: relative;
+    display: grid;
+    height: 104px;
+    place-items: center;
+    overflow: hidden;
+    border-bottom: 2px solid var(--pixel-ink);
+    background: var(--preview-bg);
+  }
+
+  .window-chrome-title { font-size: 0.66rem; }
+
+  .project-preview::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0 7px rgba(255, 250, 240, 0.28);
+    pointer-events: none;
+  }
+
+  .pixel-project-window {
+    width: 102px;
+    border: 3px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 4px 4px 0 color-mix(in srgb, var(--preview-accent) 65%, var(--pixel-ink));
+    transition: transform 0.25s steps(3);
+    animation: window-idle 2.8s steps(3) infinite;
+  }
+
+  .group:hover .pixel-project-window { transform: translateY(-4px) rotate(-1deg); }
+
+  .project-window-bar {
+    display: flex;
+    height: 16px;
+    align-items: center;
+    gap: 3px;
+    padding: 0 5px;
+    border-bottom: 3px solid var(--pixel-ink);
+    background: var(--preview-accent);
+  }
+
+  .project-window-bar i { width: 5px; height: 5px; border: 1px solid var(--pixel-ink); background: var(--pixel-yellow); }
+  .project-window-bar i:first-child { background: var(--pixel-peach); }
+  .project-window-bar i:last-child { background: var(--pixel-mint); }
+
+  .project-window-screen {
+    display: flex;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: #25222b;
+    color: var(--preview-bg);
+    font-family: var(--pixel-font);
+  }
+
+  .project-window-screen > span {
+    font-size: 1rem;
+    font-weight: 700;
+    animation: symbol-pulse 1.8s steps(2) infinite;
+  }
+  .project-window-screen > div { display: flex; flex-direction: column; gap: 4px; }
+  .project-window-screen > div i { display: block; width: 26px; height: 3px; background: var(--preview-accent); animation: code-type 1.6s steps(3) infinite; transform-origin: left; }
+  .project-window-screen > div i:nth-child(2) { width: 19px; background: var(--pixel-mint); animation-delay: 0.25s; }
+  .project-window-screen > div i:nth-child(3) { width: 12px; background: var(--pixel-yellow); animation-delay: 0.5s; }
+
+  .preview-label {
+    position: absolute;
+    z-index: 1;
+    right: 0.65rem;
+    bottom: 0.55rem;
+    padding: 0.2rem 0.32rem;
+    border: 1px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.42rem;
+    font-weight: 700;
+  }
+
+  @keyframes window-idle {
+    50% { transform: translateY(-3px); }
+  }
+
+  @keyframes symbol-pulse {
+    50% { color: var(--pixel-mint); }
+  }
+
+  @keyframes code-type {
+    0%, 20% { transform: scaleX(0.3); opacity: 0.45; }
+    55%, 100% { transform: scaleX(1); opacity: 1; }
+  }
+
+  .project-tagline {
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+  }
+
+  .project-cta {
+    display: inline-flex;
+    width: fit-content;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.42rem 0.7rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 2px 2px 0 var(--pixel-ink);
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.74rem;
+    font-weight: 700;
+  }
+
+  .group:hover .project-cta {
+    background: var(--preview-bg);
+    transform: translate(1px, 1px);
+    box-shadow: 1px 1px 0 var(--pixel-ink);
+  }
+
+  @media (max-width: 520px) {
+    .project-preview { height: 92px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pixel-project-window,
+    .project-window-screen > span,
+    .project-window-screen > div i { animation: none; transition: none; }
+  }
+</style>

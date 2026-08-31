@@ -19,7 +19,7 @@ const { Content } = await render(project);
 ---
 
 <BaseLayout title={`${project.data.title} | Nancy Chauhan`} description={project.data.description}>
-  <section class="py-16">
+  <section class="pixel-page-hero py-16">
     <div class="mx-auto max-w-5xl px-6">
       <Breadcrumbs
         items={[
@@ -36,13 +36,14 @@ const { Content } = await render(project);
       />
     </div>
   </section>
-  <div class="mx-auto max-w-5xl px-6 pb-20">
+  <div class="project-content-spacer" aria-hidden="true"></div>
+  <div class="pixel-page pixel-project-content mx-auto max-w-5xl px-6 pb-20">
     {project.data.image && (
       <div class="mb-12">
         <img
           src={project.data.image}
           alt={`${project.data.title} architecture`}
-          class="w-full border-2 border-[var(--color-stone-800)] shadow-brutal"
+          class="pixel-project-image w-full"
         />
       </div>
     )}

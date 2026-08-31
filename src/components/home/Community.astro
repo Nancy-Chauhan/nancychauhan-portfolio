@@ -7,7 +7,7 @@ const roles = [
 ];
 ---
 
-<section>
+<section id="community">
   <div class="mb-10">
     <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
       <div>
@@ -21,7 +21,7 @@ const roles = [
       <div class="hidden sm:flex items-center gap-2 shrink-0">
         <button
           id="featured-prev"
-          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
           aria-label="Previous"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -30,7 +30,7 @@ const roles = [
         </button>
         <button
           id="featured-next"
-          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--color-stone-800)] bg-white shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
+          class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
           aria-label="Next"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -46,12 +46,12 @@ const roles = [
       {roles.map((role) => (
         role.link ? (
           <a href={role.link} target="_blank" rel="noopener noreferrer" class="shrink-0 w-[180px] md:w-[260px] card-brutal overflow-hidden flex flex-col hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer">
-            <div class="h-[160px] md:h-[240px] overflow-hidden bg-[var(--color-stone-100)] border-b-2 border-[var(--color-stone-800)]">
+            <div class="h-[160px] md:h-[240px] overflow-hidden bg-[var(--bg-subtle)] border-b-2 border-[var(--border)]">
               <img src={role.image} alt={role.title} class="w-full h-full object-cover" loading="lazy" />
             </div>
             <div class="p-4 flex items-center justify-between gap-2">
-              <p class="font-sans text-sm font-bold text-[var(--color-stone-900)]">{role.title}</p>
-              <svg class="w-4 h-4 shrink-0 text-[var(--color-stone-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <p class="font-sans text-sm font-bold text-[var(--text-primary)]">{role.title}</p>
+              <svg class="w-4 h-4 shrink-0 text-[var(--text-muted)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
             </div>

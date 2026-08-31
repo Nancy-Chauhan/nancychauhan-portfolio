@@ -1,94 +1,70 @@
 ---
 const navLinks = [
-  { href: "/projects", label: "Projects" },
-  { href: "https://nancy-chauhan.medium.com/", label: "Blog", external: true },
-  { href: "/#talks", label: "Talks" },
-  { href: "/about", label: "About" },
-  { href: "https://cal.com/nancychauhan", label: "Let's Chat", external: true },
+  { href: "/projects", label: "PROJECTS", icon: "◆" },
+  { href: "https://nancy-chauhan.medium.com/", label: "BLOG", icon: "▤", external: true },
+  { href: "/speaking", label: "SPEAKING", icon: "))" },
+  { href: "/about", label: "ABOUT", icon: "☺" },
 ];
 
 const currentPath = Astro.url.pathname;
 ---
 
-<header class="w-full border-b border-[var(--color-stone-300)]">
-  <nav class="mx-auto max-w-6xl px-6 md:px-24 py-5 flex items-center justify-between">
-    <a href="/" class="font-sans text-sm font-medium text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)] transition-colors">Home</a>
+<header class="pixel-header sticky top-0 z-30">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-24">
+    <a href="/" class="pixel-brand" aria-label="Nancy Chauhan, home">
+      <span class="pixel-brand-icon">NC</span>
+      <span>NANCY.CHAUHAN</span>
+    </a>
 
-    {/* Desktop nav */}
-    <div class="hidden md:flex items-center gap-6">
+    <div class="hidden items-center gap-2 md:flex">
       {navLinks.map((link) => (
         <a
           href={link.href}
           {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
           class:list={[
-            "font-sans text-sm font-medium transition-colors duration-200",
-            currentPath === link.href || (!link.external && link.href !== "/" && currentPath.startsWith(link.href))
-              ? "text-[var(--color-purple)]"
-              : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)]",
+            "pixel-nav-link",
+            currentPath === link.href || (!link.external && currentPath.startsWith(link.href)) ? "is-active" : "",
           ]}
         >
-          {link.label}
+          <span aria-hidden="true">{link.icon}</span>{link.label}
         </a>
       ))}
+      <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-chat-link">LET’S CHAT ↗</a>
     </div>
 
-    {/* Mobile menu button */}
-    <button
-      id="mobile-menu-btn"
-      class="md:hidden p-2 text-[var(--color-stone-600)] hover:bg-[var(--color-stone-100)] transition-colors"
-      aria-label="Toggle menu"
-    >
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+    <details class="mobile-navigation md:hidden">
+      <summary class="pixel-menu-button" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </summary>
+      <div class="pixel-mobile-menu-panel border-t-2 border-[var(--pixel-ink)] bg-[var(--pixel-paper)] px-6 pb-5 pt-3">
+        <div class="flex flex-col gap-1">
+          {navLinks.map((link) => (
+            <a href={link.href} {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}} class="pixel-mobile-link"><span aria-hidden="true">{link.icon}</span> {link.label}</a>
+          ))}
+          <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-mobile-link">LET’S CHAT ↗</a>
+        </div>
+      </div>
+    </details>
   </nav>
-
-  {/* Mobile menu */}
-  <div
-    id="mobile-menu"
-    class="hidden md:hidden px-6 pb-4"
-  >
-    <div class="flex flex-col gap-1">
-      {navLinks.map((link) => (
-        <a
-          href={link.href}
-          {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
-          class:list={[
-            "px-3 py-2 font-sans text-sm font-medium transition-colors duration-200",
-            currentPath === link.href || (!link.external && link.href !== "/" && currentPath.startsWith(link.href))
-              ? "text-[var(--color-purple)]"
-              : "text-[var(--color-stone-600)] hover:text-[var(--color-stone-900)] hover:bg-[var(--color-stone-100)]",
-          ]}
-        >
-          {link.label}
-        </a>
-      ))}
-    </div>
-  </div>
 </header>
 
-<script>
-  function initMobileMenu() {
-    const btn = document.getElementById("mobile-menu-btn");
-    const menu = document.getElementById("mobile-menu");
-    const icon = document.getElementById("menu-icon");
-
-    if (!btn || !menu) return;
-
-    // Remove old listener by cloning
-    const newBtn = btn.cloneNode(true);
-    btn.parentNode?.replaceChild(newBtn, btn);
-
-    newBtn.addEventListener("click", () => {
-      const isOpen = !menu.classList.contains("hidden");
-      menu.classList.toggle("hidden");
-      const currentIcon = newBtn.querySelector("#menu-icon");
-      if (currentIcon) {
-        currentIcon.setAttribute("d", isOpen ? "M4 6h16M4 12h16M4 18h16" : "M6 18L18 6M6 6l12 12");
-      }
-    });
+<style>
+  .mobile-navigation summary {
+    list-style: none;
   }
-  initMobileMenu();
-  document.addEventListener("astro:page-load", initMobileMenu);
-</script>
+
+  .mobile-navigation summary::-webkit-details-marker { display: none; }
+
+  .pixel-mobile-menu-panel {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 0 var(--pixel-ink);
+  }
+
+  .mobile-navigation[open] .pixel-menu-button span:first-child { transform: translateY(6px) rotate(45deg); }
+  .mobile-navigation[open] .pixel-menu-button span:nth-child(2) { opacity: 0; }
+  .mobile-navigation[open] .pixel-menu-button span:last-child { transform: translateY(-6px) rotate(-45deg); }
+</style>
