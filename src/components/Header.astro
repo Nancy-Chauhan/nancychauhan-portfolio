@@ -16,7 +16,7 @@ const currentPath = Astro.url.pathname;
       <span>NANCY.CHAUHAN</span>
     </a>
 
-    <div class="hidden items-center gap-2 md:flex">
+    <div class="hidden items-center gap-2 xl:flex">
       {navLinks.map((link) => (
         <a
           href={link.href}
@@ -29,22 +29,32 @@ const currentPath = Astro.url.pathname;
           <span aria-hidden="true">{link.icon}</span>{link.label}
         </a>
       ))}
+      <div class="theme-picker" role="group" aria-label="Color theme">
+        <button type="button" data-theme-choice="light" aria-pressed="true"><span aria-hidden="true">☀</span> LIGHT</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false"><span aria-hidden="true">☾</span> DARK</button>
+      </div>
       <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-chat-link">LET’S CHAT ↗</a>
     </div>
 
-    <details class="mobile-navigation md:hidden">
-      <summary class="pixel-menu-button" aria-label="Toggle menu">
-        <span></span><span></span><span></span>
-      </summary>
-      <div class="pixel-mobile-menu-panel border-t-2 border-[var(--pixel-ink)] bg-[var(--pixel-paper)] px-6 pb-5 pt-3">
-        <div class="flex flex-col gap-1">
-          {navLinks.map((link) => (
-            <a href={link.href} {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}} class="pixel-mobile-link"><span aria-hidden="true">{link.icon}</span> {link.label}</a>
-          ))}
-          <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-mobile-link">LET’S CHAT ↗</a>
-        </div>
+    <div class="flex items-center gap-3 xl:hidden">
+      <div class="theme-picker theme-picker-mobile" role="group" aria-label="Color theme">
+        <button type="button" data-theme-choice="light" aria-label="Use light theme" aria-pressed="true">☀</button>
+        <button type="button" data-theme-choice="dark" aria-label="Use dark theme" aria-pressed="false">☾</button>
       </div>
-    </details>
+      <details class="mobile-navigation">
+        <summary class="pixel-menu-button" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </summary>
+        <div class="pixel-mobile-menu-panel border-t-2 border-[var(--pixel-ink)] bg-[var(--pixel-paper)] px-6 pb-5 pt-3">
+          <div class="flex flex-col gap-1">
+            {navLinks.map((link) => (
+              <a href={link.href} {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}} class="pixel-mobile-link"><span aria-hidden="true">{link.icon}</span> {link.label}</a>
+            ))}
+            <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-mobile-link">LET’S CHAT ↗</a>
+          </div>
+        </div>
+      </details>
+    </div>
   </nav>
 </header>
 
@@ -67,4 +77,52 @@ const currentPath = Astro.url.pathname;
   .mobile-navigation[open] .pixel-menu-button span:first-child { transform: translateY(6px) rotate(45deg); }
   .mobile-navigation[open] .pixel-menu-button span:nth-child(2) { opacity: 0; }
   .mobile-navigation[open] .pixel-menu-button span:last-child { transform: translateY(-6px) rotate(-45deg); }
+
+  .theme-picker {
+    display: inline-flex;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 3px 3px 0 var(--pixel-shadow);
+  }
+
+  .theme-picker button {
+    min-height: 2.5rem;
+    padding: 0.45rem 0.6rem;
+    color: var(--text-muted);
+    font-family: var(--pixel-font);
+    font-size: 0.9rem;
+    font-weight: 700;
+  }
+
+  .theme-picker button + button { border-left: 2px solid var(--pixel-ink); }
+  .theme-picker button[aria-pressed="true"] { background: var(--pixel-purple); color: white; }
+  :global(html[data-theme="dark"]) .theme-picker button[aria-pressed="true"] { color: #151126; }
+  .theme-picker-mobile button { width: 2.25rem; height: 2.25rem; padding: 0; font-size: 0.95rem; }
 </style>
+
+<script>
+  function syncThemeControls() {
+    const theme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-choice]").forEach((button) => {
+      button.setAttribute("aria-pressed", String(button.dataset.themeChoice === theme));
+    });
+  }
+
+  function bindThemeControls() {
+    syncThemeControls();
+    document.querySelectorAll<HTMLButtonElement>("[data-theme-choice]").forEach((button) => {
+      if (button.dataset.themeBound) return;
+      button.dataset.themeBound = "true";
+      button.addEventListener("click", () => {
+        const theme = button.dataset.themeChoice === "dark" ? "dark" : "light";
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.style.colorScheme = theme;
+        localStorage.setItem("nancy-theme", theme);
+        syncThemeControls();
+      });
+    });
+  }
+
+  bindThemeControls();
+  document.addEventListener("astro:page-load", bindThemeControls);
+</script>

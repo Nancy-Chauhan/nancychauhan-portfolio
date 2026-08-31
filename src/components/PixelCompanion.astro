@@ -71,14 +71,14 @@
     right: 2.5rem;
     bottom: 3.2rem;
     width: max-content;
-    max-width: 10rem;
-    padding: 0.4rem 0.55rem;
+    max-width: 12rem;
+    padding: 0.55rem 0.7rem;
     border: 2px solid var(--pixel-ink);
     background: var(--pixel-card);
     box-shadow: 3px 3px 0 var(--pixel-shadow);
     color: var(--pixel-ink);
     font-family: var(--pixel-font);
-    font-size: 0.68rem;
+    font-size: 0.9rem;
     font-weight: 700;
     opacity: 1;
     transition: opacity 0.15s;
@@ -94,7 +94,9 @@
     animation: companion-arrow 1s steps(2) infinite;
   }
 
-  .pixel-companion-bubble:hover { background: var(--pixel-yellow); }
+  .pixel-companion-bubble:hover { background: var(--pixel-yellow); color: #25222b; }
+  .pixel-companion-bubble:hover b { color: #4e359f; }
+  .pixel-companion-bubble:hover::after { background: var(--pixel-yellow); }
   .pixel-companion-bubble:focus-visible { outline: 3px solid var(--pixel-purple); outline-offset: 3px; }
 
   .pixel-companion-bubble::after {
@@ -141,7 +143,7 @@
     .pixel-companion[data-position="middle-right"] { top: 48%; right: 0.6rem; }
     .pixel-companion[data-position="bottom-left"] { bottom: 0.6rem; left: 0.6rem; }
     .pixel-companion[data-position="middle-left"] { top: 48%; left: 0.6rem; }
-    .pixel-companion-bubble { max-width: 8.5rem; padding: 0.4rem 0.5rem; font-size: 0.6rem; }
+    .pixel-companion-bubble { max-width: 10.5rem; padding: 0.55rem 0.65rem; font-size: 0.82rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {

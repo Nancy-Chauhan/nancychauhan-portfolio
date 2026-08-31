@@ -265,21 +265,19 @@ const skillGroups = [
     }
   }
 
-  @media (prefers-color-scheme: dark) {
-    .skill-card {
-      --skill-accent: #9089ff;
-      --skill-tint: #2f2947;
-      background: var(--pixel-card);
-    }
-
-    .skill-card:nth-child(2) { --skill-accent: #7eb8ff; --skill-tint: #203b59; }
-    .skill-card:nth-child(3) { --skill-accent: #72d7a5; --skill-tint: #1b4439; }
-    .skill-card:nth-child(4) { --skill-accent: #ff8fbd; --skill-tint: #502b40; }
-    .skill-card:nth-child(5) { --skill-accent: #ffbd75; --skill-tint: #51371f; }
-    .skill-card:nth-child(6) { --skill-accent: #9089ff; --skill-tint: #2f2947; }
-
-    .skill-card__mark { color: #15131b; }
-    .skill-card__count,
-    .skill-tag { background: #111827; }
+  :global(html[data-theme="dark"]) .skill-card {
+    --skill-accent: #9089ff;
+    --skill-tint: #2f2947;
+    background: var(--pixel-card);
   }
+
+  :global(html[data-theme="dark"]) .skill-card:nth-child(2) { --skill-accent: #7eb8ff; --skill-tint: #203b59; }
+  :global(html[data-theme="dark"]) .skill-card:nth-child(3) { --skill-accent: #72d7a5; --skill-tint: #1b4439; }
+  :global(html[data-theme="dark"]) .skill-card:nth-child(4) { --skill-accent: #ff8fbd; --skill-tint: #502b40; }
+  :global(html[data-theme="dark"]) .skill-card:nth-child(5) { --skill-accent: #ffbd75; --skill-tint: #51371f; }
+  :global(html[data-theme="dark"]) .skill-card:nth-child(6) { --skill-accent: #9089ff; --skill-tint: #2f2947; }
+
+  :global(html[data-theme="dark"]) .skill-card__mark { color: #15131b; }
+  :global(html[data-theme="dark"]) .skill-card__count,
+  :global(html[data-theme="dark"]) .skill-tag { background: #111827; }
 </style>
