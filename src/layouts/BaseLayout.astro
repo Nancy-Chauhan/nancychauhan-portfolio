@@ -16,7 +16,7 @@ const socialImageUrl = new URL("/og-image.png", Astro.site ?? "https://nancychau
 ---
 
 <!doctype html>
-<html lang="en" data-theme="light" style="color-scheme: light;">
+<html lang="en" data-theme="light" style="color-scheme: only light;">
   <head>
     <meta charset="UTF-8" />
     <script is:inline>
@@ -24,11 +24,11 @@ const socialImageUrl = new URL("/og-image.png", Astro.site ?? "https://nancychau
         const savedTheme = localStorage.getItem("nancy-theme");
         const theme = savedTheme === "dark" ? "dark" : "light";
         document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme;
+        document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "only light";
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="only light" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />

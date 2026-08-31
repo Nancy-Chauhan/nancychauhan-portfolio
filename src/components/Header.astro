@@ -116,7 +116,7 @@ const currentPath = Astro.url.pathname;
       button.addEventListener("click", () => {
         const theme = button.dataset.themeChoice === "dark" ? "dark" : "light";
         document.documentElement.dataset.theme = theme;
-        document.documentElement.style.colorScheme = theme;
+        document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "only light";
         localStorage.setItem("nancy-theme", theme);
         syncThemeControls();
       });
