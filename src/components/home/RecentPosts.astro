@@ -49,20 +49,20 @@ const posts = (await getCollection("blog"))
     padding: 1.1rem;
     border: 2px solid var(--pixel-ink);
     background: var(--pixel-card);
-    box-shadow: 4px 4px 0 var(--pixel-ink);
+    box-shadow: 4px 4px 0 var(--pixel-shadow);
     color: var(--pixel-ink);
     transition: transform 0.12s, box-shadow 0.12s;
   }
 
   .note-card:hover {
     transform: translate(3px, 3px);
-    box-shadow: 1px 1px 0 var(--pixel-ink);
+    box-shadow: 1px 1px 0 var(--pixel-shadow);
   }
 
   .note-number {
     color: var(--pixel-purple);
     font-family: var(--pixel-font);
-    font-size: 0.62rem;
+    font-size: 0.72rem;
     font-weight: 700;
   }
 

@@ -22,7 +22,8 @@ const logos = [
     <div class="marquee-track flex items-center gap-14 w-max">
       {[...logos, ...logos].map((logo) => (
         <div class="logo-item shrink-0 flex items-center justify-center">
-          <img src={logo.src} alt={logo.name} style={logo.style} class="object-contain" />
+          <img src={logo.src} alt={logo.name} style={logo.style} class="logo-light object-contain" />
+          <img src={logo.src} alt="" aria-hidden="true" style={logo.style} class="logo-dark object-contain" />
         </div>
       ))}
     </div>
@@ -36,6 +37,17 @@ const logos = [
 
   .marquee-track:hover {
     animation-play-state: paused;
+  }
+
+  .logo-dark { display: none; }
+
+  @media (prefers-color-scheme: dark) {
+    .logo-light { display: none; }
+    .logo-dark {
+      display: block;
+      filter: grayscale(1) brightness(0) invert(1);
+      opacity: 1;
+    }
   }
 
 

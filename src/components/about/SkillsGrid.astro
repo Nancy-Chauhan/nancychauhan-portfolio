@@ -2,7 +2,7 @@
 const skillGroups = [
   {
     category: "Languages",
-    icon: "terminal",
+    mark: ">_",
     skills: [
       { name: "Python", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" },
       { name: "TypeScript", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" },
@@ -13,7 +13,7 @@ const skillGroups = [
   },
   {
     category: "AI & ML",
-    icon: "sparkle",
+    mark: "✦",
     skills: [
       { name: "LLM Observability" },
       { name: "AI Agents" },
@@ -23,7 +23,7 @@ const skillGroups = [
   },
   {
     category: "Infrastructure",
-    icon: "cloud",
+    mark: "⌁",
     skills: [
       { name: "Kubernetes", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-original.svg" },
       { name: "Docker", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" },
@@ -34,7 +34,7 @@ const skillGroups = [
   },
   {
     category: "Security",
-    icon: "shield",
+    mark: "[#]",
     skills: [
       { name: "CI/CD Security" },
       { name: "SAST" },
@@ -44,7 +44,7 @@ const skillGroups = [
   },
   {
     category: "Developer Relations",
-    icon: "megaphone",
+    mark: "))",
     skills: [
       { name: "Technical Writing" },
       { name: "Conference Speaking" },
@@ -54,7 +54,7 @@ const skillGroups = [
   },
   {
     category: "Frameworks & Tools",
-    icon: "wrench",
+    mark: "◆",
     skills: [
       { name: "React", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
       { name: "Next.js", logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" },
@@ -66,53 +66,220 @@ const skillGroups = [
 ];
 ---
 
-<section>
-  <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-8 animate-on-scroll">
-    <span class="section-heading">Tech Stack</span>
-  </h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<section id="tech-stack">
+  <div class="stack-heading animate-on-scroll">
+    <div>
+      <p class="stack-kicker">TOOLKIT.exe</p>
+      <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight">
+        <span class="section-heading">Tech Stack</span>
+      </h2>
+    </div>
+    <p class="stack-intro">The languages, systems, and practices I use to turn ideas into shipped products.</p>
+  </div>
+  <div class="skills-grid">
     {skillGroups.map((group, i) => (
-      <div class={`animate-on-scroll stagger-${i + 1} skill-card card-dashed p-5`}>
-        <h3 class="font-sans text-xs font-bold uppercase tracking-widest text-[var(--color-stone-400)] mb-4">
-          {group.category}
-        </h3>
-        <div class="flex flex-wrap gap-2">
+      <article class={`animate-on-scroll stagger-${i + 1} skill-card`}>
+        <header class="skill-card__header">
+          <span class="skill-card__number">0{i + 1}</span>
+          <span class="skill-card__mark" aria-hidden="true">{group.mark}</span>
+          <h3>{group.category}</h3>
+          <span class="skill-card__count">{group.skills.length}</span>
+        </header>
+        <div class="skill-card__body">
           {group.skills.map((skill) => (
             <span class="skill-tag">
               {skill.logo && (
-                <img src={skill.logo} alt={skill.name} class="w-4 h-4 opacity-70" loading="lazy" />
+                <img src={skill.logo} alt="" class="skill-logo" loading="lazy" />
               )}
               {skill.name}
             </span>
           ))}
         </div>
-      </div>
+      </article>
     ))}
   </div>
 </section>
 
 <style>
+  .stack-heading {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .stack-kicker {
+    margin-bottom: 0.45rem;
+    color: var(--pixel-purple);
+    font-family: var(--pixel-font);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  .stack-intro {
+    max-width: 31rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
   .skill-card {
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --skill-accent: #7656e8;
+    --skill-tint: #e8e0ff;
+    overflow: hidden;
+    min-height: 12rem;
+    background: #fffaf1;
+    border: 3px solid var(--color-stone-800);
+    box-shadow: 7px 7px 0 var(--pixel-shadow);
+    transition: transform 0.2s steps(2), box-shadow 0.2s steps(2);
+  }
+
+  .skill-card:nth-child(2) { --skill-accent: #2875d2; --skill-tint: #dcecff; }
+  .skill-card:nth-child(3) { --skill-accent: #148b68; --skill-tint: #d9f5e9; }
+  .skill-card:nth-child(4) { --skill-accent: #db3f80; --skill-tint: #ffe0ed; }
+  .skill-card:nth-child(5) { --skill-accent: #c06a18; --skill-tint: #ffebc8; }
+  .skill-card:nth-child(6) { --skill-accent: #7656e8; --skill-tint: #e8e0ff; }
+
+  .skill-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 10px 10px 0 var(--pixel-shadow);
+  }
+
+  .skill-card__header {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 4.2rem;
+    padding: 0.8rem 1rem;
+    background: var(--skill-tint);
+    border-bottom: 3px solid var(--color-stone-800);
+  }
+
+  .skill-card__number,
+  .skill-card__count {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .skill-card__number { color: var(--skill-accent); }
+
+  .skill-card__mark {
+    display: grid;
+    place-items: center;
+    width: 2.15rem;
+    height: 2.15rem;
+    color: white;
+    background: var(--skill-accent);
+    border: 2px solid var(--color-stone-800);
+    font-family: var(--pixel-font);
+    font-size: 0.9rem;
+    box-shadow: 3px 3px 0 var(--pixel-shadow);
+  }
+
+  .skill-card h3 {
+    font-family: var(--pixel-font);
+    font-size: 1rem;
+    line-height: 1.15;
+  }
+
+  .skill-card__count {
+    display: grid;
+    place-items: center;
+    width: 1.8rem;
+    height: 1.8rem;
+    color: var(--color-stone-600);
+    background: #fffaf1;
+    border: 2px solid var(--color-stone-800);
+  }
+
+  .skill-card__body {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 0.65rem;
+    padding: 1.25rem;
   }
 
   .skill-tag {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    padding: 0.3rem 0.7rem;
+    gap: 0.45rem;
+    padding: 0.5rem 0.75rem;
     font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--color-stone-600);
-    background: var(--color-stone-50);
-    border: 1.5px solid var(--color-stone-200);
-    transition: all 0.2s ease;
+    font-size: 0.86rem;
+    font-weight: 650;
+    color: var(--color-stone-800);
+    background: white;
+    border: 2px solid var(--color-stone-800);
+    box-shadow: 3px 3px 0 color-mix(in srgb, var(--skill-accent) 35%, transparent);
+    transition: transform 0.15s steps(2), background 0.15s steps(2);
   }
 
   .skill-tag:hover {
-    border-color: var(--color-purple-light);
-    color: var(--color-purple);
-    background: white;
+    transform: translateY(-2px);
+    background: var(--skill-tint);
+  }
+
+  .skill-logo {
+    width: 1.1rem;
+    height: 1.1rem;
+    object-fit: contain;
+  }
+
+  @media (max-width: 767px) {
+    .stack-heading {
+      display: block;
+    }
+
+    .stack-intro {
+      margin-top: 0.75rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .skill-card {
+      min-height: 0;
+      box-shadow: 5px 5px 0 var(--pixel-shadow);
+    }
+
+    .skill-card__header {
+      grid-template-columns: auto auto 1fr auto;
+      gap: 0.6rem;
+      padding-inline: 0.8rem;
+    }
+
+    .skill-card__body {
+      padding: 1rem;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .skill-card {
+      --skill-accent: #9089ff;
+      --skill-tint: #2f2947;
+      background: var(--pixel-card);
+    }
+
+    .skill-card:nth-child(2) { --skill-accent: #7eb8ff; --skill-tint: #203b59; }
+    .skill-card:nth-child(3) { --skill-accent: #72d7a5; --skill-tint: #1b4439; }
+    .skill-card:nth-child(4) { --skill-accent: #ff8fbd; --skill-tint: #502b40; }
+    .skill-card:nth-child(5) { --skill-accent: #ffbd75; --skill-tint: #51371f; }
+    .skill-card:nth-child(6) { --skill-accent: #9089ff; --skill-tint: #2f2947; }
+
+    .skill-card__mark { color: #15131b; }
+    .skill-card__count,
+    .skill-tag { background: #111827; }
   }
 </style>
