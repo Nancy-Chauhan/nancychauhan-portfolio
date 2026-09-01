@@ -1,11 +1,7 @@
-<aside class="pixel-companion" aria-label="Nancy's pixel companion">
-  <a class="pixel-companion-bubble" data-companion-message href="/#projects" aria-label="Explore Nancy's projects">
-    <span data-companion-text>hey, explore around! ✦</span>
-    <b aria-hidden="true">↗</b>
-  </a>
-  <svg viewBox="0 0 48 56" role="img" aria-label="Pixel avatar of Nancy">
+<aside class="pixel-welcome" aria-label="Nancy's pixel avatar says: Hey, thanks for visiting!">
+  <span class="pixel-welcome-bubble" aria-hidden="true">hey, thanks for visiting! <b>💜</b></span>
+  <svg viewBox="0 0 48 56" aria-hidden="true">
     <g shape-rendering="crispEdges">
-      {/* Curly hair */}
       <rect x="14" y="2" width="7" height="5" fill="#25222b" />
       <rect x="20" y="0" width="9" height="6" fill="#25222b" />
       <rect x="28" y="3" width="7" height="5" fill="#25222b" />
@@ -17,7 +13,6 @@
       <rect x="10" y="25" width="6" height="7" fill="#25222b" />
       <rect x="34" y="26" width="6" height="7" fill="#25222b" />
       <rect x="13" y="12" width="22" height="16" fill="#cf8467" />
-      {/* Glasses */}
       <rect x="15" y="15" width="8" height="2" fill="#25222b" />
       <rect x="15" y="21" width="8" height="2" fill="#25222b" />
       <rect x="15" y="15" width="2" height="8" fill="#25222b" />
@@ -37,7 +32,10 @@
       <rect x="23" y="36" width="4" height="14" fill="#81b8f2" />
       <rect x="35" y="36" width="4" height="14" fill="#81b8f2" />
       <rect x="4" y="38" width="5" height="10" fill="#cf8467" />
-      <rect x="39" y="38" width="5" height="10" fill="#cf8467" />
+      <g class="wave-arm">
+        <rect x="39" y="34" width="5" height="11" fill="#cf8467" />
+        <rect x="40" y="30" width="4" height="5" fill="#cf8467" />
+      </g>
       <rect x="11" y="50" width="11" height="4" fill="#25222b" />
       <rect x="27" y="50" width="11" height="4" fill="#25222b" />
     </g>
@@ -45,65 +43,44 @@
 </aside>
 
 <style>
-  .pixel-companion {
-    position: fixed;
-    z-index: 25;
-    right: 1.1rem;
-    bottom: 1rem;
-    width: 52px;
-    filter: drop-shadow(3px 3px 0 rgba(37, 34, 43, 0.3));
-    transition: top 0.9s steps(6), right 0.9s steps(6), bottom 0.9s steps(6), left 0.9s steps(6), transform 0.18s steps(2);
+  .pixel-welcome {
+    position: absolute;
+    z-index: 20;
+    right: 0.4rem;
+    top: -4.15rem;
+    width: 56px;
+    filter: drop-shadow(3px 3px 0 rgba(37, 34, 43, 0.28));
+    pointer-events: none;
   }
 
-  .pixel-companion:hover {
-    transform: translateY(-6px);
-  }
-
-  .pixel-companion svg {
+  .pixel-welcome svg {
     display: block;
     width: 100%;
     image-rendering: pixelated;
-    animation: companion-bob 2.2s steps(2) infinite;
   }
 
-  .pixel-companion-bubble {
+  .pixel-welcome-bubble {
     position: absolute;
-    right: 2.5rem;
-    bottom: 3.2rem;
+    right: calc(100% + 0.65rem);
+    top: 0.15rem;
     width: max-content;
-    max-width: 12rem;
+    max-width: 13rem;
     padding: 0.55rem 0.7rem;
     border: 2px solid var(--pixel-ink);
     background: var(--pixel-card);
     box-shadow: 3px 3px 0 var(--pixel-shadow);
     color: var(--pixel-ink);
     font-family: var(--pixel-font);
-    font-size: 0.9rem;
+    font-size: 0.86rem;
     font-weight: 700;
-    opacity: 1;
-    transition: opacity 0.15s;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
+    line-height: 1.3;
   }
 
-  .pixel-companion-bubble b {
-    color: var(--pixel-purple-dark);
-    font-size: 0.78rem;
-    animation: companion-arrow 1s steps(2) infinite;
-  }
-
-  .pixel-companion-bubble:hover { background: var(--pixel-yellow); color: #25222b; }
-  .pixel-companion-bubble:hover b { color: #4e359f; }
-  .pixel-companion-bubble:hover::after { background: var(--pixel-yellow); }
-  .pixel-companion-bubble:focus-visible { outline: 3px solid var(--pixel-purple); outline-offset: 3px; }
-
-  .pixel-companion-bubble::after {
+  .pixel-welcome-bubble::after {
     content: "";
     position: absolute;
     right: -7px;
-    bottom: 6px;
+    bottom: 7px;
     width: 8px;
     height: 8px;
     border-right: 2px solid var(--pixel-ink);
@@ -112,88 +89,30 @@
     transform: rotate(-45deg);
   }
 
-  .pixel-companion[data-position="middle-right"] { top: 42%; right: 1.1rem; bottom: auto; left: auto; }
-  .pixel-companion[data-position="bottom-left"] { right: auto; bottom: 1rem; left: 1.1rem; }
-  .pixel-companion[data-position="middle-left"] { top: 42%; right: auto; bottom: auto; left: 1.1rem; }
-
-  .pixel-companion[data-position$="left"] .pixel-companion-bubble {
-    right: auto;
-    left: 2.5rem;
+  .wave-arm {
+    transform-box: fill-box;
+    transform-origin: 15% 90%;
+    animation: pixel-wave 0.42s steps(2) 3 0.75s;
   }
 
-  .pixel-companion[data-position$="left"] .pixel-companion-bubble::after {
-    right: auto;
-    left: -7px;
-    border-right: 0;
-    border-bottom: 0;
-    border-left: 2px solid var(--pixel-ink);
-    border-top: 2px solid var(--pixel-ink);
-  }
-
-  @keyframes companion-bob {
-    50% { transform: translateY(-3px); }
-  }
-
-  @keyframes companion-arrow {
-    50% { transform: translate(2px, -2px); }
+  @keyframes pixel-wave {
+    50% { transform: rotate(24deg); }
   }
 
   @media (max-width: 640px) {
-    .pixel-companion { right: 0.6rem; bottom: 0.6rem; width: 44px; }
-    .pixel-companion[data-position="middle-right"] { top: 48%; right: 0.6rem; }
-    .pixel-companion[data-position="bottom-left"] { bottom: 0.6rem; left: 0.6rem; }
-    .pixel-companion[data-position="middle-left"] { top: 48%; left: 0.6rem; }
-    .pixel-companion-bubble { max-width: 10.5rem; padding: 0.55rem 0.65rem; font-size: 0.82rem; }
+    .pixel-welcome {
+      right: 0.5rem;
+      top: -3.5rem;
+      width: 48px;
+    }
+
+    .pixel-welcome-bubble {
+      max-width: 10rem;
+      font-size: 0.76rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .pixel-companion svg,
-    .pixel-companion-bubble b { animation: none; }
+    .wave-arm { animation: none; }
   }
 </style>
-
-<script>
-  const companionMessages = [
-    { text: "hey, explore around! ✦", href: "/#projects" },
-    { text: "hey, check out speaking!", href: "/#talks" },
-    { text: "hey, see what I’ve shipped!", href: "/#projects" },
-    { text: "hey, read my latest notes!", href: "/#writing" },
-    { text: "hey, visit Beyond Work!", href: "/#beyond-work" },
-    { text: "hey, check out About!", href: "/about" },
-    { text: "hey, thank you for visiting! 💜", href: "/about" },
-  ];
-
-  const companionPositions = ["bottom-right", "middle-right", "bottom-left", "middle-left"];
-  const mobileCompanionPositions = ["bottom-right", "bottom-left"];
-
-  function initPixelCompanion() {
-    const companion = document.querySelector<HTMLElement>(".pixel-companion");
-    const bubble = companion?.querySelector<HTMLAnchorElement>("[data-companion-message]");
-    const message = bubble?.querySelector<HTMLElement>("[data-companion-text]");
-    if (!companion || !bubble || !message) return;
-
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let messageIndex = 0;
-    let positionIndex = 0;
-
-    window.clearInterval((window as typeof window & { pixelCompanionTimer?: number }).pixelCompanionTimer);
-
-    const updateCompanion = () => {
-      messageIndex = (messageIndex + 1 + Math.floor(Math.random() * (companionMessages.length - 1))) % companionMessages.length;
-      message.textContent = companionMessages[messageIndex].text;
-      bubble.setAttribute("href", companionMessages[messageIndex].href);
-      bubble.setAttribute("aria-label", companionMessages[messageIndex].text);
-
-      if (!reducedMotion) {
-        const positions = window.innerWidth <= 640 ? mobileCompanionPositions : companionPositions;
-        positionIndex = (positionIndex + 1 + Math.floor(Math.random() * (positions.length - 1))) % positions.length;
-        companion.dataset.position = positions[positionIndex];
-      }
-    };
-
-    (window as typeof window & { pixelCompanionTimer?: number }).pixelCompanionTimer = window.setInterval(updateCompanion, 5000);
-  }
-
-  initPixelCompanion();
-  document.addEventListener("astro:page-load", initPixelCompanion);
-</script>

@@ -97,6 +97,13 @@ const testimonials = [
     img: "/logos/kiran.jpeg",
   },
 ];
+
+interface Props {
+  limit?: number;
+}
+
+const { limit = testimonials.length } = Astro.props;
+const visibleTestimonials = testimonials.slice(0, limit);
 ---
 
 <section>
@@ -135,7 +142,7 @@ const testimonials = [
 
   <div class="relative">
     <div id="testimonial-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
-      {testimonials.map((t, i) => (
+      {visibleTestimonials.map((t, i) => (
         <div class="shrink-0 w-[250px] md:w-[320px] h-[260px] md:h-[280px] flip-card" onclick="this.classList.toggle('flipped')">
           <div class="flip-card-inner">
             {/* Front */}

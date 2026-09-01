@@ -3,6 +3,8 @@ title: "Thank You, Next — 2022"
 description: "A year-in-review reflecting on speaking at DevOpsDays India, joining Women Tech Network, working at Gitpod, and open source contributions throughout the year."
 pubDate: 2022-12-31
 tags: ["year-in-review", "personal"]
+image: "/nancy-speaking-cropped.jpeg"
+externalUrl: "https://nancy-chauhan.medium.com/thank-you-next-d3ec464e42dc"
 ---
 
 2022 was a year of growth, visibility, and preparation. I spoke at my first major conference in India, became part of the Women Tech Network, deepened my work at Gitpod, and continued building my presence in the open source community. It was also the year I made the decision to pursue graduate school — a choice that would shape everything that followed. Here is the story of how 2022 unfolded.

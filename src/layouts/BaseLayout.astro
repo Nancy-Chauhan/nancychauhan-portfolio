@@ -2,7 +2,6 @@
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import PixelCompanion from "../components/PixelCompanion.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -82,7 +81,6 @@ const personSchema = {
     <main class="flex-1">
       <slot />
     </main>
-    <PixelCompanion />
     <Footer />
     <script>
       function initAnimations() {

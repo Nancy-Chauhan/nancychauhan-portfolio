@@ -15,14 +15,19 @@ const logos = [
 ---
 
 <section class="py-12 mx-auto max-w-6xl px-6 md:px-24">
-  <p class="text-center text-sm text-[var(--text-secondary)] font-sans mb-8">
-    Organisations I've worked and collaborated with
-  </p>
+  <div class="logo-heading mb-8">
+    <p class="text-center text-sm text-[var(--text-secondary)] font-sans">
+      Organisations I've worked and collaborated with
+    </p>
+    <button type="button" class="marquee-toggle" data-marquee-toggle aria-pressed="false">
+      <span data-marquee-label>PAUSE</span> <span aria-hidden="true">Ⅱ</span>
+    </button>
+  </div>
   <div class="relative overflow-hidden">
-    <div class="marquee-track flex items-center gap-14 w-max">
-      {[...logos, ...logos].map((logo) => (
+    <div class="marquee-track flex items-center gap-14 w-max" data-marquee-track>
+      {[...logos, ...logos].map((logo, index) => (
         <div class="logo-item shrink-0 flex items-center justify-center">
-          <img src={logo.src} alt={logo.name} style={logo.style} class="logo-light object-contain" />
+          <img src={logo.src} alt={index < logos.length ? logo.name : ""} aria-hidden={index >= logos.length ? "true" : undefined} style={logo.style} class="logo-light object-contain" />
           <img src={logo.src} alt="" aria-hidden="true" style={logo.style} class="logo-dark object-contain" />
         </div>
       ))}
@@ -31,12 +36,20 @@ const logos = [
 </section>
 
 <style>
-  .marquee-track {
-    animation: marquee var(--marquee-duration, 15s) linear infinite;
-  }
-
-  .marquee-track:hover {
-    animation-play-state: paused;
+  .logo-heading { position: relative; display: flex; align-items: center; justify-content: center; min-height: 2.5rem; }
+  .marquee-track { animation: marquee var(--marquee-duration, 22s) linear infinite; }
+  .marquee-track.is-paused { animation-play-state: paused; }
+  .marquee-toggle {
+    position: absolute;
+    right: 0;
+    padding: 0.35rem 0.5rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 2px 2px 0 var(--pixel-shadow);
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.72rem;
+    font-weight: 700;
   }
 
   .logo-dark { display: none; }
@@ -48,26 +61,43 @@ const logos = [
     opacity: 1;
   }
 
-
   @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-50% - 1.75rem)); }
+  }
+
+  @media (max-width: 640px) {
+    .logo-heading { justify-content: flex-start; padding-right: 4.5rem; }
+    .logo-heading p { text-align: left; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { width: 100%; flex-wrap: wrap; justify-content: center; transform: none; animation: none; }
+    .logo-item:nth-child(n + 10) { display: none; }
+    .marquee-toggle { display: none; }
   }
 </style>
 
 <script>
-  function initMarqueeSpeed() {
-    const PIXELS_PER_SECOND = 50;
-    document.querySelectorAll('.marquee-track').forEach((track) => {
+  function initLogoMarquee() {
+    document.querySelectorAll<HTMLElement>("[data-marquee-track]").forEach((track) => {
+      const container = track.closest("section");
+      const toggle = container?.querySelector<HTMLButtonElement>("[data-marquee-toggle]");
+      const label = toggle?.querySelector<HTMLElement>("[data-marquee-label]");
+      if (!toggle || !label) return;
+
       const halfWidth = track.scrollWidth / 2;
-      const duration = halfWidth / PIXELS_PER_SECOND;
-      (track as HTMLElement).style.setProperty('--marquee-duration', `${duration}s`);
+      track.style.setProperty("--marquee-duration", `${Math.max(18, halfWidth / 45)}s`);
+      if (toggle.dataset.marqueeBound) return;
+      toggle.dataset.marqueeBound = "true";
+      toggle.addEventListener("click", () => {
+        const paused = track.classList.toggle("is-paused");
+        toggle.setAttribute("aria-pressed", String(paused));
+        label.textContent = paused ? "PLAY" : "PAUSE";
+      });
     });
   }
-  initMarqueeSpeed();
-  document.addEventListener('astro:page-load', initMarqueeSpeed);
+
+  initLogoMarquee();
+  document.addEventListener("astro:page-load", initLogoMarquee);
 </script>

@@ -74,17 +74,18 @@ const skillGroups = [
         <span class="section-heading">Tech Stack</span>
       </h2>
     </div>
-    <p class="stack-intro">The languages, systems, and practices I use to turn ideas into shipped products.</p>
+    <p class="stack-intro">Open a category to see the tools and practices behind my work.</p>
   </div>
   <div class="skills-grid">
     {skillGroups.map((group, i) => (
-      <article class={`animate-on-scroll stagger-${i + 1} skill-card`}>
-        <header class="skill-card__header">
+      <details class={`animate-on-scroll stagger-${i + 1} skill-card`}>
+        <summary class="skill-card__header">
           <span class="skill-card__number">0{i + 1}</span>
           <span class="skill-card__mark" aria-hidden="true">{group.mark}</span>
           <h3>{group.category}</h3>
           <span class="skill-card__count">{group.skills.length}</span>
-        </header>
+          <span class="skill-card__toggle" aria-hidden="true"></span>
+        </summary>
         <div class="skill-card__body">
           {group.skills.map((skill) => (
             <span class="skill-tag">
@@ -95,7 +96,7 @@ const skillGroups = [
             </span>
           ))}
         </div>
-      </article>
+      </details>
     ))}
   </div>
 </section>
@@ -134,7 +135,6 @@ const skillGroups = [
     --skill-accent: #7656e8;
     --skill-tint: #e8e0ff;
     overflow: hidden;
-    min-height: 12rem;
     background: #fffaf1;
     border: 3px solid var(--color-stone-800);
     box-shadow: 7px 7px 0 var(--pixel-shadow);
@@ -154,14 +154,18 @@ const skillGroups = [
 
   .skill-card__header {
     display: grid;
-    grid-template-columns: auto auto 1fr auto;
+    grid-template-columns: auto auto 1fr auto auto;
     align-items: center;
     gap: 0.8rem;
     min-height: 4.2rem;
     padding: 0.8rem 1rem;
     background: var(--skill-tint);
-    border-bottom: 3px solid var(--color-stone-800);
+    cursor: pointer;
+    list-style: none;
   }
+
+  .skill-card__header::-webkit-details-marker { display: none; }
+  .skill-card[open] .skill-card__header { border-bottom: 3px solid var(--color-stone-800); }
 
   .skill-card__number,
   .skill-card__count {
@@ -169,6 +173,27 @@ const skillGroups = [
     font-size: 0.72rem;
     font-weight: 700;
   }
+
+  .skill-card__toggle {
+    position: relative;
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .skill-card__toggle::before,
+  .skill-card__toggle::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0.9rem;
+    height: 2px;
+    background: var(--skill-accent);
+    transform: translate(-50%, -50%);
+  }
+
+  .skill-card__toggle::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .skill-card[open] .skill-card__toggle::after { display: none; }
 
   .skill-card__number { color: var(--skill-accent); }
 
@@ -207,6 +232,12 @@ const skillGroups = [
     align-content: flex-start;
     gap: 0.65rem;
     padding: 1.25rem;
+    animation: reveal-skills 0.18s ease-out;
+  }
+
+  @keyframes reveal-skills {
+    from { opacity: 0; transform: translateY(-0.35rem); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   .skill-tag {
@@ -250,12 +281,11 @@ const skillGroups = [
     }
 
     .skill-card {
-      min-height: 0;
       box-shadow: 5px 5px 0 var(--pixel-shadow);
     }
 
     .skill-card__header {
-      grid-template-columns: auto auto 1fr auto;
+      grid-template-columns: auto auto 1fr auto auto;
       gap: 0.6rem;
       padding-inline: 0.8rem;
     }
@@ -280,4 +310,8 @@ const skillGroups = [
   :global(html[data-theme="dark"]) .skill-card__mark { color: #15131b; }
   :global(html[data-theme="dark"]) .skill-card__count,
   :global(html[data-theme="dark"]) .skill-tag { background: #111827; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .skill-card__body { animation: none; }
+  }
 </style>

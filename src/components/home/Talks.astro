@@ -4,6 +4,12 @@ const talks = talksData.default as {
   title: string; event: string; year: number; type: string; video?: string; coSpeaker?: string;
 }[];
 
+interface Props {
+  limit?: number;
+}
+
+const { limit = 6 } = Astro.props;
+
 // Only show talks with videos, sorted by year descending
 const videoTalks = talks
   .filter((t) => t.video)
@@ -46,7 +52,7 @@ function getYouTubeId(url: string) {
   {/* Mobile: horizontal scroll */}
   <div class="sm:hidden">
   <div id="talks-carousel-mobile" class="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar">
-    {videoTalks.slice(0, 6).map((talk) => talk.video && (
+    {videoTalks.slice(0, limit).map((talk) => talk.video && (
       <article class="shrink-0 w-[260px] card-brutal overflow-hidden flex flex-col">
         <button
           type="button"
@@ -77,7 +83,7 @@ function getYouTubeId(url: string) {
 
   {/* Desktop: grid */}
   <div class="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-    {videoTalks.slice(0, 6).map((talk, i) => talk.video && (
+    {videoTalks.slice(0, limit).map((talk, i) => talk.video && (
       <article class={`animate-on-scroll stagger-${i + 1} card-brutal w-full overflow-hidden flex flex-col`}>
         <button
           type="button"
