@@ -2,43 +2,55 @@
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import { profile } from "../data/profile";
 import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
+  canonical?: string;
+  socialImage?: string;
+  pageType?: "website" | "article";
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description = "Nancy Chauhan - Engineer & Developer Advocate" } = Astro.props;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? "https://nancychauhan.com");
-const socialImageUrl = new URL("/og-image.png", Astro.site ?? "https://nancychauhan.com");
+const {
+  title,
+  description = "Nancy Chauhan - Engineer & Developer Advocate",
+  canonical,
+  socialImage = "/og-image.png",
+  pageType = "website",
+  structuredData = [],
+} = Astro.props;
+const siteUrl = Astro.site ?? "https://nancychauhan.com";
+const canonicalUrl = new URL(canonical ?? Astro.url.pathname, siteUrl);
+const socialImageUrl = new URL(socialImage, siteUrl);
 const personSchema = {
-  "@context": "https://schema.org",
   "@type": "Person",
-  name: "Nancy Chauhan",
-  url: "https://nancychauhan.com",
-  image: "https://nancychauhan.com/nancy-speaking.jpeg",
-  jobTitle: "Engineer and Product Builder",
-  description: "Engineer and product builder working across AI, security, open source, developer relations, and cloud native technologies.",
-  knowsAbout: [
-    "Artificial intelligence",
-    "AI agents",
-    "Security",
-    "Open source",
-    "Cloud native computing",
-    "Developer relations",
-    "Product development",
-  ],
-  award: [
-    "Google Summer of Code Student Developer (2019)",
-    "CNCF TAGGIE Award",
-  ],
-  sameAs: [
-    "https://github.com/Nancy-Chauhan",
-    "https://www.linkedin.com/in/nancy-chauhan/",
-    "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1",
-  ],
+  "@id": `${profile.url}/#person`,
+  name: profile.name,
+  url: profile.url,
+  image: profile.image,
+  jobTitle: profile.jobTitle,
+  description: profile.description,
+  knowsAbout: profile.expertise,
+  award: profile.recognition,
+  worksFor: { "@type": "Organization", name: profile.currentRole.company, url: profile.currentRole.companyUrl },
+  alumniOf: profile.education.map((item) => ({ "@type": "CollegeOrUniversity", name: item.school })),
+  sameAs: profile.sameAs,
 };
+const websiteSchema = {
+  "@type": "WebSite",
+  "@id": `${profile.url}/#website`,
+  url: profile.url,
+  name: `${profile.name} — Portfolio`,
+  description: profile.description,
+  inLanguage: "en",
+  author: { "@id": `${profile.url}/#person` },
+};
+const extraSchemas = Array.isArray(structuredData) ? structuredData : [structuredData];
+const schemaGraph = { "@context": "https://schema.org", "@graph": [personSchema, websiteSchema, ...extraSchemas] };
+const serializedSchema = JSON.stringify(schemaGraph).replace(/</g, "\\u003c");
 ---
 
 <!doctype html>
@@ -58,7 +70,7 @@ const personSchema = {
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={pageType} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImageUrl} />
     <meta property="og:image:width" content="1200" />
@@ -72,7 +84,10 @@ const personSchema = {
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="AI-readable site overview" />
-    <script type="application/ld+json" set:html={JSON.stringify(personSchema)}></script>
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Complete AI-readable portfolio" />
+    <link rel="alternate" type="application/json" href="/api/site.json" title="Machine-readable portfolio index" />
+    <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Nancy Chauhan writing feed" />
+    <script type="application/ld+json" set:html={serializedSchema}></script>
     <title>{title}</title>
     <ClientRouter />
   </head>

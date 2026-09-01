@@ -16,9 +16,27 @@ export async function getStaticPaths() {
 
 const { project } = Astro.props;
 const { Content } = await render(project);
+const projectUrl = `https://nancychauhan.com/projects/${project.id}`;
+const projectSchema = {
+  "@type": "SoftwareSourceCode",
+  "@id": `${projectUrl}#software`,
+  name: project.data.title,
+  description: project.data.description,
+  url: projectUrl,
+  ...(project.data.github ? { codeRepository: project.data.github } : {}),
+  ...(project.data.demo ? { targetProduct: { "@type": "SoftwareApplication", url: project.data.demo } } : {}),
+  ...(project.data.image ? { image: new URL(project.data.image, "https://nancychauhan.com").href } : {}),
+  programmingLanguage: project.data.techStack,
+  author: { "@id": "https://nancychauhan.com/#person" },
+};
 ---
 
-<BaseLayout title={`${project.data.title} | Nancy Chauhan`} description={project.data.description}>
+<BaseLayout
+  title={`${project.data.title} | Nancy Chauhan`}
+  description={project.data.description}
+  socialImage={project.data.image}
+  structuredData={projectSchema}
+>
   <section class="pixel-page-hero py-16">
     <div class="mx-auto max-w-5xl px-6">
       <Breadcrumbs

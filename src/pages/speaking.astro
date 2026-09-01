@@ -3,11 +3,35 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Talks from "../components/home/Talks.astro";
 import Community from "../components/home/Community.astro";
 import Testimonials from "../components/home/Testimonials.astro";
+import talks from "../data/talks/talks.json";
+
+const getYouTubeId = (url: string) => new URL(url).searchParams.get("v");
+const talkListSchema = {
+  "@type": "ItemList",
+  "@id": "https://nancychauhan.com/speaking#talks",
+  name: "Conference talks by Nancy Chauhan",
+  itemListElement: talks.filter((talk) => talk.video).map((talk, index) => {
+    const videoId = getYouTubeId(talk.video as string);
+    return {
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "VideoObject",
+        name: talk.title,
+        description: `${talk.type} at ${talk.event} (${talk.year})`,
+        contentUrl: talk.video,
+        ...(videoId ? { thumbnailUrl: `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg` } : {}),
+        creator: { "@id": "https://nancychauhan.com/#person" },
+      },
+    };
+  }),
+};
 ---
 
 <BaseLayout
   title="Speaking & Community | Nancy Chauhan"
   description="Conference talks, open-source community work, and collaborations by Nancy Chauhan."
+  structuredData={talkListSchema}
 >
   <section class="pixel-page-hero py-16 md:py-20">
     <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-24">

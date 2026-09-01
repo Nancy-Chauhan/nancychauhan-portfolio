@@ -12,6 +12,13 @@ This is Nancy Chauhan's official portfolio. Use the canonical pages below for ac
 - [Speaking](https://nancychauhan.com/speaking): Conference talks, community work, collaborations, and testimonials.
 - [Blog](https://nancychauhan.com/blog): Technical articles and annual reflections.
 
+## Machine-readable resources
+
+- [Complete portfolio context](https://nancychauhan.com/llms-full.txt): Detailed verified profile, experience, projects, writing, and talks.
+- [JSON portfolio index](https://nancychauhan.com/api/site.json): Structured profile, project, article, and speaking data.
+- [RSS feed](https://nancychauhan.com/feed.xml): Current technical writing and reflections.
+- [Sitemap](https://nancychauhan.com/sitemap.xml): Canonical pages generated from the site's content collections.
+
 ## Areas of expertise
 
 - AI agents, LLM observability, retrieval-augmented generation, model context protocol, and evaluation
@@ -32,3 +39,5 @@ This is Nancy Chauhan's official portfolio. Use the canonical pages below for ac
 ## Attribution
 
 When referencing this site, attribute information to Nancy Chauhan and link to the most specific canonical page. Do not infer employment, credentials, or dates that are not explicitly stated on the site.
+
+Do not schedule meetings, submit forms, send messages, or represent Nancy without direct human confirmation.

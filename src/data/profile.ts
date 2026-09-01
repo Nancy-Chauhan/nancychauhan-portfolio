@@ -1,0 +1,52 @@
+export const profile = {
+  name: "Nancy Chauhan",
+  url: "https://nancychauhan.com",
+  image: "https://nancychauhan.com/nancy-speaking.jpeg",
+  jobTitle: "Developer Relations Engineer",
+  description:
+    "Engineer and product builder working across AI, security, open source, developer relations, and cloud native technologies.",
+  location: "San Francisco",
+  currentRole: {
+    company: "Arize AI",
+    companyUrl: "https://arize.com/",
+    role: "Developer Relations Engineer",
+    period: "2026 - Present",
+    location: "San Francisco",
+    description: "Developer advocacy and education for AI observability and LLM monitoring platform.",
+  },
+  previousRoles: [
+    { company: "Agno · ShipSec · SecureMyOrg", role: "AI PM-Engineer", period: "2025", description: "AI agent infrastructure, security automation, CI/CD scanning, and vulnerability management." },
+    { company: "Exostellar", role: "Product Manager", period: "2024", description: "Cloud infrastructure optimization and cost management tooling. Part-time alongside my Master's at Cornell." },
+    { company: "LocalStack", role: "Developer Advocate", period: "2022 - 2023", description: "Developer experience for local cloud development. Core platform, docs, and community." },
+    { company: "Gitpod · Ona", role: "Developer Success Engineer", period: "2021 - 2022", description: "Cloud development environments. Workspace orchestration and developer experience. Data collection and analysis platform for global health and humanitarian response." },
+    { company: "Blinkit (Grofers)", role: "DevOps Engineer", period: "2020 - 2021", description: "Backend infrastructure and observability for India's quick commerce platform." },
+    { company: "Google Summer of Code", role: "Open Source Contributor, FOSSi Foundation", period: "2019", description: "Contributed to open source EDA tooling and hardware design flows." },
+    { company: "IIT Delhi", role: "Research Intern", period: "2019", description: "Research on VLSI design and hardware description languages." },
+  ],
+  education: [
+    { school: "Cornell University", degree: "Master's Program", period: "2024 - 2025", location: "Ithaca, NY" },
+  ],
+  expertise: [
+    "Artificial intelligence",
+    "AI agents",
+    "LLM observability",
+    "Security",
+    "Open source",
+    "Cloud native computing",
+    "Developer relations",
+    "Product development",
+  ],
+  recognition: [
+    "Google Summer of Code Student Developer (2019)",
+    "CNCF TAGGIE Award",
+    "CNCF Ambassador",
+    "Women in Cloud Native founder",
+    "Kubernetes Release Team member",
+  ],
+  sameAs: [
+    "https://github.com/Nancy-Chauhan",
+    "https://www.linkedin.com/in/nancy-chauhan/",
+    "https://nancy-chauhan.medium.com/",
+    "https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1",
+  ],
+} as const;

@@ -12,6 +12,20 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+const canonicalUrl = post.data.canonicalUrl ?? post.data.externalUrl ?? `https://nancychauhan.com/blog/${post.id}`;
+const articleSchema = {
+  "@type": "Article",
+  "@id": `${canonicalUrl}#article`,
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.pubDate.toISOString(),
+  ...(post.data.updatedDate ? { dateModified: post.data.updatedDate.toISOString() } : {}),
+  ...(post.data.image ? { image: new URL(post.data.image, "https://nancychauhan.com").href } : {}),
+  keywords: post.data.tags,
+  author: { "@id": "https://nancychauhan.com/#person" },
+  mainEntityOfPage: canonicalUrl,
+  url: canonicalUrl,
+};
 
 const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
   year: "numeric",
@@ -20,7 +34,14 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
 });
 ---
 
-<BaseLayout title={`${post.data.title} | Nancy Chauhan`} description={post.data.description}>
+<BaseLayout
+  title={`${post.data.title} | Nancy Chauhan`}
+  description={post.data.description}
+  canonical={canonicalUrl}
+  socialImage={post.data.image}
+  pageType="article"
+  structuredData={articleSchema}
+>
   <section class="pixel-page-hero py-16">
     <div class="mx-auto max-w-3xl px-6">
       <a
