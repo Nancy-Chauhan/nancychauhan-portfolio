@@ -314,7 +314,8 @@ body::after { display: none; }
 }
 
 .pixel-brand {
-  display: flex;
+  display: inline-flex;
+  min-height: 2.75rem;
   align-items: center;
   gap: 0.65rem;
   color: var(--pixel-ink);
@@ -322,7 +323,9 @@ body::after { display: none; }
   font-size: 0.9rem;
   font-weight: 700;
   letter-spacing: 0.04em;
+  touch-action: manipulation;
 }
+.pixel-brand:hover { color: var(--pixel-purple-dark); }
 
 .pixel-brand-icon {
   display: grid;
@@ -351,9 +354,13 @@ body::after { display: none; }
 .pixel-nav-link.is-active { background: var(--pixel-lilac); }
 .pixel-chat-link { margin-left: 0.25rem; border: 2px solid var(--pixel-ink); background: var(--pixel-yellow); box-shadow: 3px 3px 0 var(--pixel-shadow); }
 .pixel-chat-link:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--pixel-shadow); }
-.pixel-menu-button { display: flex; width: 2.5rem; height: 2.5rem; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border: 2px solid var(--pixel-ink); background: var(--pixel-yellow); box-shadow: 3px 3px 0 var(--pixel-shadow); }
-.pixel-menu-button span { width: 1rem; height: 2px; background: var(--pixel-ink); }
-.pixel-mobile-link { padding: 0.75rem 0.25rem; border-bottom: 1px dashed var(--pixel-line); color: var(--pixel-ink); font-family: var(--pixel-font); font-size: 0.92rem; font-weight: 700; }
+.pixel-menu-button { display: flex; width: 2.75rem; height: 2.75rem; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border: 2px solid var(--pixel-ink); background: var(--pixel-yellow); box-shadow: 3px 3px 0 var(--pixel-shadow); touch-action: manipulation; }
+.pixel-menu-button span { width: 1rem; height: 2px; background: var(--pixel-ink); transition: transform 0.16s ease, opacity 0.16s ease; }
+.pixel-mobile-link { border-bottom: 1px dashed var(--pixel-line); color: var(--pixel-ink); font-family: var(--pixel-font); font-size: 1rem; font-weight: 700; touch-action: manipulation; }
+
+@media (max-width: 480px) {
+  .pixel-brand-icon { width: 2.5rem; height: 2.5rem; }
+}
 
 .pixel-hero { position: relative; overflow: hidden; border-bottom: 2px solid var(--pixel-ink); background: #e9e1ff; }
 .pixel-hero::after {

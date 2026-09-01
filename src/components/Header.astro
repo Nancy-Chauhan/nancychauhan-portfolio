@@ -11,7 +11,7 @@ const currentPath = Astro.url.pathname;
 
 <header class="pixel-header sticky top-0 z-30">
   <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-24">
-    <a href="/" class="pixel-brand" aria-label="Nancy Chauhan, home">
+    <a href="/#top" class="pixel-brand" aria-label="Nancy Chauhan, back to homepage">
       <span class="pixel-brand-icon">NC</span>
       <span>NANCY.CHAUHAN</span>
     </a>
@@ -41,42 +41,62 @@ const currentPath = Astro.url.pathname;
         <button type="button" data-theme-choice="light" aria-label="Use light theme" aria-pressed="true">☀</button>
         <button type="button" data-theme-choice="dark" aria-label="Use dark theme" aria-pressed="false">☾</button>
       </div>
-      <details class="mobile-navigation">
-        <summary class="pixel-menu-button" aria-label="Toggle menu">
+      <div class="mobile-navigation">
+        <button class="pixel-menu-button" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
           <span></span><span></span><span></span>
-        </summary>
-        <div class="pixel-mobile-menu-panel border-t-2 border-[var(--pixel-ink)] bg-[var(--pixel-paper)] px-6 pb-5 pt-3">
+        </button>
+        <div id="mobile-menu" class="pixel-mobile-menu-panel border-t-2 border-[var(--pixel-ink)] bg-[var(--pixel-paper)] px-6 pb-5 pt-3" hidden>
           <div class="flex flex-col gap-1">
             {navLinks.map((link) => (
-              <a href={link.href} {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}} class="pixel-mobile-link"><span aria-hidden="true">{link.icon}</span> {link.label}</a>
+              <a
+                href={link.href}
+                {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+                class:list={[
+                  "pixel-mobile-link",
+                  currentPath === link.href || (!link.external && currentPath.startsWith(link.href)) ? "is-active" : "",
+                ]}
+              ><span aria-hidden="true">{link.icon}</span> <span>{link.label}</span><span class="mobile-link-arrow" aria-hidden="true">→</span></a>
             ))}
-            <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-mobile-link">LET’S CHAT ↗</a>
+            <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-mobile-link"><span aria-hidden="true">✦</span><span>LET’S CHAT</span><span class="mobile-link-arrow" aria-hidden="true">↗</span></a>
           </div>
         </div>
-      </details>
+      </div>
     </div>
   </nav>
 </header>
 
 <style>
-  .mobile-navigation summary {
-    list-style: none;
-  }
-
-  .mobile-navigation summary::-webkit-details-marker { display: none; }
+  .mobile-navigation { position: relative; }
 
   .pixel-mobile-menu-panel {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 4.75rem;
     right: 0;
     left: 0;
     width: 100%;
+    max-height: calc(100dvh - 4.75rem);
+    overflow-y: auto;
     box-shadow: 0 4px 0 var(--pixel-shadow);
   }
 
-  .mobile-navigation[open] .pixel-menu-button span:first-child { transform: translateY(6px) rotate(45deg); }
-  .mobile-navigation[open] .pixel-menu-button span:nth-child(2) { opacity: 0; }
-  .mobile-navigation[open] .pixel-menu-button span:last-child { transform: translateY(-6px) rotate(-45deg); }
+  .mobile-navigation.is-open .pixel-menu-button span:first-child { transform: translateY(6px) rotate(45deg); }
+  .mobile-navigation.is-open .pixel-menu-button span:nth-child(2) { opacity: 0; }
+  .mobile-navigation.is-open .pixel-menu-button span:last-child { transform: translateY(-6px) rotate(-45deg); }
+
+  .pixel-mobile-link {
+    display: grid;
+    min-height: 3.25rem;
+    grid-template-columns: 1.35rem 1fr auto;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 0.4rem;
+  }
+
+  .pixel-mobile-link:hover,
+  .pixel-mobile-link:active,
+  .pixel-mobile-link.is-active { background: var(--pixel-lilac); }
+  .pixel-mobile-link > span:first-child { color: var(--pixel-purple-dark); }
+  .mobile-link-arrow { font-size: 1.1rem; }
 
   .theme-picker {
     display: inline-flex;
@@ -97,10 +117,11 @@ const currentPath = Astro.url.pathname;
   .theme-picker button + button { border-left: 2px solid var(--pixel-ink); }
   .theme-picker button[aria-pressed="true"] { background: var(--pixel-purple); color: white; }
   :global(html[data-theme="dark"]) .theme-picker button[aria-pressed="true"] { color: #151126; }
-  .theme-picker-mobile button { width: 2.25rem; height: 2.25rem; padding: 0; font-size: 0.95rem; }
+  .theme-picker-mobile button { width: 2.75rem; height: 2.75rem; padding: 0; font-size: 1rem; }
 
   @media (max-width: 480px) {
     :global(.pixel-brand > span:last-child) { display: none; }
+    .pixel-mobile-menu-panel { padding-inline: 1rem; }
   }
 </style>
 
@@ -127,6 +148,47 @@ const currentPath = Astro.url.pathname;
     });
   }
 
+  function bindMobileNavigation() {
+    const navigation = document.querySelector<HTMLElement>(".mobile-navigation");
+    const button = navigation?.querySelector<HTMLButtonElement>(".pixel-menu-button");
+    const menu = navigation?.querySelector<HTMLElement>(".pixel-mobile-menu-panel");
+    if (!navigation || !button || !menu || button.dataset.menuBound) return;
+
+    button.dataset.menuBound = "true";
+
+    const setMenuOpen = (open: boolean) => {
+      navigation.classList.toggle("is-open", open);
+      menu.hidden = !open;
+      button.setAttribute("aria-expanded", String(open));
+      button.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    };
+
+    button.addEventListener("click", () => {
+      setMenuOpen(button.getAttribute("aria-expanded") !== "true");
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => setMenuOpen(false));
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && button.getAttribute("aria-expanded") === "true") {
+        setMenuOpen(false);
+        button.focus();
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (button.getAttribute("aria-expanded") === "true" && !navigation.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    });
+  }
+
   bindThemeControls();
-  document.addEventListener("astro:page-load", bindThemeControls);
+  bindMobileNavigation();
+  document.addEventListener("astro:page-load", () => {
+    bindThemeControls();
+    bindMobileNavigation();
+  });
 </script>
