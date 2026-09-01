@@ -2,15 +2,15 @@
 // Each logo gets a tailored width to ensure equal visual weight
 // Square icons get narrow widths, horizontal wordmarks get wider
 const logos = [
-  { name: "Arize AI", src: "/logos/arize.svg", style: "height:24px;width:auto;" },
-  { name: "ONA", src: "/logos/ona.svg", style: "height:24px;width:auto;" },
-  { name: "LocalStack", src: "/logos/localstack.svg", style: "height:26px;width:auto;" },
-  { name: "Blinkit", src: "/logos/blinkit.svg", style: "height:24px;width:auto;" },
-  { name: "Rootly", src: "/logos/rootly.png", style: "height:22px;width:auto;" },
-  { name: "Exostellar", src: "/logos/exostellar.svg", style: "height:20px;width:auto;" },
-  { name: "Processing Foundation", src: "/logos/processing-foundation.png", style: "height:36px;width:36px;" },
-  { name: "FOSSi", src: "/logos/fossi.svg", style: "height:26px;width:auto;" },
-  { name: "Zeotap", src: "/logos/zeotap.svg", style: "height:22px;width:auto;" },
+  { name: "Arize AI", href: "https://arize.com/", src: "/logos/arize.svg", style: "height:24px;width:auto;" },
+  { name: "ONA", href: "https://ona.com/", src: "/logos/ona.svg", style: "height:24px;width:auto;" },
+  { name: "LocalStack", href: "https://www.localstack.cloud/", src: "/logos/localstack.svg", style: "height:26px;width:auto;" },
+  { name: "Blinkit", href: "https://blinkit.com/", src: "/logos/blinkit.svg", style: "height:24px;width:auto;" },
+  { name: "Rootly", href: "https://rootly.com/", src: "/logos/rootly.png", style: "height:22px;width:auto;" },
+  { name: "Exostellar", href: "https://www.exostellar.io/", src: "/logos/exostellar.svg", style: "height:20px;width:auto;" },
+  { name: "Processing Foundation", href: "https://processingfoundation.org/", src: "/logos/processing-foundation.png", style: "height:36px;width:36px;" },
+  { name: "FOSSi Foundation", href: "https://fossi-foundation.org/", src: "/logos/fossi.svg", style: "height:26px;width:auto;" },
+  { name: "Zeotap", href: "https://zeotap.com/", src: "/logos/zeotap.svg", style: "height:22px;width:auto;" },
 ];
 ---
 
@@ -26,10 +26,18 @@ const logos = [
   <div class="relative overflow-hidden">
     <div class="marquee-track flex items-center gap-14 w-max" data-marquee-track>
       {[...logos, ...logos].map((logo, index) => (
-        <div class="logo-item shrink-0 flex items-center justify-center">
+        <a
+          href={logo.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="logo-item shrink-0 flex items-center justify-center"
+          aria-label={index < logos.length ? `Visit ${logo.name}` : undefined}
+          aria-hidden={index >= logos.length ? "true" : undefined}
+          tabindex={index >= logos.length ? -1 : undefined}
+        >
           <img src={logo.src} alt={index < logos.length ? logo.name : ""} aria-hidden={index >= logos.length ? "true" : undefined} style={logo.style} class="logo-light object-contain" />
           <img src={logo.src} alt="" aria-hidden="true" style={logo.style} class="logo-dark object-contain" />
-        </div>
+        </a>
       ))}
     </div>
   </div>
@@ -39,6 +47,20 @@ const logos = [
   .logo-heading { position: relative; display: flex; align-items: center; justify-content: center; min-height: 2.5rem; }
   .marquee-track { animation: marquee var(--marquee-duration, 22s) linear infinite; }
   .marquee-track.is-paused { animation-play-state: paused; }
+  .marquee-track:hover,
+  .marquee-track:focus-within { animation-play-state: paused; }
+  .logo-item {
+    min-width: 4rem;
+    min-height: 3rem;
+    padding: 0.45rem 0.65rem;
+    border: 2px solid transparent;
+    transition: background 0.12s ease, border-color 0.12s ease;
+  }
+  .logo-item:hover,
+  .logo-item:focus-visible {
+    border-color: var(--pixel-ink);
+    background: var(--pixel-card);
+  }
   .marquee-toggle {
     position: absolute;
     right: 0;
