@@ -3,7 +3,7 @@ title: "Thank You, Next — 2025"
 description: "A year-in-review reflecting on graduating from Cornell, joining Agno, speaking at KubeCon EU, working on AI agents, and life in New York City."
 pubDate: 2025-12-31
 tags: ["year-in-review", "personal"]
-image: "/gallery/IMG_20251005_180417_354.jpg"
+image: "/blog/year-logs/thank-you-next-2025.jpg"
 externalUrl: "https://nancy-chauhan.medium.com/thank-you-next-2edd47d07f4a"
 ---
 

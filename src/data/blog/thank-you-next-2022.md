@@ -3,7 +3,7 @@ title: "Thank You, Next — 2022"
 description: "A year-in-review reflecting on speaking at DevOpsDays India, joining Women Tech Network, working at Gitpod, and open source contributions throughout the year."
 pubDate: 2022-12-31
 tags: ["year-in-review", "personal"]
-image: "/nancy-speaking-cropped.jpeg"
+image: "/blog/year-logs/thank-you-next-2022.jpg"
 externalUrl: "https://nancy-chauhan.medium.com/thank-you-next-d3ec464e42dc"
 ---
 

@@ -3,7 +3,7 @@ title: "Thank You, Next — 2023"
 description: "A year-in-review reflecting on starting at Cornell University, co-founding Women in Cloud Native, contributing to LocalStack, and the big move to the United States."
 pubDate: 2023-12-31
 tags: ["year-in-review", "personal"]
-image: "/gallery/IMG_20230705_230147_929.jpg"
+image: "/blog/year-logs/thank-you-next-2023.jpg"
 externalUrl: "https://nancy-chauhan.medium.com/thank-you-next-a275083343e4"
 ---
 

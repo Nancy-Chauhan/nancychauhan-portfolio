@@ -3,7 +3,7 @@ title: "Thank You, Next — 2024"
 description: "A year-in-review reflecting on my Cornell journey, internship at Exostellar, becoming a CNCF Ambassador, and contributions to the cloud native community."
 pubDate: 2024-12-31
 tags: ["year-in-review", "personal"]
-image: "/nancy-paris.jpg"
+image: "/blog/year-logs/thank-you-next-2024.jpg"
 externalUrl: "https://nancy-chauhan.medium.com/thank-you-next-8454b4413d3d"
 ---
 
