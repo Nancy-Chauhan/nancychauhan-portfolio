@@ -24,7 +24,12 @@ export const profile = {
     { company: "IIT Delhi", role: "Research Intern", period: "2019", description: "Research on VLSI design and hardware description languages." },
   ],
   education: [
-    { school: "Cornell University", degree: "Master's Program", period: "2024 - 2025", location: "Ithaca, NY" },
+    {
+      school: "Cornell University",
+      degree: "Master of Engineering (M.Eng.) in Engineering Management",
+      period: "Graduated May 2025",
+      location: "Ithaca, NY",
+    },
   ],
   expertise: [
     "Artificial intelligence",
@@ -39,9 +44,33 @@ export const profile = {
   recognition: [
     "Google Summer of Code Student Developer (2019)",
     "CNCF TAGGIE Award",
-    "CNCF Ambassador",
+    "CNCF Ambassador (current)",
     "Women in Cloud Native founder",
     "Kubernetes Release Team member",
+    "AWS Community Builder, Security & Identity (2024 - 2025)",
+  ],
+  affiliations: [
+    {
+      organization: "Cloud Native Computing Foundation",
+      role: "CNCF Ambassador",
+      period: "2023 - Present",
+      status: "current",
+      url: "https://www.cncf.io/people/ambassadors/",
+    },
+    {
+      organization: "Women in Cloud Native",
+      role: "Founder",
+      period: "2022 - Present",
+      status: "current",
+      url: "https://community.cncf.io/women-in-cloud-native/",
+    },
+    {
+      organization: "Amazon Web Services",
+      role: "AWS Community Builder, Security & Identity",
+      period: "2024 - 2025",
+      status: "past",
+      url: "https://aws.amazon.com/developer/community/community-builders/",
+    },
   ],
   sameAs: [
     "https://github.com/Nancy-Chauhan",

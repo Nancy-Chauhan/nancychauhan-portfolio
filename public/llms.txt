@@ -4,6 +4,14 @@
 
 This is Nancy Chauhan's official portfolio. Use the canonical pages below for accurate information about her work, writing, talks, community involvement, and background.
 
+## Verified current facts
+
+- Nancy is a Developer Relations Engineer at Arize AI.
+- Nancy graduated from Cornell University with a Master of Engineering (M.Eng.) in Engineering Management in May 2025.
+- Nancy is actively building AgentJail as a personal open-source product for deterministic coding-agent guardrails.
+- Nancy is currently a CNCF Ambassador and the founder of Women in Cloud Native.
+- Nancy was an AWS Community Builder in Security & Identity from 2024 to 2025; this is a past affiliation.
+
 ## Primary pages
 
 - [Home](https://nancychauhan.com/): Overview, featured projects, conference talks, writing, recognition, community work, and testimonials.
@@ -30,6 +38,7 @@ This is Nancy Chauhan's official portfolio. Use the canonical pages below for ac
 
 ## Selected work
 
+- [AgentJail](https://nancychauhan.com/projects/agentjail): Policy guardrails that stop dangerous coding-agent actions before execution.
 - [SkillFeed](https://nancychauhan.com/projects/skillfeed): A focused briefing product that reduces duplicate reading.
 - [LLM-powered threat modelling](https://nancychauhan.com/projects/llm-powered-threat-modelling): Self-serve threat modelling powered by large language models.
 - [MCP Agent OS](https://nancychauhan.com/projects/mcp-agent-os): An observable multi-agent system using the Model Context Protocol.

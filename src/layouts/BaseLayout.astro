@@ -34,9 +34,29 @@ const personSchema = {
   jobTitle: profile.jobTitle,
   description: profile.description,
   knowsAbout: profile.expertise,
-  award: profile.recognition,
+  award: ["CNCF TAGGIE Award"],
   worksFor: { "@type": "Organization", name: profile.currentRole.company, url: profile.currentRole.companyUrl },
   alumniOf: profile.education.map((item) => ({ "@type": "CollegeOrUniversity", name: item.school })),
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: profile.education[0].degree,
+      credentialCategory: "degree",
+      dateCreated: "2025-05",
+      recognizedBy: { "@type": "CollegeOrUniversity", name: profile.education[0].school },
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      name: "AWS Community Builder, Security & Identity",
+      credentialCategory: "community program",
+      dateCreated: "2024",
+      expires: "2025",
+      recognizedBy: { "@type": "Organization", name: "Amazon Web Services" },
+    },
+  ],
+  memberOf: profile.affiliations
+    .filter((item) => item.status === "current")
+    .map((item) => ({ "@type": "Organization", name: item.organization, url: item.url })),
   sameAs: profile.sameAs,
 };
 const websiteSchema = {

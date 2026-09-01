@@ -49,6 +49,10 @@ ${roleLines.join("\n")}
 
 ${profile.education.map((item) => `- ${item.degree}, ${item.school}, ${item.period}, ${item.location}`).join("\n")}
 
+## Community affiliations
+
+${profile.affiliations.map((item) => `- ${item.role}, ${item.organization}, ${item.period} (${item.status}) — ${item.url}`).join("\n")}
+
 ## Projects
 
 ${projectLines.join("\n")}
