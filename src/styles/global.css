@@ -331,12 +331,12 @@ body::after { display: none; }
 
 .pixel-brand {
   display: inline-flex;
-  min-height: 2.75rem;
+  min-height: 2.4rem;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.55rem;
   color: var(--pixel-ink);
   font-family: var(--pixel-font);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   touch-action: manipulation;
@@ -345,8 +345,8 @@ body::after { display: none; }
 
 .pixel-brand-icon {
   display: grid;
-  width: 2.15rem;
-  height: 2.15rem;
+  width: 2rem;
+  height: 2rem;
   place-items: center;
   border: 2px solid var(--pixel-ink);
   background: var(--pixel-purple);
@@ -357,10 +357,10 @@ body::after { display: none; }
 
 .pixel-nav-link,
 .pixel-chat-link {
-  padding: 0.45rem 0.65rem;
+  padding: 0.4rem 0.5rem;
   color: var(--pixel-ink);
   font-family: var(--pixel-font);
-  font-size: 0.9rem;
+  font-size: 0.82rem;
   font-weight: 700;
 }
 .pixel-nav-link { display: inline-flex; align-items: center; gap: 0.35rem; }
