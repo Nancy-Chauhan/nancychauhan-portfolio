@@ -10,7 +10,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="pixel-header sticky top-0 z-30">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-5 py-3 md:px-16" aria-label="Primary navigation">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-4 py-2 md:px-8 xl:px-16 xl:py-3" aria-label="Primary navigation">
     <a href="/" class="pixel-brand" aria-label="Nancy Chauhan, back to homepage">
       <span class="pixel-brand-icon">NC</span>
       <span>NANCY.CHAUHAN</span>
@@ -120,7 +120,7 @@ const currentPath = Astro.url.pathname;
   .theme-picker button + button { border-left: 2px solid var(--pixel-ink); }
   .theme-picker button[aria-pressed="true"] { background: var(--pixel-purple); color: white; }
   :global(html[data-theme="dark"]) .theme-picker button[aria-pressed="true"] { color: #151126; }
-  .theme-picker-mobile button { width: 2.75rem; height: 2.75rem; padding: 0; font-size: 1rem; }
+  .theme-picker-mobile button { width: 2.15rem; height: 2.15rem; min-height: 2.15rem; padding: 0; font-size: 0.82rem; }
 
   @media (max-width: 480px) {
     :global(.pixel-brand > span:last-child) { display: none; }
