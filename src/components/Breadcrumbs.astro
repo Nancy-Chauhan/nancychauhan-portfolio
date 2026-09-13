@@ -18,7 +18,7 @@ const { items } = Astro.props;
           {item.href ? (
             <a href={item.href} class="hover:text-[var(--color-purple)] transition-colors">{item.label}</a>
           ) : (
-            <span class="text-[var(--color-stone-900)]">{item.label}</span>
+            <span class="text-[var(--color-stone-900)]" aria-current="page">{item.label}</span>
           )}
         </li>
       </>

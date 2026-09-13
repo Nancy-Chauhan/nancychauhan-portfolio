@@ -10,8 +10,8 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="pixel-header sticky top-0 z-30">
-  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-24">
-    <a href="/#top" class="pixel-brand" aria-label="Nancy Chauhan, back to homepage">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 md:px-24" aria-label="Primary navigation">
+    <a href="/" class="pixel-brand" aria-label="Nancy Chauhan, back to homepage">
       <span class="pixel-brand-icon">NC</span>
       <span>NANCY.CHAUHAN</span>
     </a>
@@ -21,6 +21,7 @@ const currentPath = Astro.url.pathname;
         <a
           href={link.href}
           {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+          aria-current={currentPath === link.href || (!link.external && currentPath.startsWith(link.href)) ? "page" : undefined}
           class:list={[
             "pixel-nav-link",
             currentPath === link.href || (!link.external && currentPath.startsWith(link.href)) ? "is-active" : "",
@@ -51,6 +52,7 @@ const currentPath = Astro.url.pathname;
               <a
                 href={link.href}
                 {...link.external ? { target: "_blank", rel: "noopener noreferrer" } : {}}
+                aria-current={currentPath === link.href || (!link.external && currentPath.startsWith(link.href)) ? "page" : undefined}
                 class:list={[
                   "pixel-mobile-link",
                   currentPath === link.href || (!link.external && currentPath.startsWith(link.href)) ? "is-active" : "",

@@ -9,9 +9,30 @@ import Community from "../components/home/Community.astro";
 import Testimonials from "../components/home/Testimonials.astro";
 import LogoMarquee from "../components/home/LogoMarquee.astro";
 import PhotoGallery from "../components/PhotoGallery.astro";
+import { getCollection } from "astro:content";
+
+const featuredProjects = (await getCollection("projects"))
+  .filter((project) => project.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+const featuredProjectsSchema = {
+  "@type": "ItemList",
+  "@id": "https://nancychauhan.com/#featured-projects",
+  name: "Featured projects by Nancy Chauhan",
+  itemListElement: featuredProjects.map((project, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    url: `https://nancychauhan.com/projects/${project.id}`,
+    name: project.data.title,
+  })),
+};
 ---
 
-<BaseLayout title="Nancy Chauhan | Engineer & Product Builder">
+<BaseLayout
+  title="Nancy Chauhan | AI, Security & Open Source Engineer"
+  description="Nancy Chauhan is an engineer and product builder creating AI, security, developer tooling, and open-source systems—and sharing practical lessons from shipping them."
+  preloadImage="/nancy-speaking-1400.webp"
+  structuredData={featuredProjectsSchema}
+>
   <Hero />
   <LogoMarquee />
   <div class="homepage-pixel-zone max-w-6xl mx-auto px-6 md:px-24 pb-24">

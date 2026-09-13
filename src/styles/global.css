@@ -10,8 +10,8 @@
   --color-stone-100: #f5f5f4;
   --color-stone-200: #e7e5e4;
   --color-stone-300: #d6d3d1;
-  --color-stone-400: #a8a29e;
-  --color-stone-500: #78716c;
+  --color-stone-400: #706965;
+  --color-stone-500: #665f5a;
   --color-stone-600: #57534e;
   --color-stone-700: #44403c;
   --color-stone-800: #292524;
@@ -165,12 +165,12 @@ h1, h2, h3, h4, h5, h6 {
   border-top: 2px dashed var(--color-stone-300);
 }
 
-.animate-on-scroll {
+.js .animate-on-scroll {
   opacity: 0;
   transform: translateY(16px);
   transition: opacity 0.5s ease-out, transform 0.5s ease-out;
 }
-.animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+.js .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
 .stagger-1 { transition-delay: 0.1s; }
 .stagger-2 { transition-delay: 0.2s; }
 .stagger-3 { transition-delay: 0.3s; }
@@ -259,7 +259,7 @@ h1, h2, h3, h4, h5, h6 {
   --bg-subtle: #e8e1d5;
   --text-primary: var(--pixel-ink);
   --text-secondary: #514c58;
-  --text-muted: #807985;
+  --text-muted: #6d6671;
   --border: var(--pixel-ink);
 }
 
@@ -305,6 +305,22 @@ body::after { display: none; }
   outline-offset: 4px;
   box-shadow: 0 0 0 2px var(--pixel-paper), 0 0 0 5px var(--pixel-purple) !important;
 }
+
+.skip-link {
+  position: fixed;
+  z-index: 100;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--pixel-ink);
+  background: var(--pixel-yellow);
+  box-shadow: 3px 3px 0 var(--pixel-shadow);
+  color: var(--pixel-ink);
+  font-family: var(--pixel-font);
+  font-weight: 700;
+  transform: translateY(-180%);
+}
+.skip-link:focus { transform: translateY(0); }
 
 .pixel-header {
   border-bottom: 2px solid var(--pixel-ink);
@@ -776,8 +792,6 @@ html[data-theme="dark"] .pixel-back-link { color: #d7c9ff; }
 html[data-theme="dark"] .shadow-brutal-sm { box-shadow: 3px 3px 0 var(--pixel-shadow); }
 html[data-theme="dark"] .shadow-brutal { box-shadow: 5px 5px 0 var(--pixel-shadow); }
 html[data-theme="dark"] .shadow-brutal-lg { box-shadow: 7px 7px 0 var(--pixel-shadow); }
-html[data-theme="dark"] .animate-on-scroll { will-change: opacity, transform; }
-
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,

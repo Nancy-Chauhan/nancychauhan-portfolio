@@ -5,9 +5,19 @@ import SkillsGrid from "../components/about/SkillsGrid.astro";
 import Education from "../components/about/Education.astro";
 import YearLogs from "../components/about/YearLogs.astro";
 import PhotoGallery from "../components/PhotoGallery.astro";
+
+const profilePageSchema = {
+  "@type": "ProfilePage",
+  "@id": "https://nancychauhan.com/about#profile-page",
+  mainEntity: { "@id": "https://nancychauhan.com/#person" },
+};
 ---
 
-<BaseLayout title="About | Nancy Chauhan" description="Developer Relations Engineer at Arize AI. CNCF Ambassador, Women in Cloud Native founder. Love to build, ship, and teach.">
+<BaseLayout
+  title="About Nancy Chauhan | AI Engineer & Open Source Builder"
+  description="Developer Relations Engineer at Arize AI, CNCF Ambassador, and Women in Cloud Native founder working across AI, security, product, and open source."
+  structuredData={profilePageSchema}
+>
   <div class="pixel-page pixel-about mx-auto max-w-6xl px-6 pt-10 md:pt-14 pb-20">
 
     {/* Hero: Bio + Photo */}
@@ -51,10 +61,13 @@ import PhotoGallery from "../components/PhotoGallery.astro";
       <div class="flex justify-center lg:justify-end lg:sticky lg:top-24 lg:self-start shrink-0">
         <div class="card-brutal p-0 overflow-hidden w-[260px] md:w-[300px]">
           <img
-            src="/nancy-paris.jpg"
-            alt="Nancy Chauhan"
+            src="/nancy-paris-800.webp"
+            alt="Nancy Chauhan in Paris"
+            width="800"
+            height="1018"
             class="w-full aspect-[3/4] object-cover object-[25%_center]"
             loading="lazy"
+            decoding="async"
           />
           <div class="border-t-2 border-[var(--color-stone-800)] px-4 py-3">
             <p class="font-mono text-xs text-[var(--color-stone-400)]">$ nancy --connect --location="SF"<span class="terminal-cursor"></span></p>

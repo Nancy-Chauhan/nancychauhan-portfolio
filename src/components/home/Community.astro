@@ -22,8 +22,9 @@ const roles = [
       <div class="hidden sm:flex items-center gap-2 shrink-0">
         <button
           id="featured-prev"
+          type="button"
           class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
-          aria-label="Previous"
+          aria-label="Previous recognitions"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
@@ -31,8 +32,9 @@ const roles = [
         </button>
         <button
           id="featured-next"
+          type="button"
           class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
-          aria-label="Next"
+          aria-label="Next recognitions"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -43,7 +45,7 @@ const roles = [
   </div>
 
   <div class="relative">
-    <div id="featured-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
+    <div id="featured-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar" role="region" aria-label="Recognition and community highlights" tabindex="0">
       {roles.map((role) => (
         role.link ? (
           <a href={role.link} target="_blank" rel="noopener noreferrer" class="shrink-0 w-[180px] md:w-[260px] card-brutal overflow-hidden flex flex-col hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all cursor-pointer">
@@ -90,14 +92,18 @@ const roles = [
 <script>
   function initFeaturedCarousel() {
     const carousel = document.getElementById('featured-carousel');
+    const prev = document.getElementById('featured-prev') as HTMLButtonElement | null;
+    const next = document.getElementById('featured-next') as HTMLButtonElement | null;
     const scrollAmount = 200;
 
-    document.getElementById('featured-prev')?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    document.getElementById('featured-next')?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    });
+    if (prev && !prev.dataset.carouselBound) {
+      prev.dataset.carouselBound = 'true';
+      prev.addEventListener('click', () => carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+    }
+    if (next && !next.dataset.carouselBound) {
+      next.dataset.carouselBound = 'true';
+      next.addEventListener('click', () => carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+    }
   }
   initFeaturedCarousel();
   document.addEventListener('astro:page-load', initFeaturedCarousel);

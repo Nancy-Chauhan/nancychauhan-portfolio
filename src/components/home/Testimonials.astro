@@ -120,8 +120,9 @@ const visibleTestimonials = testimonials.slice(0, limit);
       <div class="hidden sm:flex items-center gap-2 shrink-0">
         <button
           id="testimonial-prev"
+          type="button"
           class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
-          aria-label="Previous"
+          aria-label="Previous testimonials"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
@@ -129,8 +130,9 @@ const visibleTestimonials = testimonials.slice(0, limit);
         </button>
         <button
           id="testimonial-next"
+          type="button"
           class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
-          aria-label="Next"
+          aria-label="Next testimonials"
         >
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
@@ -141,15 +143,23 @@ const visibleTestimonials = testimonials.slice(0, limit);
   </div>
 
   <div class="relative">
-    <div id="testimonial-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar">
+    <div id="testimonial-carousel" class="flex gap-5 overflow-x-auto scroll-smooth no-scrollbar" role="region" aria-label="Testimonials" tabindex="0">
       {visibleTestimonials.map((t, i) => (
-        <div class="shrink-0 w-[250px] md:w-[320px] h-[260px] md:h-[280px] flip-card" onclick="this.classList.toggle('flipped')">
+        <article
+          class="shrink-0 w-[250px] md:w-[320px] h-[260px] md:h-[280px] flip-card"
+          data-testimonial-card
+          data-testimonial-name={t.name}
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+          aria-label={`Read full testimonial from ${t.name}`}
+        >
           <div class="flip-card-inner">
             {/* Front */}
-            <div class="flip-card-front card-brutal p-4 md:p-5 flex flex-col">
+            <div class="flip-card-front card-brutal p-4 md:p-5 flex flex-col" data-testimonial-front>
               <div class="flex items-center gap-3 mb-4">
                 {t.img ? (
-                  <img src={t.img} alt={t.name} class="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
+                  <img src={t.img} alt={t.name} width="40" height="40" loading="lazy" decoding="async" class="w-10 h-10 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
                 ) : (
                   <div class="w-10 h-10 rounded-full bg-[var(--color-purple)] flex items-center justify-center text-white font-bold font-sans text-sm border-2 border-[var(--color-stone-300)]">
                     {t.name.split(' ').map((n: string) => n[0]).join('')}
@@ -166,10 +176,10 @@ const visibleTestimonials = testimonials.slice(0, limit);
               <p class="mt-2 text-xs font-sans text-[var(--color-purple)] font-semibold">Tap to read full →</p>
             </div>
             {/* Back */}
-            <div class="flip-card-back card-brutal p-4 md:p-5 flex flex-col">
+            <div class="flip-card-back card-brutal p-4 md:p-5 flex flex-col" data-testimonial-back aria-hidden="true" inert>
               <div class="flex items-center gap-3 mb-3">
                 {t.img ? (
-                  <img src={t.img} alt={t.name} class="w-8 h-8 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
+                  <img src={t.img} alt="" width="32" height="32" loading="lazy" decoding="async" class="w-8 h-8 rounded-full object-cover border-2 border-[var(--color-stone-300)]" />
                 ) : (
                   <div class="w-8 h-8 rounded-full bg-[var(--color-purple)] flex items-center justify-center text-white font-bold font-sans text-xs border-2 border-[var(--color-stone-300)]">
                     {t.name.split(' ').map((n: string) => n[0]).join('')}
@@ -183,7 +193,7 @@ const visibleTestimonials = testimonials.slice(0, limit);
               <p class="mt-2 text-xs font-sans text-[var(--color-purple)] font-semibold">← Tap to flip back</p>
             </div>
           </div>
-        </div>
+        </article>
       ))}
     </div>
     <p class="flex sm:hidden items-center justify-end gap-1 mt-3 font-mono text-xs text-[var(--color-stone-400)]">
@@ -238,15 +248,40 @@ const visibleTestimonials = testimonials.slice(0, limit);
 <script>
   function initTestimonialCarousel() {
     const carousel = document.getElementById('testimonial-carousel');
-    const prev = document.getElementById('testimonial-prev');
-    const next = document.getElementById('testimonial-next');
+    const prev = document.getElementById('testimonial-prev') as HTMLButtonElement | null;
+    const next = document.getElementById('testimonial-next') as HTMLButtonElement | null;
     const scrollAmount = 340;
 
-    prev?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    });
-    next?.addEventListener('click', () => {
-      carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    if (prev && !prev.dataset.carouselBound) {
+      prev.dataset.carouselBound = 'true';
+      prev.addEventListener('click', () => carousel?.scrollBy({ left: -scrollAmount, behavior: 'smooth' }));
+    }
+    if (next && !next.dataset.carouselBound) {
+      next.dataset.carouselBound = 'true';
+      next.addEventListener('click', () => carousel?.scrollBy({ left: scrollAmount, behavior: 'smooth' }));
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-testimonial-card]').forEach((card) => {
+      if (card.dataset.flipBound) return;
+      card.dataset.flipBound = 'true';
+      const front = card.querySelector<HTMLElement>('[data-testimonial-front]');
+      const back = card.querySelector<HTMLElement>('[data-testimonial-back]');
+      const name = card.dataset.testimonialName || 'this person';
+      const toggle = () => {
+        const flipped = card.classList.toggle('flipped');
+        card.setAttribute('aria-expanded', String(flipped));
+        card.setAttribute('aria-label', flipped ? `Show summary of testimonial from ${name}` : `Read full testimonial from ${name}`);
+        front?.setAttribute('aria-hidden', String(flipped));
+        back?.setAttribute('aria-hidden', String(!flipped));
+        if (back) back.inert = !flipped;
+      };
+      card.addEventListener('click', toggle);
+      card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggle();
+        }
+      });
     });
   }
   initTestimonialCarousel();

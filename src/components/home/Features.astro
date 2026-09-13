@@ -1,9 +1,9 @@
 ---
 const features = [
-  { title: "Product Thinking", description: "User research, roadmaps, and shipping ideas that stick.", image: "/features/ai.svg?v=pixel-2", bg: "#ede9fe" },
-  { title: "All Things AI", description: "LLMs, agents, MCP, RAG, and evals.", image: "/features/devex.svg?v=pixel-2", bg: "#dbeafe" },
-  { title: "Security", description: "Breaking systems to build them better.", image: "/features/security.svg?v=pixel-2", bg: "#fce7f3" },
-  { title: "Open Source", description: "Women in Cloud Native Founder · GSoC · K8s Release Team", image: "/features/opensource.svg?v=pixel-2", bg: "#d1fae5" },
+  { icon: "product", title: "Product Thinking", description: "User research, roadmaps, and shipping ideas that stick.", bg: "#ede9fe", accent: "#7557d9" },
+  { icon: "ai", title: "All Things AI", description: "LLMs, agents, MCP, RAG, and evals.", bg: "#dbeafe", accent: "#438bd1" },
+  { icon: "security", title: "Security", description: "Breaking systems to build them better.", bg: "#fce7f3", accent: "#e94b91" },
+  { icon: "opensource", title: "Open Source", description: "Women in Cloud Native Founder · GSoC · K8s Release Team", bg: "#d1fae5", accent: "#2ea36e" },
 ];
 ---
 
@@ -21,15 +21,46 @@ const features = [
     {features.map((feature, index) => (
       <div class={`animate-on-scroll stagger-${index + 1} card-brutal overflow-hidden flex flex-col h-full`}>
         <div
-          class="aspect-[4/3] flex items-center justify-center p-3 md:p-6 overflow-hidden border-b-2 border-[var(--color-stone-800)]"
-          style={`background: ${feature.bg};`}
+          class="feature-visual aspect-[4/3] overflow-hidden border-b-2 border-[var(--color-stone-800)]"
+          style={`--feature-bg:${feature.bg};--feature-accent:${feature.accent};`}
+          aria-hidden="true"
         >
-          <img
-            src={feature.image}
-            alt={feature.title}
-            class="max-h-full max-w-full object-contain"
-            loading="lazy"
-          />
+          {feature.icon === "product" && (
+            <svg viewBox="0 0 220 150" role="presentation">
+              <path class="soft" d="M31 36h93v68H31z" />
+              <path d="M45 25h93v68H45zM45 42h93M58 57h49M58 69h67M58 81h35" />
+              <path class="accent-fill" d="M50 31h7v7h-7zM61 31h7v7h-7zM72 31h7v7h-7z" />
+              <path class="accent" d="M149 55h28v28h-28zM138 69h11M177 69h13M163 44V31M163 96v13" />
+              <path d="m156 69 5 5 10-12" />
+            </svg>
+          )}
+          {feature.icon === "ai" && (
+            <svg viewBox="0 0 220 150" role="presentation">
+              <path class="soft" d="M58 35h104v80H58z" />
+              <path d="M74 25h72v15h14v70h-14v15H74v-15H60V40h14z" />
+              <path class="accent" d="M83 56h54M83 94h54M83 56l27 19 27-19M83 94l27-19 27 19" />
+              <path class="accent-fill" d="M77 50h12v12H77zM104 69h12v12h-12zM131 50h12v12h-12zM77 88h12v12H77zM131 88h12v12h-12z" />
+              <path d="M52 55H39v12M168 83h13v12M102 17h16M102 133h16" />
+            </svg>
+          )}
+          {feature.icon === "security" && (
+            <svg viewBox="0 0 220 150" role="presentation">
+              <path class="soft" d="m110 26 57 20v36c0 28-23 45-57 57-34-12-57-29-57-57V46z" />
+              <path d="m110 17 49 17v43c0 24-20 39-49 51-29-12-49-27-49-51V34z" />
+              <path class="accent-fill" d="M86 63h48v39H86z" />
+              <path d="M94 63V51c0-21 32-21 32 0v12M110 76v14" />
+              <path class="accent" d="M43 55h12M165 55h12M45 102h15M160 102h15" />
+            </svg>
+          )}
+          {feature.icon === "opensource" && (
+            <svg viewBox="0 0 220 150" role="presentation">
+              <path class="soft" d="M55 24h36v36H55zM130 57h36v36h-36zM72 101h36v36H72z" />
+              <path d="M66 17h25v25H66zM137 50h25v25h-25zM78 96h25v25H78z" />
+              <path class="accent" d="M91 29h20c22 0 38 10 38 21M78 42v54M103 108h25c14 0 21-12 21-33" />
+              <path class="accent-fill" d="M72 23h13v13H72zM143 56h13v13h-13zM84 102h13v13H84z" />
+              <path d="m70 86 8 10 8-10M139 83l10-8 10 8" />
+            </svg>
+          )}
         </div>
         <div class="p-3 md:p-5 flex-1">
           <h3 class="text-sm md:text-base font-bold font-sans text-[var(--color-stone-900)] mb-0.5 md:mb-1">{feature.title}</h3>
@@ -39,3 +70,46 @@ const features = [
     ))}
   </div>
 </section>
+
+<style>
+  .feature-visual {
+    position: relative;
+    background: var(--feature-bg);
+    background-image:
+      linear-gradient(color-mix(in srgb, var(--feature-accent) 7%, transparent) 1px, transparent 1px),
+      linear-gradient(90deg, color-mix(in srgb, var(--feature-accent) 7%, transparent) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .feature-visual svg {
+    width: 100%;
+    height: 100%;
+    padding: 0.55rem;
+    overflow: visible;
+  }
+
+  .feature-visual path {
+    fill: var(--pixel-card);
+    stroke: color-mix(in srgb, var(--pixel-ink) 82%, var(--feature-bg));
+    stroke-width: 4;
+    stroke-linecap: square;
+    stroke-linejoin: miter;
+    vector-effect: non-scaling-stroke;
+  }
+
+  .feature-visual .soft {
+    fill: color-mix(in srgb, var(--feature-accent) 18%, var(--pixel-card));
+    stroke: none;
+    transform: translate(7px, 7px);
+  }
+
+  .feature-visual .accent {
+    fill: none;
+    stroke: color-mix(in srgb, var(--feature-accent) 82%, var(--feature-bg));
+  }
+
+  .feature-visual .accent-fill {
+    fill: color-mix(in srgb, var(--feature-accent) 74%, var(--pixel-card));
+    stroke: color-mix(in srgb, var(--pixel-ink) 78%, var(--feature-bg));
+  }
+</style>

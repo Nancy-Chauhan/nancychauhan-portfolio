@@ -39,6 +39,7 @@ const formattedDate = post.data.pubDate.toLocaleDateString("en-US", {
   description={post.data.description}
   canonical={canonicalUrl}
   socialImage={post.data.image}
+  socialImageAlt={post.data.title}
   pageType="article"
   structuredData={articleSchema}
 >

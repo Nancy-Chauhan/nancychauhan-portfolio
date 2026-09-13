@@ -25,24 +25,26 @@ const row2 = [
   "SCR-20260124-lews.png",
   "SCR-20260128-rdba.jpeg",
 ];
+
+const optimizedImage = (filename: string) => `optimized-${filename.replace(/\.(jpe?g|png)$/i, ".webp")}`;
 ---
 
-<section>
+<section aria-label="Personal photo gallery">
   <div class="overflow-hidden rounded-lg">
-    <div class="gallery-track gallery-left">
+    <div class="gallery-track gallery-left" tabindex="0" aria-label="Photo gallery, row one">
       {[...row1, ...row1].map((img) => (
         <div class="gallery-item">
-          <img src={`/gallery/${img}`} alt="" loading="lazy" />
+          <img src={`/gallery/${optimizedImage(img)}`} alt="" width="680" height="880" loading="lazy" decoding="async" fetchpriority="low" />
         </div>
       ))}
     </div>
   </div>
 
   <div class="overflow-hidden rounded-lg mt-3">
-    <div class="gallery-track gallery-right">
+    <div class="gallery-track gallery-right" tabindex="0" aria-label="Photo gallery, row two">
       {[...row2, ...row2].map((img) => (
         <div class="gallery-item">
-          <img src={`/gallery/${img}`} alt="" loading="lazy" />
+          <img src={`/gallery/${optimizedImage(img)}`} alt="" width="680" height="880" loading="lazy" decoding="async" fetchpriority="low" />
         </div>
       ))}
     </div>
@@ -63,6 +65,9 @@ const row2 = [
   .gallery-right {
     animation: gallery-scroll-right var(--gallery-duration, 30s) linear infinite;
   }
+
+  .gallery-track:hover,
+  .gallery-track:focus { animation-play-state: paused; }
 
   .gallery-item {
     flex-shrink: 0;

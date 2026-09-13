@@ -10,6 +10,8 @@ interface Props {
   description?: string;
   canonical?: string;
   socialImage?: string;
+  socialImageAlt?: string;
+  preloadImage?: string;
   pageType?: "website" | "article";
   structuredData?: Record<string, unknown> | Record<string, unknown>[];
 }
@@ -19,6 +21,8 @@ const {
   description = "Nancy Chauhan - Engineer & Developer Advocate",
   canonical,
   socialImage = "/og-image.png",
+  socialImageAlt = "Nancy Chauhan, engineer and product builder",
+  preloadImage,
   pageType = "website",
   structuredData = [],
 } = Astro.props;
@@ -68,8 +72,18 @@ const websiteSchema = {
   inLanguage: "en",
   author: { "@id": `${profile.url}/#person` },
 };
+const webPageSchema = {
+  "@type": "WebPage",
+  "@id": `${canonicalUrl.href}#webpage`,
+  url: canonicalUrl.href,
+  name: title,
+  description,
+  inLanguage: "en",
+  isPartOf: { "@id": `${profile.url}/#website` },
+  about: { "@id": `${profile.url}/#person` },
+};
 const extraSchemas = Array.isArray(structuredData) ? structuredData : [structuredData];
-const schemaGraph = { "@context": "https://schema.org", "@graph": [personSchema, websiteSchema, ...extraSchemas] };
+const schemaGraph = { "@context": "https://schema.org", "@graph": [personSchema, websiteSchema, webPageSchema, ...extraSchemas] };
 const serializedSchema = JSON.stringify(schemaGraph).replace(/</g, "\\u003c");
 ---
 
@@ -79,29 +93,45 @@ const serializedSchema = JSON.stringify(schemaGraph).replace(/</g, "\\u003c");
     <meta charset="UTF-8" />
     <script is:inline>
       (() => {
-        const savedTheme = localStorage.getItem("nancy-theme");
-        const theme = savedTheme === "dark" ? "dark" : "light";
+        document.documentElement.classList.add("js");
+        let theme = "light";
+        try {
+          theme = localStorage.getItem("nancy-theme") === "dark" ? "dark" : "light";
+        } catch {}
         document.documentElement.dataset.theme = theme;
         document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "only light";
       })();
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="only light" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="author" content={profile.name} />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#f4efe5" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={pageType} />
+    <meta property="og:site_name" content="Nancy Chauhan" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Nancy Chauhan, engineer and product builder" />
+    <meta property="og:image:alt" content={socialImageAlt} />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
     <link rel="icon" type="image/gif" href="/favicon.gif" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    {preloadImage && <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="AI-readable site overview" />
     <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Complete AI-readable portfolio" />
@@ -112,13 +142,19 @@ const serializedSchema = JSON.stringify(schemaGraph).replace(/</g, "\\u003c");
     <ClientRouter />
   </head>
   <body class="min-h-screen flex flex-col">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <Header />
-    <main id="top" class="flex-1">
+    <main id="main-content" class="flex-1" tabindex="-1">
       <slot />
     </main>
     <Footer />
     <script>
       function initAnimations() {
+        const elements = document.querySelectorAll(".animate-on-scroll");
+        if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          elements.forEach((element) => element.classList.add("visible"));
+          return;
+        }
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
@@ -130,7 +166,7 @@ const serializedSchema = JSON.stringify(schemaGraph).replace(/</g, "\\u003c");
           },
           { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
         );
-        document.querySelectorAll(".animate-on-scroll").forEach((el) => {
+        elements.forEach((el) => {
           observer.observe(el);
         });
       }
