@@ -30,8 +30,8 @@ const currentPath = Astro.url.pathname;
         </a>
       ))}
       <div class="theme-picker" role="group" aria-label="Color theme">
-        <button type="button" data-theme-choice="light" aria-pressed="true"><span aria-hidden="true">☀</span> LIGHT</button>
-        <button type="button" data-theme-choice="dark" aria-pressed="false"><span aria-hidden="true">☾</span> DARK</button>
+        <button type="button" data-theme-choice="light" aria-label="Use light theme" aria-pressed="true">☀</button>
+        <button type="button" data-theme-choice="dark" aria-label="Use dark theme" aria-pressed="false">☾</button>
       </div>
       <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="pixel-chat-link">LET’S CHAT ↗</a>
     </div>
@@ -102,15 +102,16 @@ const currentPath = Astro.url.pathname;
     display: inline-flex;
     border: 2px solid var(--pixel-ink);
     background: var(--pixel-card);
-    box-shadow: 3px 3px 0 var(--pixel-shadow);
+    box-shadow: 2px 2px 0 var(--pixel-shadow);
   }
 
   .theme-picker button {
-    min-height: 2.5rem;
-    padding: 0.45rem 0.6rem;
+    width: 2rem;
+    min-height: 2rem;
+    padding: 0;
     color: var(--text-muted);
     font-family: var(--pixel-font);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 700;
   }
 

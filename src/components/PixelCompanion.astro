@@ -46,9 +46,9 @@
   .pixel-welcome {
     position: absolute;
     z-index: 20;
-    right: 0.4rem;
-    top: -4.15rem;
-    width: 56px;
+    right: -0.75rem;
+    bottom: -2.75rem;
+    width: 46px;
     filter: drop-shadow(3px 3px 0 rgba(37, 34, 43, 0.28));
     pointer-events: none;
   }
@@ -62,16 +62,16 @@
   .pixel-welcome-bubble {
     position: absolute;
     right: calc(100% + 0.65rem);
-    top: 0.15rem;
+    top: 0.35rem;
     width: max-content;
-    max-width: 13rem;
-    padding: 0.55rem 0.7rem;
+    max-width: 10rem;
+    padding: 0.4rem 0.55rem;
     border: 2px solid var(--pixel-ink);
     background: var(--pixel-card);
     box-shadow: 3px 3px 0 var(--pixel-shadow);
     color: var(--pixel-ink);
     font-family: var(--pixel-font);
-    font-size: 0.86rem;
+    font-size: 0.7rem;
     font-weight: 700;
     line-height: 1.3;
   }
@@ -101,14 +101,13 @@
 
   @media (max-width: 640px) {
     .pixel-welcome {
-      right: 0.5rem;
-      top: -2.5rem;
-      width: 48px;
+      right: 0.25rem;
+      bottom: -2rem;
+      width: 40px;
     }
 
     .pixel-welcome-bubble {
-      max-width: 10rem;
-      font-size: 0.76rem;
+      display: none;
     }
   }
 
