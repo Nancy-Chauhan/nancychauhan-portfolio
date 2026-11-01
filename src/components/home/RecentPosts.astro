@@ -12,7 +12,7 @@ const allPosts = (await getCollection("blog"))
   .filter((post) => !isPersonal(post))
   .sort((first, second) => second.data.pubDate.getTime() - first.data.pubDate.getTime());
 
-const posts = variant === "agents" ? allPosts.filter(isAgentNote).slice(0, 6) : allPosts.filter((post) => !isAgentNote(post)).slice(0, 3);
+const posts = variant === "agents" ? allPosts.filter(isAgentNote).slice(0, 4) : allPosts.filter((post) => !isAgentNote(post)).slice(0, 3);
 
 const copy = variant === "agents"
   ? {
@@ -21,7 +21,7 @@ const copy = variant === "agents"
       heading: "AI agents in production",
       sub: "Benchmarks, traces and harness design from building and securing AI agents.",
       cta: "/blog#ai-agents",
-      gridClass: "md:grid-cols-3",
+      gridClass: "md:grid-cols-2",
     }
   : {
       id: "writing",
