@@ -157,7 +157,13 @@ const lensPhotos = [
     .lens-card { grid-column: 1 / -1; display: flex; align-items: stretch; }
     .lens-prints { width: 9rem; height: auto; min-height: 6rem; flex-shrink: 0; border-bottom: 0; border-right: 2px solid var(--pixel-ink); }
     .lens-prints img { width: 38%; }
-    .lens-caption { display: flex; flex-direction: column; justify-content: center; }
+    .lens-caption { display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+    .lens-url { overflow-wrap: anywhere; }
+  }
+
+  @media (max-width: 380px) {
+    .lens-prints { width: 6.5rem; }
+    .lens-title { font-size: 0.82rem; }
   }
 
   @media (prefers-reduced-motion: reduce) {
