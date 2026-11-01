@@ -65,6 +65,10 @@ const education = profile.education;
     object-position: center 35%;
   }
 
+  @media (max-width: 639px) {
+    .edu-photo { max-width: 10.5rem; margin-inline: auto; box-shadow: 3px 3px 0 var(--pixel-shadow); }
+  }
+
   @media (min-width: 640px) {
     .edu-with-photo { flex-direction: row; align-items: center; }
     .edu-photo { width: 13rem; flex-shrink: 0; }

@@ -48,6 +48,7 @@ const swatch = palette[hash % palette.length];
     {source && <span class="post-source">{source} ↗</span>}
   </div>
 
+  <div class="post-body">
   <div class="post-cover" style={`--cover-bg:${swatch.bg};--cover-accent:${swatch.accent};`}>
     {image ? (
       <img src={image} alt="" loading="lazy" decoding="async" />
@@ -59,18 +60,19 @@ const swatch = palette[hash % palette.length];
     )}
   </div>
 
-  <div class="p-5 flex flex-col flex-1">
+  <div class="post-text p-5 flex flex-col flex-1">
     <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors">
       {title}
     </h3>
     <p class="text-sm text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 line-clamp-2 flex-1">
       {description}
     </p>
-    <div class="flex flex-wrap gap-2">
+    <div class="post-tags flex flex-wrap gap-2">
       {tags.slice(0, 2).map((tag) => (
         <span class="tag-brutal">{tag}</span>
       ))}
     </div>
+  </div>
   </div>
 </a>
 
@@ -128,6 +130,27 @@ const swatch = palette[hash % palette.length];
     font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  .post-body { display: flex; flex: 1; flex-direction: column; }
+
+  /* Phones: compact row — small thumbnail left, text right. */
+  @media (max-width: 639px) {
+    .post-body { flex-direction: row; }
+    .post-cover {
+      width: 6.5rem;
+      flex-shrink: 0;
+      aspect-ratio: auto;
+      border-right: 2px solid var(--pixel-ink);
+      border-bottom: 0;
+    }
+    .topic-panel { inset: 0.6rem; padding: 0 0.4rem; gap: 0.15rem; box-shadow: 3px 3px 0 color-mix(in srgb, var(--cover-accent) 65%, var(--pixel-ink)); }
+    .topic-prompt { font-size: 0.55rem; }
+    .topic-name { font-size: 0.62rem; white-space: normal; word-break: break-all; }
+    .post-text { padding: 0.7rem 0.8rem; }
+    .post-text h3 { font-size: 0.9rem; line-height: 1.3; margin-bottom: 0.3rem; }
+    .post-text p { font-size: 0.78rem; margin-bottom: 0.5rem; -webkit-line-clamp: 2; }
+    .post-tags .tag-brutal:nth-child(n + 2) { display: none; }
   }
 
   @media (prefers-reduced-motion: reduce) {

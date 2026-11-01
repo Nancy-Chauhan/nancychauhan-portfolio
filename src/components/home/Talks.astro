@@ -92,7 +92,7 @@ function getYouTubeId(url: string) {
   </div>
 
   {showAll ? (
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+    <div class="talk-list grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
       {shownTalks.map((talk, i) => talk.video && (
               <article class={`animate-on-scroll stagger-${(i % 3) + 1} card-brutal w-full overflow-hidden flex flex-col`}>
                 <button
@@ -179,6 +179,13 @@ function getYouTubeId(url: string) {
   }
 
   .talk-video-trigger { display: block; background: #050816; }
+  @media (max-width: 639px) {
+    .talk-list .talk-play-icon { width: 2.4rem; height: 2.4rem; border-width: 2px; }
+    .talk-list .talk-play-icon span { border-top-width: 0.45rem; border-bottom-width: 0.45rem; border-left-width: 0.7rem; margin-left: 0.15rem; }
+    .talk-list .p-3 { padding: 0.5rem 0.55rem 0.6rem; }
+    .talk-list .p-3 > p:first-child { font-size: 0.7rem; display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+    .talk-list .talk-meta { font-size: 0.58rem; }
+  }
   .talk-meta {
     margin-top: 0.35rem;
     color: var(--color-stone-500);

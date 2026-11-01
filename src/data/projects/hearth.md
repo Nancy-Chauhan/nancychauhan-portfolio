@@ -32,7 +32,12 @@ Hearth is an AI agent that searches four rental marketplaces (Craigslist, Facebo
 
 ## Architecture
 
-![Hearth architecture: the Hearth UI talks to a local Python server whose agent loop observes the page, asks the TypeSafe decision model for an operation and target, guards, and acts over CDP through browser-harness on a dedicated Chrome that opens Craigslist, Facebook Marketplace, Redfin and Zillow](/projects/hearth-architecture.svg)
+<div class="diagram-scroll">
+  <a href="/projects/hearth-architecture.svg" target="_blank" rel="noopener noreferrer">
+    <img src="/projects/hearth-architecture.svg" alt="Hearth architecture: the Hearth UI talks to a local Python server whose agent loop observes the page, asks the TypeSafe decision model for an operation and target, guards, and acts over CDP through browser-harness on a dedicated Chrome that opens Craigslist, Facebook Marketplace, Redfin and Zillow" width="1700" height="1370" loading="lazy" decoding="async" />
+  </a>
+</div>
+<p class="diagram-hint">Swipe to see the whole diagram, or tap to open it full size.</p>
 
 ### Decisions, not guesses
 

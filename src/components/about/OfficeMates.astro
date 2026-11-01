@@ -1,0 +1,166 @@
+---
+const cats = [
+  {
+    src: "/gallery/cat-laptop.jpg",
+    alt: "A white cat with one paw on an open laptop, staring at the screen",
+    width: 604,
+    height: 844,
+    caption: "Can’t rely on mom for food. Need to fine-tune my life 😻",
+    tilt: "-1.5deg",
+  },
+  {
+    src: "/gallery/nemo-desk.jpg",
+    alt: "Nemo, an orange tabby cat, stretched out asleep across a desk next to a laptop",
+    width: 875,
+    height: 483,
+    caption: "Nemo trying to keep up with everything in AI ☠️",
+    tilt: "1.5deg",
+  },
+];
+
+// A few prints from the Lens site, fanned out to invite a click.
+const lensPhotos = [
+  "/gallery/optimized-IMG_20240704_140041_613.webp",
+  "/gallery/optimized-IMG_20191020_212458_301.webp",
+  "/gallery/optimized-IMG_20191015_231543_120.webp",
+  "/gallery/optimized-IMG_20240214_190414_631.webp",
+];
+---
+
+<section id="office-mates">
+  <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-3 animate-on-scroll">
+    <span class="section-heading">Office Mates</span>
+  </h2>
+  <p class="text-base text-[var(--text-muted)] mb-8 animate-on-scroll">
+    My two cats, who review every line of code I write.
+  </p>
+
+  <div class="mates-grid">
+    {cats.map((cat, i) => (
+      <figure class={`mate animate-on-scroll stagger-${i + 1}`} style={`--tilt:${cat.tilt};`}>
+        <div class="mate-photo">
+          <img src={cat.src} alt={cat.alt} width={cat.width} height={cat.height} loading="lazy" decoding="async" />
+        </div>
+        <figcaption>{cat.caption}</figcaption>
+      </figure>
+    ))}
+
+    <a
+      href="https://lens.nancychauhan.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mate lens-card animate-on-scroll stagger-3"
+      style="--tilt:-1deg;"
+      aria-label="More photos and zines on lens.nancychauhan.com (opens in a new tab)"
+    >
+      <div class="lens-prints" aria-hidden="true">
+        {lensPhotos.map((src) => <img src={src} alt="" loading="lazy" decoding="async" />)}
+      </div>
+      <div class="lens-caption">
+        <span class="lens-title">More photos &amp; zines</span>
+        <span class="lens-url">lens.nancychauhan.com ↗</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<style>
+  .mates-grid {
+    display: grid;
+    gap: 1.75rem;
+    align-items: center;
+  }
+
+  .mate {
+    display: block;
+    margin: 0;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 6px 6px 0 var(--pixel-shadow);
+    color: var(--pixel-ink);
+    transform: rotate(var(--tilt));
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .mate:hover {
+    box-shadow: 3px 3px 0 var(--pixel-shadow);
+    transform: translate(3px, 3px) rotate(0deg);
+  }
+
+  .mate-photo {
+    overflow: hidden;
+    border-bottom: 2px solid var(--pixel-ink);
+  }
+
+  .mate-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .mate figcaption,
+  .lens-caption {
+    padding: 0.65rem 0.85rem 0.8rem;
+    font-family: var(--pixel-font);
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.45;
+  }
+
+  /* Lens card: a fan of prints on a yellow mat. */
+  .lens-card { background: var(--pixel-yellow); }
+
+  .lens-prints {
+    position: relative;
+    height: 13rem;
+    overflow: hidden;
+    border-bottom: 2px solid var(--pixel-ink);
+    background: color-mix(in srgb, var(--pixel-yellow) 70%, var(--pixel-card));
+  }
+
+  .lens-prints img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 34%;
+    aspect-ratio: 4 / 5;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    object-fit: cover;
+    box-shadow: 3px 3px 0 var(--pixel-shadow);
+    transition: transform 0.25s ease;
+  }
+
+  .lens-prints img:nth-child(1) { transform: translate(-115%, -50%) rotate(-14deg); }
+  .lens-prints img:nth-child(2) { transform: translate(15%, -52%) rotate(12deg); }
+  .lens-prints img:nth-child(3) { transform: translate(-75%, -46%) rotate(-5deg); }
+  .lens-prints img:nth-child(4) { transform: translate(-30%, -50%) rotate(3deg); }
+
+  .lens-card:hover .lens-prints img:nth-child(1) { transform: translate(-130%, -54%) rotate(-20deg); }
+  .lens-card:hover .lens-prints img:nth-child(2) { transform: translate(30%, -56%) rotate(18deg); }
+  .lens-card:hover .lens-prints img:nth-child(3) { transform: translate(-85%, -52%) rotate(-9deg); }
+  .lens-card:hover .lens-prints img:nth-child(4) { transform: translate(-30%, -58%) rotate(0deg); }
+
+  .lens-title,
+  .lens-url { display: block; }
+  .lens-title { font-size: 0.95rem; }
+  .lens-url { font-size: 0.72rem; opacity: 0.75; }
+
+  @media (min-width: 768px) {
+    .mates-grid { grid-template-columns: 0.7fr 1.25fr 0.95fr; gap: 2rem; }
+  }
+
+  @media (max-width: 767px) {
+    .mates-grid { grid-template-columns: 0.72fr 1.28fr; gap: 1rem; }
+    .mate { box-shadow: 3px 3px 0 var(--pixel-shadow); }
+    .mate figcaption { font-size: 0.66rem; padding: 0.45rem 0.55rem 0.55rem; }
+    .lens-card { grid-column: 1 / -1; display: flex; align-items: stretch; }
+    .lens-prints { width: 9rem; height: auto; min-height: 6rem; flex-shrink: 0; border-bottom: 0; border-right: 2px solid var(--pixel-ink); }
+    .lens-prints img { width: 38%; }
+    .lens-caption { display: flex; flex-direction: column; justify-content: center; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mate, .lens-prints img { transition: none; }
+  }
+</style>

@@ -826,3 +826,18 @@ html[data-theme="dark"] .shadow-brutal-lg { box-shadow: 7px 7px 0 var(--pixel-sh
   .pixel-about > div:first-child,
   .prose h2 { border-color: var(--pixel-ink); }
 }
+
+/* Wide architecture diagrams: readable on phones via horizontal scroll, tap to open full size. */
+.diagram-scroll {
+  overflow-x: auto;
+  border: 2px solid var(--pixel-ink);
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+.diagram-scroll a { display: block; min-width: 0; background: none !important; }
+.diagram-scroll img { display: block; width: 100%; max-width: none; margin: 0 !important; }
+.diagram-hint { display: none; }
+@media (max-width: 767px) {
+  .diagram-scroll img { width: 900px; }
+  .prose .diagram-hint { display: block; margin-top: 0.5rem; color: var(--color-stone-500); font-size: 0.8rem; }
+}
