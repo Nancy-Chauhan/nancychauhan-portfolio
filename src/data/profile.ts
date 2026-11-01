@@ -27,6 +27,7 @@ export const profile = {
     {
       school: "Cornell University",
       degree: "Master of Engineering (M.Eng.) in Engineering Management",
+      degreeShort: "Master of Engineering",
       period: "Graduated May 2025",
       location: "Ithaca, NY",
       photo: "/cornell-graduation.jpg",

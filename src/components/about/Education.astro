@@ -16,7 +16,7 @@ const education = profile.education;
             <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)]">{edu.school}</h3>
             <span class="font-sans text-sm text-[var(--color-stone-400)]">{edu.period}</span>
           </div>
-          <p class="font-sans text-base text-[var(--color-purple)]">{edu.degree}</p>
+          <p class="font-sans text-base text-[var(--color-purple)]">{edu.degreeShort ?? edu.degree}</p>
           <p class="text-sm font-sans text-[var(--color-stone-500)] mt-1">{edu.location}</p>
           {edu.post && (
             <a href={edu.post} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm mt-5">
