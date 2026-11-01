@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Talks from "../components/home/Talks.astro";
+import Courses from "../components/home/Courses.astro";
 import Community from "../components/home/Community.astro";
 import Testimonials from "../components/home/Testimonials.astro";
 import talks from "../data/talks/talks.json";
@@ -45,6 +46,10 @@ const talkListSchema = {
 
   <div class="pixel-page homepage-pixel-zone mx-auto max-w-6xl px-6 py-16 md:px-24 md:py-20">
     <Talks />
+    <hr class="section-divider my-16" />
+    <Talks variant="webinars" />
+    <hr class="section-divider my-16" />
+    <Courses />
     <hr class="section-divider my-16" />
     <Community />
     <hr class="section-divider my-16" />

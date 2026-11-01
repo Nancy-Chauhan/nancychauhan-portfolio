@@ -1,0 +1,181 @@
+---
+import courses from "../../data/courses.json";
+
+type Lesson = { id: string; title: string; duration: string; unavailable?: boolean };
+type Course = {
+  title: string;
+  provider: string;
+  year: number;
+  playlist: string;
+  description: string;
+  lessons: Lesson[];
+};
+
+// "8:04" -> seconds, for the total course length.
+const seconds = (d: string) => d.split(":").reduce((total, part) => total * 60 + Number(part), 0);
+const totalMinutes = (lessons: Lesson[]) => Math.round(lessons.reduce((sum, l) => sum + seconds(l.duration), 0) / 60);
+const lessonUrl = (course: Course, lesson: Lesson) => `https://www.youtube.com/watch?v=${lesson.id}&list=${new URL(course.playlist).searchParams.get("list")}`;
+---
+
+<section id="courses">
+  <div class="mb-8 animate-on-scroll">
+    <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
+      <span class="section-heading">Courses</span>
+    </h2>
+    <p class="text-lg text-[var(--color-stone-500)] font-sans">Video courses I’ve taught.</p>
+  </div>
+
+  {(courses as Course[]).map((course) => (
+    <article class="course card-brutal animate-on-scroll">
+      <a href={course.playlist} target="_blank" rel="noopener noreferrer" class="course-cover" aria-label={`Watch ${course.title} on YouTube`}>
+        <img src={`/talks/${course.lessons[0].id}.jpg`} alt="" width="1280" height="720" loading="lazy" decoding="async" />
+        <span class="course-badge">{course.lessons.length} lessons · {totalMinutes(course.lessons)} min</span>
+      </a>
+
+      <div class="course-body">
+        <p class="course-provider">{course.provider} · {course.year}</p>
+        <h3 class="course-title">{course.title}</h3>
+        <p class="course-desc">{course.description}</p>
+
+        <details class="course-lessons">
+          <summary>Lessons</summary>
+          <ol>
+            {course.lessons.map((lesson, i) => (
+              <li>
+                {lesson.unavailable ? (
+                  <span class="lesson-gone"><span class="lesson-n">{String(i + 1).padStart(2, "0")}</span>{lesson.title} <em>(no longer public)</em></span>
+                ) : (
+                  <a href={lessonUrl(course, lesson)} target="_blank" rel="noopener noreferrer">
+                    <span class="lesson-n">{String(i + 1).padStart(2, "0")}</span>
+                    <span class="lesson-t">{lesson.title}</span>
+                    <span class="lesson-d">{lesson.duration}</span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ol>
+        </details>
+
+        <a href={course.playlist} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm course-cta">
+          Watch the course ↗
+        </a>
+      </div>
+    </article>
+  ))}
+</section>
+
+<style>
+  .course {
+    display: grid;
+    overflow: hidden;
+  }
+
+  .course-cover {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-bottom: 2px solid var(--pixel-ink);
+    background: #050816;
+  }
+
+  .course-cover img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+
+  .course-cover:hover img { transform: scale(1.03); }
+
+  .course-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-yellow);
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .course-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.1rem 1.2rem 1.3rem;
+  }
+
+  .course-provider {
+    color: var(--pixel-purple);
+    font-family: var(--pixel-font);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .course-title {
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  .course-desc {
+    color: var(--color-stone-600);
+    font-size: 0.92rem;
+    line-height: 1.55;
+  }
+
+  .course-lessons summary {
+    width: fit-content;
+    cursor: pointer;
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  .course-lessons ol {
+    display: grid;
+    gap: 0.15rem;
+    margin-top: 0.6rem;
+    padding: 0;
+    list-style: none;
+  }
+
+  .course-lessons a,
+  .lesson-gone {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+    padding: 0.4rem 0.5rem;
+    border: 1.5px solid transparent;
+    color: var(--text-primary);
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+
+  .course-lessons a:hover {
+    border-color: var(--pixel-ink);
+    background: var(--pixel-card);
+  }
+
+  .lesson-gone { color: var(--color-stone-500); }
+  .lesson-n { color: var(--pixel-purple); font-family: var(--pixel-font); font-size: 0.72rem; font-weight: 700; }
+  .lesson-t { flex: 1; }
+  .lesson-d { color: var(--color-stone-500); font-family: var(--pixel-font); font-size: 0.7rem; }
+  .course-cta { width: fit-content; margin-top: 0.4rem; }
+
+  @media (min-width: 768px) {
+    .course { grid-template-columns: 1fr 1.15fr; }
+    .course-cover { border-bottom: 0; border-right: 2px solid var(--pixel-ink); }
+    .course-cover img { height: 100%; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .course-cover img { transition: none; }
+  }
+</style>

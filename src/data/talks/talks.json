@@ -162,6 +162,57 @@
     "event": "Cloud-Native Hyderabad",
     "year": 2020,
     "type": "Meetup",
-    "video": "https://www.youtube.com/watch?v=repb1UC1WAI"
+    "video": "https://www.youtube.com/watch?v=repb1UC1WAI",
+    "noEmbed": true
+  },
+  {
+    "title": "How to Test AI Agents End-to-End Before You Ship",
+    "event": "Arize AI · AI Builders",
+    "year": 2026,
+    "date": "2026-09-14",
+    "type": "Webinar",
+    "video": "https://www.youtube.com/watch?v=N8Smw22jjtE"
+  },
+  {
+    "title": "How to Track & Cut Coding Agent Spend (Claude Code & Cursor)",
+    "event": "Arize AI · AI Builders",
+    "year": 2026,
+    "date": "2026-08-31",
+    "type": "Webinar",
+    "video": "https://www.youtube.com/watch?v=Pg5PaM7xa8o"
+  },
+  {
+    "title": "Stop Manually Debugging AI Agents: Build an Automated PR Loop",
+    "event": "Arize AI · AI Builders",
+    "year": 2026,
+    "date": "2026-08-03",
+    "type": "Webinar",
+    "video": "https://www.youtube.com/watch?v=lCsNVmgp8Yg"
+  },
+  {
+    "title": "How We Cut AI Agent Token Costs by 35% Using Benchmarks",
+    "event": "Arize AI · Phoenix webinar",
+    "year": 2026,
+    "date": "2026-10-13",
+    "type": "Webinar",
+    "coSpeaker": "Elizabeth Hutton",
+    "video": "https://www.youtube.com/watch?v=OuGQ5zuWHuk"
+  },
+  {
+    "title": "How to Build Reliable Long-Running AI Agents",
+    "event": "Arize AI × Temporal webinar",
+    "year": 2026,
+    "date": "2026-09-22",
+    "type": "Webinar",
+    "coSpeaker": "Cecil (Temporal)",
+    "video": "https://www.youtube.com/watch?v=TAXglqzS7F0"
+  },
+  {
+    "title": "Handwritten Digit Recognition with an MNIST Model and SageMaker on LocalStack",
+    "event": "LocalStack · Developer Hub explainer",
+    "year": 2023,
+    "date": "2023-06-01",
+    "type": "Explainer",
+    "video": "https://www.youtube.com/watch?v=r_SU4KFr3eY"
   }
 ]

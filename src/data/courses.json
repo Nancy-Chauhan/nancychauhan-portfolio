@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Development & Deployment with LocalStack",
+    "provider": "LocalStack Academy · Module 2",
+    "year": 2023,
+    "playlist": "https://www.youtube.com/playlist?list=PLTew28KOwGxPdtdW00WNXZLZnstvRQyTF",
+    "description": "Build, deploy and test a containerised app on a local AWS cloud: Terraform and CloudFormation, IAM policy security testing, GitHub Actions CI and team collaboration with Cloud Pods.",
+    "lessons": [
+      {
+        "id": "XDIat6laW28",
+        "duration": "2:05",
+        "title": "LocalStack Academy Module 2 - Course Overview"
+      },
+      {
+        "id": "qIB79b-iw2U",
+        "duration": "8:04",
+        "title": "Deploy a full fledged containerised application using LocalStack"
+      },
+      {
+        "id": "YV0Zs6UNI9I",
+        "duration": "3:10",
+        "title": "LocalStack Integrations - Infrastructure-as-Code and CI tools"
+      },
+      {
+        "id": "lsF3kewOeBU",
+        "duration": "8:04",
+        "title": "Creating infra with Terraform locally"
+      },
+      {
+        "id": "K0OgQ5eq588",
+        "duration": "3:42",
+        "title": "Creating infra with CloudFormation locally"
+      },
+      {
+        "id": "TOBLG2Z6xAM",
+        "duration": "2:57",
+        "title": "Security Testing with IAM Policy Stream"
+      },
+      {
+        "id": "XNh8aSaT9v0",
+        "duration": "3:23",
+        "title": "Setup GitHub Action workflow that starts up LocalStack and deploys the infrastructure"
+      },
+      {
+        "id": "ZJP2xfvwR_g",
+        "duration": "3:48",
+        "title": "Cloud pods - Team Collaboration"
+      }
+    ]
+  }
+]
