@@ -1,19 +1,20 @@
 ---
 const talksData = await import("../../data/talks/talks.json");
 const talks = talksData.default as {
-  title: string; event: string; year: number; type: string; video?: string; coSpeaker?: string;
+  title: string; event: string; year: number; type: string; video?: string; coSpeaker?: string; homeOrder?: number;
 }[];
 
 interface Props {
   limit?: number;
+  homepage?: boolean;
 }
 
-const { limit = 6 } = Astro.props;
+const { limit = 6, homepage = false } = Astro.props;
 
-// Only show talks with videos, sorted by year descending
-const videoTalks = talks
-  .filter((t) => t.video)
-  .sort((a, b) => b.year - a.year);
+// Only show talks with videos. Homepage uses the hand-picked homeOrder; elsewhere, newest first.
+const videoTalks = homepage
+  ? talks.filter((t) => t.video && t.homeOrder).sort((a, b) => a.homeOrder! - b.homeOrder!)
+  : talks.filter((t) => t.video).sort((a, b) => b.year - a.year);
 
 // Extract YouTube video ID from URL
 function getYouTubeId(url: string) {

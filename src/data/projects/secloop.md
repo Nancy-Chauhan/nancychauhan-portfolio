@@ -1,9 +1,9 @@
 ---
 title: "SecLoop"
-tagline: "Autonomous security scanner & auto-fixer powered by LLM loops"
+tagline: "LLM scan-fix-verify loop for security bugs."
 description: "Scan, fix, verify - in a loop until clean. SecLoop automates dependency scanning, secret detection, and SAST analysis with LLM-powered auto-patching."
 featured: true
-order: 4
+order: 2
 github: "https://github.com/Nancy-Chauhan/secloop"
 image: "/projects/secloop-architecture.svg"
 techStack:

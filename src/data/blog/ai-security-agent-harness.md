@@ -4,7 +4,7 @@ description: "Why production AI security agents need scoped tools, per-run isola
 pubDate: 2026-05-12
 tags: ["ai-security", "agent-infrastructure"]
 image: "/blog/ai-security-agent-harness.png"
-externalUrl: "https://nancy-chauhan.medium.com/your-ai-security-agent-has-root-build-the-harness-before-you-ship-it-544e5b85d238"
+externalUrl: "https://www.linkedin.com/pulse/your-ai-security-agent-has-root-build-harness-before-you-chauhan-0orlc/"
 ---
 
 A smarter model cannot fix a weak harness. Production security agents need scoped access, isolation, auditability, and safe secret handling.

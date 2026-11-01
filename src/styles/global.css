@@ -306,6 +306,14 @@ body::after { display: none; }
   box-shadow: 0 0 0 2px var(--pixel-paper), 0 0 0 5px var(--pixel-purple) !important;
 }
 
+/* Bordered buttons and cards: no purple ring; show focus with the same press-in as hover. */
+:where(.pixel-button, .btn-brutal, .card-brutal, .note-card, .project-cta):focus-visible {
+  outline: none;
+  box-shadow: 1px 1px 0 var(--pixel-shadow) !important;
+  transform: translate(3px, 3px);
+}
+:where(.pixel-button, .btn-brutal, .card-brutal, .note-card):focus:not(:focus-visible) { outline: none; }
+
 .skip-link {
   position: fixed;
   z-index: 100;

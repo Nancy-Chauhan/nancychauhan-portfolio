@@ -57,7 +57,20 @@ const projectSchema = {
   </section>
   <div class="project-content-spacer" aria-hidden="true"></div>
   <div class="pixel-page pixel-project-content mx-auto max-w-5xl px-6 pb-20">
-    {project.data.image && (
+    {project.data.video ? (
+      <div class="mb-12">
+        <video
+          src={project.data.video}
+          poster={project.data.image}
+          controls
+          muted
+          playsinline
+          preload="metadata"
+          aria-label={`${project.data.title} demo video`}
+          class="pixel-project-image w-full"
+        />
+      </div>
+    ) : project.data.image && (
       <div class="mb-12">
         <img
           src={project.data.image}

@@ -2,7 +2,7 @@
 title: "SkillFeed"
 tagline: "Stop reading duplicate articles. Get the one brief that matters."
 description: "An AI-powered newsletter aggregator that ingests 100+ sources, categorizes with Claude AI, and delivers one personalized daily brief to developers at 8 AM in their local timezone."
-featured: true
+featured: false
 order: 1
 github: "https://github.com/Nancy-Chauhan/skillfeed"
 image: "/projects/skillfeed-architecture.svg"

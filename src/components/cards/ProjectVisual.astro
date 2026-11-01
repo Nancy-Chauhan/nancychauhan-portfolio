@@ -7,6 +7,7 @@ const { slug } = Astro.props;
 
 const projectShots: Record<string, { src: string; position: string }> = {
   skillfeed: { src: "/projects/skillfeed-architecture.svg", position: "center 18%" },
+  "llm-powered-threat-modelling": { src: "/projects/threat-modelling-architecture.png", position: "center 22%" },
   preflight: { src: "/projects/preflight-overview.png", position: "center 19%" },
   secloop: { src: "/projects/secloop-architecture.svg", position: "center 27%" },
   "attacktree-app": { src: "/projects/attacktree-demo.png", position: "center 18%" },
@@ -36,6 +37,28 @@ const shot = projectShots[slug];
       <rect class="node" x="83" y="60" width="24" height="18" rx="3" />
       <path class="shield" d="m95 35 21 8v12c0 13-9 21-21 27-12-6-21-14-21-27V43z" />
       <path class="check" d="m86 55 7 7 13-15" />
+    </svg>
+  ) : slug === "hearth" ? (
+    <svg class="custom-art" viewBox="0 0 190 96" role="presentation">
+      <rect class="panel" x="8" y="8" width="174" height="80" rx="4" />
+      <rect class="panel-bar" x="8" y="8" width="174" height="14" rx="4" />
+      <circle class="dot-red" cx="18" cy="15" r="3" />
+      <circle class="dot-yellow" cx="28" cy="15" r="3" />
+      <circle class="dot-green" cx="38" cy="15" r="3" />
+      <rect class="node" x="17" y="42" width="34" height="22" rx="3" />
+      <path class="query-line" d="M23 50h22M23 57h14" />
+      <path class="connector" d="M51 53h15" />
+      <path class="fan" d="M90 53 102 33M90 53l12-6M90 53l12 8M90 53l12 22" />
+      <rect class="decision" x="70" y="43" width="20" height="20" rx="2" transform="rotate(45 80 53)" />
+      <text class="decision-text" x="80" y="56.5">?</text>
+      <rect class="pick-bar" x="104" y="28" width="56" height="9" rx="1.5" />
+      <rect class="option-bar" x="104" y="42" width="22" height="9" rx="1.5" />
+      <rect class="option-bar" x="104" y="56" width="14" height="9" rx="1.5" />
+      <rect class="option-bar" x="104" y="70" width="8" height="9" rx="1.5" />
+      <text class="score" x="164" y="35.5">.92</text>
+      <text class="score muted" x="130" y="49.5">.05</text>
+      <text class="score muted" x="122" y="63.5">.02</text>
+      <text class="score muted" x="116" y="77.5">.01</text>
     </svg>
   ) : (
     <svg class="custom-art" viewBox="0 0 190 96" role="presentation">
@@ -92,6 +115,7 @@ const shot = projectShots[slug];
   .visual-mcp-agent-os .product-shot { transform: rotate(-1deg); }
   .visual-secloop .product-shot,
   .visual-info-disclosure-scanner .product-shot { transform: rotate(1deg); }
+  .visual-llm-powered-threat-modelling .product-shot { transform: rotate(-1deg); }
   .visual-skillfeed .product-shot img,
   .visual-mcp-agent-os .product-shot img,
   .visual-secloop .product-shot img { object-fit: cover; }
@@ -129,6 +153,15 @@ const shot = projectShots[slug];
   .agent-mouth { stroke: var(--pixel-card); }
   .bar { fill: var(--preview-accent); stroke: var(--pixel-ink); stroke-width: 2; }
   .lock { fill: var(--pixel-yellow); stroke: var(--pixel-ink); stroke-width: 3; }
+
+  .query-line, .fan { fill: none; stroke: var(--pixel-ink); stroke-width: 2.5; stroke-linecap: round; }
+  .fan { stroke: var(--preview-accent); stroke-width: 2; }
+  .decision { fill: var(--preview-accent); stroke: var(--pixel-ink); stroke-width: 3; }
+  .decision-text { fill: #fff; font: 700 12px var(--pixel-font, monospace); text-anchor: middle; }
+  .pick-bar { fill: var(--pixel-yellow); stroke: var(--pixel-ink); stroke-width: 2.5; }
+  .option-bar { fill: color-mix(in srgb, var(--preview-bg) 60%, var(--pixel-card)); stroke: var(--preview-accent); stroke-width: 2; }
+  .score { fill: var(--pixel-ink); font: 700 8px var(--pixel-font, monospace); }
+  .score.muted { fill: var(--preview-accent); }
 
   :global(.group:hover) .project-visual { transform: translateY(-3px) scale(1.015); }
 

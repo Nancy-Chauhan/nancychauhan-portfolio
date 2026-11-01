@@ -1,5 +1,14 @@
 [
   {
+    "title": "Automate Once, Run Anywhere: The Docker Moment for Security Workflows",
+    "event": "KubeCon + CloudNativeCon EU",
+    "year": 2026,
+    "type": "Conference Talk",
+    "coSpeaker": "Aseem Shrey",
+    "video": "https://www.youtube.com/watch?v=l7XdCSNb728",
+    "homeOrder": 1
+  },
+  {
     "title": "Scaling Pain Points in the World of Observability!",
     "event": "KubeCon + CloudNativeCon",
     "year": 2025,
@@ -12,7 +21,8 @@
     "event": "KubeCon + CloudNativeCon EU",
     "year": 2025,
     "type": "Panel",
-    "video": "https://www.youtube.com/watch?v=VC2EMzBGKrI"
+    "video": "https://www.youtube.com/watch?v=VC2EMzBGKrI",
+    "homeOrder": 3
   },
   {
     "title": "Cloud Native Sustainability - How You Can Help Right Now!",
@@ -28,7 +38,8 @@
     "year": 2024,
     "type": "Conference Talk",
     "coSpeaker": "Adriana Villela",
-    "video": "https://www.youtube.com/watch?v=ea2CKLX5vEs"
+    "video": "https://www.youtube.com/watch?v=ea2CKLX5vEs",
+    "homeOrder": 2
   },
   {
     "title": "Platform Engineering Is the Key Lever for Sustainable Cloud Infrastructure",

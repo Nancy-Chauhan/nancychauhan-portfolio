@@ -1,9 +1,9 @@
 ---
 title: "Preflight"
-tagline: "Know exactly where your system breaks before you ship."
+tagline: "Claude Code plugin that finds scaling limits."
 description: "A Claude Code plugin that reads your codebase, traces every service call, and simulates what happens when real users hit your system. Finds bottlenecks, cost cliffs, and rate limits."
 featured: true
-order: 3
+order: 1
 github: "https://github.com/Nancy-Chauhan/preflight"
 image: "/projects/preflight-overview.png"
 techStack:

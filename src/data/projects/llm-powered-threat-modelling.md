@@ -1,10 +1,11 @@
 ---
 title: "LLM-Powered Threat Modelling"
-tagline: "Self-serve threat modeling powered by large language models"
+tagline: "LLM-generated STRIDE threat models."
 description: "A threat modeling platform that uses LLMs to analyze system designs and generate comprehensive STRIDE-based security assessments, with JIRA integration and shareable reports."
 featured: true
-order: 2
+order: 3
 github: "https://github.com/Nancy-Chauhan/llm-powered-threat-modelling"
+image: "/projects/threat-modelling-architecture.png"
 techStack:
   - React 18
   - TypeScript

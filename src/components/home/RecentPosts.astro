@@ -1,33 +1,60 @@
 ---
 import { getCollection } from "astro:content";
 
-const posts = (await getCollection("blog"))
+interface Props {
+  variant?: "agents" | "general";
+}
+
+const { variant = "general" } = Astro.props;
+const isAgentNotes = (post: { data: { externalUrl?: string } }) =>
+  post.data.externalUrl?.includes("linkedin.com/pulse") ?? false;
+
+const allPosts = (await getCollection("blog"))
   .filter((post) => !post.data.tags?.includes("year-in-review") && !post.data.tags?.includes("personal") && !post.data.title.includes("Docker Layer Caching"))
-  .sort((first, second) => second.data.pubDate.getTime() - first.data.pubDate.getTime())
-  .slice(0, 3);
+  .sort((first, second) => second.data.pubDate.getTime() - first.data.pubDate.getTime());
+
+const posts = variant === "agents" ? allPosts.filter(isAgentNotes) : allPosts.filter((post) => !isAgentNotes(post)).slice(0, 3);
+
+const copy = variant === "agents"
+  ? {
+      id: "agent-notes",
+      label: "AGENT_FIELD_NOTES.md",
+      heading: "AI agents in production",
+      sub: "Benchmarks, traces and harness design from building and securing AI agents.",
+      cta: "https://www.linkedin.com/in/nancy-chauhan/recent-activity/articles/",
+      gridClass: "md:grid-cols-2",
+    }
+  : {
+      id: "writing",
+      label: "RECENT_NOTES.md",
+      heading: "Ideas worth sharing",
+      sub: "Three recent notes on building and technology.",
+      cta: "https://nancy-chauhan.medium.com/",
+      gridClass: "md:grid-cols-3",
+    };
 ---
 
-<section id="writing">
+<section id={copy.id}>
   <div class="mb-8 animate-on-scroll">
     <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
       <div>
-        <p class="pixel-date mb-3">RECENT_NOTES.md</p>
-        <h2 class="text-3xl md:text-4xl mb-2">Ideas worth sharing</h2>
-        <p class="text-base text-[var(--text-muted)]">Three recent notes on building and technology.</p>
+        <p class="pixel-date mb-3">{copy.label}</p>
+        <h2 class="text-3xl md:text-4xl mb-2">{copy.heading}</h2>
+        <p class="text-base text-[var(--text-muted)]">{copy.sub}</p>
       </div>
-      <a href="https://nancy-chauhan.medium.com/" target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm">
+      <a href={copy.cta} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm">
         Read all ↗
       </a>
     </div>
   </div>
 
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+  <div class={`grid grid-cols-1 gap-4 ${copy.gridClass}`}>
     {posts.map((post, index) => (
       <a
         href={post.data.externalUrl || "https://nancy-chauhan.medium.com/"}
         target="_blank"
         rel="noopener noreferrer"
-        class={`note-card animate-on-scroll stagger-${index + 1}`}
+        class={`note-card animate-on-scroll stagger-${(index % 3) + 1}`}
       >
         {post.data.image && (
           <div class="note-image">
