@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import talks from "../../data/talks/talks.json";
 import { profile } from "../../data/profile";
 import { absoluteUrl, articleUrl } from "../../lib/discovery";
+import { allTalks, communityEvents, courseList, founded, keynote, pageIndex, talkCategory } from "../../lib/agents";
 
 export const prerender = true;
 
@@ -12,13 +12,7 @@ export const GET: APIRoute = async () => {
     schemaVersion: "1.0",
     canonicalUrl: profile.url,
     profile,
-    pages: [
-      { name: "Home", url: absoluteUrl("/"), description: "Portfolio overview and featured work." },
-      { name: "About", url: absoluteUrl("/about"), description: "Biography, experience, education, skills, and annual reflections." },
-      { name: "Projects", url: absoluteUrl("/projects"), description: "Products, AI systems, developer tools, and security projects." },
-      { name: "Speaking", url: absoluteUrl("/speaking"), description: "Keynotes, conference talks, webinars, and video courses." },
-      { name: "Community", url: absoluteUrl("/community"), description: "Women in Cloud Native, CNCF TAG leadership, events organised, recognition, and testimonials." },
-    ],
+    pages: pageIndex,
     projects: projects
       .sort((first, second) => first.data.order - second.data.order)
       .map((project) => ({
@@ -45,7 +39,20 @@ export const GET: APIRoute = async () => {
         localUrl: absoluteUrl(`/blog/${post.id}`),
         image: post.data.image ? absoluteUrl(post.data.image) : undefined,
       })),
-    talks: talks.map((talk) => ({ ...talk, speaker: profile.name })),
+    talks: allTalks.map((original) => {
+      const { highlight, homeOrder, ...talk } = original;
+      return { ...talk, category: talkCategory(original), keynoteHighlight: original === keynote || undefined, speaker: profile.name };
+    }),
+    courses: courseList.map(({ lessons, ...course }) => ({
+      ...course,
+      instructor: profile.name,
+      lessons: lessons.map((l) => ({ ...l, url: `https://www.youtube.com/watch?v=${l.id}` })),
+    })),
+    community: {
+      page: absoluteUrl("/community"),
+      founded: { ...founded, image: absoluteUrl(founded.image) },
+      events: communityEvents.map(({ sortDate, image, imageAlt, ...event }) => ({ ...event, date: sortDate, image: absoluteUrl(image) })),
+    },
     discovery: {
       conciseOverview: absoluteUrl("/llms.txt"),
       completeOverview: absoluteUrl("/llms-full.txt"),

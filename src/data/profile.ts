@@ -51,6 +51,8 @@ export const profile = {
     "Women in Cloud Native founder",
     "Kubernetes Release Team member",
     "AWS Community Builder, Security & Identity (2024 - 2025)",
+    "Sessionize Top 3% most active speakers (2025)",
+    "Keynote speaker, KubeDay India (2023)",
   ],
   affiliations: [
     {

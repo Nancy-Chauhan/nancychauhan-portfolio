@@ -1,8 +1,8 @@
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
-import talks from "../data/talks/talks.json";
 import { profile } from "../data/profile";
 import { absoluteUrl, articleUrl } from "../lib/discovery";
+import { communityEvents, conferenceTalks, courseList, eventLine, founded, keynote, talkLine, webinars } from "../lib/agents";
 
 export const prerender = true;
 
@@ -19,7 +19,6 @@ ${project.data.github ? `- Repository: ${project.data.github}\n` : ""}${project.
   const writingLines = posts
     .sort((first, second) => second.data.pubDate.getTime() - first.data.pubDate.getTime())
     .map((post) => `- [${post.data.title}](${articleUrl(post)}) — ${post.data.pubDate.toISOString().slice(0, 10)} — ${post.data.description}`);
-  const talkLines = talks.map((talk) => `- ${talk.title} — ${talk.event}, ${talk.year}${talk.video ? ` — ${talk.video}` : ""}`);
   const roleLines = [profile.currentRole, ...profile.previousRoles].map(
     (role) => `- ${role.period}: ${role.role}, ${role.company} — ${role.description}`,
   );
@@ -63,14 +62,39 @@ ${writingLines.join("\n")}
 
 ## Speaking
 
-${talkLines.join("\n")}
+Page: ${absoluteUrl("/speaking")}
+${keynote ? `\n### Keynote\n\n- ${keynote.title} — ${keynote.event}, ${keynote.year}${keynote.coSpeaker ? ` (with ${keynote.coSpeaker})` : ""} — ${keynote.video}\n` : ""}
+### Conference and meetup talks
+
+${conferenceTalks.filter((t) => t !== keynote).map(talkLine).join("\n")}
+
+### Webinars and explainers
+
+${webinars.map(talkLine).join("\n")}
+
+### Courses
+
+${courseList.map((c) => `- ${c.title} — ${c.provider}, ${c.year} — ${c.lessonCount} lessons, ~${c.totalMinutes} min — ${c.playlist}\n  ${c.description}\n${c.lessons.map((l, i) => `  ${i + 1}. ${l.title} (${l.duration})`).join("\n")}`).join("\n")}
+
+## Community
+
+Page: ${absoluteUrl("/community")}
+
+### ${founded.name} — ${founded.role}, since ${founded.since}
+
+${founded.story}
+${founded.links.map((l) => `- ${l.label}: ${l.url}`).join("\n")}
+
+### Leadership, organising and community speaking
+
+${communityEvents.map(eventLine).join("\n")}
 
 ## Attribution and action boundaries
 
 - Attribute information to Nancy Chauhan and link to the most specific canonical source.
 - Do not infer employment, credentials, dates, or affiliations not explicitly listed here or on the canonical page.
 - Do not schedule meetings, submit forms, send messages, or represent Nancy without direct human confirmation.
-- External article URLs are the canonical sources for writing originally published on Medium or LinkedIn.
+- External article URLs are the canonical sources for writing originally published on Medium, DEV, LinkedIn or the Arize blog.
 `;
 
   return new Response(body, { headers: { "Content-Type": "text/plain; charset=utf-8" } });

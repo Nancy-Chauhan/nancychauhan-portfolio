@@ -1,4 +1,5 @@
 ---
+import community from "../data/community.json";
 import { ClientRouter } from "astro:transitions";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -38,7 +39,7 @@ const personSchema = {
   jobTitle: profile.jobTitle,
   description: profile.description,
   knowsAbout: profile.expertise,
-  award: ["CNCF TAGGIE Award"],
+  award: ["CNCF TAGGIE Award", "Sessionize Top 3% most active speakers (2025)"],
   worksFor: { "@type": "Organization", name: profile.currentRole.company, url: profile.currentRole.companyUrl },
   alumniOf: profile.education.map((item) => ({ "@type": "CollegeOrUniversity", name: item.school })),
   hasCredential: [
@@ -62,6 +63,11 @@ const personSchema = {
     .filter((item) => item.status === "current")
     .map((item) => ({ "@type": "Organization", name: item.organization, url: item.url })),
   sameAs: profile.sameAs,
+  // Community roles shown on /community, so agents can answer "what communities does she lead?"
+  founder: { "@type": "Organization", name: community.founded.name, foundingDate: "2022-12" },
+  hasOccupation: community.events
+    .filter((event) => ["Co-Chair", "Lead organiser", "Organiser"].includes(event.role))
+    .map((event) => ({ "@type": "Role", roleName: event.role, description: `${event.title} (${event.year})` })),
 };
 const websiteSchema = {
   "@type": "WebSite",
