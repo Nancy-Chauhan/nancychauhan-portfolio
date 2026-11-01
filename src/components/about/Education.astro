@@ -10,14 +10,63 @@ const education = profile.education;
   </h2>
   <div class="grid gap-6">
     {education.map((edu, i) => (
-      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6`}>
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
-          <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)]">{edu.school}</h3>
-          <span class="font-sans text-sm text-[var(--color-stone-400)]">{edu.period}</span>
+      <div class={`animate-on-scroll stagger-${i + 1} card-dashed p-6 ${edu.photo ? "edu-with-photo" : ""}`}>
+        <div class="flex-1">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-1">
+            <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)]">{edu.school}</h3>
+            <span class="font-sans text-sm text-[var(--color-stone-400)]">{edu.period}</span>
+          </div>
+          <p class="font-sans text-base text-[var(--color-purple)]">{edu.degree}</p>
+          <p class="text-sm font-sans text-[var(--color-stone-500)] mt-1">{edu.location}</p>
+          {edu.post && (
+            <a href={edu.post} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm mt-5">
+              Read the graduation post ↗
+            </a>
+          )}
         </div>
-        <p class="font-sans text-base text-[var(--color-purple)]">{edu.degree}</p>
-        <p class="text-sm font-sans text-[var(--color-stone-500)] mt-1">{edu.location}</p>
+        {edu.photo && (
+          <a href={edu.post ?? edu.photo} target="_blank" rel="noopener noreferrer" class="edu-photo">
+            <img src={edu.photo} alt={edu.photoAlt ?? ""} loading="lazy" decoding="async" width="800" height="1021" />
+          </a>
+        )}
       </div>
     ))}
   </div>
 </section>
+
+<style>
+  .edu-with-photo {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .edu-photo {
+    display: block;
+    width: 100%;
+    max-width: 15rem;
+    overflow: hidden;
+    border: 2px solid var(--pixel-ink);
+    box-shadow: 5px 5px 0 var(--pixel-shadow);
+    transform: rotate(1.5deg);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .edu-photo:hover {
+    box-shadow: 2px 2px 0 var(--pixel-shadow);
+    transform: translate(3px, 3px) rotate(0deg);
+  }
+
+  .edu-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 35%;
+  }
+
+  @media (min-width: 640px) {
+    .edu-with-photo { flex-direction: row; align-items: center; }
+    .edu-photo { width: 13rem; flex-shrink: 0; }
+  }
+</style>

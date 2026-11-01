@@ -5,10 +5,11 @@ interface Props {
   pubDate: Date;
   tags: string[];
   slug: string;
+  image?: string;
   externalUrl?: string;
 }
 
-const { title, description, pubDate, tags, slug, externalUrl } = Astro.props;
+const { title, description, pubDate, tags, slug, image, externalUrl } = Astro.props;
 
 const formattedDate = pubDate.toLocaleDateString("en-US", {
   year: "numeric",
@@ -18,6 +19,20 @@ const formattedDate = pubDate.toLocaleDateString("en-US", {
 
 const href = externalUrl || `/blog/${slug}`;
 const isExternal = !!externalUrl;
+const source = externalUrl?.includes("linkedin.com") ? "LinkedIn" : externalUrl?.includes("medium.com") ? "Medium" : null;
+
+// Posts without a cover get a colour-coded topic panel, keyed by their first tag.
+const palette = [
+  { bg: "#d9ceff", accent: "#7557d9" },
+  { bg: "#c9dfff", accent: "#438bd1" },
+  { bg: "#c5f2db", accent: "#2ea36e" },
+  { bg: "#ffd2e7", accent: "#e94b91" },
+  { bg: "#ffd2bd", accent: "#e87955" },
+  { bg: "#fff0b8", accent: "#d39a17" },
+];
+const topic = tags[0] ?? "notes";
+const hash = [...topic].reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+const swatch = palette[hash % palette.length];
 ---
 
 <a
@@ -25,29 +40,97 @@ const isExternal = !!externalUrl;
   class="group block card-brutal overflow-hidden h-full flex flex-col"
   {...isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {}}
 >
-  {/* Window chrome bar */}
   <div class="window-chrome">
     <div class="window-dot" style="background:#ff5f57;"></div>
     <div class="window-dot" style="background:#febc2e;"></div>
     <div class="window-dot" style="background:#28c840;"></div>
     <span class="window-chrome-title">{formattedDate}</span>
-    {isExternal && (
-      <svg class="w-3 h-3 ml-auto text-[var(--color-stone-400)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-      </svg>
+    {source && <span class="post-source">{source} ↗</span>}
+  </div>
+
+  <div class="post-cover" style={`--cover-bg:${swatch.bg};--cover-accent:${swatch.accent};`}>
+    {image ? (
+      <img src={image} alt="" loading="lazy" decoding="async" />
+    ) : (
+      <div class="topic-panel" aria-hidden="true">
+        <span class="topic-prompt">$ cat</span>
+        <span class="topic-name">{topic.replaceAll("-", "_")}.md</span>
+      </div>
     )}
   </div>
+
   <div class="p-5 flex flex-col flex-1">
     <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors">
       {title}
     </h3>
-    <p class="text-base text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 line-clamp-2 flex-1">
+    <p class="text-sm text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 line-clamp-2 flex-1">
       {description}
     </p>
     <div class="flex flex-wrap gap-2">
-      {tags.slice(0, 3).map((tag) => (
+      {tags.slice(0, 2).map((tag) => (
         <span class="tag-brutal">{tag}</span>
       ))}
     </div>
   </div>
 </a>
+
+<style>
+  .post-source {
+    margin-left: auto;
+    color: var(--color-stone-500);
+    font-family: var(--pixel-font);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
+
+  .post-cover {
+    position: relative;
+    aspect-ratio: 16 / 8;
+    overflow: hidden;
+    border-bottom: 2px solid var(--pixel-ink);
+    background: var(--cover-bg);
+  }
+
+  .post-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+
+  :global(.group:hover) .post-cover img { transform: scale(1.03); }
+
+  .topic-panel {
+    position: absolute;
+    inset: 14% 12%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0 1.1rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 5px 5px 0 color-mix(in srgb, var(--cover-accent) 65%, var(--pixel-ink));
+  }
+
+  .topic-prompt {
+    color: var(--cover-accent);
+    font-family: var(--pixel-font);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .topic-name {
+    overflow: hidden;
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .post-cover img { transition: none; }
+  }
+</style>

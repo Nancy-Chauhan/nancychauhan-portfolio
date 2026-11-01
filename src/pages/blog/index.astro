@@ -1,3 +1,100 @@
 ---
-return Astro.redirect("https://nancy-chauhan.medium.com/");
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogCard from "../../components/cards/BlogCard.astro";
+import { getCollection } from "astro:content";
+import { isAgentNote, isPersonal } from "../../lib/posts";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
+);
+
+const sections = [
+  {
+    id: "ai-agents",
+    label: "AGENT_FIELD_NOTES.md",
+    title: "AI agents in production",
+    sub: "Benchmarks, traces and harness design from building and securing AI agents.",
+    posts: posts.filter((post) => isAgentNote(post)),
+  },
+  {
+    id: "engineering",
+    label: "ENGINEERING_NOTES.md",
+    title: "Engineering notes",
+    sub: "Infrastructure, observability, cloud native, distributed systems and developer tooling.",
+    posts: posts.filter((post) => !isAgentNote(post) && !isPersonal(post)),
+  },
+  {
+    id: "year-in-review",
+    label: "YEAR_LOGS.md",
+    title: "Year in review",
+    sub: "Looking back on what I built, learned and shipped each year.",
+    posts: posts.filter((post) => isPersonal(post)),
+  },
+].filter((section) => section.posts.length > 0);
 ---
+
+<BaseLayout
+  title="Blog: AI Agents, Security & Engineering Notes | Nancy Chauhan"
+  description="Writing by Nancy Chauhan on AI agents in production, agent security and observability, infrastructure, distributed systems, and yearly reflections."
+>
+  <section class="pixel-page-hero py-20">
+    <div class="mx-auto max-w-6xl px-6">
+      <h1 class="text-4xl sm:text-5xl font-extrabold font-sans tracking-tight mb-6">
+        <span class="section-heading">Blog</span>
+      </h1>
+      <p class="text-lg text-[var(--color-stone-500)] font-sans max-w-2xl mb-8">
+        Notes from building AI agents, security tools and cloud native systems, and what I learn along the way.
+      </p>
+      <nav class="flex flex-wrap gap-3" aria-label="Blog sections">
+        {sections.map((section) => (
+          <a href={`#${section.id}`} class="pixel-button pixel-button-ghost text-sm">
+            {section.title} <span class="blog-count">{section.posts.length}</span>
+          </a>
+        ))}
+      </nav>
+    </div>
+  </section>
+
+  <div class="pixel-page mx-auto max-w-6xl px-6 pb-20 pt-12 md:pt-16">
+    {sections.map((section, sectionIndex) => (
+      <section id={section.id} class="blog-section">
+        {sectionIndex > 0 && <hr class="section-divider mb-16" />}
+        <div class="mb-8 animate-on-scroll">
+          <p class="pixel-date mb-3">{section.label}</p>
+          <h2 class="text-3xl md:text-4xl mb-2">{section.title}</h2>
+          <p class="text-base text-[var(--text-muted)]">{section.sub}</p>
+        </div>
+        <div class={`grid grid-cols-1 gap-6 mb-16 md:grid-cols-2 lg:grid-cols-3`}>
+          {section.posts.map((post, i) => (
+            <div class={`animate-on-scroll stagger-${(i % 3) + 1} h-full`}>
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                tags={post.data.tags}
+                slug={post.id}
+                image={post.data.image}
+                externalUrl={post.data.externalUrl}
+              />
+            </div>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>
+
+<style>
+  .blog-section { scroll-margin-top: 6rem; }
+
+  .blog-count {
+    display: inline-grid;
+    min-width: 1.4rem;
+    height: 1.4rem;
+    place-items: center;
+    padding: 0 0.3rem;
+    border: 1.5px solid var(--pixel-ink);
+    background: var(--pixel-yellow);
+    font-size: 0.72rem;
+  }
+</style>

@@ -29,6 +29,9 @@ export const profile = {
       degree: "Master of Engineering (M.Eng.) in Engineering Management",
       period: "Graduated May 2025",
       location: "Ithaca, NY",
+      photo: "/cornell-graduation.jpg",
+      photoAlt: "Nancy in graduation robes and a Cornell stole under a stone archway at Cornell University",
+      post: "https://www.linkedin.com/posts/nancy-chauhan_graduated-with-a-masters-from-cornell-activity-7332119891610624002-LhIz",
     },
   ],
   expertise: [

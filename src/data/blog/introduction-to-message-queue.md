@@ -1,9 +1,9 @@
 ---
 title: "Introduction to Message Queues"
 description: "An overview of message queuing patterns including pub/sub and point-to-point, with a comparison of RabbitMQ and Apache Kafka and guidance on choosing the right tool."
-pubDate: 2020-05-20
+pubDate: 2021-04-28
 tags: ["distributed-systems", "messaging"]
-externalUrl: "https://nancy-chauhan.medium.com/"
+externalUrl: "https://dev.to/_nancychauhan/introduction-to-message-queue-build-a-newsletter-app-using-django-celery-and-rabbitmq-in-30-min-60p"
 ---
 
 Message queues are one of the most important building blocks in distributed systems. They decouple services, absorb traffic spikes, and enable asynchronous processing. If you have ever wondered why companies like LinkedIn, Netflix, and Uber rely so heavily on messaging infrastructure, this post is for you.

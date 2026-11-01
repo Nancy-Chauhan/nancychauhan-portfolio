@@ -1,7 +1,7 @@
 [
   {
     "title": "Automate Once, Run Anywhere: The Docker Moment for Security Workflows",
-    "event": "KubeCon + CloudNativeCon EU",
+    "event": "KubeCon + CloudNativeCon Europe · Amsterdam",
     "year": 2026,
     "type": "Conference Talk",
     "coSpeaker": "Aseem Shrey",
@@ -10,7 +10,7 @@
   },
   {
     "title": "Scaling Pain Points in the World of Observability!",
-    "event": "KubeCon + CloudNativeCon",
+    "event": "Observability Day · KubeCon North America · Atlanta",
     "year": 2025,
     "type": "Conference Talk",
     "coSpeaker": "Colin Lacy",
@@ -18,24 +18,24 @@
   },
   {
     "title": "Savoir Faire: Cloud Native Technical Leadership",
-    "event": "KubeCon + CloudNativeCon EU",
-    "year": 2025,
+    "event": "KubeCon + CloudNativeCon Europe · Paris",
+    "year": 2024,
     "type": "Panel",
     "video": "https://www.youtube.com/watch?v=VC2EMzBGKrI",
     "homeOrder": 3
   },
   {
     "title": "Cloud Native Sustainability - How You Can Help Right Now!",
-    "event": "KubeCon + CloudNativeCon",
-    "year": 2024,
+    "event": "KubeDay India · Bengaluru",
+    "year": 2023,
     "type": "Keynote",
     "coSpeaker": "Saiyam Pathak",
     "video": "https://www.youtube.com/watch?v=6gl8Y9DO6fw"
   },
   {
     "title": "How Green Is My OpenTelemetry Collector?",
-    "event": "KubeCon + CloudNativeCon NA",
-    "year": 2024,
+    "event": "KubeCon + CloudNativeCon Europe · London",
+    "year": 2025,
     "type": "Conference Talk",
     "coSpeaker": "Adriana Villela",
     "video": "https://www.youtube.com/watch?v=ea2CKLX5vEs",
@@ -43,15 +43,15 @@
   },
   {
     "title": "Platform Engineering Is the Key Lever for Sustainable Cloud Infrastructure",
-    "event": "KubeCon + CloudNativeCon",
-    "year": 2024,
+    "event": "Platform Engineering Day · KubeCon North America · Atlanta",
+    "year": 2025,
     "type": "Conference Talk",
     "coSpeaker": "Ramiro Berrelleza",
     "video": "https://www.youtube.com/watch?v=mndwket9HBI"
   },
   {
     "title": "Making Students Industry Ready with CNCF Ecosystem as a Catalyst",
-    "event": "KubeCon + CloudNativeCon",
+    "event": "KubeCon + CloudNativeCon North America · Salt Lake City",
     "year": 2024,
     "type": "Conference Talk",
     "coSpeaker": "Rohit Ghumare",
@@ -59,43 +59,43 @@
   },
   {
     "title": "State of Open Source in 2024",
-    "event": "KubeCon + CloudNativeCon",
+    "event": "KCD Islamabad",
     "year": 2024,
     "type": "Panel",
     "video": "https://www.youtube.com/watch?v=5P5k2ghlLW4"
   },
   {
     "title": "No Code Needed: From Emojis To Glory on the Contribution Ladder",
-    "event": "KubeCon + CloudNativeCon",
-    "year": 2024,
+    "event": "KubeCon + CloudNativeCon Europe · London",
+    "year": 2025,
     "type": "Conference Talk",
     "coSpeaker": "Carol Valencia",
     "video": "https://www.youtube.com/watch?v=pPKuJg_6A3k"
   },
   {
     "title": "Expanding the Contributor Pipeline Through Inclusion",
-    "event": "KubeCon + CloudNativeCon",
-    "year": 2024,
+    "event": "KubeCon + CloudNativeCon Europe · London",
+    "year": 2025,
     "type": "Panel",
     "video": "https://www.youtube.com/watch?v=RgzyEc8pPa8"
   },
   {
     "title": "Catch Me If You Can: How LocalStack's Policy Stream Identifies Least Privilege IAM Policies",
-    "event": "LocalStack",
+    "event": "MOAR Serverless",
     "year": 2024,
     "type": "Conference Talk",
     "video": "https://www.youtube.com/watch?v=P9EaHSxIXe8"
   },
   {
     "title": "How Green is My OpenTelemetry Collector?",
-    "event": "CNCF Cloud Sustainability Week",
-    "year": 2023,
+    "event": "KCD New York",
+    "year": 2025,
     "type": "Conference Talk",
     "video": "https://www.youtube.com/watch?v=vWHeeV-a_YQ"
   },
   {
     "title": "Welcome Note - CNCF Cloud Sustainability Week",
-    "event": "CNCF Cloud Sustainability Week",
+    "event": "CNCF Cloud Sustainability Week · Bangalore",
     "year": 2023,
     "type": "Keynote",
     "video": "https://www.youtube.com/watch?v=2N0Ngcav6LU"
@@ -110,15 +110,15 @@
   },
   {
     "title": "Monitoring Applications with Prometheus and Grafana",
-    "event": "Community Meetup",
-    "year": 2021,
+    "event": "WomenTech Network",
+    "year": 2020,
     "type": "Conference Talk",
     "video": "https://www.youtube.com/watch?v=ygk7yBnljsg"
   },
   {
     "title": "Service Mesh and Why You Should Use It",
-    "event": "Community Meetup",
-    "year": 2021,
+    "event": "Cloud Community Days · KonfHub",
+    "year": 2020,
     "type": "Conference Talk",
     "video": "https://www.youtube.com/watch?v=RRlF55AM-9w"
   },
@@ -131,14 +131,14 @@
   },
   {
     "title": "The One Where We Geek Out on Sustainability in Tech",
-    "event": "Podcast",
-    "year": 2023,
+    "event": "Geeking Out Podcast",
+    "year": 2024,
     "type": "Podcast",
     "video": "https://www.youtube.com/watch?v=uLYysfSzHG4"
   },
   {
     "title": "Jenkins for CI/CD",
-    "event": "Community Talk",
+    "event": "Hasgeek",
     "year": 2020,
     "type": "Conference Talk",
     "video": "https://www.youtube.com/watch?v=B-HR_2PrLKg"
@@ -149,5 +149,19 @@
     "year": 2019,
     "type": "Demo",
     "video": "https://www.youtube.com/watch?v=cMSbdGwGWp0"
+  },
+  {
+    "title": "AI Builders Meetup - San Francisco",
+    "event": "Arize AI Builders Meetup",
+    "year": 2026,
+    "type": "Meetup",
+    "video": "https://www.youtube.com/watch?v=ku9uMkU1Xzk"
+  },
+  {
+    "title": "CNCF Hyderabad Virtual Meetup",
+    "event": "Cloud-Native Hyderabad",
+    "year": 2020,
+    "type": "Meetup",
+    "video": "https://www.youtube.com/watch?v=repb1UC1WAI"
   }
 ]

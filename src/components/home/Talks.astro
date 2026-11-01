@@ -9,12 +9,15 @@ interface Props {
   homepage?: boolean;
 }
 
-const { limit = 6, homepage = false } = Astro.props;
+const { limit, homepage = false } = Astro.props;
 
 // Only show talks with videos. Homepage uses the hand-picked homeOrder; elsewhere, newest first.
 const videoTalks = homepage
   ? talks.filter((t) => t.video && t.homeOrder).sort((a, b) => a.homeOrder! - b.homeOrder!)
   : talks.filter((t) => t.video).sort((a, b) => b.year - a.year);
+const shownTalks = videoTalks.slice(0, limit ?? videoTalks.length);
+// The full list (speaking page) uses the grid at every width; the homepage keeps the mobile carousel.
+const showAll = !homepage && limit === undefined;
 
 // Extract YouTube video ID from URL
 function getYouTubeId(url: string) {
@@ -51,9 +54,9 @@ function getYouTubeId(url: string) {
   </div>
 
   {/* Mobile: horizontal scroll */}
-  <div class="sm:hidden">
+  <div class:list={["sm:hidden", showAll && "hidden"]}>
   <div id="talks-carousel-mobile" class="flex gap-4 overflow-x-auto scroll-smooth no-scrollbar">
-    {videoTalks.slice(0, limit).map((talk) => talk.video && (
+    {shownTalks.map((talk) => talk.video && (
       <article class="shrink-0 w-[260px] card-brutal overflow-hidden flex flex-col">
         <button
           type="button"
@@ -64,6 +67,8 @@ function getYouTubeId(url: string) {
         >
           <img
             src={`https://img.youtube.com/vi/${getYouTubeId(talk.video)}/maxresdefault.jpg`}
+            onload="if(this.naturalWidth<=120){this.onload=null;this.src=this.src.replace('maxresdefault','hqdefault')}"
+            onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"
             alt={talk.title}
             width="1280"
             height="720"
@@ -75,6 +80,7 @@ function getYouTubeId(url: string) {
         </button>
         <div class="p-3">
           <p class="font-sans font-bold text-[var(--text-primary)] text-xs leading-snug">{talk.title}</p>
+          {showAll && <p class="talk-meta">{talk.event} · {talk.year}</p>}
         </div>
       </article>
     ))}
@@ -85,10 +91,41 @@ function getYouTubeId(url: string) {
   </p>
   </div>
 
-  {/* Desktop: grid */}
-  <div class="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
-    {videoTalks.slice(0, limit).map((talk, i) => talk.video && (
-      <article class={`animate-on-scroll stagger-${i + 1} card-brutal w-full overflow-hidden flex flex-col`}>
+  {showAll ? (
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5">
+      {shownTalks.map((talk, i) => talk.video && (
+              <article class={`animate-on-scroll stagger-${(i % 3) + 1} card-brutal w-full overflow-hidden flex flex-col`}>
+                <button
+                  type="button"
+                  data-talk-video={getYouTubeId(talk.video)}
+                  data-talk-title={talk.title}
+                  class="talk-video-trigger group relative w-full overflow-hidden"
+                  aria-label={`Play ${talk.title}`}
+                >
+                  <img
+                    src={`https://img.youtube.com/vi/${getYouTubeId(talk.video)}/maxresdefault.jpg`}
+                    onload="if(this.naturalWidth<=120){this.onload=null;this.src=this.src.replace('maxresdefault','hqdefault')}"
+                    onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"
+                    alt={talk.title}
+                    width="1280"
+                    height="720"
+                    class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span class="talk-play-icon" aria-hidden="true"><span></span></span>
+                </button>
+                <div class="p-3">
+                  <p class="font-sans font-bold text-[var(--text-primary)] text-xs leading-snug">{talk.title}</p>
+                  {showAll && <p class="talk-meta">{talk.event} · {talk.year}</p>}
+                </div>
+              </article>
+      ))}
+    </div>
+  ) : (
+  <div class:list={"hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5"}>
+    {shownTalks.map((talk, i) => talk.video && (
+      <article class={`animate-on-scroll stagger-${(i % 3) + 1} card-brutal w-full overflow-hidden flex flex-col`}>
         <button
           type="button"
           data-talk-video={getYouTubeId(talk.video)}
@@ -98,6 +135,8 @@ function getYouTubeId(url: string) {
         >
           <img
             src={`https://img.youtube.com/vi/${getYouTubeId(talk.video)}/maxresdefault.jpg`}
+            onload="if(this.naturalWidth<=120){this.onload=null;this.src=this.src.replace('maxresdefault','hqdefault')}"
+            onerror="this.onerror=null;this.src=this.src.replace('maxresdefault','hqdefault')"
             alt={talk.title}
             width="1280"
             height="720"
@@ -109,12 +148,15 @@ function getYouTubeId(url: string) {
         </button>
         <div class="p-3">
           <p class="font-sans font-bold text-[var(--text-primary)] text-xs leading-snug">{talk.title}</p>
+          {showAll && <p class="talk-meta">{talk.event} · {talk.year}</p>}
         </div>
       </article>
     ))}
   </div>
 
-  <div class="mt-8 text-center sm:hidden">
+  )}
+
+  <div class:list={["mt-8 text-center sm:hidden", showAll && "hidden"]}>
     <a
       href="https://www.youtube.com/playlist?list=PL-0wUDKSiP4rYhEiKlOQQ433nh1KxCOx1"
       target="_blank" rel="noopener noreferrer"
@@ -137,6 +179,13 @@ function getYouTubeId(url: string) {
   }
 
   .talk-video-trigger { display: block; background: #050816; }
+  .talk-meta {
+    margin-top: 0.35rem;
+    color: var(--color-stone-500);
+    font-family: var(--pixel-font);
+    font-size: 0.66rem;
+    font-weight: 700;
+  }
   .talk-play-icon {
     position: absolute;
     top: 50%;

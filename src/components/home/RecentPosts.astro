@@ -1,19 +1,18 @@
 ---
 import { getCollection } from "astro:content";
+import { isAgentNote, isPersonal } from "../../lib/posts";
 
 interface Props {
   variant?: "agents" | "general";
 }
 
 const { variant = "general" } = Astro.props;
-const isAgentNotes = (post: { data: { externalUrl?: string } }) =>
-  post.data.externalUrl?.includes("linkedin.com/pulse") ?? false;
 
 const allPosts = (await getCollection("blog"))
-  .filter((post) => !post.data.tags?.includes("year-in-review") && !post.data.tags?.includes("personal") && !post.data.title.includes("Docker Layer Caching"))
+  .filter((post) => !isPersonal(post))
   .sort((first, second) => second.data.pubDate.getTime() - first.data.pubDate.getTime());
 
-const posts = variant === "agents" ? allPosts.filter(isAgentNotes) : allPosts.filter((post) => !isAgentNotes(post)).slice(0, 3);
+const posts = variant === "agents" ? allPosts.filter(isAgentNote).slice(0, 6) : allPosts.filter((post) => !isAgentNote(post)).slice(0, 3);
 
 const copy = variant === "agents"
   ? {
@@ -21,15 +20,15 @@ const copy = variant === "agents"
       label: "AGENT_FIELD_NOTES.md",
       heading: "AI agents in production",
       sub: "Benchmarks, traces and harness design from building and securing AI agents.",
-      cta: "https://www.linkedin.com/in/nancy-chauhan/recent-activity/articles/",
-      gridClass: "md:grid-cols-2",
+      cta: "/blog#ai-agents",
+      gridClass: "md:grid-cols-3",
     }
   : {
       id: "writing",
       label: "RECENT_NOTES.md",
       heading: "Ideas worth sharing",
       sub: "Three recent notes on building and technology.",
-      cta: "https://nancy-chauhan.medium.com/",
+      cta: "/blog",
       gridClass: "md:grid-cols-3",
     };
 ---
@@ -42,9 +41,11 @@ const copy = variant === "agents"
         <h2 class="text-3xl md:text-4xl mb-2">{copy.heading}</h2>
         <p class="text-base text-[var(--text-muted)]">{copy.sub}</p>
       </div>
-      <a href={copy.cta} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm">
-        Read all ↗
-      </a>
+      {copy.cta.startsWith("/") ? (
+        <a href={copy.cta} class="pixel-button pixel-button-ghost text-sm">Read all →</a>
+      ) : (
+        <a href={copy.cta} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm">Read all ↗</a>
+      )}
     </div>
   </div>
 
