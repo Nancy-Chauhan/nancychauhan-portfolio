@@ -16,7 +16,8 @@ export const GET: APIRoute = async () => {
       { name: "Home", url: absoluteUrl("/"), description: "Portfolio overview and featured work." },
       { name: "About", url: absoluteUrl("/about"), description: "Biography, experience, education, skills, and annual reflections." },
       { name: "Projects", url: absoluteUrl("/projects"), description: "Products, AI systems, developer tools, and security projects." },
-      { name: "Speaking", url: absoluteUrl("/speaking"), description: "Conference talks, community work, and collaborations." },
+      { name: "Speaking", url: absoluteUrl("/speaking"), description: "Keynotes, conference talks, webinars, and video courses." },
+      { name: "Community", url: absoluteUrl("/community"), description: "Women in Cloud Native, CNCF TAG leadership, events organised, recognition, and testimonials." },
     ],
     projects: projects
       .sort((first, second) => first.data.order - second.data.order)

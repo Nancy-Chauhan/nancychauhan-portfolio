@@ -6,7 +6,7 @@ export const prerender = true;
 
 export const GET: APIRoute = async () => {
   const [projects, posts] = await Promise.all([getCollection("projects"), getCollection("blog")]);
-  const staticPages = ["/", "/about", "/projects", "/speaking"];
+  const staticPages = ["/", "/about", "/projects", "/blog", "/speaking", "/community"];
 
   const urls = [
     ...staticPages.map((path) => ({ location: absoluteUrl(path) })),

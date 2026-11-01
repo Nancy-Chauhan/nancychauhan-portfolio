@@ -1,7 +1,7 @@
 ---
 const talksData = await import("../../data/talks/talks.json");
 const talks = talksData.default as {
-  title: string; event: string; year: number; date?: string; type: string; video?: string; coSpeaker?: string; homeOrder?: number; unavailable?: boolean; noEmbed?: boolean;
+  title: string; event: string; year: number; date?: string; type: string; video?: string; coSpeaker?: string; homeOrder?: number; unavailable?: boolean; noEmbed?: boolean; highlight?: { label: string; photo: string; post?: string };
 }[];
 
 interface Props {
@@ -39,6 +39,17 @@ const copy = variant === "webinars"
 const shownTalks = videoTalks.slice(0, limit ?? videoTalks.length);
 // The full list (speaking page) uses the grid at every width; the homepage keeps the mobile carousel.
 const showAll = !homepage && limit === undefined;
+// On the full list, one talk can be promoted to a large highlight card (e.g. a keynote).
+const highlight = showAll ? shownTalks.find((t) => t.highlight) : undefined;
+const gridTalks = highlight ? shownTalks.filter((t) => t !== highlight) : shownTalks;
+// Conference talks: recent ones up front, 2019–2023 tucked behind a toggle (nothing removed).
+const RECENT_FROM = 2024;
+const earlierTalks = variant === "talks" ? gridTalks.filter((t) => t.year < RECENT_FROM) : [];
+const earlierYears = earlierTalks.map((t) => t.year);
+const talkGroups = [
+  { talks: gridTalks.filter((t) => !earlierTalks.includes(t)), collapsed: false, label: "" },
+  { talks: earlierTalks, collapsed: true, label: earlierTalks.length ? `Show earlier talks (${Math.min(...earlierYears)}–${Math.max(...earlierYears)})` : "" },
+];
 
 // Extract YouTube video ID from URL
 function getYouTubeId(url: string) {
@@ -115,8 +126,38 @@ function getYouTubeId(url: string) {
   </div>
 
   {showAll ? (
-    <div class:list={["talk-list grid grid-cols-2 gap-3 sm:gap-4 md:gap-5", variant === "webinars" && shownTalks.length % 2 === 0 ? "md:grid-cols-2" : "md:grid-cols-3"]}>
-      {shownTalks.map((talk, i) => talk.video && (
+    <>
+    {highlight && highlight.video && (
+      <article class="talk-highlight card-brutal animate-on-scroll">
+        <button
+          type="button"
+          data-talk-video={getYouTubeId(highlight.video)}
+          data-talk-title={highlight.title}
+          class="talk-video-trigger highlight-photo group relative w-full overflow-hidden"
+          aria-label={`Play ${highlight.title}`}
+        >
+          <img src={highlight.highlight!.photo} alt={`${highlight.title} on stage at ${highlight.event}`} width="1400" height="1050" loading="lazy" decoding="async" />
+          <span class="talk-play-icon" aria-hidden="true"><span></span></span>
+        </button>
+        <div class="highlight-body">
+          <span class="highlight-badge">★ {highlight.highlight!.label}</span>
+          <h3 class="highlight-title">{highlight.title}</h3>
+          <p class="highlight-meta">{highlight.event} · {highlight.year}{highlight.coSpeaker ? ` · with ${highlight.coSpeaker}` : ""}</p>
+          <div class="highlight-actions">
+            <button type="button" class="pixel-button pixel-button-primary text-sm" data-talk-proxy>▶ Watch the keynote</button>
+            {highlight.highlight!.post && (
+              <a href={highlight.highlight!.post} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm">From the stage ↗</a>
+            )}
+          </div>
+        </div>
+      </article>
+    )}
+    {talkGroups.map((group) => group.talks.length > 0 && (
+      group.collapsed ? (
+        <details class="earlier-talks">
+          <summary>{group.label} <span class="earlier-count">{group.talks.length}</span></summary>
+    <div class:list={["talk-list grid grid-cols-2 gap-3 sm:gap-4 md:gap-5", "md:grid-cols-3"]}>
+      {group.talks.map((talk, i) => talk.video && (
               <article class={`animate-on-scroll stagger-${(i % 3) + 1} card-brutal w-full overflow-hidden flex flex-col`}>
                 <button
                   type="button"
@@ -147,6 +188,43 @@ function getYouTubeId(url: string) {
               </article>
       ))}
     </div>
+        </details>
+      ) : (
+    <div class:list={["talk-list grid grid-cols-2 gap-3 sm:gap-4 md:gap-5", "md:grid-cols-3"]}>
+      {group.talks.map((talk, i) => talk.video && (
+              <article class={`animate-on-scroll stagger-${(i % 3) + 1} card-brutal w-full overflow-hidden flex flex-col`}>
+                <button
+                  type="button"
+                  data-talk-video={talk.unavailable ? undefined : getYouTubeId(talk.video)}
+          disabled={talk.unavailable}
+          data-talk-external={talk.noEmbed ? talk.video : undefined}
+                  data-talk-title={talk.title}
+                  class="talk-video-trigger group relative w-full overflow-hidden"
+                  aria-label={talk.unavailable ? `${talk.title} (no longer public)` : `Play ${talk.title}`}
+                >
+                  <img
+                    src={`/talks/${getYouTubeId(talk.video)}.jpg`}
+                    alt={talk.title}
+                    width="1280"
+                    height="720"
+                    class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  {talk.unavailable
+            ? <span class="talk-gone">No longer public</span>
+            : <span class="talk-play-icon" aria-hidden="true"><span></span></span>}
+                </button>
+                <div class="p-3">
+                  <p class="font-sans font-bold text-[var(--text-primary)] text-xs leading-snug">{talk.title}</p>
+                  {showAll && <p class="talk-meta">{talk.event} · {talk.year}</p>}
+                </div>
+              </article>
+      ))}
+    </div>
+      )
+    ))}
+    </>
   ) : (
   <div class:list={"hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5"}>
     {shownTalks.map((talk, i) => talk.video && (
@@ -213,6 +291,45 @@ function getYouTubeId(url: string) {
     .talk-list .p-3 > p:first-child { font-size: 0.7rem; display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
     .talk-list .talk-meta { font-size: 0.58rem; }
   }
+  .talk-highlight {
+    display: grid;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .highlight-photo img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform 0.3s ease; }
+  .highlight-photo:hover img { transform: scale(1.03); }
+  .highlight-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    padding: 1.3rem 1.4rem 1.5rem;
+  }
+  .highlight-badge {
+    width: fit-content;
+    padding: 0.25rem 0.55rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-yellow);
+    box-shadow: 3px 3px 0 var(--pixel-shadow);
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+  .highlight-title { color: var(--text-primary); font-family: var(--font-sans); font-size: clamp(1.25rem, 2.4vw, 1.75rem); font-weight: 800; line-height: 1.2; }
+  .highlight-meta { color: var(--pixel-purple); font-family: var(--pixel-font); font-size: 0.8rem; font-weight: 700; }
+  .highlight-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.3rem; }
+  @media (min-width: 768px) {
+    .talk-highlight { grid-template-columns: 1.15fr 1fr; }
+    .highlight-photo { border-right: 2px solid var(--pixel-ink); }
+    .highlight-photo img { height: 100%; }
+  }
+  @media (max-width: 767px) {
+    .highlight-photo { border-bottom: 2px solid var(--pixel-ink); }
+    .highlight-photo img { aspect-ratio: 16 / 10; }
+    .highlight-body { padding: 0.9rem 1rem 1.1rem; gap: 0.5rem; }
+    .highlight-meta { font-size: 0.68rem; }
+  }
   .talk-video-trigger:disabled { cursor: default; }
   .talk-video-trigger:disabled img { filter: grayscale(1) brightness(0.6); }
   .talk-gone {
@@ -229,6 +346,26 @@ function getYouTubeId(url: string) {
     white-space: nowrap;
     transform: translate(-50%, -50%);
   }
+  .earlier-talks { margin-top: 1.5rem; }
+  .earlier-talks summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.55rem 0.9rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 3px 3px 0 var(--pixel-shadow);
+    cursor: pointer;
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    list-style: none;
+  }
+  .earlier-talks summary::-webkit-details-marker { display: none; }
+  .earlier-talks[open] summary { background: var(--pixel-yellow); }
+  .earlier-count { padding: 0 0.35rem; border: 1.5px solid var(--pixel-ink); background: var(--pixel-yellow); font-size: 0.72rem; }
   .talk-meta {
     margin-top: 0.35rem;
     color: var(--color-stone-500);
@@ -290,6 +427,18 @@ function getYouTubeId(url: string) {
     });
   }
 
+  function bindProxies() {
+    document.querySelectorAll<HTMLButtonElement>("[data-talk-proxy]").forEach((proxy) => {
+      if (proxy.dataset.proxyBound) return;
+      proxy.dataset.proxyBound = "true";
+      proxy.addEventListener("click", () => {
+        proxy.closest(".talk-highlight")?.querySelector<HTMLButtonElement>("[data-talk-video]")?.click();
+        proxy.remove();
+      });
+    });
+  }
+
   bindTalkPlayer();
-  document.addEventListener("astro:page-load", bindTalkPlayer);
+  bindProxies();
+  document.addEventListener("astro:page-load", () => { bindTalkPlayer(); bindProxies(); });
 </script>

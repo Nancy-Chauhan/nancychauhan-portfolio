@@ -1,0 +1,93 @@
+{
+  "founded": {
+    "name": "Women in Cloud Native",
+    "role": "Founder",
+    "since": "Dec 2022",
+    "image": "/community/wicn-kubecon-london.jpg",
+    "imageAlt": "A large group of women at the Women in Cloud Native meetup at KubeCon London",
+    "story": "It started with a single tweet. Today Women in Cloud Native is a global community that runs hands-on workshops and hosts a meetup at every KubeCon around the world. At KubeCon London, over 90% of the women in this photo were first-time attendees.",
+    "links": [
+      {
+        "label": "CNCF Humans of Cloud Native",
+        "url": "https://www.cncf.io/humans-of-cloud-native/nancy-chauhan-championing-women-in-cloud-native/"
+      },
+      {
+        "label": "KubeCon meetup",
+        "url": "https://www.linkedin.com/posts/nancy-chauhan_this-photo-was-taken-at-kubecon-london-where-share-7391935163418595328-qo4b/"
+      }
+    ],
+    "year": "2022 – now"
+  },
+  "events": [
+    {
+      "role": "Speaker",
+      "title": "Sustainability meetup, San Francisco",
+      "detail": "Talking about Kepler in the sustainability observability stack at 9 Zero.",
+      "date": "Oct 2026",
+      "image": "/community/kepler-9zero-sf.jpg",
+      "imageAlt": "Nancy presenting Kepler in the sustainability observability stack at 9 Zero in San Francisco",
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:7517791554972073985/",
+      "year": "2026",
+      "sortDate": "2026-10-18"
+    },
+    {
+      "role": "Speaker",
+      "title": "AI Builders Meetup at GitHub HQ, San Francisco",
+      "detail": "An evening of AI agent builders hosted by Arize at GitHub HQ, where I presented.",
+      "date": "Apr 2026",
+      "year": "2026",
+      "image": "/community/ai-builders-github-hq.jpg",
+      "imageAlt": "Nancy presenting on stage at the AI Builders Meetup at GitHub HQ in San Francisco",
+      "url": "https://www.linkedin.com/posts/nancy-chauhan_we-had-an-amazing-evening-at-github-hq-arize-ugcPost-7445594200739311618-XSib/",
+      "sortDate": "2026-04-02"
+    },
+    {
+      "role": "Co-Chair",
+      "title": "CNCF TAG Environmental Sustainability",
+      "detail": "Leading the CNCF technical advisory group on sustainable cloud native computing, with sessions and meetups at KubeCon.",
+      "date": "KubeCon London · Apr 2025",
+      "image": "/community/tag-env-kubecon-london.jpg",
+      "imageAlt": "Members of CNCF TAG Environmental Sustainability outside KubeCon London at ExCeL",
+      "url": "https://www.linkedin.com/posts/nancy-chauhan_amazing-people-of-tag-env-sustainability-share-7313667317270253570-RBl-/",
+      "extra": {
+        "label": "Nov 2024 event",
+        "url": "https://www.linkedin.com/posts/nancy-chauhan_join-us-httpslnkdinganrugu-ugcPost-7263916913838174208-dL4t/"
+      },
+      "year": "2024 – 2025",
+      "sortDate": "2025-04-03"
+    },
+    {
+      "role": "Speaker",
+      "title": "AI & sustainability meetup, New York",
+      "detail": "My first US meetup: balancing AI and sustainability with the community.",
+      "date": "Oct 2024",
+      "image": "/community/sustainability-meetup-nyc.jpg",
+      "imageAlt": "Attendees at a sustainability meetup in New York",
+      "url": "https://www.linkedin.com/posts/nancy-chauhan_it-was-my-first-time-in-nyc-and-in-general-ugcPost-7252444813046755328-3zVD/",
+      "year": "2024",
+      "sortDate": "2024-10-16"
+    },
+    {
+      "role": "Lead organiser",
+      "title": "CNCF Cloud Native Sustainability Week",
+      "detail": "Led the global week of community-run sustainability events across cities.",
+      "date": "2023 – 2024",
+      "image": "/talks/2N0Ngcav6LU.jpg",
+      "imageAlt": "CNCF Cloud Sustainability Week welcome session in Bangalore",
+      "url": "https://www.linkedin.com/posts/nancy-chauhan_we-are-back-cncf-cloud-native-sustainability-ugcPost-7203603938250559488-Ke1j/",
+      "year": "2023 – 2024",
+      "sortDate": "2024-06-03"
+    },
+    {
+      "role": "Organiser",
+      "title": "Cloud DevXchange meetup",
+      "detail": "A packed in-person developer meetup in India for the cloud community.",
+      "date": "Jun 2023",
+      "image": "/community/clouddevxchange-meetup.jpg",
+      "imageAlt": "Group photo of attendees at the Cloud DevXchange meetup",
+      "url": "https://www.linkedin.com/posts/nancy-chauhan_clouddevxchange-share-7073606662749638656-nkbK/",
+      "year": "2023",
+      "sortDate": "2023-06-11"
+    }
+  ]
+}

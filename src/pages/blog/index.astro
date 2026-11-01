@@ -4,6 +4,9 @@ import BlogCard from "../../components/cards/BlogCard.astro";
 import { getCollection } from "astro:content";
 import { isAgentNote, isPersonal } from "../../lib/posts";
 
+// Show this many per section; the rest sit behind a "Show all" toggle (nothing removed).
+const VISIBLE = 6;
+
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
 );
@@ -64,8 +67,8 @@ const sections = [
           <h2 class="text-3xl md:text-4xl mb-2">{section.title}</h2>
           <p class="text-base text-[var(--text-muted)]">{section.sub}</p>
         </div>
-        <div class={`grid grid-cols-1 gap-6 mb-16 md:grid-cols-2 lg:grid-cols-3`}>
-          {section.posts.map((post, i) => (
+        <div class={`grid grid-cols-1 gap-6 mb-6 md:grid-cols-2 lg:grid-cols-3`}>
+          {section.posts.slice(0, VISIBLE).map((post, i) => (
             <div class={`animate-on-scroll stagger-${(i % 3) + 1} h-full`}>
               <BlogCard
                 title={post.data.title}
@@ -79,6 +82,27 @@ const sections = [
             </div>
           ))}
         </div>
+        {section.posts.length > VISIBLE && (
+          <details class="more-posts">
+            <summary>Show all {section.posts.length} {section.title.toLowerCase()}</summary>
+        <div class={`grid grid-cols-1 gap-6 mb-6 md:grid-cols-2 lg:grid-cols-3`}>
+          {section.posts.slice(VISIBLE).map((post, i) => (
+            <div class={`animate-on-scroll stagger-${(i % 3) + 1} h-full`}>
+              <BlogCard
+                title={post.data.title}
+                description={post.data.description}
+                pubDate={post.data.pubDate}
+                tags={post.data.tags}
+                slug={post.id}
+                image={post.data.image}
+                externalUrl={post.data.externalUrl}
+              />
+            </div>
+          ))}
+        </div>
+          </details>
+        )}
+        <div class="mb-10"></div>
       </section>
     ))}
   </div>
@@ -86,6 +110,23 @@ const sections = [
 
 <style>
   .blog-section { scroll-margin-top: 6rem; }
+
+  .more-posts summary {
+    display: inline-flex;
+    margin-bottom: 1.25rem;
+    padding: 0.55rem 0.9rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-card);
+    box-shadow: 3px 3px 0 var(--pixel-shadow);
+    cursor: pointer;
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    list-style: none;
+  }
+  .more-posts summary::-webkit-details-marker { display: none; }
+  .more-posts[open] summary { background: var(--pixel-yellow); }
 
   .blog-count {
     display: inline-grid;

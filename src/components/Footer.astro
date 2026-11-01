@@ -16,6 +16,9 @@ const socials = [
         <p class="font-sans text-sm sm:text-base text-[var(--color-stone-400)] break-all sm:break-normal">
           $ nancy --connect --location="SF"<span class="terminal-cursor"></span>
         </p>
+        <a href="https://cal.com/nancychauhan" target="_blank" rel="noopener noreferrer" class="footer-cta">
+          Speaking, workshops &amp; collaborations → book a chat ↗
+        </a>
       </div>
       <div class="flex items-center gap-3">
         {socials.map((social) => (
@@ -38,3 +41,16 @@ const socials = [
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-cta {
+    display: inline-block;
+    margin-top: 0.9rem;
+    color: var(--pixel-yellow, #f6cf57);
+    font-family: var(--pixel-font);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

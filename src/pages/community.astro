@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CommunityBuilt from "../components/home/CommunityBuilt.astro";
+import Community from "../components/home/Community.astro";
+import Testimonials from "../components/home/Testimonials.astro";
+import community from "../data/community.json";
+
+const communitySchema = {
+  "@type": "ProfilePage",
+  "@id": "https://nancychauhan.com/community#page",
+  name: "Community work by Nancy Chauhan",
+  mainEntity: {
+    "@id": "https://nancychauhan.com/#person",
+    founder: { "@type": "Organization", name: community.founded.name },
+  },
+};
+---
+
+<BaseLayout
+  title="Community: Women in Cloud Native, CNCF & Events | Nancy Chauhan"
+  description="Founder of Women in Cloud Native, CNCF TAG Environmental Sustainability co-chair, and organiser of meetups and events across the cloud native community."
+  structuredData={communitySchema}
+>
+  <section class="pixel-page-hero py-16 md:py-20">
+    <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-24">
+      <p class="pixel-date mb-4">COMMUNITY_LOG.txt</p>
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-5">Community</h1>
+      <p class="max-w-2xl text-lg leading-relaxed">
+        Communities I’ve built, groups I lead, events I organise, and the people I’ve been lucky to build alongside.
+      </p>
+    </div>
+  </section>
+
+  <div class="pixel-page homepage-pixel-zone mx-auto max-w-6xl px-6 py-16 md:px-24 md:py-20">
+    <CommunityBuilt />
+    <hr class="section-divider my-16" />
+    <Community />
+    <hr class="section-divider my-16" />
+    <Testimonials />
+  </div>
+</BaseLayout>

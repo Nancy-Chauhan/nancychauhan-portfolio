@@ -64,10 +64,10 @@ const swatch = palette[hash % palette.length];
     <h3 class="text-lg font-bold font-sans text-[var(--color-stone-900)] mb-2 group-hover:text-[var(--color-purple)] transition-colors">
       {title}
     </h3>
-    <p class="text-sm text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 line-clamp-2 flex-1">
+    <p class="text-sm text-[var(--color-stone-600)] font-sans leading-relaxed mb-4 line-clamp-2">
       {description}
     </p>
-    <div class="post-tags flex flex-wrap gap-2">
+    <div class="post-tags flex flex-wrap gap-2 mt-auto">
       {tags.slice(0, 2).map((tag) => (
         <span class="tag-brutal">{tag}</span>
       ))}

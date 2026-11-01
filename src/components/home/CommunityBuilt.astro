@@ -1,0 +1,218 @@
+---
+import community from "../../data/community.json";
+
+const { founded } = community;
+// Newest first, by each card's most recent date.
+const events = [...community.events].sort((a, b) => b.sortDate.localeCompare(a.sortDate));
+---
+
+<section id="communities">
+  <div class="mb-8 animate-on-scroll">
+    <h2 class="text-3xl md:text-4xl font-extrabold font-sans tracking-tight mb-3">
+      <span class="section-heading">Communities &amp; Events</span>
+    </h2>
+    <p class="text-lg text-[var(--color-stone-500)] font-sans">Women in Cloud Native, CNCF leadership and the meetups behind it, newest first.</p>
+  </div>
+
+  <article class="founded card-brutal animate-on-scroll">
+    <div class="founded-photo">
+      <img src={founded.image} alt={founded.imageAlt} width="1400" height="355" loading="lazy" decoding="async" />
+      <span class="year-tag">{founded.year}</span>
+    </div>
+    <div class="founded-body">
+      <p class="founded-role">{founded.role} · since {founded.since}</p>
+      <h3 class="founded-name">{founded.name}</h3>
+      <p class="founded-story">{founded.story}</p>
+      <div class="founded-links">
+        {founded.links.map((link) => (
+          <a href={link.url} target="_blank" rel="noopener noreferrer" class="pixel-button pixel-button-ghost text-sm">{link.label} ↗</a>
+        ))}
+      </div>
+    </div>
+  </article>
+
+  <div class:list={["events-grid", events.length % 3 === 0 && "events-even"]}>
+    {events.map((event, i) => (
+      <article class={`event card-brutal animate-on-scroll stagger-${(i % 3) + 1}`}>
+        <a href={event.url} target="_blank" rel="noopener noreferrer" class="event-photo" aria-label={`${event.title} on LinkedIn`}>
+          <img src={event.image} alt={event.imageAlt} loading="lazy" decoding="async" />
+          <span class="event-role">{event.role}</span>
+          <span class="year-tag">{event.year}</span>
+        </a>
+        <div class="event-body">
+          <h3 class="event-title">
+            <a href={event.url} target="_blank" rel="noopener noreferrer">{event.title}</a>
+          </h3>
+          <p class="event-detail">{event.detail}</p>
+          <p class="event-date">
+            {event.date}
+            {event.extra && (
+              <>
+                {" · "}
+                <a href={event.extra.url} target="_blank" rel="noopener noreferrer">{event.extra.label} ↗</a>
+              </>
+            )}
+          </p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
+
+<style>
+  .founded {
+    display: grid;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .founded-photo {
+    position: relative;
+    overflow: hidden;
+    border-bottom: 2px solid var(--pixel-ink);
+    background: var(--bg-subtle);
+  }
+
+  .founded-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1400 / 355;
+    object-fit: cover;
+  }
+
+  .founded-body {
+    display: grid;
+    gap: 0.55rem;
+    padding: 1.2rem 1.3rem 1.4rem;
+  }
+
+  .founded-role,
+  .event-date {
+    color: var(--pixel-purple);
+    font-family: var(--pixel-font);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .founded-name {
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .founded-story {
+    max-width: 48rem;
+    color: var(--color-stone-600);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .founded-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.4rem;
+  }
+
+  /* Two wide cards on top, three below. */
+  .events-grid {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+
+  .event { display: flex; flex-direction: column; overflow: hidden; grid-column: span 2; }
+  .events-grid:not(.events-even) .event:nth-child(-n + 2) { grid-column: span 3; }
+
+  .event-photo {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border-bottom: 2px solid var(--pixel-ink);
+    background: var(--bg-subtle);
+  }
+
+  .event-photo img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+
+  .event-photo:hover img { transform: scale(1.03); }
+
+  .event-role {
+    position: absolute;
+    top: 0.6rem;
+    left: 0.6rem;
+    padding: 0.2rem 0.45rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-yellow);
+    color: var(--pixel-ink);
+    font-family: var(--pixel-font);
+    font-size: 0.68rem;
+    font-weight: 700;
+  }
+
+  .year-tag {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    padding: 0.2rem 0.45rem;
+    border: 2px solid var(--pixel-ink);
+    background: var(--pixel-ink);
+    color: var(--pixel-yellow);
+    font-family: var(--pixel-font);
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .event-body {
+    display: grid;
+    gap: 0.4rem;
+    padding: 0.9rem 1rem 1.05rem;
+  }
+
+  .event-title {
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 1.3;
+  }
+
+  .event-title a:hover { color: var(--color-purple); }
+
+  .event-detail {
+    color: var(--color-stone-600);
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+
+  .event-date a { text-decoration: underline; text-underline-offset: 2px; }
+
+  @media (max-width: 767px) {
+    .founded-photo img { aspect-ratio: 16 / 7; }
+    .founded-body { padding: 0.9rem 1rem 1.1rem; }
+    .founded-name { font-size: 1.2rem; }
+    .founded-story { font-size: 0.88rem; }
+    .events-grid { grid-template-columns: 1fr; gap: 0.9rem; }
+    .event,
+    .events-grid:not(.events-even) .event:nth-child(-n + 2) { grid-column: auto; flex-direction: row; box-shadow: 3px 3px 0 var(--pixel-shadow); }
+    .event-photo { width: 7rem; flex-shrink: 0; border-bottom: 0; border-right: 2px solid var(--pixel-ink); }
+    .event-photo img { height: 100%; aspect-ratio: auto; }
+    .event-role { top: auto; bottom: 0.4rem; left: 0.4rem; font-size: 0.55rem; padding: 0.1rem 0.3rem; }
+    .event .year-tag { top: 0.4rem; right: auto; left: 0.4rem; font-size: 0.55rem; padding: 0.1rem 0.3rem; }
+    .event-body { padding: 0.65rem 0.75rem; gap: 0.25rem; }
+    .event-title { font-size: 0.88rem; }
+    .event-detail { font-size: 0.76rem; display: -webkit-box; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+    .event-date { font-size: 0.62rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .event-photo img { transition: none; }
+  }
+</style>

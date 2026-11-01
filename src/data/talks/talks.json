@@ -30,7 +30,12 @@
     "year": 2023,
     "type": "Keynote",
     "coSpeaker": "Saiyam Pathak",
-    "video": "https://www.youtube.com/watch?v=6gl8Y9DO6fw"
+    "video": "https://www.youtube.com/watch?v=6gl8Y9DO6fw",
+    "highlight": {
+      "label": "Keynote",
+      "photo": "/community/kubeday-india-keynote.jpg",
+      "post": "https://www.linkedin.com/posts/nancy-chauhan_stage-was-huge-audience-was-amazing-share-7138972892494532608-NQma/"
+    }
   },
   {
     "title": "How Green Is My OpenTelemetry Collector?",
@@ -152,7 +157,7 @@
   },
   {
     "title": "AI Builders Meetup - San Francisco",
-    "event": "Arize AI Builders Meetup",
+    "event": "Arize AI Builders Meetup · GitHub HQ, San Francisco",
     "year": 2026,
     "type": "Meetup",
     "video": "https://www.youtube.com/watch?v=ku9uMkU1Xzk"

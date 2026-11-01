@@ -11,6 +11,12 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+
+// Posts published elsewhere (Medium, DEV, LinkedIn, Arize) send readers straight to the original,
+// so this site never shows a different copy of an article under Nancy's name.
+if (post.data.externalUrl) {
+  return Astro.redirect(post.data.externalUrl, 301);
+}
 const { Content } = await render(post);
 const canonicalUrl = post.data.canonicalUrl ?? post.data.externalUrl ?? `https://nancychauhan.com/blog/${post.id}`;
 const articleSchema = {
