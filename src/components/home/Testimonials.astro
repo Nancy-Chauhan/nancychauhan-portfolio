@@ -1,10 +1,16 @@
 ---
 const testimonials = [
   {
-    quote: "She is very skilled technically and a good communicator too, these strengths do not always come together :) The technical articles she worked on were really well written and always valuable content. I really appreciated her approach and execution.",
-    name: "Julia Leyton",
-    title: "CSM Automation Architect, IBM",
-    img: "/logos/julia.jpeg",
+    quote: "Nancy is great. Her technical chops are great, and she excels at communication. She rolls with the punches in a fast-changing startup and works incredibly hard. She's particularly good at in-person events where her ability to adapt quickly makes her able to carry on a productive conversation no matter what angle someone brings to the interaction.",
+    name: "Laurie Voss",
+    title: "Ex-Head of Developer Relations, Arize AI · Co-founder of npm",
+    img: "/logos/laurie.jpeg",
+  },
+  {
+    quote: "Nancy makes an immediate impact through her positive attitude, strong work ethic, and ability to quickly grasp complex domains. She excels at turning challenging topics into clear, actionable insights. Any team would be fortunate to have her.",
+    name: "Dan Mattox",
+    title: "Director of Engineering, Qualcomm",
+    img: "/logos/dan.jpeg",
   },
   {
     quote: "She worked in the relatively new DevRel team at Gitpod, where she delivered some incredible projects including the launch of our community-curated templates (gitpod-samples), wrote a number of high-quality technical blog posts, and built meaningful relationships with our partners. I've known Nancy to be reliable with high attention to detail in everything she creates, she's a real team player and is a joy to collaborate with. She has so much potential to be even better, and I'm excited to continue to watch her career grow! 🌱 Best of luck in the future, Nancy - I hope we can cross paths again.",
@@ -13,10 +19,10 @@ const testimonials = [
     img: "/logos/pauline.jpeg",
   },
   {
-    quote: "Nancy is highly proactive in learning whatever comes in her way, honest with herself and whom she works with, and has a really good work ethic. She worked with the continuous delivery team at Grofers, starting as an intern and then becoming a full-time member of the team obviously because the team loved her work. She worked on complex projects ranging from building Jenkins shared libraries to setting up Tekton as a common CI/CD platform. With a small team, to work on those projects, she took all the difficulties that came her way as learning opportunities, be it technical or of collaborative nature and she came out stronger every time. She was very open to feedback and also gave feedback which helped not just herself improve but also the people who worked with her. I'd recommend Nancy as a software engineer for any team that promotes learning and open culture.",
-    name: "Ashish Dubey",
-    title: "Engineering Lead",
-    img: "/logos/ashish.jpeg",
+    quote: "She is very skilled technically and a good communicator too, these strengths do not always come together :) The technical articles she worked on were really well written and always valuable content. I really appreciated her approach and execution.",
+    name: "Julia Leyton",
+    title: "CSM Automation Architect, IBM",
+    img: "/logos/julia.jpeg",
   },
   {
     quote: "Nancy is an enthusiastic person. She conducted and participated in lot of meetups and online conferences. She has a great knowledge blog which covers some hard technology problems she solved at grofers.",
@@ -50,9 +56,9 @@ const testimonials = [
   },
   {
     quote: "Nancy makes an immediate impact through her positive attitude, strong work ethic, and ability to quickly grasp complex domains. She excels at turning challenging topics into clear, actionable insights. Any team would be fortunate to have her.",
-    name: "Dan Mattox",
-    title: "Director of Engineering, Qualcomm",
-    img: "/logos/dan.jpeg",
+    name: "Ashish Dubey",
+    title: "Engineering Lead",
+    img: "/logos/ashish.jpeg",
   },
   {
     quote: "I had the pleasure of working directly with Nancy on the same team. Nancy's standout quality is her remarkable ability to rapidly grasp complex new domains. Particularly evident in her quick mastery of our GPU platform products she worked in Exostellar. She didn't just learn, she approached it with impressive creativity to find efficient paths to understanding. Beyond her technical aptitude, Nancy brings significant influence from the CNCF community. This perspective and her network are invaluable assets for any product operating in the cloud-native space. Any organization would be incredibly fortunate to have Nancy on their team. She delivers tangible benefits and elevates the work around her.",
@@ -98,12 +104,7 @@ const testimonials = [
   },
 ];
 
-interface Props {
-  limit?: number;
-}
-
-const { limit = testimonials.length } = Astro.props;
-const visibleTestimonials = testimonials.slice(0, limit);
+const visibleTestimonials = testimonials;
 ---
 
 <section>
@@ -124,9 +125,7 @@ const visibleTestimonials = testimonials.slice(0, limit);
           class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
           aria-label="Previous testimonials"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
-          </svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" /></svg>
         </button>
         <button
           id="testimonial-next"
@@ -134,9 +133,7 @@ const visibleTestimonials = testimonials.slice(0, limit);
           class="inline-flex items-center justify-center w-10 h-10 border-2 border-[var(--border)] bg-[var(--bg-card)] shadow-brutal-sm hover:bg-[var(--color-purple)] hover:text-white transition-colors cursor-pointer"
           aria-label="Next testimonials"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
-          </svg>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" /></svg>
         </button>
       </div>
     </div>
@@ -204,15 +201,8 @@ const visibleTestimonials = testimonials.slice(0, limit);
 </section>
 
 <style>
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
   .flip-card {
     perspective: 1000px;
     cursor: pointer;
@@ -250,7 +240,9 @@ const visibleTestimonials = testimonials.slice(0, limit);
     const carousel = document.getElementById('testimonial-carousel');
     const prev = document.getElementById('testimonial-prev') as HTMLButtonElement | null;
     const next = document.getElementById('testimonial-next') as HTMLButtonElement | null;
-    const scrollAmount = 340;
+    const firstCard = carousel?.querySelector<HTMLElement>('[data-testimonial-card]');
+    const gap = carousel ? Number.parseFloat(getComputedStyle(carousel).columnGap) || 0 : 0;
+    const scrollAmount = (firstCard?.offsetWidth || 320) + gap;
 
     if (prev && !prev.dataset.carouselBound) {
       prev.dataset.carouselBound = 'true';
