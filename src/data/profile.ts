@@ -15,7 +15,6 @@ export const profile = {
     description: "Developer advocacy and education for AI observability and LLM monitoring platform.",
   },
   previousRoles: [
-    { company: "Agno · ShipSec · SecureMyOrg", role: "AI PM-Engineer", period: "2025", description: "AI agent infrastructure, security automation, CI/CD scanning, and vulnerability management." },
     { company: "Exostellar", role: "Product Manager", period: "2024", description: "Cloud infrastructure optimization and cost management tooling. Part-time alongside my Master's at Cornell." },
     { company: "LocalStack", role: "Developer Advocate", period: "2022 - 2023", description: "Developer experience for local cloud development. Core platform, docs, and community." },
     { company: "Gitpod · Ona", role: "Developer Success Engineer", period: "2021 - 2022", description: "Cloud development environments. Workspace orchestration and developer experience. Data collection and analysis platform for global health and humanitarian response." },
